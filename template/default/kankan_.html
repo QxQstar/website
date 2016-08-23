@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>看看图库_{fzw:key:sitename/}</title>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+
+		<div class="w_1300">
+			<div class="pad_10">
+				<!--看看图库-->
+				<h3 class="h3">看看图库</h3>
+                <div class="cp_type">
+
+        <div class="cp_type_content">
+            <table class="cp_type_table">
+                <tr>
+                    <th width="60">类目：</th>
+                    <td>
+                        {if value1="{fzw:url:leimu/}" value2="" bi="=="}
+                        <a href="/search.aspx?m=kankan_" class="on">全部</a>
+                        {else}
+                        <a href="/search.aspx?m=kankan_">全部</a>
+                        {/if}
+                        {fzw:sql="select * from sl_Parameter where classid=267 order by id asc" id="p1"}
+                        {if value1="{fzw:p1:u1/}" value2="{fzw:url:leimu/}" bi="=="}
+                        <a href="/search.aspx?m=kankan_&leimu={fzw:p1:u1/}" class="on">{fzw:p1:u1/}</a>
+                        {else}
+                        <a href="/search.aspx?m=kankan_&leimu={fzw:p1:u1/}">{fzw:p1:u1/}</a>
+                        {/if}
+                        {/fzw:sql}
+                    </td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+
+				<ul class="kktk_list" id="grid_container">
+                    {fzw:search table="sl_zuopin" sqlvalue="shangjia='是'" number="20" order="dtime" orderby="asc" id="p1"}
+					<li>
+                        <div class="tk_img">
+                            <a href="/Single.aspx?m=index-1&laiyuanbianhao={fzw:p1:laiyuanbianhao/}&id={fzw:p1:id/}" style="text-align: center;"><img src="{fzw:p1:suoluetu  string=" zutu"/}" height="255"  class="ver-mid" /></a>
+                            <div class="btn_list">
+                                {if value1="{fzw:sql="select count(id) as count_id from sl_history where yonghuming='{fzw:cookie name="user_name" /}' and leixing='作品' and laiyuanbianhao={fzw:p1:id/}" id="p2"}{fzw:p2:count_id /}{/fzw:sql}" value2="0" bi=">"}
+                                <a href="javascript:void();" class="dianzan fl"><span class="heart on ver-mid"></span>&nbsp;喜欢</a>
+                                {else}
+                                <a href="/Execution.aspx?type=add&t=history&tip_string=加入收藏成功&leixing=作品&yonghuming={fzw:cookie name=" user_name" /}&laiyuanbianhao={fzw:p1:id/}&tipurl={fzw:key:siteurl/}" class="dianzan fl"><span class="heart ver-mid"></span>&nbsp;喜欢</a>
+                                {/if}
+                                &nbsp;&nbsp;
+                                <a href="/Single.aspx?m=index-1&laiyuanbianhao={fzw:p1:laiyuanbianhao/}&id={fzw:p1:id/}" class="fr"><img src="images/icon_shiyong.png" class="ver-mid" /> 使用</a>
+
+                            </div>
+                        </div>
+					</li>
+                    {/fzw:search}
+                    
+				</ul>
+                <div class="page">
+                    {fzw:search:page id="p1" size="8"/}
+                </div>
+			</div>
+		</div>
+			
+			
+			<script>
+			var margin = 5;
+			var li=$(".kktk_list li");
+			var	li_W = li[0].offsetWidth+margin;
+			$(window).load(function(){
+				waterfall();
+			})
+			$(window).resize(function(){
+				waterfall();
+			})
+		</script>
+        {fzw:inside src="底部.html"/}
+	</body>
+
+</html>

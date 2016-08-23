@@ -1,0 +1,28 @@
+<link rel="stylesheet" type="text/css" href="/template/m/css2/header.css">
+ <script>
+     var _hmt = _hmt || [];
+     (function() {
+         var hm = document.createElement("script");
+         hm.src = "//hm.baidu.com/hm.js?b8177464b0d85dde42e1abcdec01ddff";
+         var s = document.getElementsByTagName("script")[0];
+         s.parentNode.insertBefore(hm, s);
+     })();
+ </script>
+ <header>
+     <nav>
+         <div class='myNav clearfix'>
+             <div class='logo'>
+                 <a href="/"><img src='/template/default/img/logo.png'></a>
+             </div>
+             <ul class='userOp clearfix'>
+                 {if value1="{fzw:cookie name="user_name" /}" value2="" bi="=="}
+                 <li class='denglu'><a href='/?login.html&tipurl={fzw:key:siteurl/}'>登录</a></li>
+                 <li class='zhuce'><a href='/?reg.html'>注册</a></li>
+                 {else}
+                 <li class='denglu'><a href="/Single.aspx?m=user_tiao" >个人中心</a></li>
+                 <li class='gouwu'><a href="/Single.aspx?m=cart">购物车（<span id="order_count">{fzw:sql="select count(id) as count_id from sl_cart where yonghuming='{fzw:cookie name="user_name" /}' and (dingdanbianhao is null or dingdanbianhao ='')" id="p1"}{fzw:p1:count_id/}{/fzw:sql}</span>）</a></li>
+                 {/if}
+             </ul>
+         </div>
+     </nav>
+ </header>

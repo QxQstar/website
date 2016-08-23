@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gb2312" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+    <script src="js/common.js" type="text/javascript"></script>
+    <title>编辑作品_作品管理_{fzw:key:sitename/}</title>
+    <link rel="stylesheet" href="/inc/pic/control/css/zyUpload.css" type="text/css">
+    <script type="text/javascript" src="/inc/pic/jquery-1.7.2.js" charset="utf-8"></script>
+    <!-- 引用核心层插件 -->
+    <script type="text/javascript" src="/inc/pic/core/zyFile.js" charset="utf-8"></script>
+    <!-- 引用控制层插件 -->
+    <script type="text/javascript" src="/inc/pic/control/js/zyUpload.js" charset="utf-8"></script>
+    <!-- 引用初始化JS -->
+    <script type="text/javascript" src="/inc/pic/demo.js" charset="utf-8"></script>
+</head>
+<body class="body_bg">
+    {fzw:inside src="头部.html"/}
+
+    <div class="w_1200 pad_20_0">
+        {fzw:inside src="user_left.html"/}
+        <script type="text/javascript">document.getElementById("user_left_2").className = "on";</script>
+        <div class="u_right">
+            <h1 class="u_pagetop">上传作品</h1>
+            <br />
+            <div class="slide">
+                <ul class="u_tab">
+                    <li><a href="/search.aspx?m=design_product">我的作品</a></li>
+                    <li class="on"><a href="/single.aspx?m=design_product_add">上传作品</a></li>
+                </ul>
+                <br />
+
+                <!--上传作品-->
+                <form method="post" action="/Execution.aspx?type=edit&t=zuopin&tipurl=/search.aspx?m=design_product&tip_string=编辑成功！&id={fzw:url:id/}">
+                    {fzw:sql="select top 1 * from sl_zuopin where yonghuming='{fzw:cookie name="user_name" /}' and id={fzw:url:id/}" id="p1"}
+                    <table class="d_table u_slide_c ft_14">
+                       
+                        <tr>
+                            <th width="65">作品名称</th>
+                            <td>{fzw:p1:biaoti/}</td>
+                        </tr>
+                        <tr>
+                            <th width="65">价格</th>
+                            <td>{fzw:p1:jiage/} 元</td>
+                        </tr>
+                        <!--<tr>
+                            <th width="65">缩略图</th>
+                            <td>
+                               <ul class="piclist">
+                                   {fzw:p1:suoluetu string="zutu"/}
+                               </ul> 
+                            </td>
+                        </tr>-->
+                        <tr>
+                            <th width="65">原图</th>
+                            <td>
+                                <ul class="piclist">
+                                    {fzw:p1:yuantu string="zutu"/}
+                                    </ul>
+</td>
+                        </tr>
+                        <!--<tr>
+                            <th width="65">AI文件</th>
+                            <td>
+                                <img src="{fzw:p1:aiwenjian string="zutu"/}">
+                            </td>
+                        </tr>-->
+                        <tr>
+                            <th width="65" valign="top">作品介绍</th>
+                            <td>
+                                <textarea class="textarea is_check" name="jieshao" id="jieshao" style="width: 620px;height: 108px;">{fzw:p1:jieshao/}</textarea>
+                                {fzw:server type="Editor" id="jieshao" user="{fzw:cookie name="user_name" /}" width="100%" height="40px" /}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td><input type="submit" value="提交作品" class="btn btn_black" onclick="return user_product()" /></td>
+                        </tr>
+                    </table>
+                    {/fzw:sql}
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        function setchanpin(chanpin, laiyuanbianhao) {
+      
+                $.ajax({
+                    type: "get",
+                    url: "/single.aspx?m=design_product_add_list&chanpin=" + chanpin + "&laiyuanbianhao=" + laiyuanbianhao + "",
+                    success: function (data) {
+
+                        $('#chanpindiv').html(data);
+                    }, error: function () {
+
+                    }
+                });
+            }
+        
+        setchanpin(document.all('fenlei').value, document.all('laiyuanbianhao').value);
+			//jQuery(".ycterR_div").slide({titCell:".yA_hd p",mainCell:".yA_bd"});
+    </script>
+    {fzw:inside src="底部.html"/}
+</body>
+</html>

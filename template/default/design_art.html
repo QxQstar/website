@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="layer/skin/layer.css"/>
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+		<script src="layer/layer.js" type="text/javascript" charset="utf-8"></script>
+        <title>{fzw:sql="select  * from sl_user where yonghuming='{fzw:url:yonghuming/}'" id="p1"}{if value1="{fzw:p1:xingming/}" value2="" bi="=="}{fzw:p1:yonghuming/}{else}{fzw:p1:xingming/}{/if}{/fzw:sql}_会员秀_{fzw:key:sitename/}</title>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+			
+		<div class="w_1300 pad_20_0">
+			<!--左边-->
+		    <div class="ucenter_left">
+                {fzw:sql="select  * from sl_user where yonghuming='{fzw:url:yonghuming/}'" id="p1"}
+		        <div class="uc_info">
+		            <img  src="{fzw:p1:touxiang /}" onerror="this.src = '/template/default/images/u_tx.jpg'" width="100%"/>
+		            <table class="uc_info_table">
+		            	<tr>
+                            <td>
+                                <span class="ft_b ft_14">{fzw:p1:yonghuming sql="sl_zuopin|where&nbsp;yonghuming='&dangqian'&nbsp;and&nbsp;shenhe='已审核'|count"/}</span><br />
+                                <span class="gray">作品</span>
+                            </td>
+                            <td>
+                                <span class="ft_b ft_14">{fzw:p1:yonghuming sql="sl_article|where&nbsp;yonghuming='&dangqian'&nbsp;and&nbsp;shenhe='已审核'|count"/}</span><br />
+                                <span class="gray">文章辑</span>
+                            </td>
+		            		<td>
+		            			<span class="ft_b ft_14">{fzw:p1:yonghuming sql="sl_history|where&nbsp;yonghuming='&dangqian'&nbsp;and&nbsp;leixing='赞设计师'|count"/}</span><br />
+		            			<span class="gray">被赞</span>
+		            		</td>
+		            		<td>
+		            			<span class="ft_b ft_14">{fzw:p1:yonghuming sql="sl_history|where&nbsp;yonghuming='&dangqian'&nbsp;and&nbsp;leixing='关注设计师'|count"/}</span><br />
+		            			<span class="gray">关注</span>
+		            		</td>
+                            <td style="border: none;">
+                                <span class="ft_b ft_14">{fzw:p1:yonghuming sql="sl_userlog|where&nbsp;yonghuming='&dangqian'|count"/}</span><br />
+                                <span class="gray">动态</span>
+                            </td>
+		            	</tr>
+		            </table>
+		        </div>
+		        
+		        <ul class="uc_menu">
+                    <li><a href="/user/{fzw:p1:yonghuming sql="sl_userdomain|where&nbsp;yonghuming='&dangqian'|yuming"/}.aspx">总览</a></li>
+                    <li class="on"><a href="/search.aspx?m=design_art&yonghuming={fzw:p1:yonghuming/}">动态</a></li>
+                    <li><a href="/search.aspx?m=design_zuopin&yonghuming={fzw:p1:yonghuming/}">作品集</a></li>
+                    <li><a href="/search.aspx?m=design_zhuanji&yonghuming={fzw:p1:yonghuming/}">文章辑</a></li>
+		        </ul>
+                {/fzw:sql}
+		    </div>
+		    <!--右边-->
+		    <div class="ucenter_right">
+                {fzw:inside src="design_top.html"/}
+		        <h3 class="bortop_h3">动态</h3>
+		   
+                
+               	<ul class="dt_list">
+                       {fzw:search table="sl_userlog" number="10" order="dtime" orderby="desc" id="p1"}
+               		<li>
+               		
+               			<div class="dt_info">
+	               			<p><b style="font-size:16px">[{fzw:p1:dtime string="shijian"/}]<a href="{fzw:p1:lianjie /}" target="_blank">{fzw:p1:biaoti /}</a></b></p>
+	               			<p class="gray">{fzw:p1:neirong /}</p>
+	
+							
+						</div>
+               		</li>
+                       {/fzw:search}
+               	</ul>
+                <div class="page">
+                    {fzw:search:page id="p1" size="8"/}
+                </div>
+		    </div>
+		    <p class="clear"></p>
+		</div>
+		
+        {fzw:inside src="底部.html"/}
+        <script type="text/javascript">
+        	;!function(){
+
+//加载扩展模块
+				layer.config({
+				    extend: 'extend/layer.ext.js'
+				});
+
+//页面一打开就执行，放入ready是为了layer所需配件（css、扩展模块）加载完毕
+layer.ready(function(){ 
+    layer.photos({
+        photos: '.pic_list'
+    });
+    
+});
+
+}();
+        </script>
+	</body>
+
+</html>

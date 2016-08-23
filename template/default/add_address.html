@@ -1,0 +1,128 @@
+ {if value1="{fzw:url:id/}" value2="" bi="=="}
+<div class="add_address pad_20_0">
+    <table class="reg_table">
+        <tr>
+            <th width="90">联系人：</th>
+            <td>
+                <input type="text" class="input" id="shoujianrenxingming" name="shoujianrenxingming" />
+            </td>
+        </tr>
+        <tr>
+            <th>省 市 区：</th>
+            <td>
+                <select class="input" id="DropDownList1"></select>
+                <select class="input" id="DropDownList2"></select>
+                <select class="input" id="DropDownList3"></select>
+                <input type="hidden" name="suozaidiqu" value="" id="suozaidiqu" />
+                <script type="text/javascript" src="/inc/area.js" charset="utf-8"></script>
+                <script type="text/javascript">
+        var s = ["DropDownList1", "DropDownList2", "DropDownList3"]; //三个select的name
+        var opt0 = ["省份", "地级市", "市、县级市"]; //初始值
+        // 如果有默认值 第一个参数是默认值，
+        // 第二个参数是默认值以什么分割 默认为一个空格
+        function _init_area(def, spstr) {  //初始化函数
+            for (i = 0; i < s.length - 1; i++) {
+                document.getElementById(s[i]).onchange = new Function("change(" + (i + 1) + ")");
+            }
+            if (def != null && def.length > 0) {
+                if (spstr == null || spstr.length < 1) { spstr = ' '; }
+                var areadata = def.split(spstr);
+                if (def.length > 0) {
+                    for (var areai = 0; areai < areadata.length; areai++) {
+                        change(areai);
+                        document.getElementById(s[areai]).value = areadata[areai];
+                    }
+                }
+            } else {
+                change(0);
+            }
+        }
+
+        _init_area("", "-");
+                </script>
+            </td>
+        </tr>
+        <tr>
+            <th>地址：</th>
+            <td>
+                <input type="text" class="input" name="jiedaodizhi" id="jiedaodizhi" onchange="yunfei()" />
+            </td>
+        </tr>
+        <tr>
+            <th>联系电话：</th>
+            <td>
+                <input type="text" class="input" name="shoujihaoma" id="shoujihaoma" />
+            </td>
+        </tr>
+
+
+    </table>
+</div>
+        {else}
+        {fzw:sql="select top 1 * from sl_add where yonghuming='{fzw:cookie name="user_name" /}' and id={fzw:url:id /}" id="p1"}
+<div class="add_address pad_20_0">
+   
+        <table class="reg_table">
+            <tr>
+                <th width="90">联系人：</th>
+                <td>
+                    <input type="text" class="input" id="shoujianrenxingming" name="shoujianrenxingming" value="{fzw:p1:shoujianrenxingming/}" />
+                </td>
+            </tr>
+            <tr>
+                <th>省 市 区：</th>
+                <td>
+                    <select class="input" id="DropDownList1"></select>
+                    <select class="input" id="DropDownList2"></select>
+                    <select class="input" id="DropDownList3"></select>
+                    <input type="hidden" name="suozaidiqu" value="{fzw:p1:suozaidiqu/}" id="suozaidiqu" />
+                    <script type="text/javascript" src="/inc/area.js" charset="utf-8"></script>
+                    <script type="text/javascript">
+        var s = ["DropDownList1", "DropDownList2", "DropDownList3"]; //三个select的name
+        var opt0 = ["省份", "地级市", "市、县级市"]; //初始值
+        // 如果有默认值 第一个参数是默认值，
+        // 第二个参数是默认值以什么分割 默认为一个空格
+        function _init_area(def, spstr) {  //初始化函数
+            for (i = 0; i < s.length - 1; i++) {
+                document.getElementById(s[i]).onchange = new Function("change(" + (i + 1) + ")");
+            }
+            if (def != null && def.length > 0) {
+                if (spstr == null || spstr.length < 1) { spstr = ' '; }
+                var areadata = def.split(spstr);
+                if (def.length > 0) {
+                    for (var areai = 0; areai < areadata.length; areai++) {
+                        change(areai);
+                        document.getElementById(s[areai]).value = areadata[areai];
+                    }
+                }
+            } else {
+                change(0);
+            }
+        }
+
+        _init_area("{fzw:p1:suozaidiqu/}", "-");
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <th>地址：</th>
+                <td>
+                    <input type="text" class="input" name="jiedaodizhi" id="jiedaodizhi" value="{fzw:p1:jiedaodizhi/}" />
+                </td>
+            </tr>
+            <tr>
+                <th>联系电话：</th>
+                <td>
+                    <input type="text" class="input" name="shoujihaoma" id="shoujihaoma" value="{fzw:p1:shoujihaoma/}" />
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" value="确认操作" class="btn btn_black" onclick="return setadd()" /></td>
+            </tr>
+
+        </table>
+     
+</div>
+        {/fzw:sql}
+        {/if}

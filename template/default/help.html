@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="css/common2.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>服务支持_{fzw:key:sitename/}</title>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+
+		<div class="w_1300">
+			<div class="pad_10">
+				<!--商品激活-->
+				<div class="spjh">
+					<p class="spjh_h">商品激活</p>
+					<form class="spjh_form" name="fff2"  id="fff2" method="post" action="/Execution.aspx?type=jihuo&t=jihuo&tipurl=/single.aspx?m=jihuo&tip_string=激活码激活成功！">
+						<input type="text" class="input" id="jihuoma" name="jihuoma" placeholder="请输入商品激活码" />
+						<input type="text" class="input" name="yzm" id="yzm" placeholder="请输入验证码" style="width: 123px;" /><img src="/inc/text.aspx" class="ver-mid" />
+						<input type="submit" value="立即激活" class="btn btn_black" style="width: 218px;padding: 4px 0;" onclick="return jihuo_on()" />
+					</form>
+					<!--<p class="center ft_14 pad_t_10"><a href="/search.aspx?m=product" class="underline">去产品中心挑选商品</a></p>-->
+                   
+				</div>
+				<!--大图-->
+				<div class="fr w_1015">
+					<img src="images/fwzc_img1.jpg" width="100%" height="300" />
+				</div>
+				<p class="clear"></p>
+				<!--常见问题-->
+				<div class="slide">
+					<p class="h3">常见问题</p>
+					<a href="javascript:;" class="prev bigimg_prev"></a>
+					<a href="javascript:;" class="next bigimg_next"></a>
+					<div class="bd cjwt_bd white_bg" id="searchvalue">
+						
+                                {fzw:sql="select * from sl_wenti order by id desc" id="p1"}
+								<li>
+									<a href="/single.aspx?m=wentishow&id={fzw:p1:id/}">
+										<p class="question">{fzw:p1:wenti size="34"/}</p>
+										<p class="answer">{fzw:p1:huida nohtml="yes" size="130"/}</p>
+									</a>
+								</li>
+								{/fzw:sql}
+							
+						
+					</div>
+					<div class="wt_search" style="right: 100px;">
+					    <input type="text" class="search_input" placeholder="请输入搜索关键字" id="key_value1" value="{fzw:url:wenti/}"  onkeydown="return onKeyDown1()"/>
+					    <a href="javascript:void()" onclick="fromSubmit1()" class="search_btn">搜索</a>
+					</div>
+				</div>
+				<script type="text/javascript">
+					
+					$(".cjwt_bd li").each(function(i){ $(".cjwt_bd li").slice(i*6,i*6+6).wrapAll("<div class=\"white_bg pad_10 slide_c\"><ul class=\"fwzc_ul\"></ul></div>");});
+					jQuery(".slide").slide({
+						mainCell: ".bd"
+					})
+				</script>
+				
+				<!--服务支持导航-->
+				<div class="fwzc_nav">
+                    {fzw:for:sql="select  * from sl_sort where sort_id=12 order by paixu asc,id asc" id="p1"}
+                    <dl>
+                        <dt>{fzw:p1:u1/}</dt>
+                        {fzw:for:sql="select top 6 * from sl_article where classid={fzw:p1:id/} order by paixu asc,id asc" id="p2"}
+                        <dd><a href="/page.aspx?id={fzw:p2:id/}&classid={fzw:p2:classid/}">{fzw:p2:biaoti/}</a></dd>
+                        {/fzw:for:sql}
+                    </dl>
+                    {/fzw:for:sql}
+                     {fzw:for:sql="select  * from sl_sort where id=28 order by paixu asc,id asc" id="p1"}
+                    <dl>
+                        <dt>{fzw:p1:u1/}</dt>
+                        {fzw:for:sql="select top 6 * from sl_sort where sort_id={fzw:p1:id/} order by paixu asc,id asc" id="p2"}
+                        <dd><a href="/list.aspx?id={fzw:p2:id/}&Model_id={fzw:p2:Model_id/}">{fzw:p2:u1/}</a></dd>
+                        {/fzw:for:sql} 
+                    </dl>
+                    {/fzw:for:sql}
+				    <p class="clear"></p>
+				</div>
+				
+				<!--客服-->
+				<div class="fwzc_kf">
+                    {fzw:sql="select * from sl_banner where classid=22 order by paixu desc,id asc" id="p1"}
+				    <div class="kf_item">
+                        <a href="{fzw:p1:u2/}" target="_blank"><img src="{fzw:p1:u3/}" width="100%" height="305" /></a>
+				        <div class="text">
+                            <a href="{fzw:p1:u2/}" style="color:#fff" target="_blank">
+                                <p class="ft_18 ft_b">{fzw:p1:u1/}</p>
+                                <p>{fzw:p1:u4 nohtml="yes"/}</p></a>
+</div>
+				    </div>
+                    {/fzw:sql}
+				</div>
+			</div>
+		</div>
+        <div id="BDBridgeFixedWrap"></div>
+        {fzw:inside src="底部.html"/}
+        <!--<span style="display:none"><script type="text/javascript"> var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb97b55ab38f751f35e1a16072dfbe119' type='text/javascript'%3E%3C/script%3E")) </script></span>-->
+	</body>
+
+</html>

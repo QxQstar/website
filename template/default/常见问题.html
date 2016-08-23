@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>{fzw:database:u1/}_{fzw:key:sitename/}</title>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+			
+		<div class="w_1300">
+		    <ul class="pagemenu">
+		        <li class="on"><a href="#">最新</a></li>
+		        <li><a href="#">最热</a></li>
+		    </ul>
+		    <ul class="wz_list">
+                {fzw:list  number="10" order="dtime" orderby="desc" id="p1"}
+		    	<li>
+		    		<a href="{fzw:pageurl /}">
+		    			<img src="{fzw:p1:suoluetu /}" width="100%" height="175"/>
+		    			<div class="text">
+		    			    <p class="ft_b mar_b_10">{fzw:p1:biaoti size="40"/}</p>
+		    			    <p class="gray">{fzw:p1:renqi /}人气/   {fzw:sql="select count(id) as count_id from sl_pinglun where leixing='文章' and shenhe='已通过'" id="p2"}{fzw:p2:count_id/}{/fzw:sql}评论 / {fzw:p1:tuijian /}推荐</p>
+		    			</div>
+		    		</a>
+		    	</li>
+                {/fzw:list}
+		    </ul>
+            <div class="page">
+                {fzw:list:page id="p1" size="8"/}
+            </div>
+		</div>
+		
+        {fzw:inside src="底部.html"/}
+	</body>
+
+</html>

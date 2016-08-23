@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gb2312" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/template/m/css2/userCenter.css">
+    <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+    <script src="js/common.js" type="text/javascript"></script>
+    <title>会员中心_{fzw:key:sitename/}</title>
+</head>
+<body>
+{if value1="{fzw:cookie name="user_name" /}" value2="" bi="=="}
+<script type="text/javascript">
+    window.location.href = "/?login.html";
+    window.event.returnValue = false;
+</script>
+{else}
+{/if}
+{fzw:sql="select count(id) as count_id from sl_user where yonghuming='{fzw:cookie name="user_name" /}'" id="p1"}
+{if value1="{fzw:p1:count_id/}" value2="0" bi="=="}{/fzw:sql}
+<script type="text/javascript">
+    window.location.href = "/inc/out_login.aspx?type=err";
+    window.event.returnValue = false;
+</script>
+{else}{/if}
+    <div class="headTitle clearFloat">
+        <div class="reteat">
+            <span>后退</span>
+        </div>
+        <div class="exit">
+            <a href="/inc/out_login.aspx" onclick="return confirm('您确认要退出登录？');">退出</a>
+        </div>
+    </div>
+    <div class="userMessage clearFloat">
+        {fzw:sql="select top 1 * from sl_user where yonghuming='{fzw:cookie name="user_name" /}'" id="p1"}
+        <div class="u_tx">
+            <img src="{fzw:p1:touxiang /}" onerror="this.src = '/template/default/images/u_tx.jpg'" id="touxiang_" class="u_tx_img" onclick="    window.open('/inc/touxiang/index.aspx?editname=touxiang&avatar_sizes=126*126&imgurl=touxiang_', '', 'status=no,scrollbars=no,top=20,left=110,width=660,height=450');" />
+            <input type="hidden" id="touxiang" name="touxiang" value="{fzw:p1:touxiang /}" />
+        </div>
+        <div class="u_info">
+            <p class="ft_b">尊敬的{fzw:cookie name="user_name" /},欢迎您！</p>
+            <p>
+                {/fzw:sql}
+                本次登录：<span class="gray"> {fzw:sql="select top 1 * from sl_system where u1='{fzw:cookie name="user_name" /}' and u4 like '会员登陆' order by id asc" id="p1"}{fzw:p1:u3/}{/fzw:sql}</span><br />
+                注册时间：<span class="gray"> {fzw:sql="select top 1 * from sl_system where u1='{fzw:cookie name="user_name" /}' and u4 like '会员注册' order by id asc" id="p1"}{fzw:p1:dtime/}{/fzw:sql}</span><br />
+            </p>
+        </div>
+    </div>
+    <div class="option">
+        <ul class="u_menu">
+            <li id="user_left_1"><a href="/search.aspx?m=user_order">我的订单</a></li>
+            <li id="user_left_4"><a href="/Single.aspx?m=cart">我的购物车</a></li>
+            <li id="user_left_12"><a href="/search.aspx?m=user_yhq">我的优惠券</a></li>
+            <li id="user_left_10"><a href="/Single.aspx?m=user_pwd">修改密码</a></li>
+        </ul>
+    </div>
+{fzw:inside src="底部.html"/}
+<script src="/template/m/js2/userCenter.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+.clearFloat:after{
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+a{
+    outline: none;
+}
+a:focus{
+    outline: none;
+}
+.warp .h3{
+    padding: 15px 10px;
+    background-color: #e7e7e7;
+}
+.warp .center{
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: #fff;
+}
+.warp .pay_way{
+    margin: 0 5%;
+    font-size: 0;
+}
+.warp .pay_way a{
+    margin: 0 5%;
+    width: 40%;
+}
+.warp .pay_way a.on{
+    border: none;
+    outline: 2px solid #ad030d;
+}
+.warp #tijiao{
+    padding: 0 10px;
+    margin-right: 5%;
+}
+.warp .pay_way a img{
+    width: 100%;
+}
+.warp .goodsList{
+    margin: 0 10px;
+    background-color: #fff;
+}
+.warp .goodsList .item{
+    padding: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #e7e7e7;
+}
+.warp .goodsList .item .leftSection{
+    float: left;
+    position: relative;
+    margin-right: 20px;
+}
+.warp .goodsList .item .leftSection a{
+    display: block;
+}
+.warp .goodsList .item .leftSection p{
+    position: absolute;
+    width: 180px;
+    left: 80px;
+}
+.warp .goodsList .item .rightSection{
+    float: left;
+    margin-top: 20px;
+}
+.warp .right{
+    padding-right: 10px;
+}

@@ -1,0 +1,9 @@
+{fzw:for:sql="select  * from sl_product where id in ({fzw:url:id/}) order by paixu desc,id desc" id="p1"}
+    {fzw:for:sql="select  * from sl_changjing where laiyuanbianhao={fzw:p1:id/} and changjingbianhao={fzw:url:changjingbianhao/} order by id desc" id="p2"}
+    <div class="options" data-id='{fzw:p1:id/}' data-x="{fzw:p2:zuobiao_x/}" data-y="{fzw:p2:zuobiao_y/}" data-name="{fzw:p1:biaoti/}" data-price="{fzw:p1:jiage/}" style="top: {fzw:p2:zuobiao_x/}px; left: {fzw:p2:zuobiao_y/}px;">
+        <a href="/page.aspx?id={fzw:p1:id/}&classid={fzw:p1:classid/}" target="_blank">
+            <img src="{fzw:p1:suoluetu /}" />
+        </a>
+    </div>
+    {/fzw:for:sql}
+{/fzw:for:sql}

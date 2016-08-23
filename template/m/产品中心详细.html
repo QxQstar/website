@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="/template/m/css2/phoneXiangQin.css">
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>{fzw:database:biaoti/}_{fzw:sql="select u1 from sl_sort where id={fzw:database:classid/}" id="p1"}{fzw:p1:u1 /}{/fzw:sql}_{fzw:key:sitename/}</title>
+        <script type="text/javascript" src="/inc/product_ajax.js"></script>
+        <script src="/inc/layer/layer.js" type="text/javascript"></script>
+	</head>
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+		<div class="w_1300 pad_20_0">
+			<div class="w_1005 fl white_bg  cp_container">
+				<div class="cp_h">
+					<p class="title">{fzw:database:biaoti/}</p>
+					<div class="cp_h_item">
+						<ul>
+							<li class="on"><a href="javascript:;">产品</a></li>
+							<li><a href="javascript:;">晒物</a></li>
+							<li><a href="javascript:;">讨论</a></li>
+							<li><a href="javascript:;">清单</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--产品-->
+				<div class="cp_content">
+					<!--滚动图-->
+					<div class="cp_slide">
+						<div class="big_img">
+							<div class="bd" id="tupianlist">
+							</div>
+                            
+							<a href="javascript:;" class="bigimg_prev"></a>
+							<a href="javascript:;" class="bigimg_next"></a>
+						</div>
+						<div class="sm_img">
+						    <div class="bd" id="tupianlist_">
+						       
+						    </div>
+						    <a href="javascript:;" class="smimg_prev"></a>
+							<a href="javascript:;" class="smimg_next"></a>
+						</div>
+					</div>
+                    <script type="text/javascript">
+                            function onimg(paixu) {
+                                var zutu = "{fzw:database:chanpinxiangxiye/}";
+                                var xiangce_content = "";
+                                var xiangce_content_ = "";
+                                var a = zutu.split("{next}");
+                                for (i = 0; i < a.length; i++) {
+                                    var b = a[i].split("{title}");
+
+                                    if (i == paixu) {
+                                        xiangce_content = xiangce_content + "<li><img src=\"" + b[0] + "\"</li>";
+                                        xiangce_content_ = xiangce_content_ + "<li><img src=\"" + b[0] + "\"</li>";
+                                    }
+                                    else {
+                                        xiangce_content = xiangce_content + "<li><img src=\"" + b[0] + "\"</li>";
+                                        xiangce_content_ = xiangce_content_ + "<li><img src=\"" + b[0] + "\"</li>";
+                                    }
+                                }
+                                document.getElementById("tupianlist").innerHTML = "<ul class='clearFloat'>" + xiangce_content + "</ul>";
+                                document.getElementById("tupianlist_").innerHTML = "<ul class='clearFloat'>" + xiangce_content_ + "</ul>";
+                            }
+                            onimg(0);
+                    </script>
+					<script type="text/javascript">
+						jQuery(".big_img").slide({mainCell:".bd ul",prevCell:".bigimg_prev",nextCell:".bigimg_next"});
+						jQuery(".sm_img").slide({mainCell:".bd ul",prevCell:".smimg_prev",nextCell:".smimg_next",vis:4,effect:"left",autoPage:true,pnLoop:false});
+						jQuery(".cp_slide").slide({mainCell:".big_img ul",titCell:".sm_img ul li"});
+					</script>
+                    
+					<div class="center">
+                        {fzw:database:shangpinmiaoshu/}
+					</div>
+				</div>
+                <!--评测-->
+                <div class="cp_content">
+                    <ul class="ceping_list">
+                        {fzw:sql="select  * from sl_article where chanpinbianhao={fzw:database:id/} and shenhe='已审核' and classid=15 order by paixu desc,id desc" id="p1"}
+                        <li>
+                            <p class="title"><a href="{fzw:pageurl /}">{fzw:p1:biaoti size="36"/}</a></p>
+                            <p class="sub">
+                                发布人：{fzw:p1:yonghuming  string="shouji"/}&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{fzw:p1:dtime datetime="yyyy-MM-dd"/}
+                            </p>
+                        </li>
+                        {/fzw:sql}
+                    </ul>
+                    <br />
+                    <form method="post" action="/Execution.aspx?type=add&t=article&tipurl={fzw:key:siteurl/}&tip_string=发布评测成功！">
+                        <p class="cp_pc_h">评测</p>
+                 <input class="input" id="biaoti" name="biaoti" style="width:780px" placeholder="评测标题！"/>
+                        <textarea class="pc_textarea"  name="neirong" id="neirong" style="width: 100%;height: 108px;"></textarea>
+                        {fzw:server type="Editor" id="neirong" user="{fzw:cookie name="user_name" /}" width="100%" height="40px" /}
+                        <p class="right pad_20_0">
+                            <input name="yonghuming" type="hidden" id="yonghuming" value="{fzw:cookie name=" user_name" /}" />
+                            <input name="shenhe" type="hidden" id="shenhe" value="待审核" />
+                            <input name="chanpinbianhao" type="hidden" id="chanpinbianhao" value="{fzw:database:id/}" />
+                           
+                            <input name="classid" type="hidden" id="classid" value="15" />
+                            <input type="submit" value="评测" class="btn btn_black"  onclick="return user_article()" />
+                        </p>
+                        </form>
+</div>
+                <!--讨论-->
+                <div class="cp_content">
+                    <ul class="ceping_list">
+                        <script>
+                            var reg = "";
+                            var tel_str = "";
+                            var temp_str_ghy = "";
+
+                         </script>
+                        {fzw:sql="select * from sl_pinglun where laiyuanbianhao={fzw:database:id/} and leixing='产品' and shenhe='已通过' order by id desc" id="p1"}
+                        <li>
+                            <p class="title">{fzw:p1:neirong/}</p>
+                            <p class="sub" id="faburen_{fzw:p1:id/}">
+                               
+                            </p>
+                        </li>
+                         <script>
+                             reg = /(\d{3})\d{4}(\d{4})/;
+                             tel_str = "{fzw:p1:yonghuming/}";
+                             tel_str= tel_str.replace(reg, "$1****$2");
+                             temp_str_ghy = " 发布人：" + tel_str + "&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{fzw:p1:dtime datetime='yyyy-MM-dd'/}";
+                             $("#faburen_{fzw:p1:id/}").append(temp_str_ghy);
+                        </script>
+                        
+
+                        {/fzw:sql}
+                    </ul>
+                    <br />
+                    <form method="post" action="/Execution.aspx?type=add&t=pinglun&tipurl={fzw:key:siteurl/}&tip_string=评论成功！">
+                        <p class="cp_pc_h">发布讨论</p>
+                        <textarea class="pc_textarea" name="neirong" id="neirong1" style="width: 100%;height: 108px;"></textarea>
+                        {fzw:server type="Editor" id="neirong1" user="{fzw:cookie name="user_name" /}" width="100%" height="40px" /}
+                        <p class="right pad_20_0">
+                            <input name="yonghuming" type="hidden" id="yonghuming" value="{fzw:cookie name=" user_name" /}" />
+                            <input name="shenhe" type="hidden" id="shenhe" value="审核通过" />
+                            <input name="laiyuanbianhao" type="hidden" id="laiyuanbianhao" value="{fzw:database:id/}" />
+                            <input name="leixing" type="hidden" id="leixing" value="产品" />
+                            <input type="submit" value="讨论" class="btn btn_black"  onclick="return pinglun()"/>
+                        </p>
+                        </form>
+</div>
+                <!--清单-->
+                <div class="cp_content">
+                    {fzw:database:qingdan/}
+                </div>
+			</div>
+			<script type="text/javascript">
+				jQuery(".cp_container").slide({targetCell:".cp_content",titCell:".cp_h_item li",trigger:"click"});
+			</script>
+			<!--右边-->
+			<div class="w_280 fr">
+				<div class="white_bg pad_10 row1">
+				    <table class="table_list clearFloat">
+				    	<tr><!--<th>价格：</th>-->
+                            <!--<td><span class="orange ft_24">￥{fzw:database:jiage string="￥"/}</span></td>-->
+                            <td>
+                                <span class="orange ft_24">￥{fzw:database:jiage string="￥"/}</span>
+                                <!--<span class="orange ft_24">￥56.00</span>-->
+                            </td>
+
+				    	</tr>
+				    	<tr>
+                            <!--<th>市场价：</th>-->
+                            <!--<td><span class="old_price">￥{fzw:database:shichangjia string="￥"/}</span></td>-->
+                            <td>
+                                <span class="old_price">￥{fzw:database:shichangjia string="￥"/}</span>
+                                <!--<span class="old_price">￥55.00</span>-->
+                            </td>
+				    	</tr>
+                        <tr>
+                            <!--<td id="kucun">库存：{fzw:database:kucun/}</td>-->
+                            <td id="kucun">库存: {fzw:database:kucun/}</td>
+                            <!--<td id="kucun">库存: 456</td>-->
+                        </tr>
+                        <tr class="addOrSub clearFloat">
+                            <td>数量：</td>
+                            <td>
+                                <div class="numBox clearFloat">
+                                    <span class="sub"> - </span>
+                                    <input type="text" value="1" class="num" id="shuliang" />
+                                    <span class="add"> + </span>
+                                </div>
+                            </td>
+                        </tr>
+				    </table>
+				</div>
+				
+				<table class="cp_caozuo mar_t_10 row2">
+					<tr class="clearFloat">
+						<td class="goumai">
+							<a href="javascript:void(0)" onclick="set_cart({fzw:database:id/},1,'产品')">
+							购买
+							</a>
+						</td>
+						<td>
+                            <input type="hidden" id="yonghujibie" value="{fzw:sql="select * from sl_user where yonghuming='{fzw:cookie name="user_name" /}' order by id asc" id="p1"}{fzw:p1:yonghujibie/}{/fzw:sql}" />
+							<a href="javascript:void(0)" onclick="set_cart({fzw:database:id/},0,'产品')">
+							加入购物车
+							</a>
+						</td>
+					</tr>
+					<!--<tr>-->
+						<!--<td>-->
+                            <!--{if value1="{fzw:sql="select count(id) as count_id from sl_history where yonghuming='{fzw:cookie name="user_name" /}' and leixing='产品' and laiyuanbianhao={fzw:database:id/}" id="p1"}{fzw:p1:count_id /}{/fzw:sql}" value2="0" bi=">"}-->
+							<!--<a href="javascript:void();">-->
+							<!--<img src="images/icon_heart_.png"/><br />-->
+							<!--想要-->
+							<!--</a>-->
+                            <!--{else}-->
+                            <!--<a href="/Execution.aspx?type=add&t=history&tip_string=加入收藏成功&leixing=产品&yonghuming={fzw:cookie name="user_name" /}&dingdanhao=&laiyuanbianhao={fzw:database:id/}&tipurl={fzw:key:siteurl/}">-->
+                                <!--<img src="images/icon_heart.png" /><br />-->
+                                <!--想要-->
+                            <!--</a>-->
+                            <!--{/if}-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--<a href="javascript:fenxiang()">-->
+							<!--<img src="images/icon_share.png"/><br />-->
+							<!--分享-->
+							<!--</a>-->
+                            <!--<script type="text/javascript">-->
+                                <!--function fenxiang()-->
+                                <!--{-->
+                                    <!--if(document.getElementById("tip").style.display=="none")-->
+                                    <!--{-->
+                                        <!--document.getElementById("tip").style.display = "";-->
+                                    <!--}-->
+                                    <!--else-->
+                                    <!--{-->
+                                        <!--document.getElementById("tip").style.display = "none";-->
+                                    <!--}-->
+                                    <!---->
+                                <!--}-->
+                            <!--</script>-->
+						<!--</td>-->
+					<!--</tr>-->
+				</table>
+
+				<!--<p class="white_bg center lh_30 pad_10 ft_14"><a href="http://www.xiaoyu4.com/Single.aspx?m=index-1">选择喜欢的图案 >> </a></p>-->
+				<div class="white_bg pad_10 mar_t_10">
+                    {fzw:sql="select top 2  * from sl_product where fenlei like '%{fzw:database:fenlei/}%' and id not in ({fzw:database:id/}) order by paixu desc,id desc" id="p1"}
+				    <div class="item">
+				        <a href="{fzw:pageurl /}">
+				        	<img src="{fzw:p1:suoluetu /}" width="100%" height="258" class="ver-mid"/>
+				        	<div class="trans">
+				        	    <p class="pad_10">
+				        	    	<span class="fr">￥{fzw:p1:jiage string="￥"/}</span>
+                                    {fzw:p1:biaoti size="36"/}
+				        	    </p>
+				        	</div>
+				        </a>
+				    </div>
+                    {/fzw:sql}
+				</div>
+			</div>
+			<p class="clear"></p>
+		</div>
+        <div class="blk" style="position: fixed;left: 0px;top: 0px;width: 100%; height: 100%; background: rgba(0,0,0,0.5); display:none" id="tip">
+            <div style="position: relative;">
+                <div class="eee" style="width: 400px;margin:0 auto;background-color: #fff;border-radius: 6px; padding:10px 10px 10px 10px;position: relative;">
+                    <p class="close" style="width: 32px;height: 32px;font:bold 30px arial;color: #000;text-align: center;line-height: 32px;position: absolute;right: 0px;top:0px;cursor: pointer;border-radius: 6px;">×</p>
+                    
+                    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_bdysc" data-cmd="bdysc" title="分享到百度云收藏"></a><a href="#" class="bds_kaixin001" data-cmd="kaixin001" title="分享到开心网"></a><a href="#" class="bds_bdxc" data-cmd="bdxc" title="分享到百度相册"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_tqf" data-cmd="tqf" title="分享到腾讯朋友"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_bdhome" data-cmd="bdhome" title="分享到百度新首页"></a><a href="#" class="bds_thx" data-cmd="thx" title="分享到和讯微博"></a><a href="#" class="bds_ibaidu" data-cmd="ibaidu" title="分享到百度中心"></a><a href="#" class="bds_mogujie" data-cmd="mogujie" title="分享到蘑菇街"></a><a href="#" class="bds_meilishuo" data-cmd="meilishuo" title="分享到美丽说"></a><a href="#" class="bds_huaban" data-cmd="huaban" title="分享到花瓣"></a><a href="#" class="bds_diandian" data-cmd="diandian" title="分享到点点网"></a><a href="#" class="bds_duitang" data-cmd="duitang" title="分享到堆糖"></a><a href="#" class="bds_hx" data-cmd="hx" title="分享到和讯"></a><a href="#" class="bds_fx" data-cmd="fx" title="分享到飞信"></a><a href="#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a><a href="#" class="bds_sdo" data-cmd="sdo" title="分享到麦库记事"></a><a href="#" class="bds_qingbiji" data-cmd="qingbiji" title="分享到轻笔记"></a><a href="#" class="bds_people" data-cmd="people" title="分享到人民微博"></a><a href="#" class="bds_xinhua" data-cmd="xinhua" title="分享到新华微博"></a><a href="#" class="bds_mail" data-cmd="mail" title="分享到邮件分享"></a><a href="#" class="bds_isohu" data-cmd="isohu" title="分享到我的搜狐"></a><a href="#" class="bds_yaolan" data-cmd="yaolan" title="分享到摇篮空间"></a><a href="#" class="bds_wealink" data-cmd="wealink" title="分享到若邻网"></a><a href="#" class="bds_ty" data-cmd="ty" title="分享到天涯社区"></a><a href="#" class="bds_iguba" data-cmd="iguba" title="分享到股吧"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a><a href="#" class="bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a><a href="#" class="bds_h163" data-cmd="h163" title="分享到网易热"></a><a href="#" class="bds_evernotecn" data-cmd="evernotecn" title="分享到印象笔记"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a><a href="#" class="bds_print" data-cmd="print" title="分享到打印"></a></div>
+                    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"",bdUrl : 'http://www.xiaoyu4.com/page.aspx?id={fzw:url:id/}&classid={fzw:url:classid/}',"bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+                </div>
+            </div>
+
+        </div>
+        <script type="text/javascript">
+			var h=window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+			var a=(h-160)/2
+			$(".eee").css("margin-top",a+"px");
+			$(".close").click(function(){
+			    $(".blk").hide();
+			})
+
+        </script>
+
+        {fzw:inside src="底部.html"/}
+	</body>
+
+</html>

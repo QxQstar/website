@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="layer/skin/layer.css"/>
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="layer/layer.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>{fzw:database:u2/}</title>
+        <META content="{fzw:database:u3/}" name=Description>
+        <META content="{fzw:database:u4/}" name=Keywords>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+		<div class="innerBanner">
+			<div class="bd">
+				<ul>
+                    {fzw:sql="select * from sl_banner where classid=11 order by paixu desc,id asc" id="p1"}
+					<li style="background:url({fzw:p1:u3/}) center center no-repeat;">
+						<a href="{fzw:p1:u2/}" target="_blank"></a>
+					</li>
+                    {/fzw:sql}
+				</ul>
+			</div>
+			<div class="hd">
+				<ul></ul>
+			</div>
+			<a href="javascript:;" class="prev slide_prev"></a>
+			<a href="javascript:;" class="next slide_next"></a>
+		</div>
+		<script type="text/javascript">
+			jQuery(".innerBanner").slide({
+				mainCell: ".bd ul",
+				titCell: ".hd ul",
+				autoPlay: true,
+				autoPage: "<li></li>"
+			})
+		</script>
+
+		<div class="w_1300 pad_20_0">
+
+			<!--产品分类-->
+			<div class="goods_menu">
+				<ul class="goods_menu_ul">
+                    {fzw:for:sql="select  * from sl_Parameter where classid=206 order by u3 desc,id asc" id="p1"}
+	                    <li class="nLi">
+                        <p class="goods_sort"><a href="/search.aspx?m=product&fenlei={fzw:p1:id/}">{fzw:p1:u1/}</a></p>
+
+                        <div class="goods_menu_sub">
+                            <ul>
+                                {fzw:for:sql="select top 9 * from sl_product where fenlei like '%{fzw:p1:id/}%' and shangjia='是' order by paixu desc,id desc" id="p2"}
+                                <li>
+                                    <a href="/page.aspx?id={fzw:p2:id/}&classid={fzw:p2:classid/}">
+                                        <img src="{fzw:p2:suoluetu string="zutu"/}" width="40" height="40" class="ver-mid" />
+                                        <span class="name">{fzw:p2:biaoti size="20"/}</span>
+                                    </a>
+                                </li>
+                                {/fzw:for:sql}
+                            </ul>
+                        </div>
+                    </li>
+                    {/fzw:for:sql}
+				</ul>
+			</div>
+			<!--大图-->
+			<div class="goods_ad">
+                {fzw:sql="select * from sl_banner where id=12" id="p1"}
+				<a href="{fzw:p1:u2/}" target="_blank"><img src="{fzw:p1:u3/}" width="100%" height="510" /></a>
+                {/fzw:sql}
+			</div>
+			<p class="clear"></p>
+		</div>
+
+		<div class="w_1300">
+			<!--本季主打产品-->
+			<div class="goods_main">
+				<p class="h3">本季主打单品</p>
+				<div class="bd">
+					<ul>
+                        {fzw:sql="select top 15  * from sl_product where shuxing like '%推荐%' and shangjia='是' order by paixu desc,id desc" id="p1"}
+						<li>
+							<a href="{fzw:pageurl /}">
+								<img src="{fzw:p1:suoluetu /}" width="235" height="155" />
+								<p class="title">{fzw:p1:biaoti size="36"/}</p>
+								<p class="gray">{fzw:p1:fubiaoti size="60"/}</p>
+							</a>
+						</li>
+                        {/fzw:sql}
+					</ul>
+				</div>
+				<a href="javascript:;" class="prev prev_sm"></a>
+				<a href="javascript:;" class="next next_sm"></a>
+			</div>
+			<script type="text/javascript">
+				jQuery(".goods_main").slide({
+					mainCell: ".bd ul",
+					effect: "leftLoop",
+					autoPage: true,
+					vis: 5
+				})
+			</script>
+			<p class="clear"></p>
+			<p class="h3">场景购买</p>
+			<div class="changjing">
+			  
+                 {fzw:sql="select top 1 * from sl_cj where prope like '%推荐%' order by id desc" id="p1"}
+                <img src="{fzw:p1:beijingtu /}" class="ver-mid" alt="{fzw:p1:biaoti /}" />
+                <span id="productlist"></span>
+                    
+                    {/fzw:sql}
+</div>
+			<!--新品-->
+			<p class="h3">新品</p>
+			<div class="fl" style="width: 880px;">
+				<table class="goods_newlist">
+					<tr>
+						<td colspan="2" rowspan="2" width="438" height="239">
+                            {fzw:sql="select top 1 * from sl_product where shuxing like '%新品%' and shangjia='是' order by paixu desc,id desc" id="p1"}
+                            <a href="{fzw:pageurl /}">
+							<img src="{fzw:p1:suoluetu /}" width="100%" height="239"/>
+							<div class="text">
+							<p class="ft_18 lh_30">{fzw:p1:biaoti size="36"/}</p>
+							<p class="txt_red ft_14">低至{fzw:p1:jiage/}元</p>
+							</div>
+							</a>
+                            {/fzw:sql}
+						</td>
+                        {fzw:sql="select top 2 * from sl_product where shuxing like '%新品%' and id not in (select top 1 id from sl_product where shuxing like '%新品%' order by paixu desc,id desc)  order by paixu desc,id desc" id="p1"}
+						<td width="218" height="119">
+							<a href="{fzw:pageurl /}">
+							<img src="{fzw:p1:suoluetu /}" width="100%" height="119"/>
+							<div class="text">
+							<p class="ft_16 lh_30">{fzw:p1:biaoti size="36"/}</p>
+							<p class="txt_red ft_14">低至{fzw:p1:jiage/}元</p>
+							</div>
+							</a>
+						</td>
+                        {/fzw:sql}
+					</tr>
+					<tr>
+                        {fzw:sql="select top 2 * from sl_product where shuxing like '%新品%' and shangjia='是' and id not in (select top 3 id from sl_product where shuxing like '%新品%' and shangjia='是' order by paixu desc,id desc)  order by paixu desc,id desc" id="p1"}
+                        <td width="218" height="119">
+                            <a href="{fzw:pageurl /}">
+                                <img src="{fzw:p1:suoluetu /}" width="100%" height="119" />
+                                <div class="text">
+                                    <p class="ft_16 lh_30">{fzw:p1:biaoti size="36"/}</p>
+                                    <p class="txt_red ft_14">低至{fzw:p1:jiage/}元</p>
+                                </div>
+                            </a>
+                        </td>
+                        {/fzw:sql}
+					</tr>
+					<tr>
+                        {fzw:sql="select top 4 * from sl_product where shuxing like '%新品%' and shangjia='是' and id not in (select top 5 id from sl_product where shuxing like '%新品%' and shangjia='是' order by paixu desc,id desc)  order by paixu desc,id desc" id="p1"}
+						<td width="218">
+							<a href="{fzw:pageurl /}">
+							<img src="{fzw:p1:suoluetu /}" width="100%" height="239"/>
+							<div class="text">
+							<p class="ft_16 lh_30">{fzw:p1:biaoti size="36"/}</p>
+							<p class="txt_red ft_14">低至{fzw:p1:jiage/}元</p>
+							</div>
+							</a>
+						</td>
+                        {/fzw:sql}
+					</tr>
+				</table>
+			</div>
+			<div class="fl" style="width: 420px;margin-left: -1px;">
+			    <table class="goods_newlist">
+                    {fzw:sql="select top 3 * from sl_product where shuxing like '%新品%' and shangjia='是' and id not in (select top 9 id from sl_product where shuxing like '%新品%' and shangjia='是' order by paixu desc,id desc)  order by paixu desc,id desc" id="p1"}
+			    	<tr>
+			    		<td width="100%">
+			    			<a href="{fzw:pageurl /}">
+							<img src="{fzw:p1:suoluetu /}" width="100%" height="159"/>
+							<div class="text">
+							<p class="ft_18 lh_30">{fzw:p1:biaoti size="36"/}</p>
+							<p class="txt_red ft_14">低至{fzw:p1:jiage/}元</p>
+							</div>
+							</a>
+			    		</td>
+			    	</tr>
+                    {/fzw:sql}
+			    </table>
+			</div>
+			<p class="clear"></p>
+			
+		</div>
+		
+        {fzw:inside src="底部.html"/}<a href="http://www.aikuaidi.cn/" target="_blank">快递单号查询</a>
+        <a href="http://m.kuaidi100.com" target="_blank">快递查询</a>  {fzw:sql="select top 1 * from sl_cj order by id desc" id="p1"}
+        <script type="text/javascript">
+                        function changpin() {
+
+                            $.ajax({
+                                type: "GET",
+                                url: "/single.aspx?m=prolist1&id={fzw:p1:chanpin /}&changjingbianhao={fzw:p1:id /}",
+                                success: function (data) {
+                                    $('#productlist').html(data);
+                                    changjing_pos();
+                                    changjing_hover();
+                                    $('.changjing .options').each(function () {
+
+                                        $(this).draggable({
+                                            containment: ".changjing", scroll: false, stop: function (event, ui) {
+                                                $(this).attr('data-x', ui.position.left);
+                                                $(this).attr('data-y', ui.position.top);
+                                            }
+                                        });
+                                    });
+
+
+                                }
+                            });
+
+
+                        } changpin();
+        </script>{/fzw:sql}
+	</body>
+
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+        <link rel="stylesheet" type="text/css" href="/template/m/css2/zhuce.css">
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>会员注册_{fzw:key:sitename/}</title>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+
+		<div class="w_1300 owner">
+		    <ul class="reg_type">
+		        <li class="on" onclick="set_fangshi('普通会员', '/page.aspx?id=31&classid=20')" id="page1">普通会员</li>
+		       <!-- <li onclick="set_fangshi('设计会员', '/page.aspx?id=36&classid=20')" id="page2">设计会员</li>
+		        <li onclick="set_fangshi('经销商会员', '/page.aspx?id=37&classid=20')" id="page3">经销商会员</li>
+                <li><a href="/Single.aspx?m=yungongchang">云工厂</a></li>-->
+		    </ul>
+		    <p class="clear"></p>
+		    <div class="white_bg">
+		        <div class="reg">
+                    <form name="fff2" class="is_form" id="fff2" method="post" action="/Execution.aspx?type=useradd&t=user&tipurl={fzw:url:tipurl /}&tip_string=会员注册成功！">
+                        <table class="reg_table">
+                            <tr>
+                                <th><em class="txt_red">*</em>手机号码：</th>
+                                <td>
+                                    <input type="text" class="input" placeholder="请输入手机号" id="shouji" name="shouji"  />
+                                    <p class="lh_30">(输入11位正确的手机号)</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><em class="txt_red">*</em>验证码：</th>
+                                <td>
+                                    <input type="text" class="input" id="shoujiyzm" name="shoujiyzm" style="width: 82px" />
+                                    <input type="button" id="lqyzm" value="获取验证码" onclick="send_jiaoyanma(this)" class="btn-success"  />
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><em class="txt_red">*</em>密码：</th>
+                                <td>
+                                    <input type="password" class="input" id="mima" name="mima" />
+                                    <p class="lh_30">(为了您的账号安全，并且密码长度大于6位)</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><em class="txt_red">*</em>确认密码：</th>
+                                <td>
+                                    <input type="password" class="input" id="mima_" name="mima_" />
+                                    <p class="lh_30">(确保密码输入正确)</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><em class="txt_red">*</em>E-mail：</th>
+                                <td>
+                                    <input type="text" class="input" id="youxiang" name="youxiang" />
+                                    <p class="lh_30">(请填写正确的邮箱地址，忘记密码时可以通过邮箱找回)</p>
+                                </td>
+                            </tr>
+                           <!-- <tr>
+                                <th><em class="txt_red">*</em>邀请码：</th>
+                                <td>
+                                    <input type="text" class="input" id="yaoqingma" name="yaoqingma" />
+                                    <p class="lh_30">(请填写您得到邀请码)</p>
+                                </td>
+                            </tr>-->
+                            <tr>
+                                <th>&nbsp;</th>
+                                <td>
+                                    <input type="checkbox" class="ver-mid" id="ver-mid" /> <span class="gray_dp">我已经认真阅读并同意《<a href="/page.aspx?id=31&classid=20" id="zcxy" style="color:red" target="_blank">注册协议</a>》</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input type="hidden" id="jieshaoren" name="jieshaoren" value="{fzw:cookie name="jieshaoren" /}" />
+                                    <input type="hidden" id="yonghujibie" name="yonghujibie" value="普通会员"/>
+                                    <input type="hidden" id="yonghuming" name="yonghuming"/>
+                                    <input type="submit" value="确认注册" class="btn btn_submit" onclick="return reg()" />
+                                </td>
+                            </tr>
+                        </table>
+                        </form>
+</div>
+		   		<!--<div class="reg_login">-->
+                 <!--<form name="fff2" id="fff2" method="post" action="/Execution.aspx?type=login&t=user&tipurl={fzw:url:tipurl /}&tip_string=会员登录成功！">-->
+                     <!--<div class="login">-->
+                         <!--<p class="ft_18" style="margin-bottom: 20px;">如果你已是魅拓会员</p>-->
+                         <!--<input type="text" placeholder="用户名" class="input" id="yonghuming1" name="yonghuming"/>-->
+                         <!--<input type="password" placeholder="密码" class="input" id="mima1" name="mima"/>-->
+                         <!--<p class="mar_b_10">-->
+                             <!--<input type="checkbox" />&nbsp;一周内自动登录-->
+                         <!--</p>-->
+                         <!--<input type="submit" value="登录" class="btn btn_black" onclick="return login1()" />-->
+                     <!--</div>-->
+                     <!--</form>-->
+<!--</div>-->
+		        <!--<p class="clear"></p>-->
+		    </div>
+		</div>
+        <script type="text/javascript">
+            $('#shouji').focusout(function () {
+                document.getElementById("yonghuming").value = document.getElementById("shouji").value;
+
+                if ($(this).val() != "") {
+                    $.ajax({
+                        type: "GET",
+                        url: "/single.aspx?m=sql&user=" + document.getElementById('shouji').value,
+                        success: function (data) {
+                            if (data == "1") {
+                                layer.alert("您输入的手机号已被注册，请换一个手机号注册");
+                            }
+                            else {
+                            }
+                        }
+                    })
+                }
+            })
+            function set_fangshi(type,lianjie) {
+                document.getElementById("zcxy").href = lianjie;
+			           if (type == "普通会员") {
+			               document.getElementById("yonghujibie").value = type;
+			               document.getElementById("page1").className = "on";
+			               document.getElementById("page2").className = "";
+			               document.getElementById("page3").className = "";
+			           }
+			           else if (type == "设计会员") {
+			               document.getElementById("yonghujibie").value = type;
+			               document.getElementById("page2").className = "on";
+			               document.getElementById("page1").className = "";
+			               document.getElementById("page3").className = "";
+			           }
+			           else {
+			               document.getElementById("yonghujibie").value = type;
+			               document.getElementById("page3").className = "on";
+			               document.getElementById("page2").className = "";
+			               document.getElementById("page1").className = "";
+			           }
+			       }
+           
+
+            var count = 120;
+            function countDown() {
+                $("#lqyzm").val(count + "秒后可重新获取");
+                if (count == 0) {
+                    $("#lqyzm").removeAttr("disabled").val("重新获取验证码");
+                    clearInterval(countdown);
+                }
+                count--;
+
+            }
+			       function send_jiaoyanma(btn) {
+			          
+			               //手机验证
+			          
+			               var myreg = /^1+\d{10}$/;
+			               if (!myreg.test(document.getElementById('shouji').value)) {
+			                   layer.alert("手机号不正确");
+
+			               }
+			               else {
+			                   $(btn).attr("disabled", true);
+			                   
+
+			                  
+			                  
+			                   var countdown = setInterval("countDown()", 1000);
+			                  
+			                   //获取手机验证码
+			                   $.ajax({
+			                       type: "POST",
+			                       url: "/Execution.aspx?type=shouji_yzm&shouji=" + document.getElementById('shouji').value + "",
+			                       processData: true,
+			                       success: function (data) {
+			                         //  alert(data);
+			                           if (data == "ok") {
+			                               layer.msg("验证码发送成功");
+			                           }
+			                           else {
+			                               layer.msg("验证码发送成功");
+			                           }
+			                       }
+			                   })
+			               }
+			           }
+			      
+        </script>
+        {fzw:inside src="底部.html"/}
+	</body>
+
+</html>

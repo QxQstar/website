@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="layer/skin/layer.css"/>
+        <link rel="stylesheet" type="text/css" href="/template/m/css2/orderpay.css">
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="layer/layer.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>支付订单_{fzw:key:sitename/}</title>
+        {if value1="{fzw:cookie name="user_name" /}" value2="" bi="=="}
+        <script type="text/javascript">
+       window.location.href = "/?login.html&tipurl={fzw:key:siteurl/}";
+       window.event.returnValue = false;
+        </script>
+        {else}
+        {/if}
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+			<div class="warp">
+					<div class="h3 bor_btm">
+						支付订单
+					</div>
+					<div class="center" style="font-size: 24px;padding: 30px;">
+					    提交订单成功
+					</div>
+					 <div class="h3 bor_btm">
+						选择支付方式
+					</div>
+					<div class="pay_way">
+                        <a href="javascript:;" class="on" data-id="支付宝"><img src="images/payway_alipay.png" /></a>
+					  
+					 <!--   <a href="javascript:;" data-id="快钱"><img src="images/payway_kuaiqian.jpg"/></a>-->
+                        <a href="javascript:;" data-id="微信支付"><img src="images/weixin.jpg" /></a>
+                        {fzw:sql="select * from sl_bank order by id asc" id="p1"}
+                        <a href="javascript:;" data-id="银行卡_{fzw:p1:yinxingmingcheng/}"><img src="{fzw:p1:tubiao/}" /></a>
+                        {/fzw:sql}
+					</div>
+					<script type="text/javascript">
+						$(".pay_way a").click(function(){
+						    $(this).addClass("on").siblings("a").removeClass("on");
+						    document.getElementById("zhifufangshi").value = $(this).data('id');
+						})
+					</script>
+                    <input type="hidden" value="支付宝" id="zhifufangshi" name="zhifufangshi">
+                        <p class="right">
+                            <input type="button"  onclick="set_pay()" id="tijiao" value="去付款" class="btn btn_black"  />
+                    </p>
+                    <br /><br />
+					<div class="h3 bor_btm">
+						确认订单消息
+					</div>
+					<br />
+					<div class="goodsList">
+                        {fzw:sql="select * from sl_cart where yonghuming='{fzw:cookie name="user_name" /}' and dingdanbianhao='{fzw:url:dingdanhao/}' order by id desc" id="p1"}
+                        <div class="item clearFloat">
+                            <div class="leftSection">
+                                {if value1="{fzw:p1:leixing/}" value2="产品" bi="=="}
+                                <a href="/page.aspx?id={fzw:p1:laiyuanbianhao/}&classid={fzw:p1:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|classid"/}">
+                                    <img src="{fzw:p1:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|suoluetu"  string="zutu"/}" width="60" height="60" class="fl" />
+                                    <p>{fzw:p1:biaoti/}</p>
+                                </a>
+                                {else}
+                                <a href="/single.aspx?m=zuopinshow&id={fzw:p1:laiyuanbianhao/}">
+                                    <img src="{fzw:p1:laiyuanbianhao sql="sl_zuopin|where&nbsp;id=&dangqian|suoluetu"  string="zutu"/}" width="60" height="60" class="fl" />
+                                    <p>{fzw:p1:biaoti/}</p>
+                                </a>
+                                {/if}
+                            </div>
+                            <div class="rightSection">
+                               <p class="unitCost">
+                                   单价（元）：{fzw:p1:danjia string="￥"/}
+                               </p>
+                                <p class="num">
+                                    数量：{fzw:p1:shuliang/}
+                                </p>
+                                <p class="xiaoji">
+                                    小计（元）：{fzw:p1:xiaoji string="￥"/}
+                                </p>
+                            </div>
+                        </div>
+                        {/fzw:sql}
+					</div>
+					<div class="remark">
+						<p class="heji">
+							商品合计：<span class="txt_red">￥{fzw:sql="select sum(xiaoji) as s_count from sl_cart where yonghuming='{fzw:cookie name="user_name" /}' and dingdanbianhao='{fzw:url:dingdanhao/}'" id="p1"}{fzw:p1:s_count  string="￥"/}{/fzw:sql}</span>
+						</p>
+                        {fzw:sql="select top 1 * from sl_order where yonghuming='{fzw:cookie name="user_name" /}' and dingdanhao='{fzw:url:dingdanhao/}' order by id desc" id="p1"}
+						<div class="detail">
+                            {fzw:p1:shoujianrenxingming/} &nbsp;&nbsp;{fzw:p1:suozaidiqu/}{fzw:p1:jiedaodizhi/} &nbsp;&nbsp;{fzw:p1:shoujihaoma/}<br />
+							留言：{fzw:p1:beizhu/}
+						</div>
+                        
+					</div>
+					<br />
+					<p class="right">
+                        {if value1="{fzw:p1:yunfei/}" value2="0" bi=">"}
+                        <span class="ft_16">运费：</span><span class="ft_24 txt_red">￥{fzw:p1:yunfei/}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        {else}
+                        <span class="ft_16">免运费</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        {/if}<span class="ft_16">应付金额：</span><span class="ft_24 txt_red">{fzw:p1:zhifujine string="￥"/}</span>
+					</p>
+                    {/fzw:sql}
+                  
+                    {fzw:for:sql="select top 1 * from sl_user_yhq where yonghuming='{fzw:cookie name="user_name" /}' and  zhuangtai='未使用'" id="p1"}
+                    <div class="h3 bor_btm">
+                        优惠券
+                    </div>
+                    <br />
+                    <p class="right">
+                        <select id="youhuiquan" name="youhuiquan" onchange="daodian_jine()">
+                            <option value="">请选择优惠券</option>
+                            {fzw:for:sql="select  * from sl_user_yhq where yonghuming='{fzw:cookie name="user_name" /}' and  zhuangtai='未使用'" id="p2"}
+                            <option value="{fzw:p2:youhuiquanbianhao/}">{fzw:p2:youhuiquanbianhao sql="sl_youhuiquan|where&nbsp;youhuiquanbianhao&nbsp;='&dangqian'|biaoti" /}</option>
+                            {/fzw:for:sql}
+                        </select>
+                    </p>
+                    {/fzw:for:sql}
+		</div>
+        <script type="text/javascript">
+            function set_pay() {
+                var yue = "0";
+
+                var jifen = "0";
+
+                var youhuiquan = "0";
+                if (document.getElementById("youhuiquan")) {
+                    if (document.getElementById("youhuiquan").value != "") {
+                        youhuiquan = "1";
+                    }
+                }
+                window.location.href = "/pay/orderok.aspx?type=pay&zhifufangshi=" + document.getElementById("zhifufangshi").value + "&dingdanhao={fzw:url:dingdanhao/}&tablename=order&yue=" + yue + "&id={fzw:url:id/}&jifen=" + jifen + "&youhuiquan=" + youhuiquan;
+             }
+
+             function daodian_jine() {
+                 document.getElementById("tijiao").value = "计算中";
+                 var yue = "0";
+
+                 var jifen = "0";
+   
+                 var youhuiquan = "0";
+                 if (document.getElementById("youhuiquan")) {
+                     if (document.getElementById("youhuiquan").value!="") {
+                         youhuiquan = "1";
+                     }
+                 }
+
+
+                 $.ajax({
+                     type: 'get',
+                     url: '/pay/orderok.aspx?type=zongjia&dingdanhao={fzw:url:dingdanhao/}&tablename=order&yue=' + yue + '&id={fzw:url:id/}&jifen=' + jifen + '&youhuiquan=' + youhuiquan,
+                     success: function (data) {
+                         if (parseFloat(data) > 0) {
+                             document.getElementById("tijiao").value = "去付款（" + data + "元）";
+                         }
+                         else {
+                             document.getElementById("tijiao").value = "确认提交";
+                         }
+                     }
+                 })
+             }
+             {fzw:sql="select top 1 * from sl_order where yonghuming='{fzw:cookie name="user_name" /}' and dingdanhao='{fzw:url:dingdanhao/}' order by id desc" id="p1"}
+             {if value1="{fzw:p1:zhuangtai/}" value2="未付款" bi="=="}
+             daodian_jine();
+             {else}
+             {/if}
+
+             {/fzw:sql}
+        </script>
+        {fzw:inside src="底部.html"/}
+	</body>
+
+</html>

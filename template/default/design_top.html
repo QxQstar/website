@@ -1,0 +1,8 @@
+{fzw:for:sql="select  * from sl_user where  yonghuming='{fzw:url:yonghuming/}'" id="p1"}<div class="uc_pagetop">
+    
+                                 {if value1="{fzw:for:sql="select count(id) as count_id from sl_history where yonghuming='{fzw:cookie name="user_name" /}' and leixing='关注设计师' and laiyuanbianhao={fzw:p1:id/}" id="p2"}{fzw:p2:count_id /}{/fzw:for:sql}" value2="0" bi=">"}<a href="javascript:void();" class="btn_radius fr">已关注</a>
+                                                                        {else}<a href="/Execution.aspx?type=add&t=history&tip_string=关注设计师成功&leixing=关注设计师&dingdanhao=&yonghuming={fzw:cookie name=" user_name" /}&laiyuanbianhao={fzw:p1:id/}&tipurl={fzw:key:siteurl/}" class="btn_radius fr">+关注</a>{/if}
+    金属创艺作家+{if value1="{fzw:p1:xingming/}" value2="" bi="=="}{fzw:p1:yonghuming/}{else}{fzw:p1:xingming/}{/if}
+</div>
+<img src="{fzw:p1:zhaopai/}" width="100%"  onerror="this.src = '/template/default/images/uc_img1.jpg'" id="touxiang_"/>
+{/fzw:for:sql}

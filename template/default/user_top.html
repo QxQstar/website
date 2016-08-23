@@ -1,0 +1,88 @@
+{fzw:sql="select top 1 * from sl_user where yonghuming='{fzw:cookie name="user_name" /}'" id="p1"}
+<div class="u_tx">
+
+    <img src="{fzw:p1:touxiang /}" onerror="this.src = '/template/default/images/u_tx.jpg'" id="touxiang_" class="u_tx_img" onclick="    window.open('/inc/touxiang/index.aspx?editname=touxiang&avatar_sizes=126*126&imgurl=touxiang_', '', 'status=no,scrollbars=no,top=20,left=110,width=660,height=450');" />
+    <p class="center"><a href="javascript:void();" onclick="    window.open('/inc/touxiang/index.aspx?editname=touxiang&avatar_sizes=126*126&imgurl=touxiang_', '', 'status=no,scrollbars=no,top=20,left=110,width=660,height=450');">[设置头像]</a></p>
+    <input type="hidden" id="touxiang" name="touxiang" value="{fzw:p1:touxiang /}" />
+
+</div>
+<div class="u_info">
+    <p class="ft_b">尊敬的{fzw:cookie name="user_name" /},欢迎您！</p>
+    {if value1="{fzw:p1:yonghujibie /}" value2="设计会员" bi="=="}<p>
+        会员等级：<span class="gray">{fzw:p1:yonghujibie /}</span> <br />个性域名：<span class="gray"><a href="/user/{fzw:p1:yonghuming sql="sl_userdomain|where&nbsp;yonghuming='&dangqian'|yuming"/}.aspx" target="_blanl">http://www.xiaoyu4.com/user/{fzw:p1:yonghuming sql="sl_userdomain|where&nbsp;yonghuming='&dangqian'|yuming"/}.aspx</a>&nbsp;<a href="javascript:void();" onclick="tanchuceng()" style="color:#ff0000">修改</a></span><br />{else}{/if}{/fzw:sql}
+        本次登录：<span class="gray"> {fzw:sql="select top 1 * from sl_system where u1='{fzw:cookie name="user_name" /}' and u4 like '会员登陆' order by id asc" id="p1"}{fzw:p1:u3/}{/fzw:sql}</span><br />
+        注册时间：<span class="gray"> {fzw:sql="select top 1 * from sl_system where u1='{fzw:cookie name="user_name" /}' and u4 like '会员注册' order by id asc" id="p1"}{fzw:p1:dtime/}{/fzw:sql}</span><br />
+
+    </p>
+</div>
+<div class="blk" style="position: fixed;left: 0px;top: 0px;width: 100%;background: rgba(0,0,0,0.5);filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#7F000000', EndColorStr='#7F000000'); display:none" id="tanchu">
+    <div class="aaa" style="position: relative;width: 100%; ">
+
+        <div class="eee" style="width:500px; margin:0 auto;border-radius: 6px;position: relative;position: relative; background-color: #fff;">
+
+            <p class="close" style="width: 32px;height: 32px;font:bold 30px arial;color: #fff;text-align: center;line-height: 32px;position: absolute;right: -32px;top:-32px;cursor: pointer;border-radius: 6px;">×</p>
+            {fzw:sql="select top 1 * from sl_user where yonghuming='{fzw:cookie name="user_name" /}'" id="p1"}
+            <div style="width: 480px;margin: 0 auto;padding: 18px 0px;">
+                您的域名是http://www.xiaoyu4.com/<input name="yuming" id="yuming" style="width: 100px;height: 20px; border: 1px solid #ddd;margin-bottom: 12px;" value="{fzw:p1:yonghuming sql="sl_userdomain|where&nbsp;yonghuming='&dangqian'|yuming"/}" />.aspx
+               {if value1="{fzw:p1:yonghuming sql="sl_userdomain|where&nbsp;yonghuming='&dangqian'|shiyong"/}" value2="否" bi="=="}
+                 <input type="submit" name="yuming" style="display: block; width: 100px;height:40px;font: 16px 'microsoft yahei';color: #fff;background: #004497;border-radius: 4px; margin: 0 auto;" value="提交" onclick="return userdomain({fzw:p1:yonghuming sql="sl_userdomain|where&nbsp;yonghuming='&dangqian'|id"/})" />
+                {else}
+                {/if}
+            </div>
+            {/fzw:sql}
+
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    function tanchuceng()
+    {
+       
+        document.getElementById('tanchu').style.display = '';
+
+    }
+    function userdomain(id)
+    {
+        $.ajax({
+            type: "GET",
+            url: "/Execution.aspx?type=diy_edit&t=userdomain&field=yuming&yuming=" + document.getElementById("yuming").value + "&id="+id,
+            success: function (data) {
+
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "/Execution.aspx?type=diy_edit&t=userdomain&field=shiyong&shiyong=是&id="+id,
+            success: function (data) {
+
+            }
+        });
+        window.location.href = "{fzw:key:siteurl/}";
+        window.event.returnValue = false;
+        //end
+    }
+			var h=window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+			$(".blk").height(h);
+			var b=$(".eee").height();
+			var a=(h-b)/2
+			$(".aaa").css("padding-top",a+"px");
+			$(".close").click(function(){
+				$(".blk").hide();
+			})
+</script>
+
+<script type="text/javascript">
+function settouxiang(imgurl) {
+    $.ajax({
+        type: "POST",
+        url: "/Execution.aspx?type=user_edit&t=user",
+        data: "touxiang=" + imgurl + "",
+        success: function () {
+            // layer.alert('头像更新成功');
+        }, error: function () {
+
+        }
+    });
+}</script>

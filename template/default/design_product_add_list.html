@@ -1,0 +1,59 @@
+<div class="design_product_add_list" id="design_product_add_list">
+    {fzw:for:sql="select  * from sl_Parameter where id in ({fzw:url:chanpin/}) order by u3 desc,id asc" id="p1"}
+    {fzw:for:sql="select  * from sl_product where fenlei like '%{fzw:p1:id/}%' and shuxing like '%创意盒子%' order by paixu desc,id asc" id="p2"}
+    {if value1="{fzw:p2:id/}" value2="{fzw:url:laiyuanbianhao/}" bi="=="}
+    <a href="javascript:;"data-id="{fzw:p2:id/}" class="on">
+        <img src="{fzw:p2:suoluetu string="zutu"/}" width="60px" height="60px" />
+    </a>
+    {else}
+    <a href="javascript:;" data-id="{fzw:p2:id/}" >
+        <img src="{fzw:p2:suoluetu string="zutu"/}" width="60px" height="60px" />
+    </a>
+    {/if}
+    {/fzw:for:sql}
+    {/fzw:for:sql}
+</div>
+
+<script type="text/javascript">
+    $(".design_product_add_list a").click(function () {
+        $(this).toggleClass("on");
+
+        if (document.getElementById("laiyuanbianhao").value == "") {
+            document.getElementById("laiyuanbianhao").value = $(this).data('id');
+        }
+        else
+        {
+            var strs = new Array(); //定义一数组 
+           
+            strs = document.getElementById("laiyuanbianhao").value.split(","); //字符分割 
+           
+            var neirong = "";
+            var flag = "yes";
+            for (i = 0; i < strs.length ; i++) {
+                
+                if (strs[i] == $(this).data('id')) {
+                    flag = "no";
+                   
+                }
+                else {
+                    if (neirong == "") {
+                        neirong = strs[i];
+                    }
+                    else {
+                        neirong = neirong + "," + strs[i];
+                    }
+                    
+                }
+            }
+            if (flag == "yes") {
+                document.getElementById("laiyuanbianhao").value = neirong + "," + $(this).data('id');
+            } else {
+                document.getElementById("laiyuanbianhao").value = neirong;
+            }
+            
+        }
+       
+        
+        
+		})
+</script>

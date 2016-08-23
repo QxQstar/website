@@ -1,0 +1,195 @@
+.clearFloat:after{
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+.body_bg .w_1300{
+    width: 100%;
+}
+@media all and (min-width: 992px) {
+    .body_bg .w_1300{
+        width: 90%;
+    }
+}
+.w_1300 .leftConn{
+    width: 100%;
+    float: left;
+}
+.w_1300 .leftConn .w_1005{
+    margin-right: 295px;
+    width: auto;
+    float: none;
+}
+.w_1300 .leftConn .big_img .bigimg_prev{
+    left: 10px;
+}
+.w_1300 .leftConn .big_img .bigimg_next{
+    right: 10px;
+}
+.w_1300 .leftConn .cp_content{
+    width: 100%;
+}
+.w_1300 .leftConn img{
+    max-width: 100%;
+}
+.w_1300 .leftConn .ceping_list p{
+    text-indent: 2em;
+}
+.big_img,.qindan{
+    text-align: center;
+}
+.w_1300 .w_280{
+    margin-left: -280px;
+}
+.w_1300 .w_280 .yintu{
+    margin-top: 15px;
+    line-height: 40px;
+    height: 40px;
+    background-color: #ff3a41;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+.w_1300 .w_280 .yintu a{
+    color: #fff;
+}
+.w_280 .mar_t_10{
+    margin-top: 0;
+}
+.w_280 .cp_caozuo tr{
+    line-height: 50px;
+    height: 50px;
+}
+.w_280 .cp_caozuo tr td{
+    border: none;
+}
+.w_280 .cp_caozuo .conn1 a,
+.w_280 .cp_caozuo .conn2 a{
+    display: block;
+    height: 70px;
+    width: 138px;
+    line-height: 70px;
+    /*color: #fff;*/
+    color: #C40000;
+    font-size: 18px;
+    background-color: #FFEDED;
+    /*background-color: #000;*/
+
+}
+.w_280 .cp_caozuo .conn1 a{
+    margin-right:2px;
+}
+.w_280 .cp_caozuo .conn2 a{
+    margin-left: 2px;
+    margin-right: 0;
+}
+.w_280 .XG{
+    padding: 0 10px;
+}
+.w_280 .XG .item{
+    padding: 10px 0 0;
+}
+.footer{
+    height: 390px;
+    width: 100%;
+    background-color: #333;
+    margin-top: 30px;
+    padding-top: 30px;
+}
+.footer .exLink{
+    width: 304px;
+    margin: 0 auto;
+}
+.footer .exLink li{
+    position: relative;
+    float: left;
+    margin:0  5px;
+}
+@media all and (min-width: 360px){
+    .footer .exLink{
+        width: 344px;
+    }
+    .footer .exLink li{
+        margin: 0 10px;
+    }
+}
+.footer .exLink a{
+    display: inline-block;
+    width: 66px;
+    height: 66px;
+    background: url(../img/exLink.png) no-repeat;
+}
+.footer .exLink .code{
+    position: absolute;
+    left: -9000px;
+    top:-220px;
+    height:226px;
+    width: 200px;
+    background: url(../img/weixin_erweima.png) no-repeat;
+    background-size: 100%;
+    display: inline-block;
+
+}
+.footer .exLink li.weixin:hover .code{
+    left: -80px;
+}
+.footer .exLink .link3{
+    background-position: -198px 0;
+}
+.footer .exLink .link2{
+    background-position: -132px 0;
+}
+.footer .exLink .link1{
+    background-position: -66px 0;
+}
+.footer .exLink .link0{
+    background-position: 0 0;
+}
+.footer .help{
+    width: 100%;
+    text-align: center;
+}
+.footer .help .exHelp{
+    margin: 20px 5px;
+    display: inline-block;
+    vertical-align: top;
+    color: #fff;
+    font-size: 16px;
+}
+.footer .help .exHelp ul{
+    margin-top: 8px;
+}
+.footer .help .exHelp ul  a{
+    color: #fff;
+    font-size: 13px;
+}
+.footer p{
+    font-size: 13px;
+    color: #fff;
+    text-align: center;
+    padding: 0 10px;
+    line-height: 1.5;
+    padding-bottom: 30px;
+    background-color: #333;
+}
+@media all and (min-width:768px) {
+    .footer .help{
+        width:600px;
+        margin: 0 auto;
+
+    }
+    .footer .help .exHelp{
+        margin: 30px 20px;
+        float: left;
+    }
+    .footer p{
+        padding: 0;
+    }
+}
+.footer p span{
+    vertical-align: 3px;font-weight: bold;
+}
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="css/common2.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title> {if value1="{fzw:url:id/}" value2="" bi="=="}
+            {fzw:sql="select top 1 * from sl_article where classid=13 order by paixu desc,id asc" id="p1"}
+            {fzw:p1:biaoti /}
+            {/fzw:sql}
+
+                               {else}
+                        {fzw:sql="select * from sl_article where id={fzw:url:id/}" id="p1"}
+{fzw:p1:biaoti /}
+                               {/fzw:sql}
+                               {/if}_{fzw:key:sitename/}</title>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+		<!--主体部分-->
+		<div class="home_container">
+		   <table class="mainproduct">
+		   	<tr>
+		   		<td width="75%" valign="top" style="position: relative;background: #fff;">
+		   			<div class="whhd_main">
+		   				<div class="whhd_main_inner">
+                               {if value1="{fzw:url:id/}" value2="" bi="=="}
+                         {fzw:sql="select top 1 * from sl_article where classid=13 order by paixu desc,id asc" id="p1"}
+                         <p>{fzw:p1:neirong /}</p>
+                         {/fzw:sql}
+
+                               {else}
+                          {fzw:sql="select * from sl_article where id={fzw:url:id/}" id="p1"}
+<p>{fzw:p1:neirong /}</p>
+                               {/fzw:sql}
+                               {/if}
+		   				
+		   				</div>
+		   			</div>
+		   			<a href="javascript:;" class="up whhd_up" title="上翻"></a>
+		   			<a href="javascript:;" class="down whhd_down" title="下翻"></a>
+		   		</td>
+		   		<td width="25%" valign="top">
+		   			<ul class="whhd_menu">
+                     {fzw:sql="select * from sl_article where classid=13 order by paixu desc,id asc" id="p1"}
+		   				<li id="x{fzw:p1:id/}">
+                         <a href="/Single.aspx?m=index-3&id={fzw:p1:id /}">
+                             <img src="{fzw:p1:suoluetu /}" class="ver-mid" />
+                             <div class="text">
+                                 <p class="title">{fzw:p1:biaoti /}</p>
+                                 <!--<p class="sub">IDEA</p>-->
+                             </div>
+                             <em class="icon_sj"></em>
+                         </a>
+</li>
+                           {/fzw:sql}
+		   			</ul>
+		   			{fzw:sql="select top 1 * from sl_banner where classid=27 order by paixu desc,id desc" id="p1"}
+						<a href="{fzw:p1:u2/}" target="_blank" title="{fzw:p1:u1/}"><img src="{fzw:p1:u3/}" width="100%" class="ver-mid" alt="{fzw:p1:u1/}"/></a>
+						 {/fzw:sql}
+		   		</td>
+		   	</tr>
+		   </table>
+		</div>
+		
+		<!--底部导航栏-->
+        {fzw:inside src="home_menu.html"/}
+        <script type="text/javascript">
+        	$(".home_menu td").eq(3).addClass("on").siblings("td").removeClass("on");
+        </script>
+        {fzw:inside src="底部.html"/}
+        
+        
+        <script type="text/javascript">
+		$(function(){
+			$("#x{fzw:url:id/}").addClass('on');
+			if('{fzw:url:id/}'==''){
+				$(".whhd_menu li").eq(0).addClass("on");
+			}
+		})
+			$(window).load(function(){
+				$(".whhd_main").height($(".whhd_main").parent("td").height());
+			})
+		</script>
+	</body>
+
+</html>

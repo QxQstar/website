@@ -1,0 +1,44 @@
+<div class="pad_10" style="background: #e7e7e7;">
+							<p class="h2">大神排行</p>
+							<div class="gray">
+                                {fzw:sql="select * from sl_banner where id=24 " id="p1"}
+                                    {fzw:p1:u4/}
+                                {/fzw:sql}
+							</div>
+						</div>
+						<div class="ds_slide">
+							<div class="bd">
+								<div class="wz_list ds_rank">
+									{fzw:for:sql="select top 24 * from sl_user where yonghujibie='设计会员' and jihuo='是' order by renqi desc,id desc " id="p1"}
+									<li>
+										<a href="/user/{fzw:p1:yonghuming sql="sl_userdomain|where&nbsp;yonghuming='&dangqian'|yuming"/}.aspx">
+											<img src="{fzw:p1:touxiang/}" width="100%" height="140" />
+											<div class="text">
+												<p class="ft_b mar_b_10">{if value1="{fzw:p1:xingming/}" value2="" bi="=="}{fzw:p1:yonghuming/}{else}{fzw:p1:xingming/}{/if}</p>
+												<p class="gray">
+													<span class="fr icon_dy" data-id="{fzw:p1:id/}">订阅</span>
+													<span class="icon_zan" data-id="{fzw:p1:id/}">赞{fzw:for:sql="select count(id) as count_id from sl_history where leixing='赞设计师' and laiyuanbianhao={fzw:p1:id/}" id="p2"}{fzw:p2:count_id /}{/fzw:for:sql}</span>
+												</p>
+											</div>
+										</a>
+									</li>
+									{/fzw:for:sql}
+								</div>
+								<div class="hd">
+									<ul class="dot_ul"></ul>
+								</div>
+							</div>
+						</div>
+						<script type="text/javascript">
+							jQuery(".ds_rank li").each(function(i) {
+								jQuery(".ds_rank li").slice(i * 8, i * 8 + 8).wrapAll("<ul></ul>");
+							});
+							jQuery(".ds_slide").slide({
+								titCell: ".hd ul",
+								mainCell: ".bd .ds_rank",
+								autoPage: "<li>&nbsp;</li>",
+								effect: "leftLoop",
+//								autoPlay: true
+							});
+						</script>
+					

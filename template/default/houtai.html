@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="layer/skin/layer.css"/>
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="layer/layer.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+		<script src="js/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.json.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+
+	<body>
+		<p class="h3">场景购买</p>
+			<div class="changjing">
+			   <img src="images/goods_img3.jpg" ondragstart="return false;" id="background"  class="ver-mid" alt="我是背景图片"/>
+			    <div class="options" data-id='1' data-x="589" data-y="368" data-name="双击设置标题及价格" data-price="">
+			   	   <a href="#">
+			       <img src="images/cj_img1.jpg"/>
+			       </a>
+			   </div>
+			   <div class="options" data-id='2' data-x="460" data-y="264" data-name="这是商品的名称" data-price="">
+			   	   <a href="#">
+			       <img src="images/cj_img2.jpg"/>
+			       </a>
+			   </div>
+			</div>
+			<div class="tj">
+				<input type="button" name="tijiao" id="tijiao" value="保存数据" />
+				<input type="button" name="start" id="start" value="初始化" />
+			</div>
+			<script type="text/javascript">
+			var resouse='';
+			if (resouse!=''){
+			var res=$.parseJSON(resouse);
+			if ($.isArray(res)){
+				for (i=0;i<res.length;i++) {
+				$('.changjing').append('<div class="options" data-id="'+res[i][2]+'" data-x="'+res[i][3]+'" data-y="'+res[i][4]+'" data-name="'+res[i][0]+'" data-price="'+res[i][1]+'"><a href="#"><img src="'+res[i][5]+'"/></a></div>');
+			  }
+			};
+			}
+			layer.config({
+			    extend: [
+			        'extend/layer.ext.js' 
+			    ]
+			});
+			$(document).on('dblclick','.changjing .options',function(){
+				var asset_dom=$(this);
+				layer.prompt({
+				    title: '请输入名称',
+				    formType: 9
+				}, function(log1){
+				    layer.prompt({title: '请输入价格', formType: 0}, function(log2){
+				    	 asset_dom.attr('data-name',log1);
+				    	 asset_dom.attr('data-price',log2);
+				    	 layer.closeAll();
+				   });
+			   });
+			})
+			$('.changjing .options').each(function(){
+				$(this).draggable({ containment: ".changjing", scroll: false,stop:function( event, ui ) {
+					$(this).attr('data-x',ui.position.left);
+					$(this).attr('data-y',ui.position.top);
+				}});
+			});
+		</script>
+		<script type="text/javascript">
+			$('#tijiao').click(function(){
+				var arrayObj = new Array();
+				$('.changjing .options').each(function(){
+					var newarray=new Array();
+					newarray[0]=$(this).attr('data-name');
+					newarray[1]=$(this).attr('data-price');
+					newarray[2]=$(this).attr('data-id');
+					newarray[3]=$(this).attr('data-x');
+					newarray[4]=$(this).attr('data-y');
+					newarray[5]=$(this).find('img').eq(0).attr('src');
+					arrayObj.push(newarray);
+				})
+				var encoded=$.toJSON(arrayObj);
+				resouse=encoded;
+				alert(encoded);
+			});
+			$('#start').click(function(){
+				if (resouse==undefined){
+					alert('初始化数据未定义');
+					return false;
+				}
+				$('.changjing .options').remove();
+				var res=$.parseJSON(resouse);
+				for (i=0;i<res.length;i++) {
+				$('.changjing').append('<div class="options" data-id="'+res[i][2]+'" data-x="'+res[i][3]+'" data-y="'+res[i][4]+'" data-name="'+res[i][0]+'" data-price="'+res[i][1]+'"><a href="#"><img src="'+res[i][5]+'"/></a></div>');
+			}
+				
+				$('.changjing .options').each(function(){
+				$(this).draggable({ containment: ".changjing", scroll: false,stop:function( event, ui ) {
+					$(this).attr('data-x',ui.position.left);
+					$(this).attr('data-y',ui.position.top);
+				}});
+				changjing_pos();
+				
+			});
+				return false;
+			})
+		</script>
+	</body>
+</html>

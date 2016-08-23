@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<title>{fzw:key:sitename/}_精选列表页</title>
+    <script type="text/javascript" src='/template/default/js2/jquery.js'></script>
+	<link rel="stylesheet" type="text/css" href="/template/default/css2/idangerous.swiper.css">
+	<link rel="stylesheet" type="text/css" href="/template/default/css2/jingxuan.css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+<body>
+<span name="head" id="head"></span>
+{fzw:inside src="头部.html"/}
+     {fzw:sql="select *  from sl_huodongjingxuan where id={fzw:url:huodong_id} " id="p1"}
+    <div class='activeImg'>
+        {if value1="{fzw:p1:toutu/}" value2="" bi="=="}
+        <img src='/template/default/img/banner1.jpg'>
+        {else}
+        <img src='{fzw:p1:toutu/}'>
+        {/if}
+        
+
+    </div>
+	<div class='activeDesc' id="activeDesc">
+
+		<h1>{fzw:p1:toutubiaoti/}</h1>
+		<p> {fzw:p1:toutuxiangxi/}</p>
+
+	</div>
+    {/fzw:sql}
+	<div class='change'>
+        <input type="text" id="zuobiao" hidden="hidden"  class="coord" value="">
+		<div class='warp'>
+            <a href="http://www.xiaoyu4.com/Single.aspx?m=index-1" class="goTokankan">
+                <img src="/template/default/img/goTokankan.png" class="morePic">
+            </a>
+	      	<a class="arrow-left arrow" href="#"></a> 
+	      	<a class="arrow-right arrow" href="#"></a>
+
+            <!--加载产品图片-->
+            {fzw:for:sql="select chanpintupian,sl_product.id as product_id,sl_product.biaoti  from sl_huodongjingxuan,sl_product where sl_huodongjingxuan.id={fzw:url:huodong_id} and  sl_product.biaoti=sl_huodongjingxuan.chanpinming" id="p2"}
+	    	<div class="swiper-container" style="background: #fff url({fzw:p2:chanpintupian/}) no-repeat center center;">
+           
+
+		      	<ul class='list swiper-wrapper' id='list'>
+			     
+                      {fzw:for:sql="select replace(yuantu,'{title}',' ') as yuantu ,sl_zuopin.id as zuopinid ,sl_zuopin.biaoti,sl_zuopin.leimu,(sl_product.jiage+sl_zuopin.jiage) as jiage_sum,sl_product.jiage as productjiage ,sl_zuopin.jiage as zuopinjiage  from sl_huodongjingxuan,sl_zuopin,sl_product where sl_product.id={fzw:p2:product_id/} and  sl_huodongjingxuan.id={fzw:url:huodong_id} and  substring(sl_huodongjingxuan.zuopinbianhao,2,len(sl_huodongjingxuan.zuopinbianhao)-2) like  '%,'+cast(sl_zuopin.id as varchar(10))+',%' " id="p1"}
+                       <li class='item swiper-slide'>
+			        	<div class='head'>
+			        		<span class='type'>{fzw:p1:leimu/}/ {fzw:p1:biaoti/}</span>
+			        	</div>
+			          	<img src='{fzw:p1:yuantu/}'>
+			          	<div class='customerSure'>
+			          		<a class='sale' data-productid="{fzw:p2:product_id/}" data-zuopinid="{fzw:p1:zuopinid/}" data-productname="{fzw:p2:biaoti/}"  data-zuopinname="{fzw:p1:biaoti/}" data-productjiage="{fzw:p1:productjiage/}"  data-zuopinjiage="{fzw:p1:zuopinjiage/}" >立即购买</a>
+			          		<span class='price'>￥{fzw:p1:jiage_sum/}</span>
+			          	</div>
+			         </li>
+			        {/fzw:for:sql}
+                      
+                      
+		      	</ul>
+                {/fzw:for:sql}
+
+	    	</div>
+	    	<div class='info'>
+	    		<span class='cur'>2</span>
+	    		<span>/</span>
+	    		<span class='total'>34</span>
+	    	</div>
+		</div>
+	</div>
+	<div class='goodsDesc'>
+		<p class='title'>水杯详情</p>
+		<div class='content isFold'>
+            {fzw:sql="select sl_product.biaoti,sl_product.shangpinmiaoshu   from sl_huodongjingxuan,sl_product where sl_huodongjingxuan.id={fzw:url:huodong_id} and  sl_product.biaoti=sl_huodongjingxuan.chanpinming" id="p1"}
+            <p class='desc'>
+			{fzw:p1:biaoti/}	 
+            </p>
+            <p>
+                {fzw:p1:shangpinmiaoshu/}	 
+
+            </p>
+            {/fzw:sql}
+		</div>
+        <div class='All shadow'>
+            <div class='temp mask'></div>
+            <span class="fold">
+                <span class="foldBg"></span>
+                查看更多
+            </span>
+            <span class="spread">
+                <span class="spreadBg"></span>
+                收起
+            </span>
+        </div>
+    </div>
+	<div class='oldActive'>
+		<div class='bar'></div>
+		<h2 class='title'>往期回顾</h2>
+		<ul class='clearfix'>
+			 {fzw:sql="select top 5 *  from sl_huodongjingxuan where sl_huodongjingxuan.huodongqihao< (select huodongqihao  from sl_huodongjingxuan where sl_huodongjingxuan.id={fzw:url:huodong_id})  order by id desc" id="p1"}
+            
+			<li class='oldActiveItem'>
+				 {if value1="{fzw:p1:lianjie/}" value2="" bi="=="}
+				<a href='/single.aspx?m=jingxuan&huodong_id={fzw:p1:id/}'>
+{else}
+<a href='{fzw:p1:lianjie/}'>
+                     {/if}
+					<img src='{fzw:p1:huodongfengmiantu/}'>
+				</a>
+			</li>
+             {/fzw:sql}
+
+		</ul>
+	</div>
+    <div class="tiShi" id="tiShi">
+        <a href="#head" class="toTop" id="toTop"></a>
+        <a href="http://www.xiaoyu4.com/Single.aspx?m=help#BDBridgeFixedWrap" class="KF" id="KF"></a>
+    </div>
+
+<!--尾部开始-->
+{fzw:inside src="底部.html"/}
+<!--尾部结束-->
+	<script type="text/javascript" src='/template/default/js2/idangerous.swiper.min.js'></script>
+	<script type="text/javascript" src='/template/default/js2/jingxuan.js'></script>
+
+    <script src="/template/default/js/jquery-1.11.2.min.js"></script>
+    <script src="/App_Api/common_ghy.js"></script>
+    <script>
+        //生成统一标识id的函数
+        function uuid(lenth) {
+            var s = [];
+            var hexDigits = "0123456789";
+            for (var i = 0; i < 36; i++) {
+                s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+            }
+            s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+            s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+
+ 
+            var uuid = s.join("");
+            uuid = uuid.substring(0, lenth);
+            return uuid;
+        }
+
+        //根据请求的参数名请求接口
+        //sql_str 用$隔开
+        function requert_json(callback, table, sql_str) {
+
+            var temp_sql = "";
+            var temp_arr = new Array();
+            var arr = sql_str.split('$');
+            var re_str = "";
+            for (var i = 0; i < arr.length; i++) {
+                // arr[i] = arr[i] / 2.0;
+                temp_arr = arr[i].split('=');
+                temp_sql = temp_sql + "&" + temp_arr[0] + "=" + temp_arr[1];
+            }
+            if (sql_str == "" || sql_str == null)
+            {
+                temp_sql = "";
+            }
+            //alert(temp_sql);
+            $.ajax({
+                url: getApiUrl() + 'Execution.ashx',
+                data: "table=" + table + temp_sql,
+                dataType: "jsonp",
+                async: false,//取消异步请求
+                jsonp: "callback", //传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+                jsonpCallback: callback,
+                beforeSend: function () {
+                    console.log("loading");
+                },
+                success: function (data) {
+                    console.log("success");
+                    //setParam(callback, JSON.stringify(data)); //json对象转string
+                    re_str = JSON.stringify(data);
+                    // return JSON.stringify(data);
+                },
+                error: function () {
+                    //请求出错处理
+                    console.log("error");
+           
+                }
+            });
+            return re_str;
+
+        }
+        function getApiUrl() {
+            //测试地址
+            // return "http://localhost:8095/App_Api/";
+            //生产地址
+            return "http://www.xiaoyu4.com/App_Api/";
+        }
+       
+
+        //点击购买事件
+        $(".sale").click(function () {
+            var user_name = "";
+            user_name = "{fzw:cookie:name="user_name"}";
+            if(user_name=="")
+            {
+                alert("请登录");
+                location.href="/?login.html&tipurl={fzw:key:siteurl/}";
+                return false;
+            }
+            else
+            {
+                var productid = "";
+                var zuopinid = "";
+                var zuobiao = "";
+                var gouwuchehao="";
+                var productname = "";
+                var zuopinname = "";
+                var productjiage = "";
+                var zuopinjiage = "";
+
+                productid = $(this).attr("data-productid");
+                zuopinid = $(this).attr("data-zuopinid");
+                zuobiao = $("#zuobiao").val();
+                gouwuchehao=uuid(7);
+                productname = $(this).attr("data-productname");
+                zuopinname = $(this).attr("data-zuopinname");
+                productjiage = $(this).attr("data-productjiage");
+                zuopinjiage = $(this).attr("data-zuopinjiage");
+
+                //添加一条历史记录
+                var data_re_history = JSON.parse(requert_json("add" + uuid(4), "history", "leixing=临时作品$laiyuanbianhao=" + zuopinid + "$zuobiao=" + zuobiao)); 
+                var data_re_cart_product = JSON.parse(requert_json("add" + uuid(4), "cart", "biaoti="+productname+"$danjia=" + productjiage + "$shuliang=1$xiaoji=" + productjiage+"$laiyuanbianhao=" + productid+"$leixing=产品$gouwuchehao=" + gouwuchehao  )); //gouwuchehao
+                var data_re_cart_zuopin = JSON.parse(requert_json("add" + uuid(4), "cart", "biaoti="+zuopinname+"$danjia=" + zuopinjiage + "$shuliang=1$xiaoji=" +zuopinjiage+"$laiyuanbianhao=" + zuopinid+"$leixing=作品$gouwuchehao=" + gouwuchehao  )); //gouwuchehao
+           
+
+                if (data_re_history[0].str1 == "success"&&data_re_cart_product[0].str1 == "success"&&data_re_cart_zuopin[0].str1 == "success") {
+                    console.log("提交历史成功");
+                    location.href="/Single.aspx?m=cart";
+                } else {
+                    alert("请刷新页面重试");
+                }
+            }
+           
+
+        });
+
+    </script>
+    <script type="text/javascript">
+    function browserRedirect() {
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+        var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+        var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+        var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+        var bIsAndroid = sUserAgent.match(/android/i) == "android";
+        var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+        var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+        if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+            $("#none").css("display","none");
+        }
+    }
+
+    browserRedirect();
+</script>
+
+</body>
+</html>

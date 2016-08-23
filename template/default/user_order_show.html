@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>我的订单_{fzw:key:sitename/}</title>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+		
+		<div class="w_1200 pad_20_0">
+            {fzw:inside src="user_left.html"/}
+		    <div class="u_right">
+		       <h1 class="u_pagetop">查看订单详细</h1>
+		 
+		       <div class="slide">
+		       
+		       <!--交易订单-->
+            
+             <table class="u_table1">
+                 <tr>
+                     <th width="35%" style="text-align: left;">商品名称</th>
+                     <th width="15%">单价（元）</th>
+                     <th width="15%">数量</th>
+                     <th width="20%">小计</th>
+    
+                 </tr>
+                 {fzw:sql="select * from sl_cart where yonghuming='{fzw:cookie name="user_name" /}' and dingdanbianhao='{fzw:url:dingdanhao/}' order by id desc" id="p1"}
+                 <tr>
+                     <td>
+                         <div class="o_hidden left">
+                             {if value1="{fzw:p1:gouwuchehao/}" value2="" bi="!="}
+                             <a href="/Single.aspx?m=index-1&gouwuchehao={fzw:p1:gouwuchehao/}">
+                                 <img src="{fzw:p1:laiyuanbianhao sql="sl_zuopin|where&nbsp;id=&dangqian|suoluetu"/}" onerror="this.src='{fzw:p1:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|suoluetu"/}'" width="60" height="60" class="fl" />
+                                 <p style="margin-left: 70px;">{fzw:p1:biaoti/}</p>
+                             </a>
+                             {else}
+                             <a href="/page.aspx?id={fzw:p1:laiyuanbianhao/}&classid={fzw:p1:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|classid"/}">
+                                 <img src="{fzw:p1:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|suoluetu"/}" onerror="this.src='{fzw:p2:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|suoluetu"/}'" width="60" height="60" class="fl" />
+                                 <p style="margin-left: 70px;">{fzw:p1:biaoti/}</p>
+                             </a>
+                             {/if}
+                         </div>
+                     </td>
+                     <td>
+                         {fzw:p1:danjia string="￥"/}
+                     </td>
+                     <td>
+                         {fzw:p1:shuliang/}
+                     </td>
+                     <td><span class="txt_red">{fzw:p1:xiaoji string="￥"/}</span></td>
+                   
+                 </tr>
+                 {/fzw:sql}
+
+             </table>
+             <div class="remark">
+                 <p class="fr ft_18 ft_b pad_20_0">
+                     商品合计：<span class="txt_red">￥{fzw:sql="select sum(xiaoji) as s_count from sl_cart where yonghuming='{fzw:cookie name="user_name" /}' and dingdanbianhao='{fzw:url:dingdanhao/}'" id="p1"}{fzw:p1:s_count  string="￥"/}{/fzw:sql}</span>
+                 </p>
+                 {fzw:sql="select top 1 * from sl_order where yonghuming='{fzw:cookie name="user_name" /}' and dingdanhao='{fzw:url:dingdanhao/}' order by id desc" id="p1"}
+                 <div class="pad_t_10">
+                     {fzw:p1:shoujianrenxingming/} &nbsp;&nbsp;{fzw:p1:suozaidiqu/}{fzw:p1:jiedaodizhi/} &nbsp;&nbsp;{fzw:p1:shoujihaoma/}<br />
+                     留言：{fzw:p1:beizhu/}
+                 </div>
+
+             </div>
+             <br />
+             <div class="remark"><p class="fr ft_18 ft_b pad_20_0"> {if value1="{fzw:p1:zhuangtai /}" value2="未付款" bi="=="}<a href="/single.aspx?m=orderpay&dingdanhao={fzw:p1:dingdanhao /}" class="txt_blue" style="margin-top:0px;">付款</a>&nbsp;|&nbsp;<a href="/pay/orderok.aspx?type=cancel&tablename=order&id={fzw:p1:id /}" onclick="return confirm('您确认将该订单取消？');" class="txt_blue" style="margin-top:0px;">取消订单</a>{else}{/if}
+                     {if value1="{fzw:p1:zhuangtai /}" value2="已付款" bi="=="}<a class="txt_blue" style="margin-top:0px;">等待发货</a>{else}{/if}{if value1="{fzw:p1:zhuangtai /}" value2="已发货" bi="=="}<a onclick="return confirm('您确认该您已收到货？');" href="/pay/orderok.aspx?type=shouhuo&tablename=order&id={fzw:p1:id /}" class="txt_blue" style="margin-top:0px;">确认收货</a>{else}{/if}{if value1="{fzw:p1:zhuangtai /}" value2="送单完成" bi="=="}<a class="txt_blue" style="margin-top:0px;">交易成功</a>{else}{/if}</p></div>
+                 <br />
+                 {/fzw:sql}
+                 {fzw:sql="select  * from sl_order where yonghuming='{fzw:cookie name="user_name" /}' and dingdanhao = '{fzw:url:dingdanhao /}' order by id desc" id="p1"}
+                 {if value1="{fzw:p1:kuaidigongsi/}" value2="" bi="=="}{else}
+                 <div class="h3 bor_btm">
+                     物流跟踪
+                 </div>
+                 <div class="yB_div">
+
+                     快递公司：{fzw:p1:kuaidigongsi/}&nbsp;&nbsp;快递单号：{fzw:p1:kuaididanhao/}<br />
+                     {fzw:aspx src="/inc/Get.aspx?com={fzw:p1:kuaidigongsi sql="sl_Parameter|where&nbsp;u1='&dangqian'&nbsp;and&nbsp;classid=169|u2"/}&nu={fzw:p1:kuaididanhao/}"}
+               
+                 </div>
+                 {/if}
+                 {/fzw:sql}
+             </div>
+              
+		    </div>
+		</div>
+		
+        {fzw:inside src="底部.html"/}
+	</body>
+
+</html>

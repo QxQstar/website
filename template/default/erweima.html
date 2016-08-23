@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312" />
+    <meta name="viewport" content=" width=device-width,height=device-height,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>获取优惠券_{fzw:key:sitename/}</title>
+
+    <link type="text/css" rel="stylesheet" href="http://www.sofitchina.com/template/m/css/common.css" />
+    <script type="text/javascript" src="http://www.sofitchina.com/template/m/js/jquery1.42.min.js"></script>
+    <script type="text/javascript" src="http://www.sofitchina.com/template/m/js/common.js"></script>
+    <script type="text/javascript" src="http://www.sofitchina.com/template/m/js/TouchSlide.1.1.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
+</head>
+<body>
+    <p id="top"></p>
+    <div class="header">
+        <a href="/"><img src="http://www.sofitchina.com/template/m/images/top_icon6.png" style="float:left;margin-top:16px;"></a>
+
+        获取优惠券
+    </div>
+
+    <p class="i_h">你的用户名：{fzw:cookie name="user_name" /}</p>
+
+
+    <div class="wrap reg">
+        {fzw:sql="select * from sl_youhuiquan where youhuiquanbianhao='{fzw:url:youhuiquanbianhao /}'" id="p1"}
+        标题：{fzw:p1:biaoti /}<br>
+        优惠券编号：{fzw:p1:youhuiquanbianhao /}<br>
+        类型：{fzw:p1:leixing /}<br>
+        面值：{fzw:p1:mianzhi string="￥"/}元<br>
+        所需消费金额：{fzw:p1:suoxuxiaofeijine string="￥"/}元<br>
+        有效期：{fzw:p1:youxiaoqi /}<br>
+        说明：{fzw:p1:shuoming /}<br>
+        <a href="/inc/erweima.aspx?youhuiquanbianhao={fzw:p1:youhuiquanbianhao /}&type=add" class="reg_btn" style="width:auto;padding:0 5px;display: inline-block;">领取优惠劵</a>
+        <!--<script type="text/javascript">
+      	$('.reg_btn').click(function(){
+      		var the=$(this);
+      		$.ajax({
+      			type:"get",
+      			url:"/inc/erweima.aspx?youhuiquanbianhao={fzw:p1:youhuiquanbianhao /}&type=add",
+      			success:function(){
+      				location.href=the.attr('href');
+      			}
+      		});
+      		return false;
+      	})
+        </script>-->
+        {/fzw:sql}
+    </div>
+
+
+    {if value1="{fzw:cookie name="user_name" /}" value2="" bi="=="}
+    <div class="xtts">
+        <p class="h">系统提示</p>
+        <div class="pad_15">
+            <p>登录会员，才可以添加优惠券！</p><br>
+            <a class="btn3" style="margin-left:20px;margin-right:12px;" href="javascript:login_tiao();">登录</a>
+            <a class="btn3" href="javascript:reg_tiao();">注册</a>
+            <p class="clear"></p>
+        </div>
+    </div>
+    {else}
+    {/if}
+</body>
+</html>

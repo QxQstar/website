@@ -1,0 +1,19 @@
+	.fixedImg,.page3Img{
+		left: 33%; top:17%; width:210px;
+	}
+	.page4Img,.page5Img{
+		left: 30%; top:17%; width:210px;
+	}
+	.fixedImg img,.page3Img img{
+		 width: 95%;
+	}
+	.description{
+		top:25%;
+	}
+	.description h1{
+		 width: 300px;
+		font-weight: bold; font-size: 25px;
+	}
+	.description p{
+		width: 400px; margin-top: 10px; line-height: 35px; font-size:17px;
+	}

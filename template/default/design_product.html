@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>作品管理_{fzw:key:sitename/}</title>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+		
+		<div class="w_1200 pad_20_0">
+            {fzw:inside src="user_left.html"/}
+            <script type="text/javascript">document.getElementById("user_left_2").className = "on";</script>
+		    <div class="u_right">
+		       <h1 class="u_pagetop">作品管理</h1>
+		       <br />
+		       <div class="slide">
+		      	<ul class="u_tab">
+                  <li class="on"><a href="/search.aspx?m=design_product">我的作品</a></li>
+                  <li><a href="/single.aspx?m=design_product_add">上传作品</a></li>
+		       </ul>
+		       <br />
+		       <!--我的作品-->
+		       <table class="u_table1 mar_t_10 u_slide_c">
+		       	<tr>
+		       		<th width="auto" style="text-align: left;">作品名称</th>
+		       		<th width="10%">发布日期</th>
+                    <th width="15%">缩略图</th>
+		
+		       		<th width="10%">评论</th>
+		       		<th width="35%">操作</th>
+		       	</tr>
+             {fzw:search table="sl_zuopin" sqlvalue="yonghuming='{fzw:cookie name="user_name"/}'" number="15" order="dtime" orderby="desc" id="p1"}
+		       	<tr>
+		       		<td style="text-align: left;"><a href="/Single.aspx?m=index-1&laiyuanbianhao={fzw:p1:laiyuanbianhao/}&id={fzw:p1:id/}" class="ft_b">{fzw:p1:biaoti/}</a>{if value1="{fzw:p1:shenhe/}" value2="待审核" bi="=="}&nbsp;&nbsp;[{fzw:p1:shenhe/}]{else}{/if}{if value1="{fzw:p1:shenhe/}" value2="未通过" bi="=="}&nbsp;&nbsp;[未通过，查看原因]{else}{/if}
+                      
+                     </td>
+		       		<td>
+                     {fzw:p1:dtime datetime="yyyy-MM-dd"/}
+		       		</td>
+                 <td>
+                    <img src="{fzw:p1:suoluetu string="zutu"/}" width="60px" height="60px" />
+                 </td>
+		       	
+		       		<td>{fzw:sql="select count(id) as count_id from sl_pinglun where laiyuanbianhao={fzw:p1:id/} and leixing='作品' and shenhe='已通过' " id="p2"}{fzw:p2:count_id/}{/fzw:sql}</td>
+		       		<td>
+                     {if value1="{fzw:p1:shenhe/}" value2="已审核" bi="=="}<a href="javascript:fenxiang('{fzw:p1:id/}')"  class="u_btn1"><span id="lianjie{fzw:p1:id/}">确认上架</span></a>{else}{/if}<a href="/Single.aspx?m=design_product_edit&id={fzw:p1:id/}" class="u_btn1">编辑</a>
+                     <a href="/Execution.aspx?type=email&t=zuopin&tipurl=/search.aspx?m=design_product&tip_string=申请提交成功&id={fzw:p1:id/}" class="u_btn1" onclick="return confirm('您确认删除此信息？');">申请删除</a>
+                     {if value1="{fzw:p1:shenhe/}" value2="未通过" bi="=="}
+                           <a href="/Execution.aspx?type=del&t=zuopin&tipurl=/search.aspx?m=design_product&tip_string=删除成功&id={fzw:p1:id/}" onclick="return confirm('您确认删除此信息？');" class="u_btn1">删除</a>
+                           {else}{/if}
+                           <script type="text/javascript">
+                               if ("{fzw:p1:shenhe/}" == "已审核")
+                               { 
+                                   if ("{fzw:p1:shangjia/}" == "是")
+                                   {
+                                       document.getElementById("lianjie{fzw:p1:id/}").innerHTML = "推广链接";
+                                   }
+                               }
+                           </script>
+		       		</td>
+		       	</tr>
+             {/fzw:search}
+		       </table>
+		    	
+		    	</div>
+                <div class="page">
+                    {fzw:search:page id="p1" size="8"/}
+                </div>
+		    </div>
+		</div>
+        <div class="blk" style="position: fixed;left: 0px;top: 0px;width: 100%; height: 100%; background: rgba(0,0,0,0.5); display:none" id="tip">
+            <div style="position: relative;" id="fenxianglist">
+                
+            </div>
+
+        </div>
+        <script type="text/javascript">
+		
+
+			function fenxiang(id) {
+			    if (document.getElementById("tip").style.display == "none") {
+			     
+			        $.ajax({
+			            type: "GET",
+			            url: "/Execution.aspx?type=diy_edit&t=zuopin&field=shangjia&shangjia=是&id=" + id,
+			            success: function (data) {
+			             
+			            
+			            }
+			        });
+
+			        $.ajax({
+			            type: "GET",
+			            url: "/single.aspx?m=fenxiang&id=" + id,
+			            success: function (data) {
+			                $('#fenxianglist').html(data);
+			                document.getElementById("tip").style.display = "";
+			                var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+			                var a = (h - 160) / 2
+			                $(".eee").css("margin-top", a + "px");
+			                $(".close").click(function () {
+			                    $(".blk").hide();
+			                })
+			        }
+                });
+			      
+			    }
+			    else {
+			        document.getElementById("tip").style.display = "none";
+			    }
+
+			}
+        </script>
+        {fzw:inside src="底部.html"/}
+	</body>
+
+</html>

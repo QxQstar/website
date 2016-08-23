@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>用户看看_{fzw:key:sitename/}</title>
+        <script type="text/javascript" src="/inc/product_ajax.js"></script>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+		
+		<div class="w_1300">
+		    <div class="pad_10">
+		
+		        <!--设计师-->
+		        <h3 class="h3">设计师</h3>
+		        <ul class="wz_list sjs_list">
+                    {fzw:search table="sl_user" sqlvalue="yonghujibie='设计会员'&nbsp;and&nbsp;jihuo='是'" number="18" order="dtime" orderby="desc" id="p1"}
+		    	<li>
+                    <a href="/user/{fzw:p1:yonghuming sql="sl_userdomain|where&nbsp;yonghuming='&dangqian'|yuming"/}.aspx">
+                    <img src="{fzw:p1:touxiang/}" width="100%" height="210" />
+                    </a>
+                    <div class="text">
+                        <p class="ft_b mar_b_10">{if value1="{fzw:p1:xingming/}" value2="" bi="=="}{fzw:p1:yonghuming/}{else}{fzw:p1:xingming/}{/if}</p>
+                        <p class="gray">
+                            {if value1="{fzw:p1:id sql="sl_history|where&nbsp;yonghuming='{fzw:cookie name="user_name" /}'&nbsp;and&nbsp;leixing='关注设计师'&nbsp;and&nbsp;laiyuanbianhao=&dangqian|count"/}" value2="0" bi=">"}
+                            <span class="fr icon_dy" data-id="0">已订阅</span>
+                            {else}
+                            <span class="fr icon_dy" data-id="{fzw:p1:id/}">订阅</span>
+                            {/if}
+                            {if value1="{fzw:p1:id sql="sl_history|where&nbsp;yonghuming='{fzw:cookie name="user_name" /}'&nbsp;and&nbsp;leixing='赞设计师'&nbsp;and&nbsp;laiyuanbianhao=&dangqian|count"/}" value2="0" bi=">"}
+                            <span class="icon_zan" data-id="0"><em class="zan_txt">已赞</em><em class="zan_num">{fzw:p1:id sql="sl_history|where&nbsp;leixing='赞设计师'&nbsp;and&nbsp;laiyuanbianhao=&dangqian|count"/}</em></span>
+                            {else}
+                            <span class="icon_zan" data-id="{fzw:p1:id/}"><em class="zan_txt">赞</em><em class="zan_num">{fzw:sql="select count(id) as count_id from sl_history where leixing='赞设计师' and laiyuanbianhao={fzw:p1:id/}" id="p2"}{fzw:p2:count_id /}{/fzw:sql}</em></span>
+                            {/if}
+
+                        </p>
+                    </div>
+		    		
+		    	</li>
+                    {/fzw:search}
+		    	</ul>
+                <div class="page">
+                    {fzw:search:page id="p1" size="8"/}
+                </div>
+		    </div>
+		</div>
+        <script type="text/javascript">
+
+        $(document).on('click', '.icon_dy', function (e) {
+            var _this = $(this);
+            var id=$(this).data('id');
+
+            $(this).data("id","0");
+
+            if(id!="0")
+            {
+                $.ajax({
+                    type: "GET",
+                    url: "/Execution.aspx?type=history&t=history&tip_string=关注设计师成功&leixing=关注设计师&dingdanhao=&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+id,
+                    success: function (data) {
+                        alert("订阅成功");
+                        _this.html("已订阅");
+
+                    }
+            });
+            }
+        });
+
+        $(document).on('click', '.icon_zan', function (e) {
+            var _this = $(this);
+            var id=$(this).data('id');
+            $(this).data("id","0");
+
+            var zan_num = parseInt(_this.find(".zan_num").html())+1;
+            if(id!="0")
+            {
+                $.ajax({
+                    type: "GET",
+                    url: "/Execution.aspx?type=history&t=history&tip_string=赞设计师成功&leixing=赞设计师&dingdanhao=&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+id,
+                    success: function (data) {
+                        alert("点赞成功");
+                     _this.find(".zan_num").html(zan_num);
+                     _this.find(".zan_txt").html("已赞");
+                    }
+            });
+            }
+        });
+        </script>
+        {fzw:inside src="底部.html"/}
+	</body>
+
+</html>

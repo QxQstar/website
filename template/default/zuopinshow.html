@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>{fzw:sql="select  * from sl_zuopin where id={fzw:url:id/}" id="p1"}{fzw:p1:biaoti /}{/fzw:sql}_图片看看_{fzw:key:sitename/}</title>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+
+		<div class="w_1300 pad_20_0">
+			<div class="w_1005 fl white_bg" style="min-height: 500px;">
+				<div class="pad_20">
+					<div class="wz_header">
+						<p class="title">{fzw:sql="select  * from sl_zuopin where id={fzw:url:id/}" id="p1"}{fzw:p1:biaoti /}{/fzw:sql}</p>
+					
+					</div>
+					<div class="neirong" style="text-align:center">
+                        {fzw:sql="select  * from sl_zuopin where id={fzw:url:id/}" id="p1"}<img src="{fzw:p1:yuantu string="zutu"/}" />{/fzw:sql}
+                        {fzw:sql="select  * from sl_zuopin where id={fzw:url:id/}" id="p1"}<img src="{fzw:p1:jieshao  string="zutu"/}">{/fzw:sql}
+					</div>
+				</div>
+			</div>
+			<div class="w_280 fr white_bg">
+				<ul class="ceping_list pad_20">
+                    {fzw:sql="select top 6 * from sl_zuopin order by id desc" id="p1"}
+					<li>
+						<p class="title"><a href="/single.aspx?m=zuopinshow&id={fzw:p1:id/}">{fzw:p1:biaoti size="30"/}</a></p>
+					</li>
+                    {/fzw:sql}
+				</ul>
+			</div>
+            
+		</div>
+
+        {fzw:inside src="底部.html"/}
+	</body>
+
+</html>

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="css/common2.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <script type="text/javascript" src="/inc/page_ajax.js"></script>
+        <title>激光雕刻_{fzw:key:sitename/}</title>
+         <META content="{fzw:key:sitekey/} " name=Keywords>
+		<style>
+			.main_img{
+				width: 335px;
+			}
+			.asset{
+				position: absolute;
+				top:0;
+				left:0;
+				border:1px solid transparent;
+			}
+			.asset img{
+				display: block;
+			}
+			.asset:hover,.asset.on{
+				/*border:1px solid #23A2DC;*/
+			}
+			.asset:hover .close,.asset.on .close{
+				/*display: block;*/
+			}
+			.asset .close{
+				display: none;
+				position: absolute;
+				right:0px;
+				top:0px;
+				border:1px solid #ccc;
+			}
+           
+		</style>
+          <script>
+              var _hmt = _hmt || [];
+              (function() {
+                  var hm = document.createElement("script");
+                  hm.src = "//hm.baidu.com/hm.js?b8177464b0d85dde42e1abcdec01ddff";
+                  var s = document.getElementsByTagName("script")[0]; 
+                  s.parentNode.insertBefore(hm, s);
+              })();
+</script>
+
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+		<!--主体部分-->
+		<div class="home_container" style="margin-top: 25px;">
+			<table class="mainproduct">
+				<tr>
+					<td width="335" valign="top" style="text-align: left;">
+						<div class="box">
+							<div id="box_outer">
+								<div class="main_img">
+									<img src="images/box_img.png" width="100%" class="ver-mid" id="ver-mid" data-type="0"/>
+								</div>
+							</div>
+							<div class="control">
+								<a href="javascript:;" class="control_span enlarge" title="查看原图">&nbsp;</a>
+								<!--<a href="javascript:;" class="control_span enlarge">&nbsp;</a>-->
+								<!--<a href="javascript:;" class="control_span narrow">&nbsp;</a>
+								<a href="javascript:;" class="control_span toleft">&nbsp;</a>
+								<a href="javascript:;" class="control_span toright">&nbsp;</a>
+								<a href="javascript:;" class="control_span toup">&nbsp;</a>
+								<a href="javascript:;" class="control_span todown">&nbsp;</a>-->
+							</div>
+							
+						</div>
+						<span id="cartlist">
+                            
+                        </span>
+					</td>
+					<td valign="top" style="text-align: left;" id="neirong">
+						
+					</td>
+				</tr>
+			</table>
+		</div>
+		<!--底部导航栏-->
+        <!--{fzw:inside src="home_menu.html"/}-->
+        {fzw:inside src="底部.html"/}
+		
+		<script type="text/javascript">
+		 $.ajax({
+                type: "GET",
+                url: "/linshi.aspx?type=del&t=history&yonghuming={fzw:cookie name="user_name" /}&suijishu1="+Math.random()+"",
+                            success: function (data) {
+							//$("#ver-mid").attr("data-type","1");
+                        }
+                        });
+			var zp = new Object(); //存储配件坐标的数组
+			var zp_id;   // zp数组的下标，也是配件的id
+			var pos_x;   //配件的x坐标
+			var pos_y;   //配件的y坐标
+			var suofang; //产品相对于画布的缩放倍数
+			var type = $("#ver-mid").data("type"); //产品的类型 0为平面，1为曲面
+			
+			var perMovePix = 10;  //每次移动的距离
+			var boxWid = 335;   //盒子的宽度
+			var boxHei = 335;
+			var realWid;
+			
+			//-----------缩放--------------------------
+			//创建临时图片'img'  获取产品的的实际高度，然后获得缩放倍数
+			function setSuoFang(imgSrc){ 
+				$("<img/>").attr("src", imgSrc).load(function(){
+					realWid = this.width;
+					suofang = boxWid/this.width/3;
+				})
+			}
+			//-----------缩放 end----------------------------
+			
+			//-----------插入作品---------------------------
+			function charuZP(options){   
+				var Inint = {   //初始化选项
+				pos_x :0,
+				pos_y : 0
+				};
+				Inint = $.extend({}, Inint, options||{});
+				var _src = Inint.src;
+				var _laiyuanbianhao = Inint.laiyuanbianhao;
+			    var _id = Inint.id;
+				var _pos_x = Inint.pos_x;
+				var _pos_y = Inint.pos_y;
+				
+				
+			    //判断是否有同类
+			    //if ($('.main_img').find('.'+_id).hasClass('asset')){
+				//	//alert('已经存在同类型的部件了');
+				//	return false;
+				//};
+				//加入购物车
+				$.ajax({
+				    type: "GET",
+				    url: "/linshi.aspx?type=add&t=history&leixing=临时作品&yonghuming={fzw:cookie name="user_name" /}&suijishu="+_id+"&laiyuanbianhao="+_laiyuanbianhao,
+				    success: function (data) {
+			           
+					}
+				});
+				$('.main_img .asset').removeClass("on");
+				
+				var image=new Image();
+			    image.src=_src;
+			    $(image).load(function(){
+			    	var imgWid_ = image.width*suofang;
+			    	var imgWid=imgWid_/boxWid*100;
+			    	$('.main_img').append('<div class="' + _id + ' asset on" id="'+_id +'"style="width:'+ imgWid +'%;left:'+ _pos_x +'px;top:'+_pos_y+'px"><a href="javascript:void(0)"><img src="/' + _src.replace("/upfile", "upfile") + '" style="width:100%;" /></a><span class="close" data-id="'+_id +'">X</span></div>');
+			    	
+			    	//为添加的作品绑定拖曳事件
+			    	
+			    	if($('.' + _id).length>0){
+					    $('.' + _id).draggable({
+							containment: ".main_img",
+							scroll: false,
+							stop: function() {
+								pos_x = $(this).position().left;
+								pos_y = $(this).position().top;
+						        zp[_id] = pos_x + '_' + pos_y;
+							    //处理坐标
+						        console.log("/linshi.aspx?type=edit&suijishu="+_id+"&t=history&leixing=临时作品&yonghuming={fzw:cookie name="user_name" /}&zuobiao="+zp[_id]+"&laiyuanbianhao="+_laiyuanbianhao);
+						        $.ajax({
+						            type: "GET",
+						            url: "/linshi.aspx?type=edit&suijishu="+_id+"&t=history&leixing=临时作品&yonghuming={fzw:cookie name="user_name" /}&zuobiao="+zp[_id]+"&laiyuanbianhao="+_laiyuanbianhao,
+						            success: function (data) {
+					       
+						        }
+							});
+		                        //end
+						      }
+						});
+			    	}
+				
+			    })
+				
+				
+				
+				//更新购物车列表
+			    jiazai1("/single.aspx?m=index-1-3&suijishu="+Math.random());
+			}
+			//---------------插入作品 end--------------------------
+			
+			//---------------为作品列表绑定点击事件-----------------------
+			$(document).on('click','.cp_list_li1 img',function(){
+			    charuZP({src:$(this).data("src"),laiyuanbianhao:$(this).data("id"),id:generateMixed(6)});
+			    //加人气
+			    set_ajax('%7bajax%3atable%3d%22sl_zuopin%22+id%3d%22'+$(this).data("id")+'%22+type%3d%22%2b%22+span_id%3d%22renqi%22+value%3d%22renqi%22%2f%7d');
+			  
+                //
+			});
+			//----------------为作品列表绑定点击事件 end---------------------
+			
+			//-------------为拖曳作品绑定 .on--------------------------
+			$(document).on('click','.main_img .asset',function(){
+				$(this).addClass("on").siblings(".asset").removeClass("on");
+			});
+			//-------------为拖曳作品绑定 .on end-------------------
+			
+			//----------------删除作品-----------------------------
+			$(document).on('click','.main_img .close',function(){
+			    $(this).parent().remove();
+			    var id=$(this).data('id');
+			  
+			    $.ajax({
+			        type: "GET",
+			        url: "/linshi.aspx?type=del&suijishu="+Math.random()+"&t=history&leixing=临时作品&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+id,
+			        success: function (data) {
+			       
+			    }
+			    });
+			jiazai1("/single.aspx?m=index-1-3&suijishu="+Math.random());
+			
+			});
+			//-----------------删除作品 end-----------------------------
+			
+			
+			
+			
+			//---------------------左移-----------------------------
+			$(document).on('click','.control_span.toleft',function(e){
+				e.stopPropagation();
+				var huabu = $(".main_img");
+				//if(huabu.width()>boxWid){
+					var max_x = 0;
+					var min_x = boxWid-huabu.width();
+					if(huabu.position().left-perMovePix<min_x){
+						huabu.css("left",min_x);
+					}else{
+						huabu.css("left",huabu.position().left-perMovePix);
+					}
+				//}
+			});
+			//------------------------右移-------------------
+			$(document).on('click','.toright',function(e){
+				e.stopPropagation();
+				var huabu = $(".main_img");
+				//if(huabu.width()>boxWid){
+					var max_x = 0;
+					var min_x = boxWid-huabu.width();
+					if(huabu.position().left+perMovePix>max_x){
+						huabu.css("left",max_x);
+					}else{
+						huabu.css("left",huabu.position().left+perMovePix);
+					}
+				//}
+			});
+			
+			
+			//--------------------上移--------------------
+			$(document).on('click','.toup',function(e){
+				e.stopPropagation();
+				var huabu = $(".main_img");
+				//if(huabu.height()>boxHei){
+					var bottom_y = boxHei - huabu.height();
+					if(huabu.position().top-perMovePix<bottom_y){
+						huabu.css("top",bottom_y);
+					}else{
+						huabu.css("top",huabu.position().top-perMovePix);
+					}
+				//}
+			});
+			
+			//--------------------下移---------------------
+			$(document).on('click','.todown',function(e){
+				e.stopPropagation();
+				var huabu = $(".main_img");
+				//if(huabu.height()>boxHei){
+					var top_y = 0;
+					if(huabu.position().top+perMovePix>top_y){
+						huabu.css("top",top_y);
+					}else{
+						huabu.css("top",huabu.position().top+perMovePix);
+					}
+				//}
+			});
+			
+			//---------------------放大------------------------
+			$(document).on('click','.enlarge',function(){
+//				var huabu = $(".main_img");
+//				var maxWid = 1000;
+//				var positionArr = new Array();
+//				$(".asset").each(function(){
+//					var i = $(this).attr("id");
+//					var t = $(this).position().top/huabu.height();
+//					var l = $(this).position().left/huabu.width();
+//					positionArr[i]=t+","+l;
+//				});
+//				if(huabu.width()*1.1>=maxWid){
+//					var newHuabuWid = maxWid;
+//					var newHuabuHei = huabu.height()*maxWid/huabu.width();
+//					huabu.width(maxWid);
+//				}else{
+//					var newHuabuWid = huabu.width()*1.1;
+//					var newHuabuHei = huabu.height()*1.1;
+//					huabu.width(newHuabuWid);
+//				}
+//				$(".asset").each(function(){
+//						var j = $(this).attr("id");
+//						$(this).css({"left":positionArr[j].split(",")[1]*newHuabuWid,"top":positionArr[j].split(",")[0]*newHuabuHei});
+//					})
+			});
+			//---------------------查看原图------------------------
+			$(document).on('click','.enlarge',function(){
+				var huabu = $(".main_img");
+				var content = huabu.html();
+				var positionArr = new Array();
+				
+				
+				$(".asset").each(function(){
+					var i = $(this).attr("id");
+					var t = $(this).position().top/huabu.height();
+					var l = $(this).position().left/huabu.width();
+					positionArr[i]=t+","+l;
+				});
+				
+				$("body").append("<div class='main_bg'><div class='main'>"+content+"<span class='del'></span></div></div>");
+				$(".main_bg").height($("body").height());
+				$(".main").width(realWid);
+				$(".main .asset").each(function(){
+						var j = $(this).attr("id");
+						$(this).css({"left":positionArr[j].split(",")[1]*realWid,"top":positionArr[j].split(",")[0]*realWid});
+				});
+				$(document).on("click",".del",function(){
+					$(".main_bg").remove();
+				})
+			});
+			
+			//----------------缩小---------------------
+			$(document).on('click','.narrow',function(){
+				var huabu = $(".main_img");
+				var minWid = boxWid;
+				var positionArr = new Array();
+				$(".asset").each(function(){
+					var i = $(this).attr("id");
+					var t = $(this).position().top/huabu.height();
+					var l = $(this).position().left/huabu.width();
+					positionArr[i]=t+","+l;
+				})
+				if(huabu.width()*0.9<=minWid){
+					var newHuabuWid = minWid;
+					var newHuabuHei = huabu.height()*minWid/huabu.width();
+					huabu.width(minWid);
+					huabu.css("left","0");
+				}else{
+					var newHuabuWid = huabu.width()*0.9;
+					var newHuabuHei = huabu.height()*0.9;
+					huabu.width(newHuabuWid);
+				}
+				$(".asset").each(function(){
+						var j = $(this).attr("id");
+						$(this).css({"left":positionArr[j].split(",")[1]*newHuabuWid,"top":positionArr[j].split(",")[0]*newHuabuHei});
+					})
+			});
+			
+
+        
+        	
+			{if value1="{fzw:url:gouwuchehao/}" value2="" bi="=="}{else}
+			if("{fzw:url:gouwuchehao/}"!="")
+            {
+			    {fzw:sql="select top 1 * from sl_product where id in (select laiyuanbianhao from sl_cart where gouwuchehao='{fzw:url:gouwuchehao/}' and leixing='产品')  order by renqi desc,id desc" id="p1"}
+           
+                    $.ajax({
+                        type: "GET",
+                        url: "/linshi.aspx?type=add&suijishu="+Math.random()+"&t=history&leixing=临时产品&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+{fzw:p1:id/},
+                success: function (data) {
+                    document.getElementById("ver-mid").src = "{fzw:p1:zutu string="zutu"/}";
+                    setSuoFang("{fzw:p1:zutu string="zutu"/}");
+                    jiazai("/search.aspx?m=index-1-2&laiyuanbianhao={fzw:p1:id/}");
+                    jiazai1("/single.aspx?m=index-1-3&suijishu="+Math.random()+""); {/fzw:sql}
+                        {fzw:for:sql="select top 1 gouwuchehao from sl_cart where gouwuchehao='{fzw:url:gouwuchehao/}' and leixing='作品'" id="p1"}
+                        {fzw:for:sql="select * from sl_history where dingdanhao='{fzw:p1:gouwuchehao/}' and leixing='临时作品'" id="p2"}
+                    zuopin_load("{fzw:p2:laiyuanbianhao/}","{fzw:p2:laiyuanbianhao sql="sl_zuopin|where&nbsp;id=&dangqian|yuantu" string="zutu"/}","{fzw:p2:zuobiao/}");
+                    {/fzw:for:sql}
+
+                    }
+                    });{/fzw:for:sql}
+               
+                    }
+                    {/if}
+                    //下面是其它{fzw:url:laiyuanbianhao/}1
+                    {if value1="{fzw:url:laiyuanbianhao/}" value2="" bi="=="}{else}
+            if("{fzw:url:laiyuanbianhao/}"!="")
+            {
+                {fzw:sql="select top 1 * from sl_product where id in ({fzw:url:laiyuanbianhao/}) order by renqi desc,id desc" id="p1"}
+                $.ajax({
+                    type: "GET",
+                    url: "/linshi.aspx?type=add&suijishu="+Math.random()+"&t=history&leixing=临时产品&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+{fzw:p1:id/},
+                    success: function (data) {
+                        document.getElementById("ver-mid").src = "{fzw:p1:zutu string="zutu"/}";
+                       //$("#ver-mid").attr("data-type",'{fzw:p1:zuopinchicun/}');
+                       setSuoFang("{fzw:p1:zutu string="zutu"/}");
+                        //jiazai("/search.aspx?m=index-1-2&laiyuanbianhao={fzw:p1:id/}");
+                       jiazai("/search.aspx?m=index-1-1&id={fzw:url:laiyuanbianhao/}");
+                        zuopin_load1("{fzw:url:id/}");
+                        jiazai1("/single.aspx?m=index-1-3&suijishu="+Math.random()+"");
+
+                    }
+            });
+                        {/fzw:sql}
+                        }
+            else
+            {
+           
+            }
+            {/if}
+
+                        function zuopin_load(id,src,zuobiao)
+                            {
+                           //中间处理部分
+                      
+                                   // asset_id=$.trim(id);
+                                   // asset=$.trim(src);
+                                   // zuobiao = $.trim(zuobiao);
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "/linshi.aspx?type=add&suijishu="+Math.random()+"&t=history&leixing=临时作品&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+$.trim(id),
+                                        success: function (data) {
+                                         
+                                            charuZP({src:$.trim(src),id:$.trim(id),pos_x:$.trim(zuobiao).split("_")[0],pos_y:$.trim(zuobiao).split("_")[1]});
+                                            //alert(asset_id);
+                                        }
+                                });
+                            //中间处理部分end
+
+
+
+                            }
+
+
+            //非订单
+                        function zuopin_load1()
+                        {
+                            {fzw:sql="select top 1 * from sl_zuopin where id={fzw:url:id/} order by renqi desc,id desc" id="p1"}
+                            var asset_id="{fzw:p1:id/}";
+                            var asset="{fzw:p1:yuantu string="zutu"/}";
+                            $.ajax({
+                                type: "GET",
+                                url: "/linshi.aspx?type=add&suijishu="+Math.random()+"&t=history&leixing=临时作品&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+asset_id,
+                                success: function (data) {
+                                	//加作品
+               						charuZP({src:asset,id:asset_id});
+			
+                                }
+                        });
+                        {/fzw:sql}
+                        }
+            //非订单end
+
+            function jiazai(urlstr)
+            {
+                $.ajax({
+                    type: "GET",
+                    url: urlstr,
+                    success: function (data) {
+                        
+                        if(data.indexOf("您搜索的信息不存在")==-1)
+                        {
+                           
+                            $('#neirong').html("");
+                            $('#neirong').html(data);
+                        }
+                       
+
+
+                    }
+                });
+            }
+            function jiazai1(urlstr) {
+                $.ajax({
+                    type: "GET",
+                    url: urlstr,
+                    success: function (data) {
+                        $('#cartlist').html("");
+                        $('#cartlist').html(data);
+
+
+                    }
+                });
+            }
+            jiazai("/search.aspx?m=index-1-1");
+            jiazai1("/single.aspx?m=index-1-3&suijishu="+Math.random());
+            function yudong(id,x_,y_)
+            {
+
+            }
+        </script>
+
+        <script type="text/javascript">
+    //下一页
+    $(document).on('click', '.next_sm', function (e) {
+        e.stopPropagation();
+        var page = 1;
+
+        if ($("#pagesize").html() != "") {
+            page = $("#pagesize").html();
+
+        }
+        page = parseInt(page) + 1;
+     
+        jiazai('/search.aspx?m=index-1-2&leimu='+$("#leimu").html()+'&ordertype='+$("#ordertype").html()+'&orderby='+$("#orderby").html()+'&laiyuanbianhao='+$("#laiyuanbianhao").html()+'&page=' + page);
+
+
+    });
+    //上一页
+    $(document).on('click', '.prev_sm', function () {
+        var page = 1;
+        if ($("#pagesize").html() != "") {
+            page = $("#pagesize").html();
+        }
+        if (parseInt(page) - 1 > 0) {
+            page = parseInt(page) - 1;
+        }
+    
+        jiazai('/search.aspx?m=index-1-2&leimu='+$("#leimu").html()+'&ordertype='+$("#ordertype").html()+'&orderby='+$("#orderby").html()+'&laiyuanbianhao='+$("#laiyuanbianhao").html()+'&page=' + page);
+
+    });
+
+
+    //下一页
+    $(document).on('click', '.next_sm1', function () {
+        var page=1;
+        if($("#pagesize").html()!="")
+        {
+            page=$("#pagesize").html();
+        }
+        page=parseInt(page)+1;
+        if(GetQueryString("id")!=null)
+        {
+				      
+            jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype={fzw:url:ordertype/}&orderby={fzw:url:orderby/}&page='+page
++'&id='+GetQueryString("id"));
+        }
+        else
+        { 
+            jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype={fzw:url:ordertype/}&orderby={fzw:url:orderby/}&page='+page
++'');
+        }
+				    
+    });	
+    //上一页
+    $(document).on('click', '.prev_sm1', function () {
+        var page=1;
+        if($("#pagesize").html()!="")
+        {
+            page=$("#pagesize").html();
+        }
+        if(parseInt(page)-1>0)
+        {
+            page=parseInt(page)-1;
+        }
+				    
+        if(GetQueryString("id")!=null)
+        {
+				      
+            jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype={fzw:url:ordertype/}&orderby={fzw:url:orderby/}&page='+page
++'&id='+GetQueryString("id"));
+        }
+        else
+        { 
+            jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype={fzw:url:ordertype/}&orderby={fzw:url:orderby/}&page='+page
++'');
+        }
+				    
+    });	
+
+    var chars = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+
+    function generateMixed(n) {
+        var res = "";
+        for(var i = 0; i < n ; i ++) {
+            var id = Math.ceil(Math.random()*35);
+            res += chars[id];
+        }
+        return res;
+    }
+    
+        </script>
+	</body>
+
+</html>

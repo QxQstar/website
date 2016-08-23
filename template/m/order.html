@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="gb2312" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/template/m/css2/order.css">
+    <link rel="stylesheet" type="text/css" href="layer/skin/layer.css"/>
+    <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+    <script src="layer/layer.js" type="text/javascript"></script>
+    <script src="js/common.js" type="text/javascript"></script>
+    <script src="js/home.js" type="text/javascript"></script>
+    <title>提交订单_{fzw:key:sitename/}</title>
+    {if value1="{fzw:cookie name="user_name" /}" value2="" bi="=="}
+    <script type="text/javascript">
+        window.location.href = "/?login.html";
+        window.event.returnValue = false;
+    </script>
+    {else}
+    {/if}
+
+    <script type="text/javascript">
+        function ordercha()
+        {
+            $.ajax({
+                type: 'get',
+                url: '/single.aspx?m=ordercha&id=' + Math.random(),
+                success: function (data) {
+                    //  alert(data);
+                    if (parseInt(data) == 0) {
+                        window.location.href = "/";
+                        window.event.returnValue = false;
+                    }
+                }
+            })
+        }
+        var timer = setInterval("ordercha()", 10000);
+        ordercha();
+    </script>
+
+</head>
+
+<body class="body_bg">
+{fzw:inside src="头部.html"/}
+<form action="/pay/order.aspx?type=order&table1=add&table2=cart&tipurl=/single.aspx?m=orderpay&tip_string=下单成功，正在返回订单列表" method="post" id="from">
+    <div class="warp">
+        <div class="h3">
+            <a href="#" class="sub fr" id="add_address">新增地址</a> 选择地址
+        </div>
+        <div class="news_add" id="news_add" style=" background-color: #fff; padding: 20px; display:none"> </div>
+        <div class="add_list">
+            {fzw:sql="select * from sl_add where yonghuming='{fzw:cookie name="user_name" /}' order by id desc" id="p1"}
+            <div class="item">
+                <div class="nameTel clearFloat">
+                    <span class="sjName">
+                        {fzw:p1:shoujianrenxingming/}
+                    </span>
+                    <span class="sjTel">
+                        {fzw:p1:shoujihaoma/}
+                    </span>
+                </div>
+                <div class="detail">
+                    {fzw:p1:suozaidiqu /}{fzw:p1:jiedaodizhi/}
+                </div>
+                <div class="opera clearFloat">
+                    <div class="leftOpera">
+                        {if value1="{fzw:p1:moren/}" value2="是" bi="=="}
+                        <input type="radio" class="outline" name="morendizhi" data-id="{fzw:p1:id/}" checked="checked"/>设为默认地址
+                        {else}
+                        <input type="radio" class="outline" name="morendizhi" data-id="{fzw:p1:id/}"/>设为默认地址
+                        {/if}
+                    </div>
+                    <div class="rightOpera">
+                        <a href="#" class="txt_blue" data-id="{fzw:p1:id/}" data-type="edit">编辑</a>&nbsp;&nbsp;
+                        <a href="#" class="txt_blue" data-id="{fzw:p1:id/}" data-type="del">删除</a>&nbsp;&nbsp;
+                    </div>
+                </div>
+            </div>
+            {/fzw:sql}
+        </div>
+        <script type="text/javascript">
+            //设置默认地址
+            function set_address(id)
+            {
+                $.ajax({
+                    type: 'get',
+                    url: 'Execution.aspx?t=add&type=diy_edit&field=moren&moren=否',
+                    success: function (data) {
+                        //处理
+                        console.log('Execution.aspx?t=add&type=diy_edit&field=moren&moren=是&id='+id);
+                        $.ajax({
+                            type: 'get',
+                            url: 'Execution.aspx?t=add&type=diy_edit&field=moren&moren=是&id='+id,
+                            success: function (data) {
+                                layer.msg("设默认地址成功");
+                            }
+                        })
+
+                    }
+                })
+
+
+            }
+            $('.outline').click(function (){
+                set_address($(this).data('id'));
+            })
+
+        </script>
+        <div class="h3">
+            确认订单消息
+        </div>
+        <div class="goodsList">
+            {fzw:sql="select * from sl_cart where yonghuming='{fzw:cookie name="user_name" /}' and (dingdanbianhao is null or dingdanbianhao ='') order by id desc" id="p1"}
+            <div class="item clearFloat">
+                <div class="leftSection">
+                    {if value1="{fzw:p1:leixing/}" value2="产品" bi="=="}
+                    <a href="/page.aspx?id={fzw:p1:laiyuanbianhao/}&classid={fzw:p1:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|classid"/}">
+                    <img src="{fzw:p1:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|suoluetu" string="zutu"/}" width="60" height="60" class="fl" />
+                    <p>{fzw:p1:biaoti/}</p>
+                    </a>
+                    {else}
+                    <a href="/single.aspx?m=zuopinshow&id={fzw:p1:laiyuanbianhao/}">
+                        <img src="{fzw:p1:laiyuanbianhao sql="sl_zuopin|where&nbsp;id=&dangqian|suoluetu" string="zutu"/}" width="60" height="60" class="fl" />
+                        <p>{fzw:p1:biaoti/}</p>
+                    </a>
+                    {/if}
+                </div>
+                <div class="rightSection">
+                    <div class="unitCost">
+                        单价（元）：{fzw:p1:danjia string="￥"/}
+                    </div>
+                    <div class="num">
+                        数量：{fzw:p1:shuliang/}
+                    </div>
+                    <div class="xiaoji">
+                        小计（元）：{fzw:p1:xiaoji string="￥"/}
+                    </div>
+                </div>
+            </div>
+            {/fzw:sql}
+        </div>
+        <div class="remark">
+            <div class="heji">
+                商品合计：<span class="txt_red">￥{fzw:sql="select sum(xiaoji) as s_count from sl_cart where yonghuming='{fzw:cookie name="user_name" /}' and (dingdanbianhao is null or dingdanbianhao ='')" id="p1"}{fzw:p1:s_count  string="￥"/}{/fzw:sql}</span>
+            </div>
+            <div class="pad_t_10">
+                补充说明：
+                <input type="text" class="input" placeholder="对商家留言..." id="beizhu" name="beizhu" />
+            </div>
+        </div>
+        <br />
+        <p class="right">
+            <span id="tips1"></span>
+            <span id="tips2">
+                <span class="yf">应付金额：</span>
+                <span class="price txt_red" id="jine1">{fzw:sql="select sum(xiaoji) as s_count from sl_cart where yonghuming='{fzw:cookie name="user_name" /}' and (dingdanbianhao is null or dingdanbianhao ='')" id="p1"}￥{fzw:p1:s_count  string="￥"/}</span>
+            </span>&nbsp;&nbsp;&nbsp;
+            <input type="submit" class="btn btn_black" id="tjOrder" value="提交订单" onclick="return order()" />
+            <input type="button" class="btn btn_black" style=" display:none" id="tjOrder_" value="正在提交中..." />
+            <input type="hidden" name="jine" id="jine" value="{fzw:p1:s_count /}" />{/fzw:sql}
+            <input type="hidden" name="dingdanhao" id="dingdanhao" value="{fzw:key:bianhao/}" />
+            <input type="hidden" name="zhuangtai" id="zhuangtai" value="未付款" />
+            <input type="hidden" name="zhifufangshi" id="zhifufangshi" value="银行转帐" />
+            <input type="hidden" name="yonghuming" id="yonghuming" value="{fzw:cookie name=" user_name" /}" />
+        </p>
+    </div>
+</form>
+<script src="js/order.js" type="text/javascript"></script>
+{fzw:inside src="底部.html"/}
+</body>
+
+</html>

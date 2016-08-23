@@ -1,0 +1,53 @@
+a{
+    outline: none;
+}
+a:focus{
+    outline: none;
+}
+header nav{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #272727;
+}
+header nav .myNav{
+    width: 95%;
+    margin: 0 auto;
+    height: 100%;
+}
+.myNav .logo{
+    float: left;
+}
+.myNav .logo img{
+    height: 50px;
+}
+.myNav .userOp{
+    float: right;
+}
+.myNav .userOp li{
+    display: inline;
+    line-height: 50px;
+
+}
+.myNav .userOp li a{
+    display: inline-block;
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+    padding-left: 18px;
+}
+.myNav .userOp .denglu a{
+    background: url(../img/denglu.png) 0 17px no-repeat;
+    background-size: 16px;
+    margin-right: 10px;
+}
+.myNav .userOp .zhuce a{
+    background: url(../img/zhuce.png) 0 17px no-repeat;
+    background-size: 16px;
+}
+.myNav .userOp .gouwu a{
+    background: url(../images/resizeApi.png) 0 20px no-repeat;
+    background-size: 16px;
+}

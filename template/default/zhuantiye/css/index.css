@@ -1,0 +1,376 @@
+#mscPlr{
+    z-index: 99;
+    width: 142px;
+    height: 142px;
+    background: url(../images/sshizhen.png) no-repeat;
+    position: absolute;
+    right: 10%;
+    top: 70px;
+
+}
+#mscPl{
+    z-index: 999;
+    width: 142px;
+    height: 142px;
+    background: url(../images/sfenzhen.png) no-repeat;
+    position: absolute;
+    right: 10%;
+    top: 70px;
+
+}
+#biaopan{
+    z-index: 9;
+    width: 142px;
+    height: 142px;
+    background: url(../images/sbiaopan.png) no-repeat;
+    position: absolute;
+    right: 10%;
+    top: 70px;
+}
+#gaizi{
+    z-index: 9;
+    width: 269px;
+    height: 269px;
+    background: url(../images/sgai.png) no-repeat;
+    position: absolute;
+    left: 9.3%;
+    top: 32%;
+}
+#beizi{
+    z-index: 9;
+    width: 140px;
+    height: 292px;
+    background: url(../images/sbei.png) no-repeat;
+    position: absolute;
+    left: 10%;
+    top: 50%;
+}
+#wenzi{
+    position: absolute;
+    left: 35%;
+    top: 25%;
+}
+#yanwu{
+    position: absolute;
+    left: 11%;
+    top: 30%;
+}
+@-webkit-keyframes rCD {
+    from {
+        -webkit-transfrom: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes CD {
+    from {
+        -webkit-transfrom: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(260deg);
+    }
+}
+.rot{
+    -webkit-animation:CD 4s infinite linear;
+}
+.rotateCD{
+    -webkit-animation:rCD 6s infinite linear;
+}
+.rotate{
+    -webkit-animation:rCD 0.1s infinite linear;
+}
+.rt{
+    -webkit-animation-play-state:runing;
+}
+.stRt{
+    -webkit-animation-play-state:paused;
+}
+#zero{
+    position: relative;
+}
+#guanbi{
+    position: absolute;
+    right: 0;
+}
+#one{
+    height: 560px;
+    position: relative;
+}
+#nav{
+    border-top:3px solid #245269;
+    border-bottom:3px solid #245269;
+    background-color: rgba(62,69,69,1);
+    height: 350px;
+}
+@media (min-width: 992px) {
+    #jijian p{
+        position: absolute;
+        left: 45%;
+        top: 82%;
+        font-family: hello;
+        color: #ffffff;
+    }
+    #titie p{
+        position: absolute;
+        left: 39%;
+        top: 82%;
+        font-family: hello;
+        color: #ffffff;
+    }
+    #yundong p{
+        position: absolute;
+        left: 43%;
+        top: 85%;
+        font-family: hello;
+        color: #ffffff;
+    }
+    .righter{
+        margin-left: 18%;
+        margin-top: 20px;
+    }
+}
+#jijian p{
+    position: absolute;
+    left: 43%;
+    top: 82%;
+    font-family: hello;
+    color: #ffffff;
+}
+#titie p{
+    position: absolute;
+    left: 43%;
+    top: 82%;
+    font-family: hello;
+    color: #ffffff;
+}
+#yundong p{
+    position: absolute;
+    left: 43%;
+    top: 85%;
+    font-family: hello;
+    color: #ffffff;
+}
+@font-face
+{
+    font-family: hello;
+    src: url('../fonts/glyphicons-halflings-regular.ttf');/* IE9+ */
+}
+.none{
+    display: none;
+}
+#yundong{
+    text-align: center;
+    padding-top: 50px;
+    height: 347px;
+}
+#titie{
+    text-align: center;
+    padding-top: 123px;
+    border-right: 3px solid #245269;
+    height: 347px;
+}
+#jijian{
+    text-align: center;
+    padding-top: 143px;
+    border-right: 3px solid #245269;
+    height: 347px;
+}
+#xiao9b{
+    position: absolute;
+    left: 40%;
+    top: 32%;
+}
+#xiao9{
+    position: absolute;
+    left: 40%;
+    top: 32%;
+}
+#nasib{
+    position: absolute;
+    left: 39%;
+    top: 25%;
+}
+#nasi{
+    position: absolute;
+    left: 39%;
+    top: 25%;
+}
+#chunseb{
+    position: absolute;
+    left: 43%;
+    top: 5%;
+}
+#chunse{
+    position: absolute;
+    left: 43%;
+    top: 5%;
+}
+#two{
+    margin-top: 20px;
+    position: relative;
+    height: 700px;
+    background-color: rgba(215,211,200,1);
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+}
+#twopl{
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    font-weight: bold;
+    font-family: hello;
+    font-size: 58px;
+}
+#beizi2{
+    position: absolute;
+    right: 0;
+}
+#three{
+    position: relative;
+    background-color: rgba(77,78,83,1);
+    height: 720px;
+}
+#three .yuan{
+    width: 180px;
+    height: 180px;
+    border-radius: 120px;
+}
+#onec{
+    z-index: 99;
+    background-color: rgba(204,45,52,0.5);
+    position: absolute;
+    top: 20%;
+    left: 10%;
+}
+#twoc{
+    z-index: 98;
+    background-color: rgba(121,122,121,0.5);
+    position: absolute;
+    top: 20%;
+    left: 18%;
+}
+#threec{
+    z-index: 100;
+    background-color: rgba(53,52,48,0.5);
+    position: absolute;
+    top: 40%;
+    left: 7%;
+}
+#fourc{
+    z-index: 101;
+    background-color: rgba(237,237,235,0.5);
+    position: absolute;
+    top: 40%;
+    left: 15%;
+}
+#zhanshi{
+    position: absolute;
+    top: 7%;
+    left: 70%;
+    height: 200px;
+}
+#fonts{
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    font-weight: bold;
+    font-family: hello;
+    font-size: 28px;
+}
+#fonts p{
+    padding-top: 10px;
+}
+#four{
+    background-color: rgba(17,28,36,1);
+    position: relative;
+    height: 700px;
+}
+#four img{
+    position: absolute;
+    left: 30%;
+}
+#four div{
+    position: absolute;
+    top: 30%;
+    left: 10%;
+}
+.title{
+    font-weight: bold;
+    font-family: hello;
+    font-size: 38px;
+    color: #ffffff;
+}
+#five{
+    position: relative;
+    height: 800px;
+    background: url("../images/YIZI.png") no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+}
+#five p{
+    color: #ffffff;
+    font-size: 18px;
+}
+.wi{
+    width: 60%;
+    height: auto;
+    display: block;
+}
+#six{
+    background-color: rgba(162,165,164,1);
+    position: relative;
+    height: 700px;
+}
+#six p{
+    margin-top: 130px;
+}
+#six .righter{
+    margin-top: 20px; margin-left: 13%;
+}
+#seven{
+    position: relative;
+    height: 800px;
+    background:url("../images/taihua.png") no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+}
+#eight{
+    background-color: rgba(215,211,200,1);
+    position: relative;
+    height: 1000px;
+}
+#nine{
+    position: relative;
+    height: 1000px;
+    background: url("../images/ninebg.png") no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+}
+#ten{
+    position: relative;
+    height: 900px;
+    background: url("../images/tenbg.png") no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+}
+#shiyi{
+    background-color: rgba(126,105,109,1);
+    position: relative;
+    height: 800px;
+}
+#bwp{
+    position: absolute;
+    right: 0;
+}
+#bwpg{
+    position: absolute;
+    left: 0;
+}
+#shier{
+    position: relative;
+    height: 1000px;
+    background: url("../images/qjfbg.png");
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+}

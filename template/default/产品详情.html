@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+		<title></title>
+	</head>
+
+	<body class="body_bg">
+        <div class="header">
+            <div class="header_inner">
+                <a href="#" class="header_icon_user fr">个人中心</a>
+                <a href="#" class="header_icon_user fr">购物车</a>
+                <div class="h_search fr">
+                    <input type="text" class="search_input" placeholder="输入关键字" />
+                    <a href="#" class="search_btn">&nbsp;</a>
+                </div>
+                <div class="nav fr" style=" position:relative;right:100px">
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/Single.aspx?m=product">创意盒子</a></li>
+                        <li><a href="/Single.aspx?m=kankan">用户看看</a></li>
+                        <!--<li><a href="/">积分商城</a></li>-->
+                        <li><a href="/Single.aspx?m=help">服务支持</a></li>
+
+                    </ul>
+                </div>
+                <a href="#"><img src="images/logo.png" /></a>
+            </div>
+        </div>
+		<div class="w_1300 pad_20_0">
+			<div class="w_1005 fl white_bg  cp_container">
+				<div class="cp_h">
+					<p class="title">38 毫米银色铝金属表壳搭配白色运动型表带</p>
+					<div class="cp_h_item">
+						<ul>
+							<li class="on"><a href="javascript:;">产品</a></li>
+							<li><a href="javascript:;">评测</a></li>
+							<li><a href="javascript:;">讨论</a></li>
+							<li><a href="javascript:;">清单</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--产品-->
+				<div class="cp_content">
+					<!--滚动图-->
+					<div class="cp_slide">
+						<div class="big_img">
+							<div class="bd">
+								<ul>
+									<li><img src="images/goods_img8.jpg" width="790" height="422" /></li>
+									<li><img src="images/goods_img8.jpg" width="790" height="422" /></li>
+									<li><img src="images/goods_img8.jpg" width="790" height="422" /></li>
+									<li><img src="images/goods_img8.jpg" width="790" height="422" /></li>
+									<li><img src="images/goods_img8.jpg" width="790" height="422" /></li>
+									<li><img src="images/goods_img8.jpg" width="790" height="422" /></li>
+								</ul>
+							</div>
+							<a href="javascript:;" class="bigimg_prev"></a>
+							<a href="javascript:;" class="bigimg_next"></a>
+						</div>
+						<div class="sm_img">
+						    <div class="bd">
+						        <ul>
+						        	<li><img src="images/goods_img8.jpg" width="90" height="55"/></li>
+						        	<li><img src="images/goods_img8.jpg" width="90" height="55"/></li>
+						        	<li><img src="images/goods_img8.jpg" width="90" height="55"/></li>
+						        	<li><img src="images/goods_img8.jpg" width="90" height="55"/></li>
+						        	<li><img src="images/goods_img8.jpg" width="90" height="55"/></li>
+						        	<li><img src="images/goods_img8.jpg" width="90" height="55"/></li>
+						        </ul>
+						    </div>
+						    <a href="javascript:;" class="smimg_prev"></a>
+							<a href="javascript:;" class="smimg_next"></a>
+						</div>
+					</div>
+					<script type="text/javascript">
+						jQuery(".big_img").slide({mainCell:".bd ul",prevCell:".bigimg_prev",nextCell:".bigimg_next"});
+						jQuery(".sm_img").slide({mainCell:".bd ul",prevCell:".smimg_prev",nextCell:".smimg_next",vis:4,effect:"left",autoPage:true,pnLoop:false});
+						jQuery(".cp_slide").slide({mainCell:".big_img ul",titCell:".sm_img ul li"});
+					</script>
+					
+					<div class="center">
+					    <img src="images/goods_img9.jpg"/>
+					</div>
+				</div>
+				<!--评测-->
+				<div class="cp_content">
+					<p class="cp_pc_h">评测</p>
+					<textarea class="pc_textarea" placeholder="请在这儿写一写你对商品的评测！"></textarea>
+					<p class="right pad_20_0">
+						<input type="submit" value="评测" class="btn btn_black"/>
+					</p>
+				</div>
+				<!--讨论-->
+				<div class="cp_content">
+					
+				</div>
+				<!--清单-->
+				<div class="cp_content">
+					
+				</div>
+			</div>
+			<script type="text/javascript">
+				jQuery(".cp_container").slide({targetCell:".cp_content",titCell:".cp_h_item li",trigger:"click"});
+			</script>
+			
+			<!--右边-->
+			<div class="w_280 fr">
+				<table class="cp_caozuo">
+					<tr>
+						<td>
+							<a href="#">
+							<img src="images/icon_buy.png"/><br />
+							购买
+							</a>
+						</td>
+						<td>
+							<a href="#">
+							<img src="images/icon_cart.png"/><br />
+							加入购物车
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="#">
+							<img src="images/icon_heart.png"/><br />
+							想要
+							</a>
+						</td>
+						<td>
+							<a href="#">
+							<img src="images/icon_share.png"/><br />
+							分享
+							</a>
+						</td>
+					</tr>
+				</table>
+				<p class="white_bg center lh_30 pad_10 ft_14"><a href="#">选择喜欢的图案 >> </a></p>
+				<div class="white_bg pad_10 mar_t_10">
+				    <div class="item">
+				        <a href="#">
+				        	<img src="images/goods_img10.jpg" width="100%" height="258" class="ver-mid"/>
+				        	<div class="trans">
+				        	    <p class="pad_10">
+				        	    	<span class="fr">￥52.0</span>
+				        	    	金属插花瓶
+				        	    </p>
+				        	</div>
+				        </a>
+				    </div>
+				    <div class="item">
+				        <a href="#">
+				        	<img src="images/goods_img10.jpg" width="100%" height="258" class="ver-mid"/>
+				        	<div class="trans">
+				        	    <p class="pad_10">
+				        	    	<span class="fr">￥52.0</span>
+				        	    	金属插花瓶
+				        	    </p>
+				        	</div>
+				        </a>
+				    </div>
+				</div>
+			</div>
+			<p class="clear"></p>
+		</div>
+
+		<div class="footer">
+			Copyright &copy; 2015 baidu.com All Rights Reserved　版权所有·魅拓线上售卖　蜀ICP备14012994号-1 客服电话：400-123-4567
+			<br /> 邮箱：meituo@163.com 技术支持：成都思乐科技 站长统计
+		</div>
+	</body>
+
+</html>

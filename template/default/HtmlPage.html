@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>商城首页_{fzw:key:sitename/}</title>
+    <meta charset="gb2312">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <link rel="stylesheet" type="text/css" href="css/com.css" />
+    <link rel="stylesheet" type="text/css" href="cont/demo.css" />
+    <link rel="stylesheet" type="text/css" href="cont/iconfont.css" />
+    <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/TouchSlide.1.1.source.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body class="bg1">
+    <div class="head">
+        <a href="/" class="back">&#xe601;</a>
+        {if value1="{fzw:cookie name="user_name" /}" value2="" bi="=="}<a href="/?login.html" class="sou">&#xe60e;</a>{else}<a href="/Single.aspx?m=userindex" class="sou">&#xe60e;</a>{/if}
+        <p class="head_tit">商城首页</p>
+    </div>
+    <!--nav-->
+    <div id="cnav" class="cnav clearFix">
+        <div class="hd" style="display: none;">
+            <ul></ul>
+        </div>
+        <div class="bd lf" style="width: 92%;">
+            <ul class="cnav_ul clearFix">
+                <li class="on">
+                    <div class="cnav_A">
+                        <div class="cnav_B">
+                            <a href="/Single.aspx?m=product_type&prope=新品上市" class="cnav_A1">NEW</a>
+                            <a href="/Single.aspx?m=product_type&prope=新品上市" class="cnav_A2">新品</a>
+                        </div>
+                    </div>
+                </li>
+
+                {fzw:sql="select * from sl_sort where sort_id=72 order by paixu desc,id asc" id="p1"}
+                <li>
+                    <div class="cnav_A">
+                        <div class="cnav_B">
+                            <a href="/list.aspx?id={fzw:p1:id/}&Model_id={fzw:p1:Model_id/}" class="cnav_A1">{fzw:p1:u4/}</a>
+                            <a href="/list.aspx?id={fzw:p1:id/}&Model_id={fzw:p1:Model_id/}" class="cnav_A2">{fzw:p1:u1/}</a>
+                        </div>
+
+                    </div>
+                </li>
+                {/fzw:sql}
+            </ul>
+        </div>
+        <a class="prev"></a>
+        <a class="next">&#xe600;</a>
+    </div>
+    <!--banner-->
+    <div id="slideBox" class="slideBox marb_5">
+        <div class="bd">
+            <ul>
+                {fzw:sql="select * from sl_banner where classid=107 order by paixu desc,id asc" id="p1"}
+                <li>
+                    <a href="{fzw:p1:u2 /}"><img src="{fzw:p1:u3 /}" /></a>
+                </li>
+                {/fzw:sql}
+            </ul>
+        </div>
+        <div class="hd">
+            <ul></ul>
+        </div>
+    </div>
+    <!--pic-->
+    <div class="w96">
+        {fzw:sql="select * from sl_banner where classid=110 order by paixu desc,id asc" id="p1"}
+        <a href="{fzw:p1:u2 /}" class="sc_pic marb_12"><img src="{fzw:p1:u3 /}" /></a>
+        {/fzw:sql}
+    </div>
+    <script type="text/javascript">
+			TouchSlide({
+				slideCell:"#slideBox",
+				titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+				mainCell:".bd ul",
+				effect:"leftLoop",
+				autoPage:true,//自动分页
+				autoPlay:true //自动播放
+			});
+			jQuery("#cnav .bd .cnav_ul li").each(function(i){ jQuery("#cnav .bd .cnav_ul li").slice(i*4,i*4+4).wrapAll("<ul></ul>");});
+			TouchSlide({
+				slideCell:"#cnav",
+				titCell:".hd ul",
+				mainCell:".bd ul",
+				autoPage:true,
+				effect:"left",
+				autoPlay:false,
+				vis:4,
+			});
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+@media screen and (max-width:799px){
+    #img{
+        width: 94%;
+    }
+    #section1{
+        width: 500px;
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        margin-left: -230px;
+    }
+	.fixedImg,.page3Img,.page4Img,.page5Img{
+	position: fixed;left:20%; top:35%; 
+	}
+	.fixedImg img,.page3Img img{
+	width: 57px;
+	}
+	.page4Img img,.page5Img img{
+	  width: 77px;
+	}
+	.description{
+		position:absolute; left: 45%; top:35%; width:200px; font-size: 10px; font-family:  myFont
+	}
+	.description img{
+		width: 100px; margin-top:10px;margin-left: 0;
+	}
+	.description h1{
+		 width: 150px;
+		font-weight: bold; font-size: 15px;
+	}
+	.description p{
+		width: 150px; margin-top: 0px; line-height: 13px; font-size:10px;
+	}
+	/*.pic11 img{width: 30px;}*/
+	/*.pic12 img{width: 450px;}*/
+	/*.pic21 img{width: 100px;}*/
+	/*.pic22 img{width: 80px;}*/
+	/*.pic23 img{width: 80px;}*/
+	/*.pic31 img{width: 150px;}*/
+	/*.pic32 img{width: 400px;}*/
+	/*.pic41 img{width: 300px;}*/
+	/*.pic42 img{width: 50px;}*/
+	/*.pic51 img{width: 400px;}*/
+    .pic11,.pic12,.pic21,.pic22,.pic23,.pic31,.pic32,.pic41,.pic42,.pic51{
+        display: none;
+    }
+    .borderStyle{
+        display: inline-block;
+        margin-top: 10px;
+        width: 100px;
+        height: 35px;
+        text-decoration:none;
+        color:#504F4F;
+        font:bold 14px '宋体';
+        text-align:center;
+        line-height:35px;
+        letter-spacing:3px;
+        border-radius:7px;
+        background:rgba(255,255,255,0.3);
+    }
+}

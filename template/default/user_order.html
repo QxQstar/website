@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>我的订单_{fzw:key:sitename/}</title>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+		
+		<div class="w_1200 pad_20_0">
+            {fzw:inside src="user_left.html"/}
+		    <div class="u_right">
+		       <h1 class="u_pagetop">我的订单</h1>
+		       <br />
+		       <div class="slide">
+		       <ul class="u_tab">
+             {if value1="{fzw:url:zhuangtai/}" value2="" bi="=="}
+		       	<li class="on"><a href="/search.aspx?m=user_order">交易订单</a></li>
+		       	<li><a href="/search.aspx?m=user_order&zhuangtai=未付款">未付款</a></li>
+		       	<li><a href="/search.aspx?m=user_order&zhuangtai=订单完成">已购买</a></li>
+                   <script type="text/javascript">document.getElementById("user_left_1").className = "on";</script>
+                   {else}{/if}
+             {if value1="{fzw:url:zhuangtai/}" value2="未付款" bi="=="}
+             <li><a href="/search.aspx?m=user_order">交易订单</a></li>
+             <li class="on"><a href="/search.aspx?m=user_order&zhuangtai=未付款">未付款</a></li>
+             <li><a href="/search.aspx?m=user_order&zhuangtai=订单完成">已购买</a></li>
+             <script type="text/javascript">document.getElementById("user_left_1").className = "on";</script>
+             {else}{/if}
+             {if value1="{fzw:url:zhuangtai/}" value2="订单完成" bi="=="}
+             <li><a href="/search.aspx?m=user_order">交易订单</a></li>
+             <li><a href="/search.aspx?m=user_order&zhuangtai=未付款">未付款</a></li>
+             <li class="on"><a href="/search.aspx?m=user_order&zhuangtai=订单完成">已购买</a></li>
+             <script type="text/javascript">document.getElementById("user_left_2").className = "on";</script>
+             {else}{/if}
+		       </ul>
+		       <!--交易订单-->
+		       <table class="u_table1 mar_t_10">
+		       	<tr>
+		       		<th width="18%" style="text-align: left;">订单号</th>
+		       		<th width="30%">订单商品</th>
+		       		<th width="15%">订单金额</th>
+		       		<th width="12%">下单时间</th>
+		       		<th width="10%">订单状态</th>
+		       		<th width="15%">操作</th>
+		       	</tr>
+             {fzw:search table="sl_order" sqlvalue="yonghuming='{fzw:cookie name="user_name" /}'" number="15" order="dtime" orderby="desc" id="p1"}
+		       	<tr>
+		       		<td style="text-align: left;"><a href="/single.aspx?m=user_order_show&dingdanhao={fzw:p1:dingdanhao /}&tablename=order">{fzw:p1:dingdanhao/}</a></td>
+		       		<td>
+		       			 {fzw:sql="select * from sl_cart where  yonghuming='{fzw:cookie name="user_name" /}' and dingdanbianhao='{fzw:p1:dingdanhao /}' order by id desc" id="p2"}
+                     <div class="o_hidden left">
+                        
+                         {if value1="{fzw:p2:gouwuchehao/}" value2="" bi="=="}
+                         <div>
+        <a href="/page.aspx?id={fzw:p2:laiyuanbianhao/}&classid=1">
+            <img src="{fzw:p2:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|suoluetu"/}" width="60" height="60" class="fl" />
+            <p>{fzw:p2:biaoti/}</p>
+        </a>
+    </div>
+
+
+                         {else}
+                         <div>
+                             <a href="/Single.aspx?m=index-1&gouwuchehao={fzw:p2:gouwuchehao/}">
+                                 <img src="{fzw:p2:laiyuanbianhao sql="sl_zuopin|where&nbsp;id=&dangqian|suoluetu"/}" onerror="this.src='{fzw:p2:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|suoluetu"/}'" width="60" height="60" class="fl" />
+                                 <p style="margin-left: 70px;">{fzw:p2:biaoti/}</p>
+                             </a>
+                         </div>
+
+                         {/if}
+		       			</div>
+		       			{/fzw:sql}
+		       		</td>
+                 <td>￥{fzw:p1:jine  string="￥"/}<br />{fzw:p1:zhifufangshi /}</td>
+                 <td>
+                     {fzw:p1:dtime datetime="yyyy-MM-dd" /}<br />{fzw:p1:dtime datetime="hh:mm:ss" /}
+                 </td>
+                 <td>{fzw:p1:zhuangtai /}</td>
+                 <td>
+                     {if value1="{fzw:p1:zhuangtai /}" value2="未付款" bi="=="}<a href="/single.aspx?m=orderpay&dingdanhao={fzw:p1:dingdanhao /}" class="txt_blue" style="margin-top:0px;">付款</a>&nbsp;|&nbsp;<a href="/pay/orderok.aspx?type=cancel&tablename=order&id={fzw:p1:id /}" onclick="return confirm('您确认将该订单取消？');" class="txt_blue" style="margin-top:0px;">取消订单</a>{else}{/if}
+                     {if value1="{fzw:p1:zhuangtai /}" value2="已付款" bi="=="}<a class="txt_blue" style="margin-top:0px;">等待发货</a>{else}{/if}{if value1="{fzw:p1:zhuangtai /}" value2="已发货" bi="=="}<a onclick="return confirm('您确认该您已收到货？');" href="/pay/orderok.aspx?type=shouhuo&tablename=order&id={fzw:p1:id /}" class="txt_blue" style="margin-top:0px;">确认收货</a>{else}{/if}{if value1="{fzw:p1:zhuangtai /}" value2="送单完成" bi="=="}<a class="txt_blue" style="margin-top:0px;">交易成功</a>{else}{/if}
+                 </td>
+		       	</tr>
+             {/fzw:search}
+		       </table>
+		   		
+		   	
+		   		</div>
+                <div class="page">
+                    {fzw:search:page id="p1" size="8"/}
+                </div>
+		    </div>
+		</div>
+		
+        {fzw:inside src="底部.html"/}
+	</body>
+
+</html>

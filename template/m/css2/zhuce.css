@@ -1,0 +1,32 @@
+.body_bg .w_1300{
+    width: auto;
+}
+.owner .reg{
+    width: auto;
+    float: none;
+}
+.owner .is_form{
+    padding: 20px 0;
+}
+.owner .reg_table{
+    width: 95%;
+    margin: 0px auto;
+}
+.owner .reg_table th{
+    width: 30%;
+    padding: 8px 0;
+}
+.owner .reg_table td{
+    width: 70%;
+    padding: 8px 0;
+}
+.owner .reg_table .input{
+    width: 90%;
+}
+.owner .btn-success{
+    background: #e0dfdd;
+    padding:0 8px;
+}
+.owner .tologIn{
+    margin-left: 3px;
+}

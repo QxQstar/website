@@ -1,0 +1,142 @@
+<!--产品列表-->
+<!--<div class="cp_type">
+    <ul class="cp_type_h">
+    
+        {fzw:sql="select * from sl_Parameter where classid=206 order by u3 desc,id asc" id="p1"}
+        {if value1="{fzw:p1:id/}" value2="{fzw:url:fenlei/}" bi="=="}
+        <li class="on"><a href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:p1:id/}')">{fzw:p1:u1/}</a></li>
+        {else}
+        <li><a href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:p1:id/}')">{fzw:p1:u1/}</a></li>
+        {/if}
+        {/fzw:sql}
+        
+    </ul>
+    <div class="cp_type_content">
+        <table class="cp_type_table">
+            <tr>
+                <th width="60">风格：</th>
+                <td>
+                    {fzw:sql="select * from sl_Parameter where classid=226 order by id asc" id="p1"}
+                    {if value1="{fzw:p1:u1/}" value2="{fzw:url:fengge/}" bi="=="}
+                    <a href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge=')" class="on">{fzw:p1:u1/}</a>
+                    {else}
+                    <a href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:p1:u1/}')">{fzw:p1:u1/}</a>
+                    {/if}
+                    {/fzw:sql}
+                </td>
+            </tr>
+            <tr>
+                <th>主题：</th>
+                <td>
+                    {fzw:sql="select * from sl_Parameter where classid=229 order by id asc" id="p1"}
+                    {if value1="{fzw:p1:u1/}" value2="{fzw:url:zhuti/}" bi="=="}
+                    <a href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti=&fengge={fzw:url:fengge/}')" class="on">{fzw:p1:u1/}</a>
+                    {else}
+                    <a href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:p1:u1/}&fengge={fzw:url:fengge/}')">{fzw:p1:u1/}</a>
+                    {/if}
+                    {/fzw:sql}
+                </td>
+            </tr>
+            <tr>
+                <th>类型：</th>
+                <td>
+                    {fzw:sql="select * from sl_Parameter where classid=232 order by id asc" id="p1"}
+                    {if value1="{fzw:p1:u1/}" value2="{fzw:url:leixing/}" bi="=="}
+                    <a href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing=&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}')" class="on">{fzw:p1:u1/}</a>
+                    {else}
+                    <a href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:p1:u1/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}')">{fzw:p1:u1/}</a>
+                    {/if}
+                    {/fzw:sql}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>-->
+
+
+<div class="pad_10" style="background: #efefef;">
+    {if value1="{fzw:url:ordertype/}" value2="" bi="=="}
+    <a class="btn_mr" href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype=dtime&orderby=desc')">默认</a>&nbsp;&nbsp;
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype=renqi&orderby=desc')">热门</a>
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype=jiage&orderby=desc')">价格</a>
+    {else}{/if}
+
+    {if value1="{fzw:url:ordertype/}" value2="dtime" bi="=="}
+    <a class="btn_mr" href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype=dtime&orderby=desc')">默认</a>&nbsp;&nbsp;
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype=renqi&orderby=desc')">热门</a>
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype=jiage&orderby=desc')">价格</a>
+    {else}{/if}
+
+    {if value1="{fzw:url:ordertype/}" value2="renqi" bi="=="}
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype=dtime&orderby=desc')">默认</a>&nbsp;&nbsp;
+    <a class="btn_mr" href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype=renqi&orderby=desc')">热门</a>
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype=jiage&orderby=desc')">价格</a>
+    {else}{/if}
+
+    {if value1="{fzw:url:ordertype/}" value2="jiage" bi="=="}
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype=dtime&orderby=desc')">默认</a>&nbsp;&nbsp;
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype=renqi&orderby=desc')">热门</a>
+    <a class="btn_mr" href="javascript:jiazai('/search.aspx?m=index-1-1&fenlei={fzw:url:fenlei/}&leixing={fzw:url:leixing/}&zhuti={fzw:url:zhuti/}&fengge={fzw:url:fengge/}&ordertype=jiage&orderby=desc')">价格</a>
+    {else}{/if}
+</div>
+<p class="fr" style="margin-top: -30px;margin-right: 10px;">
+    <a class="btn_mr fl">{if value1="{fzw:url:page/}" value2="" bi="=="}1{else}{fzw:url:page/}{/if} / {fzw:fenyecount/}</a>
+    <a href="javascript:;" class="next_sm1 fr">&nbsp;</a>
+    <a href="javascript:;" class="prev_sm1 fr">&nbsp;</a>
+</p>
+<span id="pagesize" style="display:none">{fzw:url:page/}</span>
+<ul class="cp_list">
+    {fzw:search table="sl_product" number="6" sqlvalue="shangjia='是'&nbsp;and&nbsp;shuxing&nbsp;like&nbsp;'%创意盒子%'"  order="{fzw:url:ordertype/}" orderby="{fzw:url:orderby/}" id="p1"}
+    <li class="cp_list_li2">
+        <div class="pad_20">
+            <p class="center"><img src="{fzw:p1:suoluetu string="zutu"/}" height="157" data-id="{fzw:p1:id/}" data-type="{fzw:p1:zuopinchicun/}" data-src="{fzw:p1:zutu string="zutu"/}"/></p>
+            <p class="ft_b lh_30 ft_14">{fzw:p1:biaoti size="30"/}</p>
+            <p class="gray">价格：{fzw:p1:jiage string="￥"/}</p>
+        </div>
+    </li>
+    {/fzw:search}
+</ul>
+<script type="text/javascript">
+
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+    $(document).on('click', '.cp_list_li2 img', function () {
+        //asset_id这个是判定是否是同一类
+        //如果id不等于null时
+        //if("{fzw:cookie name="user_name" /}"=="")
+        //{
+        //    window.location.href = "/?login.html";
+        //    window.event.returnValue = false;
+        //}
+
+        if(GetQueryString("id")!=null)
+        {
+        
+            var tiao_url="/Single.aspx?m=index-1&suijishu="+Math.random()+"&laiyuanbianhao="+$(this).data('id')+"&id="+GetQueryString("id");
+            window.location.href = tiao_url;
+            window.event.returnValue = false;
+        }
+        //
+        var asset =  $(this).data('src');
+			    var asset_id = $(this).data('id');
+			    $.ajax({
+			        type: "GET",
+			        url: "/linshi.aspx?type=add&suijishu="+Math.random()+"&t=history&leixing=临时产品&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+asset_id,
+			        success: function (data) {
+			          
+			        }
+    });
+    $("#ver-mid").attr("data-type",$(this).data('type'));
+				document.getElementById("ver-mid").src = asset;
+				setSuoFang(asset);  //设置缩放倍数  此函数在index-1页面
+				jiazai("/search.aspx?m=index-1-2&laiyuanbianhao=" + asset_id+"&ordertype=dtime&orderby=asc");
+				jiazai1("/single.aspx?m=index-1-3&suijishu="+Math.random()+"");
+			});
+
+
+   
+</script>

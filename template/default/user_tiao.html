@@ -1,0 +1,18 @@
+<script type="text/javascript">
+    var yonghujibie = "{fzw:sql="select * from sl_user where yonghuming='{fzw:cookie name="user_name" /}' order by id asc" id="p1"}{fzw:p1:yonghujibie/}{/fzw:sql}";
+    if (yonghujibie == "设计会员")
+    {
+        window.location.href = "/single.aspx?m=design_index";
+        window.event.returnValue = false;
+    }
+    else if (yonghujibie == "经销商会员")
+    {
+        window.location.href = "/single.aspx?m=Business_index";
+        window.event.returnValue = false;
+    }
+    else
+    {
+        window.location.href = "/single.aspx?m=user_index";
+        window.event.returnValue = false;
+    }
+</script>

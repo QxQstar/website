@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>修改密码_{fzw:key:sitename/}</title>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+		
+		<div class="w_1200 pad_20_0">
+            {fzw:inside src="user_left.html"/}
+            <script type="text/javascript">document.getElementById("user_left_10").className = "on";</script>
+            <form name="fff2" id="fff2" method="post" action="/Execution.aspx?type=user_pwd&t=user&tipurl=/inc/out_login.aspx&tip_string=修改密码成功！">
+                <div class="u_right">
+                    <h1 class="u_pagetop">修改密码</h1>
+                    <br />
+                    <table class="d_table">
+                        <tr>
+                            <th width="100">用户名：</th>
+                            <td>{fzw:sql="select top 1 * from sl_user where yonghuming='{fzw:cookie name="user_name" /}'" id="p1"}{fzw:p1:yonghuming /}{/fzw:sql}</td>
+                        </tr>
+                        <tr>
+                            <th>旧密码：</th>
+                            <td>
+                                <input type="password" class="input"   id="OldPassword" name="OldPassword"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>新密码：</th>
+                            <td>
+                                <input type="password" class="input"  id="mima" name="mima"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>确认新密码：</th>
+                            <td>
+                                <input type="password" class="input" id="mima_"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td><input type="submit" value="确定" class="btn btn_black"  onclick="return pwd()"/></td>
+                        </tr>
+                    </table>
+                </div>
+                </form>
+</div>
+		
+        {fzw:inside src="底部.html"/}
+	</body>
+
+</html>

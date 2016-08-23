@@ -1,0 +1,45 @@
+<div class="pad_10" style="background: #e7e7e7;">
+							<p class="h2">作品排行</p>
+							<div class="gray">
+                                {fzw:sql="select * from sl_banner where id=25 " id="p1"}
+                                {fzw:p1:u4/}
+                                {/fzw:sql}
+							</div>
+						</div>
+						<div class="ds_slide">
+							<div class="bd">
+								<div class="wz_list ds_rank cp_rank">
+									 {fzw:for:sql="select top 18 * from sl_zuopin order by renqi desc,id desc" id="p1"}
+									 <li>
+		        			<div class="tk_img">
+		        			<a href="/Single.aspx?m=zuopinshow&id={fzw:p1:id/}">
+		        			<img src="{fzw:p1:suoluetu/}" width="100%" height="180"/>
+		        			</a>
+		        			<div class="btn_list">
+                                {if value1="{fzw:for:sql="select count(id) as count_id from sl_history where yonghuming='{fzw:cookie name="user_name" /}' and leixing='作品' and laiyuanbianhao={fzw:p1:id/}" id="p2"}{fzw:p2:count_id /}{/fzw:for:sql}" value2="0" bi=">"}
+		        			<a href="javascript:void();" class="dianzan"><span class="heart ver-mid on"></span>&nbsp;已喜欢</a>{else}<a href="/Execution.aspx?type=add&t=history&tip_string=加入收藏成功&leixing=作品&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao={fzw:p1:id/}&tipurl={fzw:key:siteurl/}" class="dianzan"><span class="heart ver-mid"></span>&nbsp;喜欢</a>{/if}&nbsp;&nbsp;
+		        			    <a href="/Single.aspx?m=index-1&id={fzw:p1:id/}">使用</a>&nbsp;&nbsp;
+		        			    <a href="javascript:void()" onclick="set_cart({fzw:p1:id/},1,'作品')">购买</a>
+		        			</div>
+		        			</div>
+		        			</li>
+                            {/fzw:for:sql}
+								</div>
+								<div class="hd">
+									<ul class="dot_ul"></ul>
+								</div>
+							</div>
+						</div>
+						<script type="text/javascript">
+							jQuery(".ds_rank li").each(function(i) {
+								jQuery(".ds_rank li").slice(i * 6, i * 6 + 6).wrapAll("<ul></ul>");
+							});
+							jQuery(".ds_slide").slide({
+								titCell: ".hd ul",
+								mainCell: ".bd .ds_rank",
+								autoPage: "<li>&nbsp;</li>",
+								effect: "leftLoop",
+//								autoPlay: true
+							});
+						</script>
+					

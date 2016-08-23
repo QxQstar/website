@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="css/common2.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>主材产品_{fzw:key:sitename/}</title>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+		<!--主体部分-->
+		<div class="home_container">
+		   <table class="mainproduct">
+		   	<tr>
+		   		<td width="25%">
+		   			{fzw:sql="select top 1 * from sl_banner where classid=24 order by paixu desc,id desc" id="p1"}
+		   			<a href="{fzw:p1:u2/}" target="_blank" title="{fzw:p1:u1/}"><img src="{fzw:p1:u3/}" class="ver-mid" alt="{fzw:p1:u1/}"/></a>
+		   			{/fzw:sql}
+		   		</td>
+		   		<td width="25%" valign="top">
+		   			<ul class="mainproduct_list">
+		   				{fzw:sql="select top 7  * from sl_product where shuxing like '%推荐%' order by paixu desc,id desc" id="p1"}
+		   				<li>
+		   					<a href="{fzw:pageurl /}" class="img"><img src="{fzw:p1:chanpinxiangxiye string="zutu"/}" width="100%" class="ver-mid" alt="{fzw:p1:biaoti/}"/></a>
+		   					<div class="text">
+		   					    <p class="ft_16">{fzw:p1:biaoti size="40"/}</p>
+		   					    <p class="sub">{fzw:p1:fubiaoti size="80"/}</p>
+		   					</div>
+		   				</li>
+		   				{/fzw:sql}
+		   				
+		   			</ul>
+		   		</td>
+		   		<td width="50%">
+		   			<div class="zdcp_banner pos_relative">
+		   			    <div class="bd">
+		   			        <ul>
+		   			        	{fzw:sql="select * from sl_banner where classid=25 order by paixu desc,id desc" id="p1"}
+		   			        	<li><a href="{fzw:p1:u2/}" target="_blank" title="{fzw:p1:u1/}"><img src="{fzw:p1:u3/}" width="100%" height="100%" class="ver-mid" alt="{fzw:p1:u1/}"/></a></li>
+		   			        	{/fzw:sql}
+		   			        </ul>
+		   			    </div>
+		   			    <a href="javascript:;" class="prev slide_prev"></a>
+						<a href="javascript:;" class="next slide_next"></a>
+		   			</div>
+		   			<script type="text/javascript">
+					jQuery(".zdcp_banner").slide({
+						mainCell: ".bd ul",
+						autoPlay: false,
+					})
+					</script>
+		   			
+		   		</td>
+		   	</tr>
+		   </table>
+		</div>
+		<!--底部导航栏-->
+        {fzw:inside src="home_menu.html"/}
+        <script type="text/javascript">
+        	$(".home_menu td").eq(1).addClass("on").siblings("td").removeClass("on");
+        </script>
+        {fzw:inside src="底部.html"/}
+	</body>
+
+</html>

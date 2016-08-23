@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>基本资料_{fzw:key:sitename/}</title>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+		
+		<div class="w_1200 pad_20_0">
+            {fzw:inside src="user_left.html"/}
+            <script type="text/javascript">document.getElementById("user_left_9").className = "on";</script>
+            {fzw:sql="select top 1 * from sl_user where yonghuming='{fzw:cookie name="user_name" /}'" id="p1"}
+            <form name="fff2" id="fff2" method="post" action="/Execution.aspx?t=user&type=user_edit&tip_string=资料修改成功！&tipurl=/Single.aspx?m=user_info">
+                <div class="u_right">
+                    <h1 class="u_pagetop">基本资料</h1>
+                    <br />
+                    <table class="d_table">
+                        <tr>
+                            <th width="100">用户名：</th>
+                            <td>{fzw:p1:yonghuming  string="shouji"/}</td>
+                        </tr>
+                        <tr>
+                            <th>E-mail：</th>
+                            <td>
+                                <input type="text" class="input" placeholder="输入正确邮箱格式" id="youxiang" name="youxiang" value="{fzw:p1:youxiang /}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>姓名：</th>
+                            <td>
+                                <input type="text" class="input" id="xingming" name="xingming" value="{fzw:p1:xingming /}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>性别：</th>
+                            <td>
+                                <input type="radio" class="men_rd" name="xingbie" value="男" id="Radio1" />
+                                <label class="men_lb">男 &nbsp; </label>
+                                <input type="radio" class="men_rd" name="xingbie" value="女" id="Radio2" />
+                                <label class="men_lb">女 &nbsp; </label>
+                                <input type="radio" class="men_rd" name="xingbie" value="保密" id="Radio3" />
+                                <label class="men_lb">保密</label>
+
+                                <script type="text/javascript">
+                                 if ("{fzw:p1:xingbie /}" == "男") {
+                                     document.getElementById("Radio1").checked = true;
+                                 }
+                                 else if ("{fzw:p1:xingbie /}" == "女") {
+                                     document.getElementById("Radio2").checked = true;
+                                 }
+                                 else {
+                                     document.getElementById("Radio3").checked = true;
+                                 }
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>生日：</th>
+                            <td>
+                                <input type="text" class="input"  id="shengri" name="shenfenzhenghao" value="{fzw:p1:shengri /}"/>
+                            </td>
+                        </tr>
+                       
+                        <tr>
+                            <th>手机号码：</th>
+                            <td>
+                                <input type="text" class="input"  id="shouji" name="shouji" value="{fzw:p1:shouji /}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>在线QQ：</th>
+                            <td>
+                                <input type="text" class="input"  id="qhaoma" name="qhaoma" value="{fzw:p1:qhaoma /}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>联系地址：</th>
+                            <td>
+                                <input type="text" class="input"  id="xiangxidizhi" name="xiangxidizhi" value="{fzw:p1:xiangxidizhi /}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td><input type="submit" value="保存信息" class="btn btn_black" onclick="return user_edit()"/></td>
+                        </tr>
+                    </table>
+                </div>
+                </form>
+            {/fzw:sql}
+</div>
+		
+        {fzw:inside src="底部.html"/}
+	</body>
+
+</html>

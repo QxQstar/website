@@ -1,0 +1,78 @@
+{if value1="{fzw:cookie name="user_name" /}" value2="" bi="=="}
+{else}
+<ul class="parts_ul">
+    {fzw:sql="select * from sl_history where yonghuming='{fzw:cookie name="user_name" /}' and leixing='临时产品' and  (dingdanhao is null or dingdanhao ='') order by id desc" id="p1"}
+    <li>
+        <div class="parts_info">
+            <a href="/page.aspx?id={fzw:p1:laiyuanbianhao/}&classid={fzw:p1:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|classid"/}">
+                <img src="{fzw:p1:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|suoluetu" string="zutu"/}" width="45" height="45" class="fl" /></a>
+                <div class="text">
+                    <p class="ft_14 ft_b">{fzw:p1:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|biaoti"/}</p>
+                    <p class="gray">{fzw:p1:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|fubiaoti"/}</p>
+                </div>
+</div>
+        <div class="parts_price">
+            ￥<em class="ft_24">{fzw:p1:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|jiage"/}</em>元
+        </div>
+        <em class="delete" data-id="{fzw:p1:suijishu /}" data-leixing="{fzw:p1:leixing /}">&nbsp;</em>
+    </li>
+    {/fzw:sql}
+    {fzw:sql="select * from sl_history where yonghuming='{fzw:cookie name="user_name" /}' and  (dingdanhao is null or dingdanhao ='') and leixing='临时作品' order by id desc" id="p1"}
+    <li>
+        <div class="parts_info">
+            <a href="/page.aspx?id={fzw:p1:laiyuanbianhao/}">
+                <img src="{fzw:p1:laiyuanbianhao sql="sl_zuopin|where&nbsp;id=&dangqian|suoluetu" string="zutu"/}" width="45" height="45" class="fl" />
+            </a>
+            <div class="text">
+                <p class="ft_14 ft_b">{fzw:p1:laiyuanbianhao sql="sl_zuopin|where&nbsp;id=&dangqian|biaoti"/}</p>
+              
+            </div>
+        </div>
+        <div class="parts_price">
+            ￥<em class="ft_24">{fzw:p1:laiyuanbianhao sql="sl_zuopin|where&nbsp;id=&dangqian|jiage"/}</em>元
+        </div>
+        <em class="delete" data-id="{fzw:p1:suijishu /}" data-leixing="{fzw:p1:leixing /}">&nbsp;</em>
+    </li>
+    {/fzw:sql}
+</ul>
+<script type="text/javascript">
+    $(document).on('click','.delete',function(){
+
+			//asset_id这个是判定是否是同一类
+        var id=$(this).data('id');
+        var leixing=$(this).data('leixing');
+        var obj = $("#"+id);
+        obj.remove();
+        if(leixing=="临时产品")
+        {
+            window.location="/Single.aspx?m=index-1&suijishu="+Math.random()+"";
+        }
+        else
+        {
+				$.ajax({
+				    type: "GET",
+				    url: "/linshi.aspx?type=del&t=history&leixing="+leixing+"&yonghuming={fzw:cookie name="user_name" /}&suijishu="+id,
+				    success: function (data) {
+
+				}
+        });
+    }
+            jiazai1("/single.aspx?m=index-1-3&suijishu="+Math.random()+"");
+			});
+
+    var totle_price = 0;
+    $(".parts_price .ft_24").each(function(){
+        totle_price += parseFloat($(this).html());
+    })
+    if(totle_price>0)
+    {
+        $("#jiage").html("（￥"+totle_price+"元）");
+    }
+</script>
+{/if}
+<div style="padding: 10px 30px;" class="ft_16">
+    <a href="/linshi.aspx?type=cart" ><img src="images/icon_cart.png" width="25" class="ver-mid" /> 购买<span id="jiage"></span></a>
+   <!-- <a href="/linshi.aspx?type=history"><img src="images/icon_buy.png" width="25" class="ver-mid" /> 收藏</a>-->
+</div>
+
+

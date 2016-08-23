@@ -1,0 +1,100 @@
+<div class="cp_type">
+
+    <div class="cp_type_content">
+        <table class="cp_type_table">
+            <tr>
+                <th width="60">类目：</th>
+                <td>
+                    {if value1="{fzw:url:leimu/}" value2="" bi="=="}
+                    <a href="javascript:jiazai('/search.aspx?m=index-1-2&leimu=&laiyuanbianhao={fzw:url:laiyuanbianhao/}')" class="on">全部</a>
+                    {else}
+                    <a href="javascript:jiazai('/search.aspx?m=index-1-2&leimu=&laiyuanbianhao={fzw:url:laiyuanbianhao/}')">全部</a>
+                    {/if}
+                    {fzw:sql="select * from sl_Parameter where classid=267 order by id asc" id="p1"}
+                    {if value1="{fzw:p1:u1/}" value2="{fzw:url:leimu/}" bi="=="}
+                    <a href="javascript:jiazai('/search.aspx?m=index-1-2&leimu={fzw:p1:u1/}&laiyuanbianhao={fzw:url:laiyuanbianhao/}')" class="on">{fzw:p1:u1/}</a>
+                    {else}
+                    <a href="javascript:jiazai('/search.aspx?m=index-1-2&leimu={fzw:p1:u1/}&laiyuanbianhao={fzw:url:laiyuanbianhao/}')">{fzw:p1:u1/}</a>
+                    {/if}
+                    {/fzw:sql}
+                </td>
+            </tr>
+            
+        </table>
+    </div>
+</div>
+<div class="pad_10" style="background: #efefef;">
+    {if value1="{fzw:url:ordertype/}" value2="" bi="=="}
+    <a class="btn_mr" href="javascript:jiazai('/search.aspx?m=index-1-2&leimu={fzw:url:leimu/}&ordertype=dtime&orderby=desc')">默认</a>&nbsp;&nbsp;
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-2&leimu={fzw:url:leimu/}&ordertype=renqi&orderby=desc')">热门</a>
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-2&leimu={fzw:url:leimu/}&ordertype=jiage&orderby=desc')">价格</a>
+    {else}{/if}
+
+    {if value1="{fzw:url:ordertype/}" value2="dtime" bi="=="}
+    <a class="btn_mr" href="javascript:jiazai('/search.aspx?m=index-1-2&leimu={fzw:url:leimu/}&ordertype=dtime&orderby=desc')">默认</a>&nbsp;&nbsp;
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-2&leimu={fzw:url:leimu/}&ordertype=renqi&orderby=desc')">热门</a>
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-2&leimu={fzw:url:leimu/}&ordertype=jiage&orderby=desc')">价格</a>
+    {else}{/if}
+
+    {if value1="{fzw:url:ordertype/}" value2="renqi" bi="=="}
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-2&leimu={fzw:url:leimu/}&ordertype=dtime&orderby=desc')">默认</a>&nbsp;&nbsp;
+    <a class="btn_mr" href="javascript:jiazai('/search.aspx?m=index-1-2&leimu={fzw:url:leimu/}&ordertype=renqi&orderby=desc')">热门</a>
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-2&leimu={fzw:url:leimu/}&ordertype=jiage&orderby=desc')">价格</a>
+    {else}{/if}
+
+    {if value1="{fzw:url:ordertype/}" value2="jiage" bi="=="}
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-2&leimu={fzw:url:leimu/}&ordertype=dtime&orderby=desc')">默认</a>&nbsp;&nbsp;
+    <a class="px" href="javascript:jiazai('/search.aspx?m=index-1-2&leimu={fzw:url:leimu/}&ordertype=renqi&orderby=desc')">热门</a>
+    <a class="btn_mr" href="javascript:jiazai('/search.aspx?m=index-1-2&leimu={fzw:url:leimu/}&ordertype=jiage&orderby=desc')">价格</a>
+    {else}{/if}
+</div>
+<p class="fr" style="margin-top: -30px;margin-right: 10px;">
+    <a class="btn_mr fl">{if value1="{fzw:url:page/}" value2="" bi="=="}1{else}{fzw:url:page/}{/if} / {fzw:fenyecount/}</a>
+    <a href="javascript:;" class="next_sm fr">&nbsp;</a>
+    <a href="javascript:;" class="prev_sm fr">&nbsp;</a>
+</p>
+<ul class="cp_list">
+    {fzw:search table="sl_zuopin" number="6" sqlvalue="shangjia='是'"  order="{fzw:url:ordertype/}" orderby="{fzw:url:orderby/}" id="p1"}
+    <li class="cp_list_li1">
+        <div class="pad_20">
+            <p class="center"><img src="{fzw:p1:suoluetu string="zutu"/}" height="157" data-id="{fzw:p1:id/}" data-src='{fzw:p1:yuantu string="zutu"/}'/></p>
+            <p  class="ft_b lh_30 ft_14">
+                
+                <div style="float:left; margin-right:20px">
+{fzw:p1:biaoti size="30"/}
+                </div>
+                <div   >
+                    {fzw:sql="select *  from sl_user where yonghuming='{fzw:p1:yonghuming/}'  " id="p2"}<div class="shejishi" data-href="/user/{fzw:p2:yonghuming /}.aspx">设计师：{fzw:p2:xingming /}　</div>{/fzw:sql}
+                </div>
+            </p>
+            <p class="gray">价格：{fzw:p1:jiage string="￥"/}</p>
+        </div>
+    </li>
+    {/fzw:search}
+</ul>
+<span id="pagesize" style="display:none">{fzw:url:page/}</span>
+<span id="laiyuanbianhao" style="display:none">{fzw:url:laiyuanbianhao/}</span>
+<span id="leimu" style="display:none">{fzw:url:leimu/}</span>
+<span id="ordertype" style="display:none">{fzw:url:ordertype/}</span>
+<span id="orderby" style="display:none">{fzw:url:orderby/}</span>
+
+<!--<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>-->
+
+ {if value1="{fzw:cookie name="user_name" /}" value2="" bi="=="}
+<script>
+    $(".shejishi").click(function () {
+    alert("请登录");
+    window.location.href = "/?login.html&tipurl=/Single.aspx?m=index-1";
+    });
+</script>
+{else}
+<script type="text/javascript">
+
+    $(".shejishi").click(function () {
+        var t = $(this).attr("data-href");
+        window.location.href = t;
+    });
+
+</script>
+{/if}
+

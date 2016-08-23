@@ -1,0 +1,122 @@
+.clearFloat:after{
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+.body_bg .owner{
+    width: 100%;
+}
+.owner .bigImg{
+    width: 100%;
+
+}
+.owner .bigImg img{
+    width: 100%;
+    vertical-align: middle;
+    margin-top: -10px;
+}
+.owner .spjh{
+    width: 90%;
+    margin: 10px auto 0;
+    float: none;
+}
+.owner .spjh .spjh_form{
+    width: 80%;
+    margin: 0 auto;
+}
+.owner .spjh .spjh_form .input{
+    padding-left: 2%;
+}
+#jihuoma{
+    width: 100%;
+}
+#yzm{
+    width: 70%;
+}
+.spjh .spjh_form .ver-mid{
+    width: 25%;
+    vertical-align: middle;
+}
+.spjh .spjh_form .btn{
+    width: 100%;
+}
+.owner .slide .h3{
+    text-align: center;
+}
+.owner .slide .bigimg_prev,.owner .slide .bigimg_next,.owner .slide .wt_search{
+    position: static;
+}
+.owner .slide .bigimg_prev,.owner .slide .bigimg_next{
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+}
+.owner .myRight{
+    width: 100%;
+}
+.owner .slide .wt_search{
+    float: left;
+    margin-left: 5px;
+    background-color: #e7e7e7;
+    border: none;
+    border-bottom: 1px solid #d6d6d6;
+}
+.owner .slide .wt_search .searchInput{
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    border: 1px solid #d6d6d6;
+    margin-bottom: 2px;
+    outline: none;
+    width: 170px;
+    padding-left: 10px;
+    background-color: #fff;
+}
+.owner .slide .wt_search .searchBtn{
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    padding-left: 30px;
+    padding-right: 30px;
+    background: url(../images/icon_search.png) 10px 10px #3b3b3a no-repeat;
+}
+.owner .fwzc_ul li{
+    width: auto;
+    margin: 0 auto 10px auto;
+    float: none;
+}
+.owner .fwzc_ul li .answer{
+    line-height: 1.75;
+    height: auto;
+}
+.owner .fwzc_nav{
+    padding: 10px;
+    margin: 20px 0 0;
+    background-color: #e7e7e7;
+}
+.owner .fwzc_nav dl{
+    width: 45%;
+    padding: 10px 0 0 1%;
+    margin: 0 2% 20px 2%;
+    border-radius: 3px;
+    background-color: #ffffff;
+    height: 130px;
+}
+.owner .fwzc_kf .h3{
+    text-align: center;
+}
+.owner .fwzc_kf{
+    margin: 0;
+    padding: 10px;
+}
+.owner .fwzc_kf .kf_item{
+    width: 45%;
+    margin: 0 2.5% 12px 2.5%;
+}
+.owner .fwzc_kf .kf_item img{
+    max-width: 100%;
+}

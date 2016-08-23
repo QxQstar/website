@@ -1,0 +1,38 @@
+<div class="pad_10" style="background: #e7e7e7;">
+							<p class="h2">流行指数</p>
+							<div class="gray">
+                                {fzw:sql="select * from sl_banner where id=26 " id="p1"}
+                                {fzw:p1:u4/}
+                                {/fzw:sql}
+							</div>
+						</div>
+						<div class="ds_slide">
+							<div class="bd">
+								<div class="wz_list ds_rank cp_rank">
+									{fzw:sql="select top 18 * from sl_product order by renqi desc,id desc" id="p1"}
+									<li>
+										<a href="{fzw:pageurl /}">
+											<img src="{fzw:p1:suoluetu /}" width="100%" height="105"/>
+											<p class="title">{fzw:p1:biaoti size="26"/}</p>
+											<p class="gray">{fzw:p1:fubiaoti size="26"/}</p>
+										</a>
+									</li>
+									{/fzw:sql}
+								</div>
+								<div class="hd">
+									<ul class="dot_ul"></ul>
+								</div>
+							</div>
+						</div>
+						<script type="text/javascript">
+							jQuery(".ds_rank li").each(function(i) {
+								jQuery(".ds_rank li").slice(i * 9, i * 9 + 9).wrapAll("<ul></ul>");
+							});
+							jQuery(".ds_slide").slide({
+								titCell: ".hd ul",
+								mainCell: ".bd .ds_rank",
+								autoPage: "<li>&nbsp;</li>",
+								effect: "leftLoop",
+							});
+						</script>
+					

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+		<link rel="stylesheet" type="text/css" href="css/common2.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+		<script type="text/javascript" src="/inc/product_ajax.js"></script>
+        <title>设计榜单_{fzw:key:sitename/}</title>
+	</head>
+
+	<body class="body_bg">
+        {fzw:inside src="头部.html"/}
+		<!--主体部分-->
+		<div class="home_container">
+			<table class="mainproduct">
+				<tr>
+					<td width="50%" valign="top" style="text-align: left;" id="rank_content">
+					</td>
+					<td width="25%" valign="top">
+						<div class="sjbd_rank" onmouseenter="changeSrc('/single.aspx?m=rank_ds')">
+							<div class="type"><img src="images/icon_dashen.jpg"></div>
+							<ul class="sjs_ul">
+                                {fzw:sql="select top 6 * from sl_user where yonghujibie='设计会员' and jihuo='是' order by renqi desc,id desc" id="p1"}
+								<li><a href="/user/{fzw:p1:yonghuming sql="sl_userdomain|where&nbsp;yonghuming='&dangqian'|yuming"/}.aspx" title="{if value1="{fzw:p1:xingming/}" value2="" bi="=="}{fzw:p1:yonghuming/}{else}{fzw:p1:xingming/}{/if}"><em class="no"></em>{if value1="{fzw:p1:xingming/}" value2="" bi="=="}{fzw:p1:yonghuming/}{else}{fzw:p1:xingming/}{/if}</a></li>
+                                {/fzw:sql}
+							</ul>
+						</div>
+						<div class="sjbd_rank" onmouseenter="changeSrc('/single.aspx?m=rank_zuopin')">
+							<div class="type"><img src="images/icon_zuopin.jpg"></div>
+							<ul class="sjs_ul">
+								{fzw:sql="select top 6 * from sl_zuopin order by renqi desc,id desc" id="p1"}
+								<li><a href="/Single.aspx?m=zuopinshow&id={fzw:p1:id/}" title="{fzw:p1:biaoti/}"><em class="no"></em>{fzw:p1:biaoti /}</a></li>
+								{/fzw:sql}
+							</ul>
+						</div>
+						<div class="sjbd_rank" onmouseenter="changeSrc('/single.aspx?m=rank_lxzs')">
+							<div class="type"><img src="images/icon_liuxing.jpg"></div>
+							<ul class="sjs_ul">
+								{fzw:sql="select top 6  * from sl_product order by renqi desc,id desc" id="p1"}
+								<li><a href="{fzw:pageurl /}" title="{fzw:p1:biaoti/}"><em class="no"></em>{fzw:p1:biaoti size="8"/}</a></li>
+								{/fzw:sql}
+							</ul>
+						</div>
+						<div class="sjbd_rank" onmouseenter="changeSrc('/single.aspx?m=rank_jdcx')">
+							<div class="type"><img src="images/icon_jingdian.jpg"></div>
+							<ul class="sjs_ul">
+								{fzw:sql="select top 6  * from sl_product order by dtime desc,id desc" id="p1"}
+								<li><a href="{fzw:pageurl /}" title="{fzw:p1:biaoti/}"><em class="no"></em>{fzw:p1:biaoti size="8"/}</a></li>
+								{/fzw:sql}
+							</ul>
+						</div>
+						<div class="sjbd_rank" onmouseenter="changeSrc('/single.aspx?m=rank_xrtj')">
+							<div class="type"><img src="images/icon_xinren.jpg"></div>
+							<ul class="sjs_ul">
+                                {fzw:sql="select top 6 * from sl_user where yonghujibie='设计会员' and jihuo='是' order by id desc" id="p1"}
+                                <li><a href="/user/{fzw:p1:yonghuming sql="sl_userdomain|where&nbsp;yonghuming='&dangqian'|yuming"/}.aspx"><em class="no"></em>{if value1="{fzw:p1:xingming/}" value2="" bi="=="}{fzw:p1:yonghuming  string="shouji"/}{else}{fzw:p1:xingming/}{/if}</a></li>
+                                {/fzw:sql}
+							</ul>
+						</div>
+					</td>
+					<td width="25%">
+						{fzw:sql="select top 1 * from sl_banner where classid=26 order by paixu desc,id desc" id="p1"}
+						<a href="{fzw:p1:u2/}" target="_blank" title="{fzw:p1:u1/}"><img src="{fzw:p1:u3/}" width="100%" height="100%" class="ver-mid" alt="{fzw:p1:u1/}"/></a>
+						 {/fzw:sql}
+					</td>
+				</tr>
+			</table>
+		</div>
+		<!--底部导航栏-->
+        {fzw:inside src="home_menu.html"/}
+        <script type="text/javascript">
+        	$(".home_menu td").eq(2).addClass("on").siblings("td").removeClass("on");
+        </script>
+        {fzw:inside src="底部.html"/}
+        
+        <script type="text/javascript">
+         function changeSrc(src){
+         	$("#rank_content").load(src);
+         }
+         $(function(){
+         	$("#rank_content").load("/single.aspx?m=rank_ds");
+         	$('.sjbd_rank').hover(function(){
+         		$(this).addClass("on").siblings().removeClass("on");
+         	})
+         })
+        </script>
+	</body>
+
+</html>

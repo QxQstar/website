@@ -1,0 +1,83 @@
+{if value1="{fzw:cookie name="user_name" /}" value2="" bi="=="}
+<script type="text/javascript">
+       window.location.href = "/?login.html";
+       window.event.returnValue = false;
+</script>
+{else}
+{/if}
+{fzw:sql="select count(id) as count_id from sl_user where yonghuming='{fzw:cookie name="user_name" /}'" id="p1"}
+{if value1="{fzw:p1:count_id/}" value2="0" bi="=="}{/fzw:sql}
+<script type="text/javascript">
+    window.location.href = "/inc/out_login.aspx?type=err";
+       window.event.returnValue = false;
+</script>
+{else}{/if}
+{fzw:sql="select * from sl_user where yonghuming='{fzw:cookie name="user_name" /}' order by id asc" id="p1"}
+{if value1="{fzw:p1:yonghujibie/}" value2="设计会员" bi="=="}
+<div class="u_left">
+    <p class="u_left_h">会员中心</p>
+    <ul class="u_menu">
+        <li id="user_left_1"><a href="/search.aspx?m=user_order">我的订单</a></li>
+        <li id="user_left_4"><a href="/Single.aspx?m=cart">我的购物车</a></li>
+        <li id="user_left_2"><a href="/search.aspx?m=design_product">作品管理</a></li>
+        <li id="user_left_3"><a href="/search.aspx?m=design_duizhang">我的对账</a></li>
+        <!--<li id="user_left_11"><a href="/search.aspx?m=design_tuijian">我的推荐</a></li>-->
+        <li id="user_left_5"><a href="/search.aspx?m=design_article">撰写文章</a></li>
+        <li id="user_left_6"><a href="/Single.aspx?m=design_fensi">我的粉丝</a></li>
+        <li id="user_left_7"><a href="/Single.aspx?m=design_shuoming">创意说明</a></li>
+        <li id="user_left_12"><a href="/search.aspx?m=user_yhq">我的优惠券</a></li>
+         <li id="user_left_8"><a href="/search.aspx?m=user_sms">站内信<em class="sms_num"></em></a></li>
+        <li id="user_left_9"><a href="/Single.aspx?m=design_info">基本资料</a></li>
+        <li id="user_left_10"><a href="/Single.aspx?m=user_pwd">修改密码</a></li>
+        <li><a href="/inc/out_login.aspx" onclick="return confirm('你确认将该信息删除到回收站?   注意：相关图片和资源也将一起删除到回收站');">退出登录</a></li>
+    </ul>
+</div>
+{else}
+{/if}
+{if value1="{fzw:p1:yonghujibie/}" value2="经销商会员" bi="=="}
+<div class="u_left">
+    <p class="u_left_h">会员中心</p>
+    <ul class="u_menu">
+        <li id="user_left_1"><a href="/search.aspx?m=user_order">我的订单</a></li>
+        <li id="user_left_4"><a href="/Single.aspx?m=cart">我的购物车</a></li>
+        <li id="user_left_2"><a href="/Single.aspx?m=Business_duizhang">对账</a></li>
+        <li id="user_left_3"><a href="/Single.aspx?m=Business_shuoming">分销说明</a></li>
+        <li id="user_left_12"><a href="/search.aspx?m=user_yhq">我的优惠券</a></li>
+        <li id="user_left_8"><a href="/search.aspx?m=user_sms">站内信<em class="sms_num"></em></a></li>
+        <li id="user_left_9"><a href="/Single.aspx?m=user_info">基本资料</a></li>
+        <li id="user_left_10"><a href="/Single.aspx?m=user_pwd">修改密码</a></li>
+        <li><a href="/inc/out_login.aspx" onclick="return confirm('你确认将该信息删除到回收站?   注意：相关图片和资源也将一起删除到回收站');">退出登录</a></li>
+    </ul>
+</div>
+{else}
+{/if}
+{if value1="{fzw:p1:yonghujibie/}" value2="普通会员" bi="=="}
+<div class="u_left">
+    <p class="u_left_h">会员中心</p>
+    <ul class="u_menu">
+        <li id="user_left_1"><a href="/search.aspx?m=user_order">我的订单</a></li>
+        <li id="user_left_2"><a href="/search.aspx?m=user_order&zhuangtai=已付款">已购买</a></li>
+        <li id="user_left_3"><a href="/search.aspx?m=user_log">我想要的</a></li>
+        <li id="user_left_11"><a href="/search.aspx?m=user_zuopin">我收藏的作品</a></li>
+        <li id="user_left_4"><a href="/Single.aspx?m=cart">我的购物车</a></li>
+        <li id="user_left_5"><a href="/search.aspx?m=user_article">我的评测</a></li>
+        <li id="user_left_6"><a href="/search.aspx?m=user_jifen">积分</a></li>
+        <li id="user_left_7"><a href="/search.aspx?m=user_design">创艺作家</a></li>
+        <li id="user_left_12"><a href="/search.aspx?m=user_yhq">我的优惠券</a></li>
+        <li id="user_left_8"><a href="/search.aspx?m=user_sms">站内信<em class="sms_num"></em></a></li>
+        <li id="user_left_9"><a href="/Single.aspx?m=user_info">基本资料</a></li>
+        <li id="user_left_10"><a href="/Single.aspx?m=user_pwd">修改密码</a></li>
+        <li><a href="/inc/out_login.aspx" onclick="return confirm('您确认要退出登录？');">退出登录</a></li>
+    </ul>
+</div>
+{else}
+{/if}
+{/fzw:sql}
+
+<script type="text/javascript">
+    var sms_count={fzw:sql="select count(id) as count_id from sl_sms where (yonghuming='{fzw:cookie name="user_name" /}' or jieshouren='{fzw:cookie name="user_name" /}') and yuedu='否'" id="p1"}{fzw:p1:count_id /}{/fzw:sql};
+    if(sms_count>0){
+    	$(".sms_num").show().html(sms_count);
+    }
+        
+</script>
