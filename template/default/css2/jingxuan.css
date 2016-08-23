@@ -13,6 +13,10 @@ ol,ul,h1,h2,h3,a{
     list-style: none;
     text-decoration: none;
     font-weight: normal;
+    outline: none;
+}
+a:focus{
+    outline: none;
 }
 a:hover{
     text-decoration: none;
@@ -431,7 +435,6 @@ span#head{
 }
 @media all and (min-width: 992px) {
     .tiShi{
-        display: block;
         position: fixed;
         right: 2px;
         bottom: 15%;

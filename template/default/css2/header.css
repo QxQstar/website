@@ -6,6 +6,12 @@ header nav{
     margin: 0;
     background-color: #272727;
 }
+a{
+    outline: none;
+}
+a:focus{
+    outline: none;
+}
 header nav .myNav{
     width: 95%;
     margin: 0 auto;

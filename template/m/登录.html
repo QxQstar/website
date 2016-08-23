@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="gb2312" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/template/m/css2/logo.css">
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+		<script src="js/common.js" type="text/javascript"></script>
+        <title>会员登录_{fzw:key:sitename/}</title>
+		<style type="text/css">
+			body,html{
+				height: 100%;
+				overflow: hidden;
+			}
+		</style>
+        <script src="/inc/layer/layer.js" type="text/javascript"></script>
+        <script type="text/javascript" src="js/home.js"></script>
+	</head>
+
+	<body class="login_bg">
+		<div class="dp_table">
+		    <div class="dp_tablecell">
+		        <div class="login_box">
+                    <!--<a href="/"><img src="images/login_logo.jpg" class="fl" /></a>-->
+                    <form name="fff2" id="fff2" method="post" action="/Execution.aspx?type=login&t=user&tipurl={fzw:url:tipurl /}&tip_string=会员登录成功！">
+                        <div class="login">
+                            <p class="ts" style="margin-bottom: 20px;">
+                                魅拓用户登录
+                            </p>
+                            <input type="text" placeholder="手机号 / 邮箱" class="input" id="yonghuming" name="yonghuming"/>
+                            <input type="password" placeholder="密码" class="input" id="mima" name="mima"/>
+                            <p class="mar_b_10"><a href="/?reg.html&tipurl={fzw:key:siteurl/}" class="txt_blue">立即注册</a>&nbsp;&nbsp;<a href="/single.aspx?m=password">忘记密码？</a></p>
+                            <input type="submit" value="登录" class="btn btn_black" onclick="return login()" />
+                        </div>
+                        </form>
+</div>
+		    </div>
+		</div>
+	</body>
+
+</html>

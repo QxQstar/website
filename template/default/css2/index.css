@@ -1081,7 +1081,7 @@ div.next p,div.pre p{
 .customer .discuss .Item{
 	position: relative;
 	width:50%;
-    height: 200px;
+    height: 120px;
     overflow: hidden;
 	float: left;
 	padding: 0 5px;
@@ -1097,7 +1097,8 @@ div.next p,div.pre p{
 }
 @media all and (min-width:768px){
 	.customer .discuss .Item{
-	width:33.3333%;
+	    width:33.3333%;
+        height: 140px;
 	}
 	.customer .discuss li.lastItem{
 	display: none;
@@ -1105,7 +1106,8 @@ div.next p,div.pre p{
 }
 @media all and (min-width:992px){
 	.customer .discuss .Item{
-	width:25%;
+	    width:25%;
+        height: 200px;
 	}
 	.customer .discuss li.lastItem{
 	display: block;

@@ -1,20 +1,22 @@
+var curPic = 0;
 $(document).ready(function(){
       var mySwiper = new Swiper('.swiper-container',{
       centeredSlides: true,
       mousewheelControl : true,
       watchActiveIndex: true,
       onSlideNext:function(){
+        curPic ++;
         checkIndex(mySwiper);
           sale();
       },
       onSlidePrev:function(){
+          curPic --;
         checkIndex(mySwiper);
           sale();
       }
     });
       $("#list").on("click",sale);
       mySwiper.enableKeyboardControl();
-      checkIndex(mySwiper);
     $('.arrow-left').on('click', function(e){
       e.preventDefault();
       mySwiper.swipePrev();
@@ -27,6 +29,7 @@ $(document).ready(function(){
       checkIndex(mySwiper);
         sale();
     });
+    setPage(mySwiper);
      $(window).scroll(function(){
          jieLiu(checkScroll);
      });
@@ -35,6 +38,7 @@ function jieLiu(method){
     clearTimeout(method.id);
    method.id =  setTimeout(method,50);
 }
+//改变右下角客服和到顶部的显示
 function checkScroll(){
     var tiShi = $("#tiShi");
     var activeDesc = $("#activeDesc");
@@ -47,24 +51,44 @@ function checkScroll(){
         }
     }
 }
+//改变印图的大小
   function changeImgSize(){
       var img = $("#list").find("img");
       var width,height;
       img.each(function(index,elem){
         width = $(elem).width();
-          //alert(width);
         height = $(elem).height();
-          //alert(height);
         $(elem).width(width/3).height(height/3).css({
           "marginTop": -($(elem).height()/2) +"px",
           "marginLeft": -($(elem).width()/2) + "px"
         });
       });
     }
-  function checkIndex(mySwiper){
+//提示当前位于第几张图片
+function setPage(mySwiper){
     var length = $('.swiper-container .item').length;
-    $(".warp .info .total").text(length);
-    $('.warp .info .cur').text(mySwiper.activeIndex + 1);
+    var warpInfo = $(".warp").find('.info');
+    warpInfo.find('.total').text(length);
+    warpInfo.find('.cur').text(mySwiper.activeIndex + 1);
+    return length;
+}
+//控制箭头的显示或者隐藏
+  function checkIndex(mySwiper){
+    var length = setPage(mySwiper);
+    var top,docEle;
+      if(curPic >= length){
+          owenrScroll();
+      }else{
+          top = $("#change").offset().top;
+          docEle = document.documentElement;
+          if(docEle && docEle.scrollTop){
+              docEle = docEle;
+          }else{
+              docEle = document.body;
+          }
+          $(docEle).animate({scrollTop:top-100},400);
+      }
+       curPic = mySwiper.activeIndex;
     if(mySwiper.activeIndex === 0){
       $(".arrow-left").hide();
       $(".arrow-right").show();
@@ -76,6 +100,19 @@ function checkScroll(){
       $(".arrow-right").show();
     }
   }
+function owenrScroll(){
+    var doc = document;
+    var top;
+    var docEle = doc.documentElement;
+    if(docEle && docEle.scrollTop){
+        top = docEle.scrollTop;
+    }else{
+        docEle = doc.body;
+        top = docEle.scrollTop;
+    }
+    $(docEle).stop(true,true).animate({scrollTop:top+120},300);
+}
+
     function spreadOrFlod(){
         $('.mask').width($(".goodsDesc img").width());
         $(".All").on("click", function (event) {
