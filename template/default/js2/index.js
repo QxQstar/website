@@ -13,7 +13,6 @@ function setListHeight(){
 }
 function liClick(){
     var warpOne = document.getElementById('one');
-//    console.log(warpOne.id);
     $(warpOne).on('click',function(){
         if($(this).find('img').css('opacity') === '1') {
             window.location.href = "http://www.xiaoyu4.com/page.aspx?id=27&classid=1";
@@ -33,9 +32,8 @@ var index = 1;//index表示当前显示的页面,index是一个全局变量
 var timer;
 function btnClick(){
     var warp = document.getElementById('warp');
-    untilEvent.addEvent(warp,'click',function(event){
-        var event = untilEvent.getEvent(event);
-        var target = untilEvent.getTarget(event);
+    $(warp).unbind('click').on("click",function(event){
+        var target = event.target;
         var targetName = target.nodeName.toLowerCase();
         if(targetName == 'div' || targetName == "p"){
             switch(target.className){
@@ -59,6 +57,32 @@ function btnClick(){
             anmitate();
         }
     });
+//    untilEvent.addEvent(warp,'click',function(event){
+//        var event = untilEvent.getEvent(event);
+//        var target = untilEvent.getTarget(event);
+//        var targetName = target.nodeName.toLowerCase();
+//        if(targetName == 'div' || targetName == "p"){
+//            switch(target.className){
+//                case 'pre': if(index == 1){
+//                    index = 3;
+//                }else{
+//                    --index;
+//                }
+//                    anmitate();
+//                    break;
+//                case 'next':if(index == 3){
+//                    index = 1;
+//                }else{
+//                    ++index;
+//                }
+//                    anmitate();
+//                    break;
+//            }
+//        }else if(targetName == 'span'){
+//            index = target.getAttribute('data-index');
+//            anmitate();
+//        }
+//    });
 }
 
 function removeClass(curIndex){
@@ -102,6 +126,7 @@ function stop() {
 	clearTimeout(timer);
 }
 function getWarp(){
+    console.log('ww');
     var warp = document.getElementById('warp');
     untilEvent.addEvent(warp,"mouseout",play);
     untilEvent.addEvent(warp,"mouseover",stop);
@@ -255,12 +280,30 @@ function spread(state){
 		$('.smallScreen').animate({height:'30px'},500);
 	}
 }
+function loadBannerImg(){
+    var banner3Img = $("#three");
+    var banner2Img = $("#two");
+    banner3Img.on('load',function(){
+        getWarp();
+        play();
+        btnClick();
+
+        console.log('kk');
+    });
+    banner2Img.attr('src','/template/default/img/banner2.jpg');
+    banner3Img.attr('src','/template/default/img/banner3-2.gif');
+
+//    setTimeout(function(){
+//
+//    },1000);
+}
+untilEvent.addEvent(window,'load',loadBannerImg);
 untilEvent.addEvent(window,'load',scrollEvent);
 //untilEvent.addEvent(window,'load',setListHeight);
 untilEvent.addEvent(window,'load',setLiIndex);
-untilEvent.addEvent(window,'load',btnClick);
-untilEvent.addEvent(window,'load',play);
-untilEvent.addEvent(window,'load',getWarp);
+//untilEvent.addEvent(window,'load',btnClick);
+//untilEvent.addEvent(window,'load',play);
+//untilEvent.addEvent(window,'load',getWarp);
 untilEvent.addEvent(window,'load',addClass);
 untilEvent.addEvent(window,'load',addMask);
 untilEvent.addEvent(window,'load',collapse);
