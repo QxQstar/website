@@ -2,6 +2,10 @@ ol,ul,h1,h2,h3,a{
 	list-style: none;
 	text-decoration: none;
 	font-weight: normal;
+    outline: none;
+}
+a:focus{
+    outline: none;
 }
 a:hover{
 	text-decoration: none;
@@ -263,6 +267,9 @@ header nav .myNav{
 	width: 100%;
 	list-style: none;
 	opacity: 1;
+}
+.warp .list li.one{
+    position: relative;
 }
 .controll{
 	position: absolute;

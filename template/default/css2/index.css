@@ -309,12 +309,15 @@ header nav .myNav{
 .warp .list li.one{
     position: relative;
 }
+.warp .list li img{
+     opacity: 0;
+     width: 100%;
+ }
 .warp .list li.one img{
     margin-top: -1px;
+    opacity: 1;
 }
-.warp .list li img{
-	width: 100%;
-}
+
 div.pre,div.next{
     position: absolute;
     top:0;

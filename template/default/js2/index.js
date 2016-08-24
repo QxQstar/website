@@ -32,8 +32,9 @@ var index = 1;//index表示当前显示的页面,index是一个全局变量
 var timer;
 function btnClick(){
     var warp = document.getElementById('warp');
-    $(warp).unbind('click').on("click",function(event){
-        var target = event.target;
+    untilEvent.addEvent(warp,'click',function(event){
+        var event = untilEvent.getEvent(event);
+        var target = untilEvent.getTarget(event);
         var targetName = target.nodeName.toLowerCase();
         if(targetName == 'div' || targetName == "p"){
             switch(target.className){
@@ -57,32 +58,6 @@ function btnClick(){
             anmitate();
         }
     });
-//    untilEvent.addEvent(warp,'click',function(event){
-//        var event = untilEvent.getEvent(event);
-//        var target = untilEvent.getTarget(event);
-//        var targetName = target.nodeName.toLowerCase();
-//        if(targetName == 'div' || targetName == "p"){
-//            switch(target.className){
-//                case 'pre': if(index == 1){
-//                    index = 3;
-//                }else{
-//                    --index;
-//                }
-//                    anmitate();
-//                    break;
-//                case 'next':if(index == 3){
-//                    index = 1;
-//                }else{
-//                    ++index;
-//                }
-//                    anmitate();
-//                    break;
-//            }
-//        }else if(targetName == 'span'){
-//            index = target.getAttribute('data-index');
-//            anmitate();
-//        }
-//    });
 }
 
 function removeClass(curIndex){
@@ -111,6 +86,7 @@ function anmitate() {
 }
 //自动切换函数
 function play() {
+    clearTimeout(timer);
 	timer = setTimeout(function () {
 	if(index == 3){
 			index = 1;
@@ -126,7 +102,6 @@ function stop() {
 	clearTimeout(timer);
 }
 function getWarp(){
-    console.log('ww');
     var warp = document.getElementById('warp');
     untilEvent.addEvent(warp,"mouseout",play);
     untilEvent.addEvent(warp,"mouseover",stop);
@@ -280,6 +255,7 @@ function spread(state){
 		$('.smallScreen').animate({height:'30px'},500);
 	}
 }
+//js加载轮播图
 function loadBannerImg(){
     var banner3Img = $("#three");
     var banner2Img = $("#two");
@@ -287,15 +263,9 @@ function loadBannerImg(){
         getWarp();
         play();
         btnClick();
-
-        console.log('kk');
     });
     banner2Img.attr('src','/template/default/img/banner2.jpg');
     banner3Img.attr('src','/template/default/img/banner3-2.gif');
-
-//    setTimeout(function(){
-//
-//    },1000);
 }
 untilEvent.addEvent(window,'load',loadBannerImg);
 untilEvent.addEvent(window,'load',scrollEvent);

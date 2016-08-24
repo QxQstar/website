@@ -1,41 +1,4 @@
-var untilEvent = {
-    addEvent:function(element,type,hander){
-        if(element.addEventListener){
-            element.addEventListener(type,hander,false);
-        }else if(element.attachEvent){
-            element.attachEvent('on'+type,hander);
-        }else{
-            element['on'+type] = hander;
-        }
-    },
-    removeEvent:function(element,type,hander){
-        if(element.removeEventListener){
-            element.removeEventListener(type,hander,false);
-        }else if(element.detachEvent){
-            element.detachEvent("on" + type,hander);
-        }else{
-            element['on'+type] = null;
-        }
-    },
-    getEvent:function(event){
-        return event?event:window.event;
-    },
-    getTarget:function(event){
-        return event.target||event.srcElement;
-    },
-    getRelated:function(event){
-        if(event.relatedTarget){
-            return event.relatedTarget;
-        }else if(event.toElement){
-            return event.toElement;
-        }else if(event.fromElement){
-            return event.fromElement;
-        }else{
-            return null;
-        }
-    }
 
-};
 // 轮播的函数开始
 //设置class为list的高度,因为图片的position为absolute所以.list元素的高度为零
 //如果一个元素的父元素高度为0，那么设置这个元素的margin: auto 0; 不起作用
@@ -47,6 +10,15 @@ function setListHeight(){
 	var height = imgItem.offsetHeight;
 	var list = document.getElementById('list');
 	list.style.height = height + 'px';
+}
+//第一张轮播图跳转
+function liClick(){
+    var warpOne = document.getElementById('one');
+    $(warpOne).on('click',function(){
+        if($(this).find('img').css('opacity') === '1') {
+            window.location.href = "http://www.xiaoyu4.com/page.aspx?id=27&classid=1";
+        }
+    });
 }
 function setLiIndex(){
 	var list = document.getElementById('list');
@@ -114,6 +86,7 @@ function anmitate() {
 }
 //自动切换函数
 function play() {
+    clearTimeout(timer);
 	timer = setTimeout(function () {
 	if(index == 3){
 			index = 1;
@@ -133,6 +106,10 @@ function getWarp(){
     untilEvent.addEvent(warp,"mouseout",play);
     untilEvent.addEvent(warp,"mouseover",stop);
     untilEvent.addEvent(warp,"touchstart",touchObj.startEvent);
+    untilEvent.addEvent(warp,"touchmove",touchObj.moveEvent);
+    untilEvent.addEvent(warp,"touchend",touchObj.endEvent);
+    untilEvent.addEvent(warp,"touchstart",stop);
+    untilEvent.addEvent(warp,"touchend",play);
 }
 //为了完成touch事件的对象
 var touchObj = {
@@ -280,13 +257,27 @@ function spread(state){
 		$('.smallScreen').animate({height:'30px'},500);
 	}
 }
+//js加载轮播图
+function loadBannerImg() {
+    var banner3Img = $("#three");
+    var banner2Img = $("#two");
+    banner3Img.on('load', function () {
+        getWarp();
+        play();
+        btnClick();
+    });
+    banner2Img.attr('src', '/template/default/img/banner2.jpg');
+    banner3Img.attr('src', '/template/default/img/banner3-2.gif');
+}
+untilEvent.addEvent(window,'load',loadBannerImg);
 untilEvent.addEvent(window,'load',scrollEvent);
 //untilEvent.addEvent(window,'load',setListHeight);
 untilEvent.addEvent(window,'load',setLiIndex);
-untilEvent.addEvent(window,'load',btnClick);
-untilEvent.addEvent(window,'load',play);
-untilEvent.addEvent(window,'load',getWarp);
+//untilEvent.addEvent(window,'load',btnClick);
+//untilEvent.addEvent(window,'load',play);
+//untilEvent.addEvent(window,'load',getWarp);
 untilEvent.addEvent(window,'load',addClass);
 untilEvent.addEvent(window,'load',addMask);
 untilEvent.addEvent(window,'load',collapse);
 untilEvent.addEvent(window,'load',smallScreenList);
+untilEvent.addEvent(window,'load',liClick);

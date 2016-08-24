@@ -11,6 +11,15 @@ var untilEvent = {
             element['on'+type] = hander;
         }
     },
+    removeEvent:function(element,type,hander){
+        if(element.removeEventListener){
+            element.removeEventListener(type,hander,false);
+        }else if(element.detachEvent){
+            element.detachEvent("on" + type,hander);
+        }else{
+            element['on'+type] = null;
+        }
+    },
     getEvent:function(event){
         return event?event:window.event;
     },

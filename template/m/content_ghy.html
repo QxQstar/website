@@ -84,6 +84,11 @@
         }
         .warp .list li img{
             width: 100%;
+            opacity: 1;
+        }
+        .warp .list li.one img{
+            opacity: 1;
+            margin-top: -1px;
         }
         .warp .list li.one a{
             display: block;
@@ -97,9 +102,17 @@
     <!--Í·²¿½áÊø-->
     <div class='warp' id='warp'>
         <ul class='list' id='list'>
-           <li class="one"> <a target="_blank" href="http://www.xiaoyu4.com/page.aspx?id=27&classid=1"><img src='/template/default/img/banner1.jpg' ></a></li>
-            <li><img src='/template/default/img/banner2.jpg' ></li>
-            <li><img src='/template/default/img/banner3-2.gif' ></li>
+            <li class="one" id="one">
+                <img src='/template/default/img/banner1.jpg' >
+            </li>
+            <li>
+                <img id="two" src="#">
+                <!--<img src='/template/default/img/banner2.jpg' >-->
+            </li>
+            <li>
+                <img id='three' src="#">
+                <!--<img src='/template/default/img/banner3-2.gif' >-->
+            </li>
         </ul>
         <div class='pre' id='pre'>
             <p class="pre">¡¶ </p>

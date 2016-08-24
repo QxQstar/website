@@ -1,79 +1,4 @@
-var untilEvent = {
-	addEvent:function(element,type,hander){
-		if(element.addEventListener){
-			element.addEventListener(type,hander,false);
-		}else if(element.attachEvent){
-			element.attachEvent('on'+type,hander);
-		}else{
-			element['on'+type] = hander;
-		}
-	},
-	getEvent:function(event){
-		return event?event:window.event;
-	},
-	getTarget:function(event){
-		return event.target||event.srcElement;
-	},
-	getRelated:function(event){
-		if(event.relatedTarget){
-			return event.relatedTarget;
-		}else if(event.toElement){
-			return event.toElement;
-		}else if(event.fromElement){
-			return event.fromElement;
-		}else{
-			return null;
-		}
-	}
 
-};
-function getOuter(){
-	var outer = document.getElementById('outer');
-	untilEvent.addEvent(outer,'mouseover',callBackOver);
-	untilEvent.addEvent(outer,'mouseout',callBackOut);
-}
-function callBackOut(event){
-	var event = untilEvent.getEvent(event);
-	var relatedTarget = untilEvent.getRelated(event);
-	var outerList1 = document.getElementById('outerList1');
-	var inter1 = document.getElementById('inter1');
-	var outerList2 = document.getElementById('outerList2');
-	var inter2 = document.getElementById('inter2');
-	var flag1 = false,flag2 = false;
-	if(relatedTarget !== null){
-		var parented = relatedTarget.parentNode;
-		do{
-			if(parented === outerList1 || relatedTarget === outerList1){
-				flag1 = true;
-				break;
-			}else if(parented === outerList2 || relatedTarget === outerList2){
-				flag2 = true;
-				break;
-			}else{
-				parented = parented.parentNode;
-			}
-		}while(parented !== null);
-	}
-	if(!flag1){
-		$(inter1).animate({height:'0px'},10);
-	}
-	if(!flag2){
-		$(inter2).animate({height:'0px'},10);
-	}
-}
-function callBackOver(event){
-	var totalHeight = 170;
-	var event = untilEvent.getEvent(event);
-	var target = untilEvent.getTarget(event);
-	var inter1 = document.getElementById('inter1');
-	var inter2 = document.getElementById('inter2');
-	if(target.id == 'outerList1' || target.id == "link1"){
-		$(inter1).animate({height:totalHeight + "px"},300);
-	}
-	if(target.id == 'outerList2' || target.id == 'link2'){
-		$(inter2).animate({height:totalHeight + 'px'},300);
-	}
-}
 // 轮播的函数开始
 function setListHeight(){
 	var list = document.getElementById('list');
@@ -134,17 +59,6 @@ function removeClass(curIndex){
 		}
 	}
 }
-//减小图片透明度
-function decline(cur,inverTime,inverOpacity){
-	var opacityed = parseFloat(cur.style.opacity);
-	if (!opacityed) opacityed = 1;
-	if(opacityed > 0){
-		cur.style.opacity = opacityed-inverOpacity;
-		setTimeout(function(){
-			decline(cur,inverTime,inverOpacity);
-		},inverTime);
-	}
-}
 //切换图片的函数
 function anmitate() {
     removeClass(index);
@@ -160,6 +74,7 @@ function anmitate() {
 }
 //自动切换函数
 function play() {
+    clearTimeout(timer);
 	timer = setTimeout(function () {
 	if(index == 3){
 			index = 1;
@@ -175,14 +90,72 @@ function stop() {
 	clearTimeout(timer);
 }
 function getWarp(){
-	var warp = document.getElementById('warp');
-	untilEvent.addEvent(warp,"mouseout",play);
-	untilEvent.addEvent(warp,"mouseover",stop);
+    var warp = document.getElementById('warp');
+    untilEvent.addEvent(warp,"mouseout",play);
+    untilEvent.addEvent(warp,"mouseover",stop);
+    untilEvent.addEvent(warp,"touchstart",touchObj.startEvent);
+    untilEvent.addEvent(warp,"touchmove",touchObj.moveEvent);
+    untilEvent.addEvent(warp,"touchend",touchObj.endEvent);
+    untilEvent.addEvent(warp,"touchstart",stop);
+    untilEvent.addEvent(warp,"touchend",play);
 }
+//为了完成touch事件的对象
+var touchObj = {
+    warp:document.getElementById("warp"),
+    startPos:{},
+    endPos:{},
+    direction:null,
+    startEvent:function(event){
+        var self = touchObj;
+        var event = untilEvent.getEvent(event);
+        var touch = event.targetTouches[0];
+        self.startPos = {
+            x:touch.clientX,
+            y:touch.clientY
+        };
+    },
+    moveEvent:function(event){
+        var event = untilEvent.getEvent(event);
+        var touch = event.targetTouches;
+        var self = touchObj;
+        if(touch.length = 1){
+            self.endPos = {
+                x:touch[0].clientX,
+                y:touch[0].clientY
+            };
+        }
+    },
+    endEvent:function(event){
+        var event = untilEvent.getEvent(event);
+        var self = touchObj;
+        var offX = Number(self.endPos.x - self.startPos.x);
+        var offY = Number(self.endPos.y - self.startPos.y);
+        this.direction = Math.abs(offX) > Math.abs(offY) ? 1:0;
+        if(this.direction === 1){
+            if(offX >= 10){
+                if(index === 1){
+                    index = 3;
+                }else{
+                    --index;
+                }
+                anmitate();
+            }else if(offX <= -10){
+                if(index === 3){
+                    index = 1;
+                }else{
+                    ++index;
+                }
+                anmitate();
+            }else{
+                untilEvent.preventDefault(event);
+            }
+        }
+    }
+};
 //函数节流
 function scrollEvent(){
 	untilEvent.addEvent(window,"resize",function(){
-		throttle(setListHeight);
+//		throttle(setListHeight);
 	});
 }
 function throttle(method,context){
@@ -196,6 +169,7 @@ function smallScreenList(){
         var target = event.target;
         var targetName = target.nodeName.toLowerCase();
         var temp = null;
+        var span = $('.smallScreen .list').find("span");
         if(targetName == 'span' && $(target).parent()[0].nodeName.toLowerCase() == 'li' || targetName == 'i'){
             if(targetName == 'span'){
                 temp = $(target);
@@ -204,12 +178,12 @@ function smallScreenList(){
             }
             if(temp.attr('class').indexOf('cur') >= 0){
                 state = false;
-                $('.smallScreen .list span').prev('div').removeClass('bar');
-                $('.smallScreen .list span').removeClass('cur').next().addClass('hide');
+                span.prev('div').removeClass('bar');
+                span.removeClass('cur').next().addClass('hide');
             }else{
                 state = true;
-                $('.smallScreen .list span').prev('div').removeClass('bar');
-                $('.smallScreen .list span').removeClass('cur').next().addClass('hide');
+                span.prev('div').removeClass('bar');
+                span.removeClass('cur').next().addClass('hide');
                 temp.addClass("cur").next().removeClass("hide");
                 temp.prev().addClass('bar');
                 temp.parent('li').css("z-index","20").siblings('li').css("z-index","10");
@@ -217,8 +191,8 @@ function smallScreenList(){
             spread(state);
         }else{
             state = false;
-            $('.smallScreen .list span').prev('div').removeClass('bar');
-            $('.smallScreen .list span').removeClass('cur').next().addClass('hide');
+            span.prev('div').removeClass('bar');
+            span.removeClass('cur').next().addClass('hide');
             spread(state);
         }
     });
@@ -230,12 +204,34 @@ function spread(state){
 		$('.smallScreen').animate({height:'30px'},500);
 	}
 }
+//第一张轮播图跳转
+function liClick(){
+    var warpOne = document.getElementById('one');
+    $(warpOne).on('click',function(){
+        if($(this).find('img').css('opacity') === '1') {
+            window.location.href = "http://www.xiaoyu4.com/page.aspx?id=27&classid=1";
+        }
+    });
+}
+//js加载轮播图
+function loadBannerImg(){
+    var banner3Img = $("#three");
+    var banner2Img = $("#two");
+    banner3Img.on('load',function(){
+        getWarp();
+        play();
+        btnClick();
+    });
+    banner2Img.attr('src','/template/default/img/banner2.jpg');
+    banner3Img.attr('src','/template/default/img/banner3-2.gif');
+}
 // 轮播的函数结束
+untilEvent.addEvent(window,'load',loadBannerImg);
+untilEvent.addEvent(window,'load',liClick);
 untilEvent.addEvent(window,'load',scrollEvent);
-untilEvent.addEvent(window,'load',setListHeight);
+//untilEvent.addEvent(window,'load',setListHeight);
 untilEvent.addEvent(window,'load',setLiIndex);
-untilEvent.addEvent(window,'load',btnClick);
-untilEvent.addEvent(window,'load',play);
-untilEvent.addEvent(window,'load',getWarp);
-untilEvent.addEvent(window,'load',getOuter);
+//untilEvent.addEvent(window,'load',btnClick);
+//untilEvent.addEvent(window,'load',play);
+//untilEvent.addEvent(window,'load',getWarp);
 untilEvent.addEvent(window,'load',smallScreenList);
