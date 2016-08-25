@@ -7,7 +7,7 @@
     font-family: arial,'Hiragino Sans GB','\5FAE\8F6F\96C5\9ED1',sans-serif;
 }
 img{
-    vertical-align:middle;
+    vertical-align:bottom;
 }
 ol,ul,h1,h2,h3,a{
     list-style: none;
@@ -30,7 +30,7 @@ a:hover{
 }
 .activeImg img{
 	width: 100%;
-	margin-top: -1px;
+	margin-top: -2px;
 }
 /*活动展示图片结束*/
 .activeDesc{
