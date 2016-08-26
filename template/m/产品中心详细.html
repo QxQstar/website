@@ -20,8 +20,8 @@
 				<div class="cp_h">
 					<p class="title">{fzw:database:biaoti/}</p>
 					<div class="cp_h_item">
-						<ul>
-							<li class="on"><a href="javascript:;">产品</a></li>
+						<ul id="tabList">
+							<li class="on" id="oneTab"><a href="javascript:;">产品</a></li>
 							<li><a href="javascript:;">晒物</a></li>
 							<li><a href="javascript:;">讨论</a></li>
 							<li><a href="javascript:;">清单</a></li>
@@ -94,8 +94,8 @@
                     </ul>
                     <br />
                     <form method="post" action="/Execution.aspx?type=add&t=article&tipurl={fzw:key:siteurl/}&tip_string=发布评测成功！">
-                        <p class="cp_pc_h">评测</p>
-                 <input class="input" id="biaoti" name="biaoti" style="width:780px" placeholder="评测标题！"/>
+                        <p class="cp_pc_h">晒物</p>
+                 <input class="input" id="biaoti" name="biaoti" style="width:95%;padding-left: 5%" placeholder="晒物标题！"/>
                         <textarea class="pc_textarea"  name="neirong" id="neirong" style="width: 100%;height: 108px;"></textarea>
                         {fzw:server type="Editor" id="neirong" user="{fzw:cookie name="user_name" /}" width="100%" height="40px" /}
                         <p class="right pad_20_0">
@@ -104,7 +104,7 @@
                             <input name="chanpinbianhao" type="hidden" id="chanpinbianhao" value="{fzw:database:id/}" />
                            
                             <input name="classid" type="hidden" id="classid" value="15" />
-                            <input type="submit" value="评测" class="btn btn_black"  onclick="return user_article()" />
+                            <input type="submit" value="晒物" class="btn btn_black"  onclick="return user_article()" />
                         </p>
                         </form>
 </div>
@@ -158,7 +158,7 @@
 				jQuery(".cp_container").slide({targetCell:".cp_content",titCell:".cp_h_item li",trigger:"click"});
 			</script>
 			<!--右边-->
-			<div class="w_280 fr">
+			<div class="w_280 fr" id="buy">
 				<div class="white_bg pad_10 row1">
 				    <table class="table_list clearFloat">
 				    	<tr><!--<th>价格：</th>-->
@@ -209,41 +209,6 @@
 							</a>
 						</td>
 					</tr>
-					<!--<tr>-->
-						<!--<td>-->
-                            <!--{if value1="{fzw:sql="select count(id) as count_id from sl_history where yonghuming='{fzw:cookie name="user_name" /}' and leixing='产品' and laiyuanbianhao={fzw:database:id/}" id="p1"}{fzw:p1:count_id /}{/fzw:sql}" value2="0" bi=">"}-->
-							<!--<a href="javascript:void();">-->
-							<!--<img src="images/icon_heart_.png"/><br />-->
-							<!--想要-->
-							<!--</a>-->
-                            <!--{else}-->
-                            <!--<a href="/Execution.aspx?type=add&t=history&tip_string=加入收藏成功&leixing=产品&yonghuming={fzw:cookie name="user_name" /}&dingdanhao=&laiyuanbianhao={fzw:database:id/}&tipurl={fzw:key:siteurl/}">-->
-                                <!--<img src="images/icon_heart.png" /><br />-->
-                                <!--想要-->
-                            <!--</a>-->
-                            <!--{/if}-->
-						<!--</td>-->
-						<!--<td>-->
-							<!--<a href="javascript:fenxiang()">-->
-							<!--<img src="images/icon_share.png"/><br />-->
-							<!--分享-->
-							<!--</a>-->
-                            <!--<script type="text/javascript">-->
-                                <!--function fenxiang()-->
-                                <!--{-->
-                                    <!--if(document.getElementById("tip").style.display=="none")-->
-                                    <!--{-->
-                                        <!--document.getElementById("tip").style.display = "";-->
-                                    <!--}-->
-                                    <!--else-->
-                                    <!--{-->
-                                        <!--document.getElementById("tip").style.display = "none";-->
-                                    <!--}-->
-                                    <!---->
-                                <!--}-->
-                            <!--</script>-->
-						<!--</td>-->
-					<!--</tr>-->
 				</table>
 
 				<!--<p class="white_bg center lh_30 pad_10 ft_14"><a href="http://www.xiaoyu4.com/Single.aspx?m=index-1">选择喜欢的图案 >> </a></p>-->
@@ -283,7 +248,18 @@
 			$(".eee").css("margin-top",a+"px");
 			$(".close").click(function(){
 			    $(".blk").hide();
-			})
+			});
+            var tabList = $('#tabList');
+            var liOneTab = tabList.find('#oneTab');
+            //底部购买选项条
+            var buy = $('#buy');
+            tabList.click(function(){
+                    if( liOneTab.attr('class') == 'on'){
+                        buy.css('display','block');
+                    }else{
+                        buy.css('display','none');
+                    }
+            });
 
         </script>
 
