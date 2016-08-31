@@ -32,6 +32,9 @@ a:hover{
 	width: 100%;
 	margin-top: -2px;
 }
+.coord{
+    visibility: hidden;
+}
 /*活动展示图片结束*/
 .activeDesc{
 	width: 100%;

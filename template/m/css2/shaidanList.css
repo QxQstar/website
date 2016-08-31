@@ -1,0 +1,27 @@
+.container{
+    margin: 0 10px;
+}
+.container .wz_list li{
+    margin: 0 1% 14px;
+    width: 48%;
+}
+.container .wz_list li img{
+    min-height: 150px;
+}
+.container .pagemenu li{
+    margin: 0;
+}
+.container .pagemenu {
+    padding: 5px 0;
+}
+.container .pagemenu a{
+    background: none;
+    color: #000;
+}
+.container .pagemenu li.on a{
+    background: none;
+    border-bottom: 1px solid #000;
+}
+.container .page strong:first-child{
+    display: none;
+}

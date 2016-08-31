@@ -9,6 +9,10 @@ header nav{
 a{
     outline: none;
 }
+img{
+    outline: none;
+    border: none;
+}
 a:focus{
     outline: none;
 }
