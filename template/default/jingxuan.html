@@ -225,9 +225,9 @@
                 zuopinjiage = $(this).attr("data-zuopinjiage");
 
                 //添加一条历史记录
-                var data_re_history = JSON.parse(requert_json("add" + uuid(4), "history", "leixing=临时作品$laiyuanbianhao=" + zuopinid + "$zuobiao=" + zuobiao)); 
-                var data_re_cart_product = JSON.parse(requert_json("add" + uuid(4), "cart", "biaoti="+productname+"$danjia=" + productjiage + "$shuliang=1$xiaoji=" + productjiage+"$laiyuanbianhao=" + productid+"$leixing=产品$gouwuchehao=" + gouwuchehao  )); //gouwuchehao
-                var data_re_cart_zuopin = JSON.parse(requert_json("add" + uuid(4), "cart", "biaoti="+zuopinname+"$danjia=" + zuopinjiage + "$shuliang=1$xiaoji=" +zuopinjiage+"$laiyuanbianhao=" + zuopinid+"$leixing=作品$gouwuchehao=" + gouwuchehao  )); //gouwuchehao
+                var data_re_history = JSON.parse(requert_json("add" + uuid(4), "history", "leixing="+escape("临时作品")+"$laiyuanbianhao=" + zuopinid + "$zuobiao=" + zuobiao));
+                var data_re_cart_product = JSON.parse(requert_json("add" + uuid(4), "cart", "biaoti="+escape(productname)+"$danjia=" + productjiage + "$shuliang=1$xiaoji=" + productjiage+"$laiyuanbianhao=" + productid+"$leixing="+escape("产品")+"$gouwuchehao=" + gouwuchehao  )); //gouwuchehao
+                var data_re_cart_zuopin = JSON.parse(requert_json("add" + uuid(4), "cart", "biaoti="+escape(zuopinname)+"$danjia=" + zuopinjiage + "$shuliang=1$xiaoji=" +zuopinjiage+"$laiyuanbianhao=" + zuopinid+"$leixing="+escape("作品")+"$gouwuchehao=" + gouwuchehao  )); //gouwuchehao
            
 
                 if (data_re_history[0].str1 == "success"&&data_re_cart_product[0].str1 == "success"&&data_re_cart_zuopin[0].str1 == "success") {

@@ -141,7 +141,7 @@
 				//加入购物车
 				$.ajax({
 				    type: "GET",
-				    url: "/linshi.aspx?type=add&t=history&leixing=临时作品&yonghuming={fzw:cookie name="user_name" /}&suijishu="+_id+"&laiyuanbianhao="+_laiyuanbianhao,
+				    url: "/linshi.aspx?type=add&t=history&leixing="+escape("临时作品")+"&yonghuming={fzw:cookie name="user_name" /}&suijishu="+_id+"&laiyuanbianhao="+_laiyuanbianhao,
 				    success: function (data) {
 			           
 					}
@@ -166,10 +166,10 @@
 								pos_y = $(this).position().top;
 						        zp[_id] = pos_x + '_' + pos_y;
 							    //处理坐标
-						        console.log("/linshi.aspx?type=edit&suijishu="+_id+"&t=history&leixing=临时作品&yonghuming={fzw:cookie name="user_name" /}&zuobiao="+zp[_id]+"&laiyuanbianhao="+_laiyuanbianhao);
+						        console.log("/linshi.aspx?type=edit&suijishu="+_id+"&t=history&leixing="+escape("临时作品")+"&yonghuming={fzw:cookie name="user_name" /}&zuobiao="+zp[_id]+"&laiyuanbianhao="+_laiyuanbianhao);
 						        $.ajax({
 						            type: "GET",
-						            url: "/linshi.aspx?type=edit&suijishu="+_id+"&t=history&leixing=临时作品&yonghuming={fzw:cookie name="user_name" /}&zuobiao="+zp[_id]+"&laiyuanbianhao="+_laiyuanbianhao,
+						            url: "/linshi.aspx?type=edit&suijishu="+_id+"&t=history&leixing="+escape("临时作品")+"&yonghuming={fzw:cookie name="user_name" /}&zuobiao="+zp[_id]+"&laiyuanbianhao="+_laiyuanbianhao,
 						            success: function (data) {
 					       
 						        }
@@ -183,8 +183,9 @@
 				
 				
 				
-				//更新购物车列表
-			    jiazai1("/single.aspx?m=index-1-3&suijishu="+Math.random());
+				//更新购物车列表  这里是选作品
+			    jiazai2("/single.aspx?m=index-1-3&suijishu="+Math.random());
+			    
 			}
 			//---------------插入作品 end--------------------------
 			
@@ -211,7 +212,7 @@
 			  
 			    $.ajax({
 			        type: "GET",
-			        url: "/linshi.aspx?type=del&suijishu="+Math.random()+"&t=history&leixing=临时作品&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+id,
+			        url: "/linshi.aspx?type=del&suijishu="+Math.random()+"&t=history&leixing="+escape("临时作品")+"&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+id,
 			        success: function (data) {
 			       
 			    }
@@ -370,7 +371,7 @@
            
                     $.ajax({
                         type: "GET",
-                        url: "/linshi.aspx?type=add&suijishu="+Math.random()+"&t=history&leixing=临时产品&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+{fzw:p1:id/},
+                        url: "/linshi.aspx?type=add&suijishu="+Math.random()+"&t=history&leixing="+escape("临时产品")+"&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+{fzw:p1:id/},
                 success: function (data) {
                     document.getElementById("ver-mid").src = "{fzw:p1:zutu string="zutu"/}";
                     setSuoFang("{fzw:p1:zutu string="zutu"/}");
@@ -393,7 +394,7 @@
                 {fzw:sql="select top 1 * from sl_product where id in ({fzw:url:laiyuanbianhao/}) order by renqi desc,id desc" id="p1"}
                 $.ajax({
                     type: "GET",
-                    url: "/linshi.aspx?type=add&suijishu="+Math.random()+"&t=history&leixing=临时产品&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+{fzw:p1:id/},
+                    url: "/linshi.aspx?type=add&suijishu="+Math.random()+"&t=history&leixing="+escape("临时产品")+"&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+{fzw:p1:id/},
                     success: function (data) {
                         document.getElementById("ver-mid").src = "{fzw:p1:zutu string="zutu"/}";
                        //$("#ver-mid").attr("data-type",'{fzw:p1:zuopinchicun/}');
@@ -422,7 +423,7 @@
                                    // zuobiao = $.trim(zuobiao);
                                     $.ajax({
                                         type: "GET",
-                                        url: "/linshi.aspx?type=add&suijishu="+Math.random()+"&t=history&leixing=临时作品&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+$.trim(id),
+                                        url: "/linshi.aspx?type=add&suijishu="+Math.random()+"&t=history&leixing="+escape("临时作品")+"&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+$.trim(id),
                                         success: function (data) {
                                          
                                             charuZP({src:$.trim(src),id:$.trim(id),pos_x:$.trim(zuobiao).split("_")[0],pos_y:$.trim(zuobiao).split("_")[1]});
@@ -444,7 +445,7 @@
                             var asset="{fzw:p1:yuantu string="zutu"/}";
                             $.ajax({
                                 type: "GET",
-                                url: "/linshi.aspx?type=add&suijishu="+Math.random()+"&t=history&leixing=临时作品&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+asset_id,
+                                url: "/linshi.aspx?type=add&suijishu="+Math.random()+"&t=history&leixing="+escape("临时作品")+"&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+asset_id,
                                 success: function (data) {
                                 	//加作品
                						charuZP({src:asset,id:asset_id});
@@ -486,8 +487,21 @@
                     }
                 });
             }
+            function jiazai2(urlstr) {
+                $.ajax({
+                    type: "GET",
+                    url: urlstr,
+                    success: function (data) {
+                        $('#cartlist').html("");
+                        $('#cartlist').html(data);
+                        $("#gouma").show();
+
+                    }
+                });
+            }
             jiazai("/search.aspx?m=index-1-1");
             jiazai1("/single.aspx?m=index-1-3&suijishu="+Math.random());
+          
             function yudong(id,x_,y_)
             {
 
@@ -583,6 +597,52 @@
         return res;
     }
     
+        </script>
+
+        
+        <script type="text/javascript">
+            //index-1-1
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+    $(document).on('click', '.cp_list_li2 img', function () {
+        //asset_id这个是判定是否是同一类
+        //如果id不等于null时
+        //if("{fzw:cookie name="user_name" /}"=="")
+        //{
+        //    window.location.href = "/?login.html";
+        //    window.event.returnValue = false;
+        //}
+
+        if(GetQueryString("id")!=null)
+        {
+
+            var tiao_url="/Single.aspx?m=index-1&suijishu="+Math.random()+"&laiyuanbianhao="+$(this).data('id')+"&id="+GetQueryString("id");
+            window.location.href = tiao_url;
+            window.event.returnValue = false;
+        }
+        //
+        var asset =  $(this).data('src');
+			    var asset_id = $(this).data('id');
+			    $.ajax({
+			        type: "GET",
+			        url: "/linshi.aspx?type=add&suijishu="+Math.random()+"&t=history&leixing="+escape("临时产品")+"&yonghuming={fzw:cookie name="user_name" /}&laiyuanbianhao="+asset_id,
+			        success: function (data) {
+			            jiazai1("/single.aspx?m=index-1-3&suijishu="+Math.random()+"");
+			        }
+    });
+    $("#ver-mid").attr("data-type",$(this).data('type'));
+				document.getElementById("ver-mid").src = asset;
+				setSuoFang(asset);  //设置缩放倍数  此函数在index-1页面
+				jiazai("/search.aspx?m=index-1-2&laiyuanbianhao=" + asset_id+"&ordertype=dtime&orderby=asc");
+				jiazai1("/single.aspx?m=index-1-3&suijishu="+Math.random()+"");
+			});
+
+
+
         </script>
 	</body>
 
