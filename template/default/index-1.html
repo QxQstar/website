@@ -325,9 +325,16 @@
 				$("body").append("<div class='main_bg'><div class='main'>"+content+"<span class='del'></span></div></div>");
 				$(".main_bg").height($("body").height());
 				$(".main").width(realWid);
+                //缩略图宽度
+                var suolueW = huabu.width();
 				$(".main .asset").each(function(){
 						var j = $(this).attr("id");
-						$(this).css({"left":positionArr[j].split(",")[1]*realWid,"top":positionArr[j].split(",")[0]*realWid});
+                        //原来的宽度
+                        var yuanlaiW = $(this).width();
+						$(this).css({"left":positionArr[j].split(",")[1]*realWid,
+                                    "top":positionArr[j].split(",")[0]*realWid,
+                                    "width":realWid/suolueW * yuanlaiW});
+
 				});
 				$(document).on("click",".del",function(){
 					$(".main_bg").remove();
@@ -643,6 +650,15 @@
 
 
 
+        </script>
+        <script>
+            function changeURL($url,$prev,$next){
+                var prev = $prev;
+                var next = $next;
+                var leimu = escape($url);
+                var url = prev+leimu+next;
+                jiazai(url);
+            }
         </script>
 	</body>
 
