@@ -1,0 +1,80 @@
+.container .contentBox .baseMessage{
+    margin-bottom: 20px;
+}
+.container .contentBox .title{
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.75;
+    color: #666666;
+}
+.baseMessage .messageList li{
+    height: 25px;
+    line-height: 25px;
+    font-size: 13px;
+    color: #333333;
+}
+.baseMessage .messageList li p{
+    float: left;
+    width: 60px;
+}
+.baseMessage  .link{
+    height: 35px;
+    line-height: 35px;
+}
+.baseMessage .link a{
+    font-size: 13px;
+    color: #333333;
+    border: 1px solid #ebebeb;
+    padding: 5px 10px;
+}
+.baseMessage .link a:hover{
+    border: 1px solid #999999;
+}
+.container .contentBox .bill{
+    padding-top: 20px;
+    position: relative;
+    color: #333333;
+    font-size: 13px;
+}
+.container .contentBox .bill:before{
+    content: "";
+    position: absolute;
+    width: 810px;
+    height: 1px;
+    top: 0;
+    left: 10px;
+    background-color: #ebebeb;
+}
+.container .contentBox .bill .item{
+    border: 1px solid #ebebeb;
+}
+.container .contentBox .bill .item+.item{
+    margin-top: 10px;
+}
+.contentBox .bill .item .itemHead{
+    height: 40px;
+    line-height: 40px;
+    background-color: #f2f2f2;
+    padding-left: 20px;
+}
+.contentBox .bill .item .itemHead .time{
+    padding-left: 20px;
+}
+.contentBox .bill .item .itemBody{
+    padding-left: 20px;
+    height: 60px;
+    line-height: 60px;
+}
+.contentBox .bill .item .itemBody .left{
+    float: left;
+    width: 620px;
+    border-right: 1px solid #ebebeb;
+}
+.contentBox .bill .item .itemBody .left .money{
+    margin-left: 100px;
+}
+.contentBox .bill .item .itemBody .right{
+    float: left;
+    width: 150px;
+    text-align: center;
+}

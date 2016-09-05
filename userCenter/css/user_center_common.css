@@ -1,0 +1,29 @@
+ul{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color: #333333;
+}
+.clearFix:after{
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+header{
+    height: 60px;
+    background-color: #000;
+}
+.container{
+    width: 1050px;
+    padding-top: 40px;
+    margin: 0 auto;
+}
+.container .contentBox{
+    width: 830px;
+    float: right;
+    font-family: arial, helvetica, sans-serif;
+}
