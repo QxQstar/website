@@ -4,6 +4,10 @@ ul{
 a{
     text-decoration: none;
     color: #333333;
+    outline: none;
+}
+a:focus{
+    outline: none;
 }
 .clearFix:after{
     content: "";
@@ -12,6 +16,15 @@ a{
     height: 0;
     overflow: hidden;
     visibility: hidden;
+}
+.isDelete{
+    display: inline-block;
+    width: 19px;
+    height: 20px;
+    background: url(../img/delete.png) 0px 0 no-repeat;
+}
+.isDelete:hover{
+    background: url(../img/delete.png) -19px 0 no-repeat;
 }
 header{
     height: 60px;

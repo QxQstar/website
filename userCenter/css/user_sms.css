@@ -1,0 +1,43 @@
+.contentBox .h1{
+    font-size: 18px;
+    color: #333333;
+    font-weight: normal;
+    height: 48px;
+    line-height: 48px;
+    border-bottom: 1px solid #cccccc;
+}
+.contentBox .smsList{
+    margin: 20px 0;
+}
+.contentBox .smsList .item{
+    border: 1px solid #ebebeb;
+    padding:  20px;
+    font-size: 13px;
+    color: #333333;
+    position: relative;
+}
+.contentBox .smsList .item+.item{
+    margin-top: 10px;
+}
+.contentBox .smsList .item .title{
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+.contentBox .smsList .item .title a:hover{
+    color: #ff6666;
+}
+.smsList .item .title .status{
+    margin-right: 10px;
+    color: #ff6666;
+}
+.smsList .item .title .markRead{
+    color: #999999;
+}
+.smsList .item .bottom{
+    position: relative;
+}
+.smsList .item .bottom .isDelete{
+    position: absolute;
+    right: 0;
+}

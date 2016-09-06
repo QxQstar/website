@@ -1,0 +1,41 @@
+.contentBox .h1{
+    font-size: 18px;
+    color: #333333;
+    font-weight: normal;
+    height: 48px;
+    line-height: 48px;
+    border-bottom: 1px solid #cccccc;
+}
+.contentBox .yhqList{
+    margin: 20px 0;
+}
+.contentBox .yhqList .item{
+    border: 1px solid #ebebeb;
+    padding: 20px 20px;
+    font-size: 13px;
+    color: #333333;
+    position: relative;
+}
+.contentBox .yhqList .item+.item{
+    margin-top: 10px;
+}
+.contentBox .yhqList .item div{
+    float: left;
+    width: auto;
+}
+.contentBox .yhqList .item .price,.contentBox .yhqList .item .time{
+    margin-left: 100px;
+}
+.contentBox .yhqList .item .status{
+    position: absolute;
+    float: none;
+    top: 0;
+    right: 0;
+    height: 25px;
+    line-height: 25px;
+    width: 80px;
+    background-color: #ff6666;
+    text-align: center;
+    color: #ffffff;
+
+}

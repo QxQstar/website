@@ -10,7 +10,7 @@
 .baseMessage .messageList li{
     height: 25px;
     line-height: 25px;
-    font-size: 13px;
+    font-size: 14px;
     color: #333333;
 }
 .baseMessage .messageList li p{
@@ -22,7 +22,7 @@
     line-height: 35px;
 }
 .baseMessage .link a{
-    font-size: 13px;
+    font-size: 14px;
     color: #333333;
     border: 1px solid #ebebeb;
     padding: 5px 10px;
@@ -34,7 +34,7 @@
     padding-top: 20px;
     position: relative;
     color: #333333;
-    font-size: 13px;
+    font-size: 14px;
 }
 .container .contentBox .bill:before{
     content: "";

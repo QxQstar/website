@@ -29,6 +29,9 @@
     line-height: 40px;
     text-align: center;
 }
+.userSlide .option .cur{
+    background: url(../img/cur.png) no-repeat 20% center;
+}
 .userSlide .option li a{
     display: block;
     height: 100%;
@@ -36,6 +39,12 @@
     font-size: 14px;
     color: #333333;
     font-family: arial, helvetica, sans-serif;
+}
+.userSlide .option li a:hover{
+    font-weight: bold;
+}
+.userSlide .option .cur a:hover{
+    font-weight: normal;
 }
 .userSlide .option li+li:before{
     content: "";
