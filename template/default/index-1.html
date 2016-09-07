@@ -312,10 +312,16 @@
 			$(document).on('click','.enlarge',function(){
 				var huabu = $(".main_img");
 				var content = huabu.html();
-				var positionArr = new Array();
-				
-				
-				$(".asset").each(function(){
+				var positionArr = new Array()
+                //印图在左侧缩略图中的宽度
+				var imgSLWidth = [];
+				var huabu = $(".main_img")
+                //缩略图中的印图
+                var huabuImg = huabu.find('.asset')
+                huabuImg.each(function(){
+                    imgSLWidth.push($(this).width());
+                });
+				$(".asset").each(function(index,ele){
 					var i = $(this).attr("id");
 					var t = $(this).position().top/huabu.height();
 					var l = $(this).position().left/huabu.width();
@@ -327,15 +333,17 @@
 				$(".main").width(realWid);
                 //缩略图宽度
                 var suolueW = huabu.width();
-				$(".main .asset").each(function(){
+
+				$(".main .asset").each(function(index,ele){
 						var j = $(this).attr("id");
                         //原来的宽度
-                        var yuanlaiW = $(this).width();
+                    var yuanlaiW = imgSLWidth[index];
+//                        var yuanlaiW = $(this).width();
 						$(this).css({"left":positionArr[j].split(",")[1]*realWid,
                                     "top":positionArr[j].split(",")[0]*realWid,
                                     "width":realWid/suolueW * yuanlaiW});
-
 				});
+
 				$(document).on("click",".del",function(){
 					$(".main_bg").remove();
 				})
@@ -527,7 +535,7 @@
         }
         page = parseInt(page) + 1;
      
-        jiazai('/search.aspx?m=index-1-2&leimu='+$("#leimu").html()+'&ordertype='+$("#ordertype").html()+'&orderby='+$("#orderby").html()+'&laiyuanbianhao='+$("#laiyuanbianhao").html()+'&page=' + page);
+        jiazai('/search.aspx?m=index-1-2&leimu='+escape($("#leimu").html())+'&ordertype='+$("#ordertype").html()+'&orderby='+$("#orderby").html()+'&laiyuanbianhao='+$("#laiyuanbianhao").html()+'&page=' + page);
 
 
     });
@@ -541,7 +549,7 @@
             page = parseInt(page) - 1;
         }
     
-        jiazai('/search.aspx?m=index-1-2&leimu='+$("#leimu").html()+'&ordertype='+$("#ordertype").html()+'&orderby='+$("#orderby").html()+'&laiyuanbianhao='+$("#laiyuanbianhao").html()+'&page=' + page);
+        jiazai('/search.aspx?m=index-1-2&leimu='+escape($("#leimu").html())+'&ordertype='+$("#ordertype").html()+'&orderby='+$("#orderby").html()+'&laiyuanbianhao='+$("#laiyuanbianhao").html()+'&page=' + page);
 
     });
 
