@@ -9,37 +9,39 @@
     <title></title>
 </head>
 <body>
-<div class="container clearFix">
+    <!--头部-->
+    <header></header>
+    <div class="container clearFix">
     <!--侧边栏-->
     <div class="userSlide">
-        <div class="userPic">
-            <img src="img/userPic.jpg">
+            <div class="userPic">
+                <img src="img/userPic.jpg">
+            </div>
+            <ul class="option">
+                <li id="order">
+                    <a href="#">我的订单</a>
+                </li>
+                <li id="cart">
+                    <a href="#">我的购物车</a>
+                </li>
+            </ul>
+            <ul class="option">
+                <li id="yhq">
+                    <a href="#">我的优惠券</a>
+                </li>
+                <li id="sms">
+                    <a href="#">站内信</a>
+                </li>
+                <li id="jiFen">
+                    <a href="#">积分</a>
+                </li>
+            </ul>
+            <ul class="option">
+                <li>
+                    <a href="#">退出登录</a>
+                </li>
+            </ul>
         </div>
-        <ul class="option">
-            <li>
-                <a href="#">我的订单</a>
-            </li>
-            <li>
-                <a href="#">我的购物车</a>
-            </li>
-        </ul>
-        <ul class="option">
-            <li>
-                <a href="#">我的优惠券</a>
-            </li>
-            <li>
-                <a href="#">站内信</a>
-            </li>
-            <li>
-                <a href="#">积分</a>
-            </li>
-        </ul>
-        <ul class="option">
-            <li>
-                <a href="#">退出登录</a>
-            </li>
-        </ul>
-    </div>
     <!--主要内容-->
     <div class="contentBox">
         <h1 class="h1">文章管理</h1>
@@ -65,12 +67,14 @@
                     <span class="discuss">1</span>
                 </div>
                 <div class="handle">
-                    <a href="#">编辑</a>
+                    <a href="#" class="isEdit"></a>
                     <a href="#" class="isDelete"></a>
                 </div>
             </li>
         </ul>
     </div>
 </div>
+    <!--底部-->
+    <footer></footer>
 </body>
 </html>
