@@ -11,7 +11,7 @@
 <body>
     <div class="container clearFix">
         <!--²à±ßÀ¸-->
-        <div class="userSlide">
+        <div class="userSlide" id="userSlide">
             <div class="userPic">
                 <img src="img/userPic.jpg">
             </div>
@@ -115,5 +115,16 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        var userSlide = document.getElementById('userSlide');
+        var li = userSlide.getElementsByTagName('li');
+        for(var i = 0,len = li.length ; i < len ; i++){
+            if(li[i].id == 'index'){
+                li[i].className = 'cur';
+            }else{
+                li[i].className = "";
+            }
+        }
+    </script>
 </body>
 </html>

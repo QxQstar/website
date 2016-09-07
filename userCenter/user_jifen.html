@@ -2,11 +2,12 @@
 <html>
 <head lang="en">
     <meta charset="gb2312">
+    <meta charset="gb2312">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <link type="text/css" rel="stylesheet" href="css/user_center_common.css">
-    <link type="text/css" rel="stylesheet" href="css/cart.css">
     <link type="text/css" rel="stylesheet" href="css/user_left.css">
-    <title>购物车</title>
+    <link type="text/css" rel="stylesheet" href="css/user_jifen.css">
+    <title>积分记录</title>
 </head>
 <body>
     <div class="container clearFix">
@@ -42,49 +43,30 @@
     </div>
     <!--主要内容-->
     <div class="contentBox">
-        <h1 class="h1">我的购物车</h1>
-        <!--购物车商品列表-->
-        <ul class="cartList">
-            <!--商品项-->
+        <h1 class="h1">积分记录</h1>
+        <!--积分记录列表-->
+        <ul class="jifenList">
+            <!--记录项-->
             <li class="item clearFix">
-                <div class="goodsPic">
-                    <a href="#">
-                        <img src="img/goodsPic.jpg">
-                        <p>魅拓缓温杯纳斯原版</p>
-                    </a>
+                <div class="time">2016-08-23</div>
+                <div class="number">
+                    <span>+345.0</span>积分
                 </div>
-                <div class="subtotal">
-                    单价:<span>￥65.00</span>
-                </div>
-                <div class="num_div">
-                    <span>数量</span>
-                    <input type="text" readonly="true" value="1" />
-                    <a class="sub" href="#"></a>
-                    <a class="add" href="#"></a>
-                </div>
-                <div class="handle">
-                    <a href="#" class="isLook"></a>
-                    <a href="#" class="isDelete"></a>
-                </div>
+                <div class="type">收支类型：消费</div>
             </li>
         </ul>
-        <!--结算-->
-        <div class="settlement">
-            <p>
-                合计（不含运费）：
-                <span>￥98.00</span>
-                <a href="#">结算</a>
-            </p>
+        <div class="remain">
+            剩余积分：<span>345.0</span>
         </div>
     </div>
 </div>
     <script type="text/javascript">
     var userSlide = document.getElementById('userSlide');
     var li = userSlide.getElementsByTagName('li');
-    for(var i = 0,len = li.length ; i < len ; i++){
-        if(li[i].id == 'cart'){
+    for(var i = 0,len = li.length ; i < len ; i++) {
+        if (li[i].id == 'jiFen') {
             li[i].className = 'cur';
-        }else{
+        } else {
             li[i].className = "";
         }
     }

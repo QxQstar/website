@@ -9,11 +9,9 @@
     <title></title>
 </head>
 <body>
-    <!--Í·²¿-->
-    <header></header>
     <div class="container clearFix">
     <!--²à±ßÀ¸-->
-    <div class="userSlide">
+    <div class="userSlide" id="userSlide">
             <div class="userPic">
                 <img src="img/userPic.jpg">
             </div>
@@ -74,7 +72,16 @@
         </ul>
     </div>
 </div>
-    <!--µ×²¿-->
-    <footer></footer>
+    <script type="text/javascript">
+        var userSlide = document.getElementById('userSlide');
+        var li = userSlide.getElementsByTagName('li');
+        for(var i = 0,len = li.length ; i < len ; i++){
+            if(li[i].id == 'article'){
+                li[i].className = 'cur';
+            }else{
+                li[i].className = "";
+            }
+        }
+    </script>
 </body>
 </html>
