@@ -1,11 +1,3 @@
-.contentBox .h1{
-    font-size: 18px;
-    color: #333333;
-    font-weight: normal;
-    height: 48px;
-    line-height: 48px;
-    border-bottom: 1px solid #cccccc;
-}
 .contentBox .cartList{
     margin: 20px 0 30px;
 }

@@ -62,3 +62,29 @@ footer{
     float: right;
     font-family: arial, helvetica, sans-serif;
 }
+.contentBox .h1{
+    font-size: 18px;
+    color: #333333;
+    font-weight: normal;
+    height: 48px;
+    line-height: 48px;
+    border-bottom: 1px solid #cccccc;
+}
+.contentBox .optionList{
+    margin-top: 10px;
+    height: 40px;
+    line-height: 40px;
+}
+.contentBox .optionList li{
+    position: relative;
+    width: 100px;
+    float: left;
+    border-bottom: 2px solid #ffffff;
+    text-align: center;
+}
+.contentBox .optionList li.active{
+    border-bottom: 2px solid #000000;
+}
+.contentBox .optionList li a{
+    font-size: 14px;
+}
