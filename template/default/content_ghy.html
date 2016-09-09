@@ -102,18 +102,20 @@
            </li>
             <li>
                 <img id="two" src="#">
-                <!--<img src='/template/default/img/banner2.jpg' >-->
             </li>
             <li>
                 <img id='three' src="#">
-                <!--<img src='/template/default/img/banner3-2.gif' >-->
             </li>
         </ul>
         <div class='pre' id='pre'>
-            <p class="pre">《 </p>
+            <p class="pre">
+                <em class="preIcon"></em>
+            </p>
         </div>
         <div class='next' id='next'>
-            <p class="next">》</p>
+            <p class="next">
+                <em class="nextIcon"></em>
+            </p>
         </div>
         <div class='controll' id='controll'>
             <ul>
@@ -126,15 +128,19 @@
 
 
 
-    <div class='activeBar' id="activeBar">
-		<ul class='list clearfix'>
+    <div class="active">
+        <div class='activeBar' id="activeBar">
+        <h1>推荐活动 | BEST ACTIVIY</h1>
+        <h2>魅拓联合设计师推出精品专题印图杯</h2>
+        <p>Charm extension joint designer launched boutique special print chart</p>
+		<ul class='list clearfix' id="activeList">
 			
              {fzw:sql="select  top 5 *  from sl_huodongjingxuan  order by huodongqihao desc,id desc" id="p1"}
             <li class='activeItem'>
 				 {if value1="{fzw:p1:lianjie/}" value2="" bi="=="}
-				<a target="_blank" href='/single.aspx?m=jingxuan&huodong_id={fzw:p1:id/}'>
+				<a target="_blank" href='/single.aspx?m=jingxuan&huodong_id={fzw:p1:id/}' data-h1="{fzw:p1:zhubiaoti/}" data-h2="{fzw:p1:fubiaoti/}">
 {else}
-<a target="_blank" href='{fzw:p1:lianjie/}'>
+<a target="_blank" href='{fzw:p1:lianjie/}' data-h1="{fzw:p1:zhubiaoti/}" data-h2="{fzw:p1:fubiaoti/}">
                      {/if}
 					<img src='{fzw:p1:huodongfengmiantu/}'>
 				</a>
@@ -142,6 +148,7 @@
 			{/fzw:sql}
 		</ul>
 	</div>
+    </div>
     <div class='smallScreen'>
         <ul class='smallList clearfix'>
             <li class='list chpList'>
@@ -149,13 +156,13 @@
                 <span class='smallScInfo'>产品<i class='icon'></i></span>
                 <ul class='clearfix hide inter'>
                     <li class='chpItem'>
-                        <a target="_blank" href='http://www.xiaoyu4.com/page.aspx?id=27&classid=1'><strong>纳斯缓温杯</strong>光泽</a>
+                        <a target="_blank" href='http://www.xiaoyu4.com/page.aspx?id=27&classid=1'><strong>纳斯缓温杯</strong>光择</a>
                     </li>
                     <li class='chpItem'>
                         <a target="_blank" href='http://www.xiaoyu4.com/page.aspx?id=28&classid=1'><strong>纳斯缓温杯</strong>原版</a>
                     </li>
                     <li class='chpItem'>
-                        <a target="_blank" href='http://www.xiaoyu4.com/page.aspx?id=26&classid=1'><strong>纯色保温杯</strong>光泽</a>
+                        <a target="_blank" href='http://www.xiaoyu4.com/page.aspx?id=26&classid=1'><strong>纯色保温杯</strong>光择</a>
                     </li>
                     <li class='chpItem'>
                         <a href='javascript:void(0)'>创意饰品</a>
@@ -206,7 +213,7 @@
                     <p>极简设计，来自每一条曲线的精心打造</p>
                 </li>
                 <li>
-                    <p>光泽系列产品手工抛光带来不锈钢镜面新境界</p>
+                    <p>光择系列产品手工抛光带来不锈钢镜面新境界</p>
                 </li>
                 <li>
                     <p>更多产品特性请访问产品详情页</p>
@@ -215,6 +222,7 @@
         </div>
 		<div class='goods'>
 			<h2 class='info'>HIMETAL定制系列水杯</h2>
+            <p class="english">HI,METAL CUSTOM METAL CUP</p>
 			<ul class='cupList clearfix'>
                 <!--绑定数据开始-->
                <!-- {fzw:sql="select top 3 shejishi,lianjie,biaoti,jiage,shichangjia,suoluetu from sl_xiangguanchanpin,sl_product  where chanpinfenlei='杯子' and sl_product.id in (cast(substring(sl_xiangguanchanpin.chanpinbianhao,3,len(sl_xiangguanchanpin.chanpinbianhao)-4)  as   int)) order by sl_xiangguanchanpin.paixu asc,sl_xiangguanchanpin.id desc
@@ -238,8 +246,8 @@
 
 				<li class='cupItem'>
 					<a target="_blank" href='http://www.xiaoyu4.com/page.aspx?id=27&classid=1'>
-						<img src='/template/default/img/cup1.png'>
-                        <h3 class='goodsName'>纳斯缓温杯光泽</h3>
+						<img src='/template/default/img/cup1.jpg'>
+                        <h3 class='goodsName'>纳斯缓温杯光择</h3>
 						<span class='price'>
 							￥64.90
 							<span class='oldPrice'>￥84.90</span>
@@ -251,7 +259,7 @@
 				</li>
 				<li class='cupItem'>
 					<a target="_blank" href='http://www.xiaoyu4.com/page.aspx?id=28&classid=1'>
-						<img src='/template/default/img/cup2.png'>
+						<img src='/template/default/img/cup2.jpg'>
 						<h3 class='goodsName'>纳斯缓温杯原版</h3>
 						<span class='price'>
 							￥59.90
@@ -264,8 +272,8 @@
 				</li>
 				<li class='cupItem'>
 					<a target="_blank" href='http://www.xiaoyu4.com/page.aspx?id=26&classid=1'>
-						<img src='/template/default/img/cup3.png'>
-						<h3 class='goodsName'>纯色保温杯光泽</h3>
+						<img src='/template/default/img/cup3.jpg'>
+						<h3 class='goodsName'>纯色保温杯光择</h3>
 						<span class='price'>
 							￥109.00
 							<span class='oldPrice'>￥159.00</span>
@@ -281,7 +289,7 @@
 					<a target="_blank" href='http://www.xiaoyu4.com/page.aspx?id=27&classid=1' class='clearfix'>
 						<div class='smallCupShow cupShowOne'></div>
 						<div class='smallCupDesc'>
-							<div class='name'>纳斯缓温杯光泽</div>
+							<div class='name'>纳斯缓温杯光择</div>
 							<div class='desc'>
                                 极致保冷，手工镜面，双层真空
                             </div>
@@ -309,7 +317,7 @@
 					<a target="_blank" href='http://www.xiaoyu4.com/page.aspx?id=26&classid=1' class='clearfix'>
 						<div class='smallCupShow cupShowThree'></div>
 						<div class='smallCupDesc'>
-							<div class='name'>纯色保温杯光泽</div>
+							<div class='name'>纯色保温杯光择</div>
 							<div class='desc'>
                                 手工镜面，便于携带，高效保温
                             </div>
@@ -322,7 +330,7 @@
 			</ul>
 		</div>
 	</div>
-    <div class='company'>
+    <div class='company' id="company">
         <img src='/template/default/img/company.jpg'>
         <div class='content'>
             <h2 class='title'>
@@ -370,12 +378,14 @@
         </div>
         <div class='mask'></div>
     </div>
-	<div class='plate'>
+	<div class='plate' id="plate">
 		<h1 class='title'>
 			<strong>面见世界</strong>
 		</h1>
 		<div class='showPic'>
-			<img src="/template/default/img/plate.jpg">
+			<img src="/template/default/img/plate.jpg" class="bg">
+            <img src="/template/default/img/mask.png" class="plateMask">
+            <img src="/template/default/img/plateText.png" class="plateText">
             <h2 class="descTitle">
                 以工艺，会创意
             </h2>
@@ -399,7 +409,8 @@
             </ul>
 		</div>
 		<div class='goods'>
-			<h2 class='info'>HIMETAL联合设计产品</h2>
+            <h2 class='info'>HIMETAL联合设计师产品</h2>
+            <p class="english">PRODUCTS PRODUCED BY CO DESIGNERS OF THE HI,METAL</p>
 			<div class='more clearfix'>
 				<a href='#'>
 					<img src='/template/default/img/more.png'>
@@ -425,72 +436,7 @@
                 {/fzw:sql}-->
 
                 <!--绑定数据结束-->
-                <li class='plateItem'>
-                    <img src='/template/default/img/fengling.png'>
-                    <h3 class='goodsName'>风铃</h3>
-                    <!--<span class='price'>-->
-                    <!--￥65.00-->
-                    <!--<span class='oldPrice'>￥76.00</span>-->
-                    <!--</span>-->
-						<span class='sale'>
-							敬请期待
-						</span>
-                </li>
-                <li class='plateItem'>
-                    <img src='/template/default/img/heben.png'>
-                    <h3 class='goodsName'>赫本</h3>
-						<!--<span class='price'>-->
-							<!--￥65.00-->
-							<!--<span class='oldPrice'>￥76.00</span>-->
-						<!--</span>-->
-						<span class='sale'>
-                            敬请期待
-						</span>
-                </li>
-                <li class='plateItem'>
-                    <img src='/template/default/img/wqe.png'>
-                    <h3 class='goodsName'>梳子</h3>
-                    <!--<span class='price'>-->
-                    <!--￥65.00-->
-                    <!--<span class='oldPrice'>￥76.00</span>-->
-                    <!--</span>-->
-						<span class='sale'>
-							敬请期待
-						</span>
-                </li>
-                <li class='plateItem'>
-                    <img src='/template/default/img/lu.png'>
-                    <h3 class='goodsName'>鹿</h3>
-                    <!--<span class='price'>-->
-                    <!--￥65.00-->
-                    <!--<span class='oldPrice'>￥76.00</span>-->
-                    <!--</span>-->
-						<span class='sale'>
-                            敬请期待
-						</span>
-                </li>
-                <li class='plateItem'>
-                    <img src='/template/default/img/gaogengxie.png'>
-                    <h3 class='goodsName'>高跟鞋</h3>
-                    <!--<span class='price'>-->
-                    <!--￥65.00-->
-                    <!--<span class='oldPrice'>￥76.00</span>-->
-                    <!--</span>-->
-						<span class='sale'>
-							敬请期待
-						</span>
-                </li>
-                <li class='plateItem'>
-                    <img src='/template/default/img/untitled.44.png'>
-                    <h3 class='goodsName'>DG</h3>
-						<!--<span class='price'>-->
-							<!--￥65.00-->
-							<!--<span class='oldPrice'>￥76.00</span>-->
-						<!--</span>-->
-						<span class='sale'>
-							敬请期待
-						</span>
-                </li>
+            <img class="plateImg" src="/template/default/img/plateList.png">
 
 			</ul>
 			<a href='#' class='moreList'>加载更多饰品</a>

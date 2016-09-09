@@ -36,8 +36,9 @@ function btnClick(){
         var event = untilEvent.getEvent(event);
         var target = untilEvent.getTarget(event);
         var targetName = target.nodeName.toLowerCase();
-        if(targetName == 'div' || targetName == "p"){
+        if(targetName == 'div' || targetName == "p" || targetName == 'em'){
             switch(target.className){
+                case 'preIcon':
                 case 'pre': if(index == 1){
                     index = 3;
                 }else{
@@ -45,6 +46,7 @@ function btnClick(){
                 }
                     anmitate();
                     break;
+                case 'nextIcon':
                 case 'next':if(index == 3){
                     index = 1;
                 }else{
@@ -167,10 +169,59 @@ var touchObj = {
 };
 //函数节流
 function scrollEvent(){
-	untilEvent.addEvent(window,"resize",function(){
-//		throttle(setListHeight);
-		throttle(collapse);
-	});
+    $(document).resize(function(){
+        throttle(collapse);
+    });
+    $(document).scroll(function(){
+        throttle(checkOffsetTop);
+    });
+}
+//检查滚动高度
+function checkOffsetTop(){
+    var company = $("#company");
+    var companyH = company.height();
+    var contentH = company.find(".tecnlog").outerHeight() + company.find('.title').height() + 54 ;
+    var offsetH = companyH - contentH;
+    var plate = $("#plate");
+    var doc = $(document);
+    var WindowH = $(window).height();
+    var plateH = plate.find(".showPic").height();
+    if(doc.scrollTop() >= company.offset().top - WindowH/2){
+        company.find(".content").stop(true,true).animate({
+            "top":offsetH /2 + "px",
+            "opacity":"1"
+        },400);
+    }
+    if(doc.scrollTop() >= plate.offset().top - WindowH/2){
+        plate.find('.plateMask').stop(true,true).animate({
+            "top": plateH * 0.1,
+            "opacity":"1",
+            "bottom":plateH * 0.1
+        },400,function(){
+            plate.find('.plateText').stop(true,true).animate({
+                "top": plateH * 0.1,
+                "opacity":"1",
+                "bottom":plateH * 0.1
+            },400);
+        });
+    }
+    if(doc.scrollTop() < company.offset().top  - WindowH){
+        company.find('.content').css({
+            'bottom':"0",
+            "opacity":"0",
+            "top":"auto"
+        });
+        plate.find('.plateMask').css({
+            "bottom":"-200px",
+            "opacity":"0",
+            "top":"auto"
+        });
+        plate.find(".plateText").css({
+            "bottom":"-200px",
+            "opacity":"0",
+            "top":"auto"
+        });
+    }
 }
 function throttle(method,context){
 	clearTimeout(method.Tid);
@@ -179,14 +230,14 @@ function throttle(method,context){
 // 轮播的函数结束
 function addMask(){
     $(".customer .word").hover(function(){
-        $(this).fadeTo(300,1);
+        $(this).stop(true,true).fadeTo(300,1);
     },function(){
-        $(this).fadeTo(300,0);
+        $(this).stop(true,true).fadeTo(300,0);
     });
     $(".company").hover(function(){
-        $(".company").find(".mask").fadeTo(150,0.6);
+        $(".company").find(".mask").stop(true,true).fadeTo(150,0.6);
     },function(){
-        $(".company").find(".mask").fadeTo(150,0.3);
+        $(".company").find(".mask").stop(true,true).fadeTo(150,0.3);
     });
 }
 //给活动列表和晒单列表动态添加类
@@ -267,15 +318,53 @@ function loadBannerImg(){
     banner2Img.attr('src','/template/default/img/banner2.jpg');
     banner3Img.attr('src','/template/default/img/banner3-2.gif');
 }
+function activeHover(){
+    var activeItem = $("#activeList").find(".activeItem");
+    activeItem.hover(function(){
+        var link = $(this).find("a");
+        console.log(link.attr('data-h1'));
+        var text = $("<div class='text'></div>")
+                    .css({
+                        "position":"absolute",
+                        "top":"0",
+                        "left":"0",
+                        "right":"0",
+                        "bottom":"0",
+                        "text-align":"center",
+                        "height":"50%",
+                        "margin-top":"auto",
+                        "margin-bottom":"auto"
+                    });
+        var h1 = $("<p class='h1'></p>")
+                    .text(link.attr('data-h1'))
+                    .css({
+                        "font-size":"16px",
+                        "color":"#ffffff",
+                        "font-weight":"blod"
+                });
+        var h2 = $("<p class='h2'></p>")
+                    .text(link.attr('data-h2'))
+                    .css({
+                            "color":"#ffffff",
+                            "font-size":"14px"
+                    });
+        text.append(h1).append(h2);
+        link.append($("<div class='mask' style='position: absolute ; left: 0;" +
+            " top:0;width: 100%;height: 100%;background-color:rgba(0,0,0,0.5) ;'></div>"))
+            .append(text);
+
+    },function(){
+        var link = $(this).find("a");
+        link.find(".mask").remove();
+        link.find(".text").remove();
+    });
+}
 untilEvent.addEvent(window,'load',loadBannerImg);
 untilEvent.addEvent(window,'load',scrollEvent);
-//untilEvent.addEvent(window,'load',setListHeight);
 untilEvent.addEvent(window,'load',setLiIndex);
-//untilEvent.addEvent(window,'load',btnClick);
-//untilEvent.addEvent(window,'load',play);
-//untilEvent.addEvent(window,'load',getWarp);
 untilEvent.addEvent(window,'load',addClass);
 untilEvent.addEvent(window,'load',addMask);
 untilEvent.addEvent(window,'load',collapse);
 untilEvent.addEvent(window,'load',smallScreenList);
 untilEvent.addEvent(window,'load',liClick);
+untilEvent.addEvent(window,'load',activeHover);
