@@ -105,13 +105,13 @@ a:focus{
 .isLook:hover{
     background: url(../img/edit&look.png) -69px 0 no-repeat;
 }
-header{
-    height: 60px;
-    background-color: #333;
+.indexLink{
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
 }
-footer{
-    height: 300px;
-    background: #333;
+.indexLink:hover{
+    text-decoration: underline;
 }
 .container{
     width: 1050px;
@@ -148,6 +148,43 @@ footer{
 }
 .contentBox .optionList li a{
     font-size: 14px;
+}
+.contentBox .form{
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333333;
+}
+.contentBox .form div{
+    height: 35px;
+    line-height: 35px;
+}
+.contentBox .form div .info{
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+.contentBox .form label input{
+    height:27px;
+    width: 200px;
+    padding-left: 10px;
+    border: 1px #999 solid;
+}
+.contentBox .form label input:focus{
+    box-shadow: 0 0 3px #888;
+}
+.contentBox .form .btn button{
+    width: 80px;
+    height: 30px;
+    border: none;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #333333;
+}
+.contentBox .form .btn button:hover{
+    background-color: #ff6666;
+}
+.contentBox .form .f ,.contentBox .form .m ,.contentBox .form .secret{
+    margin: 0 5px;
 }
 
 /*¹ºÎï³µ*/
