@@ -25,8 +25,9 @@ function btnClick(){
         var event = untilEvent.getEvent(event);
         var target = untilEvent.getTarget(event);
         var targetName = target.nodeName.toLowerCase();
-        if(targetName == 'div' || targetName == "p"){
+        if(targetName == 'div' || targetName == "p" || targetName == 'em'){
             switch(target.className){
+                case 'preIcon':
                 case 'pre': if(index == 1){
                     index = 3;
                 }else{
@@ -34,6 +35,7 @@ function btnClick(){
                 }
                     anmitate();
                     break;
+                case 'nextIcon':
                 case 'next':if(index == 3){
                     index = 1;
                 }else{
@@ -225,13 +227,56 @@ function loadBannerImg(){
     banner2Img.attr('src','/template/default/img/banner2.jpg');
     banner3Img.attr('src','/template/default/img/banner3-2.gif');
 }
-// 轮播的函数结束
+//给活动添加介绍文字
+function addText(){
+    var activeList = $("#activeBar").find("li");
+    var link = activeList.find('a');
+    link.each(function(index,ele){
+        var text = $("<div class='text'></div>")
+            .css({
+                "position":"absolute",
+                "top":"0",
+                "left":"0",
+                "right":"0",
+                "bottom":"0",
+                "text-align":"center",
+                "height":"50%",
+                "margin-top":"auto",
+                "margin-bottom":"auto"
+            });
+        var h1 = $("<p class='h1'></p>")
+            .css({
+                "font-size":"14px",
+                "color":"#ffffff",
+                "line-height":"1.75",
+                "font-weight":"blod"
+            });
+        var dataH1 = $(ele).attr('data-h1');
+        var dataH2 = $(ele).attr('data-h2');
+        if(dataH1){
+            h1.text($(ele).attr('data-h1'))
+                .css({
+                    "font-size":"16px"
+                });
+        }
+        var h2 = $("<p class='h2'></p>")
+            .text($(ele).attr('data-h2'))
+            .css({
+                "color":"#ffffff",
+                "font-size":"12px"
+            });
+        if(dataH2){
+            h2.text($(ele).attr('data-h2'));
+        }
+        text.append(h1).append(h2);
+        $(ele).append($("<div class='mask' style='position: absolute ; left: 0; top:0;width: 100%; height: 100%;background-color:rgba(0,0,0,0.5) ;'></div>"))
+            .append(text);
+    });
+
+}
 untilEvent.addEvent(window,'load',loadBannerImg);
 untilEvent.addEvent(window,'load',liClick);
 untilEvent.addEvent(window,'load',scrollEvent);
-//untilEvent.addEvent(window,'load',setListHeight);
+untilEvent.addEvent(window,'load',addText);
 untilEvent.addEvent(window,'load',setLiIndex);
-//untilEvent.addEvent(window,'load',btnClick);
-//untilEvent.addEvent(window,'load',play);
-//untilEvent.addEvent(window,'load',getWarp);
 untilEvent.addEvent(window,'load',smallScreenList);

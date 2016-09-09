@@ -409,6 +409,7 @@ header nav .myNav{
 	margin: 10px auto;
 }
 .wholeActiveList .activeItem a{
+    position: relative;
 	display: block;
 	text-align: center;
 }

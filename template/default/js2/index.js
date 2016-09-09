@@ -322,7 +322,6 @@ function activeHover(){
     var activeItem = $("#activeList").find(".activeItem");
     activeItem.hover(function(){
         var link = $(this).find("a");
-        console.log(link.attr('data-h1'));
         var text = $("<div class='text'></div>")
                     .css({
                         "position":"absolute",

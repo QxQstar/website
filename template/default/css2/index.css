@@ -862,6 +862,7 @@ div.next p,div.pre p{
 }
 .company .content{
 	position: absolute;
+    top:auto;
 	bottom: 0;
 	left: 0;
 	right: 0;

@@ -1,7 +1,7 @@
 
-// è½®æ’­çš„å‡½æ•°å¼€å§‹
-//è®¾ç½®classä¸ºlistçš„é«˜åº¦,å› ä¸ºå›¾ç‰‡çš„positionä¸ºabsoluteæ‰€ä»¥.listå…ƒç´ çš„é«˜åº¦ä¸ºé›¶
-//å¦‚æœä¸€ä¸ªå…ƒç´ çš„çˆ¶å…ƒç´ é«˜åº¦ä¸º0ï¼Œé‚£ä¹ˆè®¾ç½®è¿™ä¸ªå…ƒç´ çš„margin: auto 0; ä¸èµ·ä½œç”¨
+// ÂÖ²¥µÄº¯Êı¿ªÊ¼
+//ÉèÖÃclassÎªlistµÄ¸ß¶È,ÒòÎªÍ¼Æ¬µÄpositionÎªabsoluteËùÒÔ.listÔªËØµÄ¸ß¶ÈÎªÁã
+//Èç¹ûÒ»¸öÔªËØµÄ¸¸ÔªËØ¸ß¶ÈÎª0£¬ÄÇÃ´ÉèÖÃÕâ¸öÔªËØµÄmargin: auto 0; ²»Æğ×÷ÓÃ
 function setListHeight(){
 	var list = document.getElementById('list');
 	var myRow2 = document.getElementById('myRow2');
@@ -11,7 +11,7 @@ function setListHeight(){
 	var list = document.getElementById('list');
 	list.style.height = height + 'px';
 }
-//ç¬¬ä¸€å¼ è½®æ’­å›¾è·³è½¬
+//µÚÒ»ÕÅÂÖ²¥Í¼Ìø×ª
 function liClick(){
     var warpOne = document.getElementById('one');
     $(warpOne).on('click',function(){
@@ -28,7 +28,7 @@ function setLiIndex(){
 		li[i].style.zIndex = liLen-i;
 	}
 }
-var index = 1;//indexè¡¨ç¤ºå½“å‰æ˜¾ç¤ºçš„é¡µé¢,indexæ˜¯ä¸€ä¸ªå…¨å±€å˜é‡
+var index = 1;//index±íÊ¾µ±Ç°ÏÔÊ¾µÄÒ³Ãæ,indexÊÇÒ»¸öÈ«¾Ö±äÁ¿
 var timer;
 function btnClick(){
     var warp = document.getElementById('warp');
@@ -36,8 +36,9 @@ function btnClick(){
         var event = untilEvent.getEvent(event);
         var target = untilEvent.getTarget(event);
         var targetName = target.nodeName.toLowerCase();
-        if(targetName == 'div' || targetName == "p"){
+        if(targetName == 'div' || targetName == "p" || targetName == 'em'){
             switch(target.className){
+                case 'preIcon':
                 case 'pre': if(index == 1){
                     index = 3;
                 }else{
@@ -45,6 +46,7 @@ function btnClick(){
                 }
                     anmitate();
                     break;
+                case 'nextIcon':
                 case 'next':if(index == 3){
                     index = 1;
                 }else{
@@ -71,7 +73,7 @@ function removeClass(curIndex){
 		}
 	}
 }
-//åˆ‡æ¢å›¾ç‰‡çš„å‡½æ•°
+//ÇĞ»»Í¼Æ¬µÄº¯Êı
 function anmitate() {
     removeClass(index);
     var list = $("#list");
@@ -84,7 +86,7 @@ function anmitate() {
         }
     });
 }
-//è‡ªåŠ¨åˆ‡æ¢å‡½æ•°
+//×Ô¶¯ÇĞ»»º¯Êı
 function play() {
     clearTimeout(timer);
 	timer = setTimeout(function () {
@@ -97,7 +99,7 @@ function play() {
 		play();
  }, 4000);
 }
-//åœæ­¢åˆ‡æ¢å‡½æ•°,å½“é¼ æ ‡ç‚¹å‡»äº†å·¦ç®­å¤´æˆ–è€…å³ç®­å¤´æ—¶ä¼šå–æ¶ˆè‡ªåŠ¨åˆ‡æ¢ï¼Œå½“é¼ æ ‡ä»ç®­å¤´ä¸Šç§»å¼€ï¼Œåˆå¼€å§‹è‡ªåŠ¨åˆ‡æ¢
+//Í£Ö¹ÇĞ»»º¯Êı,µ±Êó±êµã»÷ÁË×ó¼ıÍ·»òÕßÓÒ¼ıÍ·Ê±»áÈ¡Ïû×Ô¶¯ÇĞ»»£¬µ±Êó±ê´Ó¼ıÍ·ÉÏÒÆ¿ª£¬ÓÖ¿ªÊ¼×Ô¶¯ÇĞ»»
 function stop() {
 	clearTimeout(timer);
 }
@@ -111,7 +113,7 @@ function getWarp(){
     untilEvent.addEvent(warp,"touchstart",stop);
     untilEvent.addEvent(warp,"touchend",play);
 }
-//ä¸ºäº†å®Œæˆtouchäº‹ä»¶çš„å¯¹è±¡
+//ÎªÁËÍê³ÉtouchÊÂ¼şµÄ¶ÔÏó
 var touchObj = {
     warp:document.getElementById("warp"),
     startTime:null,
@@ -123,7 +125,7 @@ var touchObj = {
 //        this.startTime = new Date();
         var event = untilEvent.getEvent(event);
         var touch = event.targetTouches[0];
-        this.startPos = {
+        touchObj.startPos = {
             x:touch.clientX,
             y:touch.clientY
         };
@@ -134,7 +136,7 @@ var touchObj = {
        var event = untilEvent.getEvent(event);
         var touch = event.targetTouches;
         if(touch.length = 1){
-            this.endPos = {
+            touchObj.endPos = {
                 x:touch.clientX,
                 y:touch.clientY
             };
@@ -142,10 +144,10 @@ var touchObj = {
     },
     endEvent:function(event){
         var event = untilEvent.getEvent(event);
-        var offX = Number(this.endPos.x - this.startPos.x);
-        var offY = Number(this.endPos.y - this.startPos.y);
-        this.direction = Math.abs(offX) > Math.abs(offY) ? 1:0;
-        if(this.direction === 1){
+        var offX = Number(touchObj.endPos.x - touchObj.startPos.x);
+        var offY = Number(touchObj.endPos.y - touchObj.startPos.y);
+        touchObj.direction = Math.abs(offX) > Math.abs(offY) ? 1:0;
+        if(touchObj.direction === 1){
             if(offX >= 10){
                 if(index === 1){
                     index = 3;
@@ -168,10 +170,9 @@ var touchObj = {
         untilEvent.removeEvent(this.warp,"touchend",this.endEvent);
     }
 };
-//å‡½æ•°èŠ‚æµ
+//º¯Êı½ÚÁ÷
 function scrollEvent(){
 	untilEvent.addEvent(window,"resize",function(){
-//		throttle(setListHeight);
 		throttle(collapse);
 	});
 }
@@ -179,7 +180,7 @@ function throttle(method,context){
 	clearTimeout(method.Tid);
 	method.Tid = setTimeout(method,70);
 }
-// è½®æ’­çš„å‡½æ•°ç»“æŸ
+// ÂÖ²¥µÄº¯Êı½áÊø
 function addMask(){
     $(".customer .word").hover(function(){
         $(this).fadeTo(300,1);
@@ -195,12 +196,58 @@ function addMask(){
 function addClass(){
     var activeList = $("#activeBar").find(".list li");
     var moreList = $("<li class='activeItem moreActiveItem'><a href='http://www.xiaoyu4.com/single.aspx?m=moreActiveList'><img src='/template/default/img/3213.jpg'></a></li>");
+    var moreActiveLink = moreList.find('a');
+    addText(moreActiveLink[0]);
     activeList.eq(3).before(moreList);
     activeList.eq(3).addClass("otherActive").nextAll("li").addClass("otherActive");
+    //¸ø»î¶¯Ìí¼Ó½éÉÜÎÄ×Ö
+    var link = activeList.find('a');
+    link.each(function(index,ele) {
+        addText(ele);
+    });
     $('#customer').find('li').last().addClass("lastItem");
 }
-
-
+function addText(ele){
+    var text = $("<div class='text'></div>")
+        .css({
+            "position":"absolute",
+            "top":"0",
+            "left":"0",
+            "right":"0",
+            "bottom":"0",
+            "text-align":"center",
+            "height":"50%",
+            "margin-top":"auto",
+            "margin-bottom":"auto"
+        });
+    var h1 = $("<p class='h1'></p>")
+        .css({
+            "font-size":"14px",
+            "color":"#ffffff",
+            "font-weight":"blod"
+        });
+    var dataH1 = $(ele).attr('data-h1');
+    var dataH2 = $(ele).attr('data-h2');
+    if(dataH1){
+        h1.text($(ele).attr('data-h1'))
+            .css({
+                "font-size":"16px"
+            });
+    }
+    var h2 = $("<p class='h2'></p>")
+        .text($(ele).attr('data-h2'))
+        .css({
+            "color":"#ffffff",
+            "font-size":"12px"
+        });
+    if(dataH2){
+        h2.text($(ele).attr('data-h2'));
+    }
+    text.append(h1).append(h2);
+    $(ele).append($("<div class='mask' style='position: absolute ; left: 0;" +
+        " top:0;width: 100%;height: 100%;background-color:rgba(0,0,0,0.5) ;'></div>"))
+        .append(text);
+}
 function collapse(){
 	var p = $(".customer .word #p");
 	var offsetWidth = p.width();
@@ -257,7 +304,7 @@ function spread(state){
 		$('.smallScreen').animate({height:'30px'},500);
 	}
 }
-//jsåŠ è½½è½®æ’­å›¾
+//js¼ÓÔØÂÖ²¥Í¼
 function loadBannerImg() {
     var banner3Img = $("#three");
     var banner2Img = $("#two");
@@ -271,11 +318,7 @@ function loadBannerImg() {
 }
 untilEvent.addEvent(window,'load',loadBannerImg);
 untilEvent.addEvent(window,'load',scrollEvent);
-//untilEvent.addEvent(window,'load',setListHeight);
 untilEvent.addEvent(window,'load',setLiIndex);
-//untilEvent.addEvent(window,'load',btnClick);
-//untilEvent.addEvent(window,'load',play);
-//untilEvent.addEvent(window,'load',getWarp);
 untilEvent.addEvent(window,'load',addClass);
 untilEvent.addEvent(window,'load',addMask);
 untilEvent.addEvent(window,'load',collapse);

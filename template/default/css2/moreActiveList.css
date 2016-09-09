@@ -275,47 +275,36 @@ header nav .myNav{
     position: relative;
 }
 .warp .list .one img{
-    margin-top: -10px;
+    margin-top: -1px;
 }
 .warp .list li img{
 	width: 100%;
 }
-/*.pre,.next{*/
-	/*position: absolute;*/
-	/*top: 50%;*/
-	/*bottom: 0;*/
-	/*width: 32px;*/
-	/*height: 32px;*/
-	/*z-index: 10;*/
-	/*margin-top: -16px;*/
-	/*text-align: center;*/
-	/*line-height: 32px;*/
-	/*color: #fff;*/
-	/*font-weight: bold;*/
-	/*font-size: 15px;*/
-	/*cursor: pointer;*/
-	/*background-color: transparent;*/
-/*}*/
-/*@media all and (min-width: 768px){*/
-	/*.pre,.next{*/
-		/*width: 64px;*/
-		/*height: 64px;*/
-		/*margin-top: -32px;*/
-		/*font-size: 30px;*/
-		/*line-height: 64px;*/
-	/*}*/
-/*}*/
-/*.pre{*/
-	/*left: 5px;*/
-	/*right: auto;*/
-/*}*/
-/*.next{*/
-	/*right:5px;*/
-	/*left: auto;*/
-/*}*/
-/*.pre:hover,.next:hover{*/
-	/*background-color: rgba(0,0,0,0.7);*/
-/*}*/
+div.pre,div.next,div.pre .preIcon,div.next .nextIcon{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    z-index: 10;
+    cursor: pointer;
+}
+.pre .preIcon,.next .nextIcon{
+    z-index: 11;
+    width: 25px;
+    background: url(/template/m/img/bannerIcon.png)no-repeat;
+
+}
+.pre .preIcon{
+    background-position: -25px 0;
+}
+.next .nextIcon{
+    background-position: 0 0;
+}
+.pre .preIcon:hover{
+    background-position: -75px 0;
+}
+.next .nextIcon:hover{
+    background-position: -50px 0;
+}
 .controll{
 	position: absolute;
 	bottom: 10px;
@@ -327,7 +316,7 @@ header nav .myNav{
 	text-align: center;
 }
 #controll li span.curIndex{
-	background-color: #000;
+	background-color: #ff4400;
 }
 .controll li span{
 	display: inline-block;
@@ -336,7 +325,7 @@ header nav .myNav{
 	width: 8px;
 	height: 8px;
 	border-radius: 4px;
-	background-color: #a7a7a7;
+	background-color: #ffffff;
 	cursor: pointer;
 }
 .controll li{
@@ -449,8 +438,12 @@ header nav .myNav{
 	margin: 10px auto;
 }
 .wholeActiveList .activeItem a{
+    position: relative;
 	display: block;
 	text-align: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
 }
 .wholeActiveList .activeItem img{
 	max-width: 100%;

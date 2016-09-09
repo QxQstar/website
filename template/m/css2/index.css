@@ -271,6 +271,41 @@ header nav .myNav{
 .warp .list li.one{
     position: relative;
 }
+div.pre,div.next,div.pre .preIcon,div.next .nextIcon{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    z-index: 10;
+    cursor: pointer;
+}
+div.pre{
+    left: 0px;
+    width: 50px;
+}
+div.next{
+    right: 0px;
+    width: 50px;
+}
+
+.pre .preIcon,.next .nextIcon{
+    z-index: 11;
+    width: 25px;
+    background: url(../img/bannerIcon.png)no-repeat;
+
+}
+.pre .preIcon{
+    background-position: -25px 0;
+}
+.next .nextIcon{
+    background-position: 0 0;
+}
+.pre .preIcon:hover{
+    background-position: -75px 0;
+}
+.next .nextIcon:hover{
+    background-position: -50px 0;
+}
+
 .controll{
 	position: absolute;
 	bottom: 10px;
@@ -282,7 +317,7 @@ header nav .myNav{
 	text-align: center;
 }
 #controll li span.curIndex{
-	background-color: #000;
+	background-color: #ff4400;
 }
 .controll li span{
 	display: inline-block;
@@ -291,7 +326,7 @@ header nav .myNav{
 	width: 8px;
 	height: 8px;
 	border-radius: 4px;
-	background-color: #a7a7a7;
+	background-color: #ffffff;
 	cursor: pointer;
 }
 .controll li{
@@ -318,6 +353,27 @@ header nav .myNav{
 	width: 100%;
 	margin: 0 auto;
 }
+.active{
+    width: 100%;
+    padding: 2% 0;
+}
+.activeBar h1{
+    font-size: 16px;
+    color: #000000;
+    text-align: center;
+}
+.activeBar h2{
+    font-size: 14px;
+    color: #333333;
+    line-height: 2;
+    text-align: center;
+}
+.activeBar p{
+    font-size: 12px;
+    color: #333333;
+    line-height: 1.75;
+    text-align: center;
+}
 @media all and (min-width: 768px){
 	.activeBar{
 		width: 640px;
@@ -341,6 +397,7 @@ header nav .myNav{
 	margin-top: 10px;
 }
 .activeBar .activeItem a{
+    position: relative;
 	display: block;
 	text-align: center;
 }
@@ -534,7 +591,7 @@ header nav .myNav{
 	height: 100px;
 	width: 80px;
 	margin-right: 10px;
-	background: url(../img/smallCupList.png) no-repeat;
+	background: url(../img/smallCupList.jpg) no-repeat;
 }
 .cup .goods .cupListSmall .smallCupDesc .name{
 	font-size: 13px;
@@ -984,8 +1041,10 @@ header nav .myNav{
     height: 100px;
     overflow: hidden;
 	float: left;
-	padding: 0 5px;
+	padding:5px;
 	margin-bottom: 10px;
+    -moz-box-shadow: 0 0 5px #999999;
+    box-shadow: 0 0 5px #999999;
 	display: block;
 }
 .customer .discuss .Item a{
