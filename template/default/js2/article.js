@@ -93,7 +93,7 @@ function throttle(method){
 }
 function changeSildeState(){
 	if($(document).width() >= 1100){
-		if($(document).scrollTop() > $("footer").offset().top-700){
+		if($(document).scrollTop() > $("#footer").offset().top-700){
 			$(".navFixedSlide").css({"position":"absolute","top":$("#content8").offset().top +10 + "px"});
 		}else{
 			$(".navFixedSlide").css({"position":"fixed","top":"0px"});

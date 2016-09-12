@@ -8,6 +8,7 @@
     visibility: hidden;
 }
 .body_bg .w_1300{
+    position: relative;
     width: 100%;
 }
 @media all and (min-width: 992px) {
@@ -44,6 +45,9 @@
 }
 .w_1300 .w_280{
     margin-left: -280px;
+    position: fixed;
+    top:84px;
+    right: 5%;
 }
 .w_1300 .w_280 .yintu{
     margin-top: 15px;

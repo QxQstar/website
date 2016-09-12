@@ -163,7 +163,7 @@
                 </script>
 			
 			<!--ÓÒ±ß-->
-			<div class="w_280 fr">
+			<div class="w_280 fr" id="w_280">
 				<div class="white_bg pad_10">
 				    <table class="table_list">
 				    	<tr>
@@ -228,7 +228,7 @@
 				    </div>
                     {/fzw:sql}
 				</div>
-			</div>
+			</div id=slide>
 			<p class="clear"></p>
 		</div>
         <div class="blk" style="position: fixed;left: 0px;top: 0px;width: 100%; height: 100%; background: rgba(0,0,0,0.5); display:none" id="tip">
@@ -249,8 +249,33 @@
 			$(".eee").css("margin-top",a+"px");
 			$(".close").click(function(){
 			    $(".blk").hide();
-			})
-
+			});
+            $(document).scroll(function(){
+                throttle(changePosition);
+            });
+            function throttle(method){
+                clearTimeout(method.id);
+                method.id = setTimeout(method,70);
+            }
+            function changePosition(){
+                var clientH = $(window).height();
+                console.log(clientH);
+                if($(document).scrollTop() > $("#footer").offset().top - clientH){
+                    $("#w_280").css({
+                        "position":"absolute",
+                        "bottom":"5px",
+                        "top":"auto",
+                        "right":"0"
+                    });
+                }else{
+                    $("#w_280").css({
+                        "position":"fixed",
+                        "bottom":"auto",
+                        "top":"84px",
+                         "right":"5%"
+                    });
+                }
+            }
         </script>
 
         {fzw:inside src="µ×²¿.html"/}
