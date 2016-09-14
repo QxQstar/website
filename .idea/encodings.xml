@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/template/default/img/banner3-2.gif" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/template/m/img/banner3-2.gif" charset="GB2312" />
     <file url="file://$PROJECT_DIR$/template/m/js2/index.js" charset="GB2312" />
   </component>
 </project>
