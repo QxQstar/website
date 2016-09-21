@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="css/userCenter.css">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+    <script src="js/common.js" type="text/javascript"></script>
+    <title>作品管理_{fzw:key:sitename/}</title>
+</head>
+<body>
+{fzw:inside src="头部.html"/}
+    <div class="container clearFix">
+    <!--侧边栏-->
+        {fzw:inside src="user_left1.html"/}
+    <!--主要内容-->
+    <div class="contentBox">
+        <div class="contentBoxMain">
+            <h1 class="h1">作品管理</h1>
+            <!--选项列表-->
+            <ul class="optionList clearFix">
+                <li class="active">
+                    <a href="/search.aspx?m=design_product1">我的作品</a>
+                </li>
+                <li>
+                    <a href="#">上传作品</a>
+                </li>
+            </ul>
+            <!--作品列表-->
+            <ul class="productList">
+                <!--作品项-->
+                {fzw:search table="sl_zuopin" sqlvalue="yonghuming='{fzw:cookie name="user_name"/}'" number="15" order="dtime" orderby="desc" id="p1"}
+                <li class="item clearFix">
+                    <div class="productPic">
+                        <img src="{fzw:p1:suoluetu string="zutu"/}">
+                    </div>
+                    <div class="desc">
+                        <div class="name">
+                            <a href="/Single.aspx?m=index-1&laiyuanbianhao={fzw:p1:laiyuanbianhao/}&id={fzw:p1:id/}" class="ft_b">{fzw:p1:biaoti/}</a>{if value1="{fzw:p1:shenhe/}" value2="待审核" bi="=="}&nbsp;&nbsp;[{fzw:p1:shenhe/}]{else}{/if}{if value1="{fzw:p1:shenhe/}" value2="未通过" bi="=="}&nbsp;&nbsp;[未通过，查看原因]{else}{/if}
+                            <span>[{fzw:p1:shenhe/}]</span>
+                        </div>
+                        <div class="time"> {fzw:p1:dtime datetime="yyyy-MM-dd"/}</div>
+                    </div>
+                    <div class="handle">
+                        <a href="#" class="isEdit"></a>
+                        <a href="#" class="isDelete"></a>
+                    </div>
+                </li>
+                {/fzw:search}
+            </ul>
+        </div>
+        <div class="page">
+            {fzw:search:page id="p1" size="8"/}
+        </div>
+    </div>
+</div>
+{fzw:inside src="底部.html"/}
+    <script type="text/javascript">
+    var userSlide = document.getElementById('userSlide');
+    var li = userSlide.getElementsByTagName('li');
+    for(var i = 0,len = li.length ; i < len ; i++){
+        if(li[i].id == 'product'){
+            li[i].className = 'cur';
+        }else{
+            li[i].className = "";
+        }
+    }
+</script>
+</body>
+</html>

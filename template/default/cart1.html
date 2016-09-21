@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="css/userCenter.css">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <title>购物车</title>
+</head>
+<body>
+{fzw:inside src="头部.html"/}
+    <div class="container clearFix">
+    <!--侧边栏-->
+        {fzw:inside src="user_left1.html"/}
+    <!--主要内容-->
+    <div class="contentBox">
+        <h1 class="h1">我的购物车</h1>
+        <!--购物车商品列表-->
+        <ul class="cartList">
+            <!--商品项-->
+            {fzw:sql="select * from sl_cart where yonghuming='{fzw:cookie name="user_name" /}' and (dingdanbianhao is null or dingdanbianhao ='')" order by laiyuanbianhao asc id="p1"}
+            <li class="item clearFix">
+                <div class="goodsPic">
+                    {if value1="{fzw:p1:leixing/}" value2="产品" bi="=="}
+                    <a href="/page.aspx?id={fzw:p1:laiyuanbianhao/}&classid={fzw:p1:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|classid"/}" target="_blank">
+                        <img src="{fzw:p1:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|suoluetu" string="zutu"/}">
+                        <p>{fzw:p1:biaoti /}</p>
+                    </a>
+                    {else}
+                    <a href="/single.aspx?m=zuopinshow&id={fzw:p1:laiyuanbianhao/}" target="_blank">
+                        <img src="{fzw:p1:laiyuanbianhao sql="sl_zuopin|where&nbsp;id=&dangqian|suoluetu" string="zutu"/}">
+                        <p>{fzw:p1:biaoti /}</p>
+                    </a>
+                    {/if}
+                </div>
+                <div class="subtotal">
+                    单价:<span>{fzw:p1:danjia string="￥"/}</span>
+                </div>
+                <div class="num_div">
+                    <span>数量</span>
+                    <input type="text" readonly="true" value="{fzw:p1:shuliang/}" />
+                    <a class="sub" href="/pay/cart.aspx?type=jian&id={fzw:p1:id/}"></a>
+                    <a class="add" href="/pay/cart.aspx?type=jia&id={fzw:p1:id/}"></a>
+                </div>
+                <div class="handle">
+                    {if value1="{fzw:p1:leixing/}" value2="产品" bi="=="}
+                    <a href="/page.aspx?id={fzw:p1:laiyuanbianhao/}&classid={fzw:p1:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|classid"/}" class="isLook"></a>
+                    {else}{/if}
+                    <a href="/pay/cart.aspx?type=del&id={fzw:p1:id/}" class="isDelete"></a>
+                </div>
+            </li>
+            {/fzw:sql}
+        </ul>
+        <!--结算-->
+        <div class="settlement">
+            <p>
+                合计：
+                <span>￥{fzw:sql="select sum(xiaoji) as s_count from sl_cart where yonghuming='{fzw:cookie name="user_name" /}' and (dingdanbianhao is null or dingdanbianhao='')" id="p1"}{fzw:p1:s_count  string="￥"/}{/fzw:sql}</span>
+                <a href="/Single.aspx?m=order">结算</a>
+            </p>
+        </div>
+    </div>
+</div>
+{fzw:inside src="底部.html"/}
+    <script type="text/javascript">
+    var userSlide = document.getElementById('userSlide');
+    var li = userSlide.getElementsByTagName('li');
+    for(var i = 0,len = li.length ; i < len ; i++){
+        if(li[i].id == 'cart'){
+            li[i].className = 'cur';
+        }else{
+            li[i].className = "";
+        }
+    }
+</script>
+</body>
+</html>

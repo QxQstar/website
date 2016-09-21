@@ -1,0 +1,94 @@
+{if value1="{fzw:cookie name="user_name" /}" value2="" bi="=="}
+<script type="text/javascript">
+    window.location.href = "/?login.html";
+    window.event.returnValue = false;
+</script>
+{else}
+{/if}
+{fzw:sql="select count(id) as count_id from sl_user where yonghuming='{fzw:cookie name="user_name" /}'" id="p1"}
+{if value1="{fzw:p1:count_id/}" value2="0" bi="=="}{/fzw:sql}
+<script type="text/javascript">
+    window.location.href = "/inc/out_login.aspx?type=err";
+    window.event.returnValue = false;
+</script>
+{else}{/if}
+{fzw:sql="select * from sl_user where yonghuming='{fzw:cookie name="user_name" /}' order by id asc" id="p1"}
+{if value1="{fzw:p1:yonghujibie/}" value2="设计会员" bi="=="}
+<div class="userSlide" id="userSlide">
+        <div class="userPic">
+            <img src="{fzw:p1:touxiang /}" onerror="this.src = '/template/default/images/u_tx.jpg'" id="touxiang_" class="u_tx_img" onclick="window.open('/inc/touxiang/index.aspx?editname=touxiang&avatar_sizes=126*126&imgurl=touxiang_', '', 'status=no,scrollbars=no,top=20,left=110,width=660,height=450');" >
+            <input type="hidden" id="touxiang" name="touxiang" value="{fzw:p1:touxiang /}" />
+        </div>
+        <ul class="option">
+            <li id="product">
+                <a href="/search.aspx?m=design_product1">作品管理</a>
+            </li>
+            <li id="article">
+                <a href="/search.aspx?m=design_article1">文章管理</a>
+            </li>
+            <li id="duizhang">
+                <a href="/search.aspx?m=design_duizhang1">我的对账</a>
+            </li>
+        </ul>
+        <ul class="option">
+            <li id="order">
+               <a href="/search.aspx?m=user_order1">我的订单</a>
+            </li>
+            <li id="cart">
+                <a href="/Single.aspx?m=cart1">我的购物车</a>
+            </li>
+        </ul>
+
+        <ul class="option">
+            <li id="yhq">
+                <a href="/search.aspx?m=user_yhq1">我的优惠券</a>
+            </li>
+            <li id="sms">
+                <a href="/search.aspx?m=user_sms1">站内信</a>
+            </li>
+            <li id="jiFen">
+                <a href="/search.aspx?m=user_jifen1">积分</a>
+            </li>
+        </ul>
+        <ul class="option">
+            <li>
+                <a href="/inc/out_login.aspx" onclick="return confirm('你确认将该信息删除到回收站?   注意：相关图片和资源也将一起删除到回收站');">退出登录</a>
+            </li>
+        </ul>
+    </div>
+{else}
+{/if}
+{if value1="{fzw:p1:yonghujibie/}" value2="普通会员" bi="=="}
+    <div class="userSlide" id="userSlide">
+        <div class="userPic">
+            <img src="{fzw:p1:touxiang /}" onerror="this.src = '/template/default/images/u_tx.jpg'" id="touxiang_" class="u_tx_img" onclick="window.open('/inc/touxiang/index.aspx?editname=touxiang&avatar_sizes=126*126&imgurl=touxiang_', '', 'status=no,scrollbars=no,top=20,left=110,width=660,height=450');" >
+            <input type="hidden" id="touxiang" name="touxiang" value="{fzw:p1:touxiang /}" />
+        </div>
+        <ul class="option">
+            <li id="order">
+                <a href="/search.aspx?m=user_order1">我的订单</a>
+            </li>
+            <li id="cart">
+                <a href="/Single.aspx?m=cart1">我的购物车</a>
+            </li>
+        </ul>
+        <ul class="option">
+            <li id="yhq">
+                <a href="/search.aspx?m=user_yhq1">我的优惠券</a>
+            </li>
+            <li id="sms">
+                <a href="/search.aspx?m=user_sms1">站内信</a>
+            </li>
+            <li id="jiFen">
+                <a href="/search.aspx?m=user_jifen1">积分</a>
+            </li>
+        </ul>
+        <ul class="option">
+            <li>
+                <a href="/inc/out_login.aspx" onclick="return confirm('你确认将该信息删除到回收站?   注意：相关图片和资源也将一起删除到回收站');">退出登录</a>
+            </li>
+        </ul>
+    </div>
+{else}
+{/if}
+{/fzw:sql}

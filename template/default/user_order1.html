@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="css/userCenter.css">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <title>我的订单_{fzw:key:sitename/}</title>
+</head>
+<body>
+{fzw:inside src="头部.html"/}
+    <div class="container clearFix">
+    <!--侧边栏-->
+        {fzw:inside src="user_left1.html"/}
+    <!--主要内容-->
+    <div class="contentBox">
+        <div class="contentBoxMain">
+            <h1 class="h1">我的订单</h1>
+            <!--选项列表-->
+            <ul class="optionList clearFix">
+                {if value1="{fzw:url:zhuangtai/}" value2="" bi="=="}
+                <li class="active">
+                    <a href="http://www.xiaoyu4.com/search.aspx?m=user_order1">全部订单</a>
+                </li>
+                <li>
+                    <a href="http://www.xiaoyu4.com/search.aspx?m=user_order1&zhuangtai=未付款">未付款</a>
+                </li>
+                <li>
+                    <a href="http://www.xiaoyu4.com/search.aspx?m=user_order1&zhuangtai=订单完成">已完成</a>
+                </li>
+                {else}{/if}
+                {if value1="{fzw:url:zhuangtai/}" value2="未付款" bi="=="}
+                <li>
+                    <a href="http://www.xiaoyu4.com/search.aspx?m=user_order1">全部订单</a>
+                </li>
+                <li class="active">
+                    <a href="http://www.xiaoyu4.com/search.aspx?m=user_order1&zhuangtai=未付款">未付款</a>
+                </li>
+                <li>
+                    <a href="http://www.xiaoyu4.com/search.aspx?m=user_order1&zhuangtai=订单完成">已完成</a>
+                </li>
+                {else}{/if}
+                {if value1="{fzw:url:zhuangtai/}" value2="订单完成" bi="=="}
+                <li>
+                    <a href="http://www.xiaoyu4.com/search.aspx?m=user_order1">全部订单</a>
+                </li>
+                <li>
+                    <a href="http://www.xiaoyu4.com/search.aspx?m=user_order1&zhuangtai=未付款">未付款</a>
+                </li>
+                <li class="active">
+                    <a href="http://www.xiaoyu4.com/search.aspx?m=user_order1&zhuangtai=订单完成">已完成</a>
+                </li>
+                {else}{/if}
+            </ul>
+            <!--订单列表-->
+            <ul class="orderList">
+                <!--订单项-->
+                {fzw:search table="sl_order" sqlvalue="yonghuming='{fzw:cookie name="user_name"/}'&nbsp;and&nbsp;zhuangtai&nbsp;like&nbsp;'%{fzw:url:zhuangtai/}%'" number="15" order="dtime" orderby="desc" id="p1"}
+                <li class="item">
+                    <div class="bg"></div>
+                    <!--订单项头部-->
+                    <div class="itemHead">
+                        <a href="#">订单号:{fzw:p1:dingdanhao/}</a>
+                        <span class="time">{fzw:p1:dtime datetime="yyyy-MM-dd" /}</span>
+                        {if value1="{fzw:p1:zhuangtai/}" value2="已发件" bi="=="}
+                                <span class="kuaidi">
+                                    {fzw:p1:kuaidigongsi/}：{fzw:p1:kuaididanhao/}
+                                </span>
+                        {else}
+                        {/if}
+                        {if value1="{fzw:p1:zhuangtai/}" value2="已付款" bi="=="}
+                                <span class="kuaidi">
+                                    等待发货
+                                </span>
+                        {else}
+                        {/if}
+                    </div>
+                    <!--订单项主体-->
+                    <div class="itemBody clearFix contentOff">
+                        <!--订单项商品列表-->
+                        <ul class="itemGoodsList">
+                            {fzw:sql="select * from sl_cart where  yonghuming='{fzw:cookie name="user_name" /}' and dingdanbianhao='{fzw:p1:dingdanhao /}'" id="p2"}
+                            {if value1="{fzw:p2:leixing/}" value2="产品" bi="=="}
+                            <li class="clearFix Product">
+                                <div class="goodsPic">
+                                    <a href="/page.aspx?id={fzw:p2:laiyuanbianhao/}&classid=1">
+                                        <img src="{fzw:p2:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|suoluetu"/}">
+                                        <p>{fzw:p2:biaoti/}</p>
+                                    </a>
+                                </div>
+                                <div class="subtotal">
+                                    小计:￥{fzw:p2:xiaoji/}
+                                </div>
+                            </li>
+                            {else}
+                            <li class="clearFix Article">
+                                <div class="goodsPic">
+                                    <a href="/Single.aspx?m=index-1&gouwuchehao={fzw:p2:gouwuchehao/}">
+                                        <img src="{fzw:p2:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|suoluetu"/}">
+                                        <p>{fzw:p2:biaoti/}</p>
+                                    </a>
+                                </div>
+                                <div class="subtotal">
+                                    小计:￥{fzw:p2:xiaoji/}
+                                </div>
+                            </li>
+                            {/if}
+                            {/fzw:for:sql}
+                        </ul>
+                        <div class="itemRight">
+                            <div class="total">
+                                合计：￥{fzw:p1:jine/}
+                            </div>
+                            <div class="status">
+                                {fzw:p1:zhuangtai/}
+                            </div>
+                            <div class="caozou" id="caozuo">
+                                {if value1="{fzw:p1:zhuangtai /}" value2="未付款" bi="=="}<a href="/single.aspx?m=orderpay&dingdanhao={fzw:p1:dingdanhao /}" class="txt_blue" style="margin-top:0px;">付款</a>&nbsp;|&nbsp;<a href="/pay/orderok.aspx?type=cancel&tablename=order&id={fzw:p1:id /}" onclick="return confirm('您确认将该订单取消？');" class="txt_blue" style="margin-top:0px;">取消订单</a>{else}{/if}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contentControl" data-state = "off">
+                        <span id="control"></span>
+                    </div>
+                </li>
+
+                {/fzw:search}
+            </ul>
+        </div>
+            <div class="page">
+                {fzw:search:page id="p1" size="8"/}
+            </div>
+    </div>
+</div>
+{fzw:inside src="底部.html"/}
+    <script type="text/javascript">
+        var userSlide = document.getElementById('userSlide');
+        var li = userSlide.getElementsByTagName('li');
+        for(var i = 0,len = li.length ; i < len ; i++){
+            if(li[i].id == 'order'){
+                li[i].className = 'cur';
+            }else{
+                li[i].className = "";
+            }
+        }
+        var contentControl = $(".contentControl");
+        contentControl.click(function(){
+            if($(this).attr('data-state') === 'off'){
+                $(this).attr('data-state','on');
+                $(this).find('#control').css("background-position","-13px 0");
+                $(this).prev(".itemBody").removeClass('contentOff').addClass('contentOn');
+            }else{
+                $(this).attr('data-state','off');
+                $(this).find('#control').css("background-position","0 0");
+                $(this).prev(".itemBody").removeClass('contentOn').addClass('contentOff');
+            }
+        });
+</script>
+</body>
+</html>

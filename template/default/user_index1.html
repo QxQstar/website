@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="css/userCenter.css">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <title>会员中心_{fzw:key:sitename/}</title>
+</head>
+<body>
+    {fzw:inside src="头部.html"/}
+    <div class="container clearFix">
+        <!--侧边栏-->
+        {fzw:inside src="user_left1.html"/}
+        <!--主要内容-->
+        <div class="contentBox">
+            <!--基本信息-->
+            <div class="baseMessage">
+                <p class="title">基本信息</p>
+                <ul class="messageList">
+                    <li class="clearFix">
+                        <p>会员名:</p><span>{fzw:cookie name="user_name" /}</span>
+                    </li>
+                    <li class="clearFix">
+                        <p>会员等级:</p><span>普通会员</span>
+                    </li>
+                    <li class="clearFix">
+                        <p>注册时间:</p><span>{fzw:sql="select top 1 * from sl_system where u1='{fzw:cookie name="user_name" /}' and u4 like '会员注册' order by id asc" id="p1"}{fzw:p1:dtime/}{/fzw:sql}</span>
+                    </li>
+                </ul>
+                <div class="link">
+                    <a href="/Single.aspx?m=modifiyMessage" class="modifyM">编辑资料</a>
+                    <a href="/Single.aspx?m=modifiyPw" class="modifyP">修改密码</a>
+                </div>
+            </div>
+            <!--最新订单-->
+            <div class="lastOrder">
+                <p class="title">最新订单</p>
+                <!--最近订单列表-->
+                <ul class="orderList">
+                    <!--订单项-->
+                    {fzw:for:sql="select top 3 * from sl_order where yonghuming='{fzw:cookie name="user_name" /}' and zhuangtai<>'已取消' and zhuangtai<>'订单关闭' order by id desc" id="p1"}
+                    <li class="item">
+                        <!--订单项头部-->
+                        <div class="itemHead">
+                            <a href="#">订单号:{fzw:p1:dingdanhao/}</a>
+                            <span class="time">{fzw:p1:dtime datetime="yyyy-MM-dd" /}</span>
+                            <!--<span class="isDelete"></span>-->
+                            {if value1="{fzw:p1:zhuangtai/}" value2="已发件" bi="=="}
+                            <span class="kuaidi">
+                                {fzw:p1:kuaidigongsi/}：{fzw:p1:kuaididanhao/}
+                            </span>
+                            {else}
+                            {/if}
+                            {if value1="{fzw:p1:zhuangtai/}" value2="已付款" bi="=="}
+                            <span class="kuaidi">
+                                等待发货
+                            </span>
+                            {else}
+                            {/if}
+                        </div>
+                        <!--订单项主体-->
+                        <div class="itemBody clearFix">
+                            <!--订单项商品列表-->
+                            <ul class="itemGoodsList">
+                                {fzw:for:sql="select * from sl_cart where  yonghuming='{fzw:cookie name="user_name" /}' and dingdanbianhao='{fzw:p1:dingdanhao /}'" id="p2"}
+                                {if value1="{fzw:p2:leixing/}" value2="产品" bi="=="}
+                                <li class="clearFix Product">
+                                    <div class="goodsPic">
+                                        <a href="/page.aspx?id={fzw:p2:laiyuanbianhao/}&classid=1">
+                                            <img src="{fzw:p2:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|suoluetu"/}">
+                                            <p>{fzw:p2:biaoti/}</p>
+                                        </a>
+                                    </div>
+                                    <div class="subtotal">
+                                        小计:￥{fzw:p2:xiaoji/}
+                                    </div>
+                                </li>
+                                {else}
+                                <li class="clearFix Article">
+                                    <div class="goodsPic">
+                                        <a href="/Single.aspx?m=index-1&gouwuchehao={fzw:p2:gouwuchehao/}">
+                                            <img src="{fzw:p2:laiyuanbianhao sql="sl_product|where&nbsp;id=&dangqian|suoluetu"/}">
+                                            <p>{fzw:p2:biaoti/}</p>
+                                        </a>
+                                    </div>
+                                    <div class="subtotal">
+                                        小计:￥{fzw:p2:xiaoji/}
+                                    </div>
+                                </li>
+                                {/if}
+                                {/fzw:for:sql}
+                            </ul>
+                            <div class="itemRight">
+                                <div class="total">
+                                    ￥{fzw:p1:jine/}
+                                </div>
+                                <div class="status">
+                                    {fzw:p1:zhuangtai/}
+                                </div>
+                                <div class="caozou" id="caozuo">
+                                    {if value1="{fzw:p1:zhuangtai /}" value2="未付款" bi="=="}<a href="/single.aspx?m=orderpay&dingdanhao={fzw:p1:dingdanhao /}" class="txt_blue" style="margin-top:0px;">付款</a>&nbsp;|&nbsp;<a href="/pay/orderok.aspx?type=cancel&tablename=order&id={fzw:p1:id /}" onclick="return confirm('您确认将该订单取消？');" class="txt_blue" style="margin-top:0px;">取消订单</a>{else}{/if}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {/fzw:for:sql}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {fzw:inside src="底部.html"/}
+    <script type="text/javascript">
+        var userSlide = document.getElementById('userSlide');
+        var li = userSlide.getElementsByTagName('li');
+        for(var i = 0,len = li.length ; i < len ; i++){
+            if(li[i].id == 'index'){
+                li[i].className = 'cur';
+            }else{
+                li[i].className = "";
+            }
+        }
+        if($("#caozuo").text().indexOf('付款')>-1){
+            $("#caozuo a").first().css('color','#FF6666');
+            $("#caozuo a").last().css('color','#999');
+        }
+    </script>
+    <script type="text/javascript">
+        function tanchuceng()
+        {
+
+            document.getElementById('tanchu').style.display = '';
+
+        }
+        function userdomain(id)
+        {
+            $.ajax({
+                type: "GET",
+                url: "/Execution.aspx?type=diy_edit&t=userdomain&field=yuming&yuming=" + document.getElementById("yuming").value + "&id="+id,
+                success: function (data) {
+
+                }
+            });
+
+            $.ajax({
+                type: "GET",
+                url: "/Execution.aspx?type=diy_edit&t=userdomain&field=shiyong&shiyong=是&id="+id,
+                success: function (data) {
+
+                }
+            });
+            window.location.href = "{fzw:key:siteurl/}";
+            window.event.returnValue = false;
+            //end
+        }
+        var h=window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        $(".blk").height(h);
+        var b=$(".eee").height();
+        var a=(h-b)/2
+        $(".aaa").css("padding-top",a+"px");
+        $(".close").click(function(){
+            $(".blk").hide();
+        })
+    </script>
+
+    <script type="text/javascript">
+        function settouxiang(imgurl) {
+            $.ajax({
+                type: "POST",
+                url: "/Execution.aspx?type=user_edit&t=user",
+                data: "touxiang=" + imgurl + "",
+                success: function () {
+                    // layer.alert('头像更新成功');
+                }, error: function () {
+
+                }
+            });
+        }</script>
+</body>
+</html>
