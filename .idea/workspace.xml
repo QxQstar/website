@@ -26,6 +26,7 @@
       <file leaf-file-name="content_ghy.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/m/content_ghy.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state vertical-scroll-proportion="-5.6666665" vertical-offset="13080" max-vertical-offset="15066">
               <caret line="492" column="28" selection-start-line="492" selection-start-column="28" selection-end-line="492" selection-end-column="28" />
               <folding />
@@ -38,7 +39,42 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.56956524" vertical-offset="11298" max-vertical-offset="13284">
               <caret line="433" column="33" selection-start-line="433" selection-start-column="33" selection-end-line="433" selection-end-column="33" />
+=======
+            <state vertical-scroll-proportion="0.2347826" vertical-offset="0" max-vertical-offset="14013">
+              <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+>>>>>>> Stashed changes
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/default/css2/index.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="28056" max-vertical-offset="33318">
+              <caret line="1075" column="16" selection-start-line="1065" selection-start-column="0" selection-end-line="1096" selection-end-column="1" />
+              <folding>
+                <element signature="e#9919#10109#0" expanded="false" />
+                <element signature="e#10134#10297#0" expanded="false" />
+                <element signature="e#10318#10385#0" expanded="false" />
+                <element signature="e#10406#10450#0" expanded="false" />
+                <element signature="e#10516#10544#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/m/css2/index.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="24155" max-vertical-offset="31536">
+              <caret line="948" column="1" selection-start-line="948" selection-start-column="1" selection-end-line="948" selection-end-column="1" />
+              <folding>
+                <element signature="e#7318#7484#0" expanded="false" />
+                <element signature="e#7509#7647#0" expanded="false" />
+                <element signature="e#7668#7735#0" expanded="false" />
+                <element signature="e#7756#7800#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,11 +120,6 @@
         <option value="$PROJECT_DIR$/template/default/design_product1.html" />
         <option value="$PROJECT_DIR$/template/default/user_order1.html" />
         <option value="$PROJECT_DIR$/template/default/css/userCenter.css" />
-        <option value="$PROJECT_DIR$/template/default/js2/index.js" />
-        <option value="$PROJECT_DIR$/template/default/content_ghy.html" />
-        <option value="$PROJECT_DIR$/template/default/css2/index.css" />
-        <option value="$PROJECT_DIR$/template/m/content_ghy.html" />
-        <option value="$PROJECT_DIR$/template/m/css2/index.css" />
         <option value="$PROJECT_DIR$/template/default/moreActiveList.html" />
         <option value="$PROJECT_DIR$/template/default/js2/moreActiveList.js" />
         <option value="$PROJECT_DIR$/template/m/css2/moreActiveList.css" />
@@ -96,6 +127,13 @@
         <option value="$PROJECT_DIR$/template/m/moreActiveList.html" />
         <option value="$PROJECT_DIR$/template/m/js2/index.js" />
         <option value="$PROJECT_DIR$/template/m/js2/moreActiveList.js" />
+        <option value="$PROJECT_DIR$/template/default/js2/index.js" />
+        <option value="$PROJECT_DIR$/template/default/css2/index.css" />
+        <option value="$PROJECT_DIR$/template/default/css2/designCenter.css" />
+        <option value="$PROJECT_DIR$/template/default/designCenter.html" />
+        <option value="$PROJECT_DIR$/template/default/content_ghy.html" />
+        <option value="$PROJECT_DIR$/template/m/css2/index.css" />
+        <option value="$PROJECT_DIR$/template/m/content_ghy.html" />
       </list>
     </option>
   </component>
@@ -170,28 +208,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="m" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="website" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="website" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="m" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -350,62 +366,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/template/m/js2/header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2538">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/default/css/moreActiveList.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="11.094723" vertical-offset="2898" max-vertical-offset="14391">
-          <caret line="411" column="18" selection-start-line="411" selection-start-column="18" selection-end-line="411" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/m/js/moreActiveList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.3388429" vertical-offset="6402" max-vertical-offset="8262">
-          <caret line="300" column="41" selection-start-line="300" selection-start-column="41" selection-end-line="300" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="351">
-          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.769559" vertical-offset="80" max-vertical-offset="783">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/default/js2/article.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4519621" vertical-offset="2231" max-vertical-offset="4671">
-          <caret line="95" column="68" selection-start-line="95" selection-start-column="68" selection-end-line="95" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/default/css2/article.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.78078485" vertical-offset="11276" max-vertical-offset="12015">
-          <caret line="439" column="0" selection-start-line="439" selection-start-column="0" selection-end-line="439" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/default/css2/special.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="16632">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/template/default/css2/xiangqin.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2199" max-vertical-offset="2916">
@@ -473,13 +433,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40189445" vertical-offset="972" max-vertical-offset="3159">
           <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/default/产品中心详细.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37391305" vertical-offset="7032" max-vertical-offset="8019">
-          <caret line="270" column="65" selection-start-line="270" selection-start-column="65" selection-end-line="270" selection-end-column="65" />
         </state>
       </provider>
     </entry>
@@ -602,6 +555,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/template/default/js2/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.0041323" vertical-offset="8265" max-vertical-offset="10125">
@@ -623,6 +577,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> Stashed changes
     <entry file="file://$PROJECT_DIR$/template/default/js2/moreActiveList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7050" max-vertical-offset="7776">
@@ -645,19 +601,6 @@
             <element signature="e#9413#9579#0" expanded="false" />
             <element signature="e#9775#9842#0" expanded="false" />
             <element signature="e#9864#9908#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/m/css2/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0879567" vertical-offset="11037" max-vertical-offset="30672">
-          <caret line="379" column="5" selection-start-line="379" selection-start-column="5" selection-end-line="379" selection-end-column="5" />
-          <folding>
-            <element signature="e#7318#7484#0" expanded="false" />
-            <element signature="e#7509#7647#0" expanded="false" />
-            <element signature="e#7668#7735#0" expanded="false" />
-            <element signature="e#7756#7800#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -709,8 +652,136 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/template/default/js2/header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2916">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/default/js2/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7768595" vertical-offset="8967" max-vertical-offset="9693">
+          <caret line="353" column="0" selection-start-line="353" selection-start-column="0" selection-end-line="353" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/default/js2/designCenter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7266576" vertical-offset="2015" max-vertical-offset="2754">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/default/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11344538" vertical-offset="0" max-vertical-offset="7749">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/default/js2/jingxuan.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.6265225" vertical-offset="3419" max-vertical-offset="4158">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/default/css2/designCenter.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.744249" vertical-offset="8414" max-vertical-offset="13257">
+          <caret line="332" column="19" selection-start-line="332" selection-start-column="19" selection-end-line="332" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/default/js/order.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3105">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/default/js/ordinaryList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="739">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/default/产品中心详细.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40601504" vertical-offset="0" max-vertical-offset="8019">
+          <caret line="10" column="67" selection-start-line="9" selection-start-column="84" selection-end-line="10" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/default/designCenter.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64492756" vertical-offset="419" max-vertical-offset="1161">
+          <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+          <folding>
+            <element signature="tag#li#0;tag#ul#0;tag#div#2;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#script#0;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/default/content_ghy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50869566" vertical-offset="4374" max-vertical-offset="6480">
+          <caret line="450" column="31" selection-start-line="445" selection-start-column="16" selection-end-line="453" selection-end-column="21" />
+          <folding>
+            <element signature="tag#ul#0;tag#div#0;tag#div#1;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#li#0;tag#ul#0;tag#div#0;tag#div#1;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#div#2;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#div#3;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#div#4;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#h1#0;tag#div#5;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#div#0;tag#div#5;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#ul#0;tag#div#0;tag#div#5;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/default/css2/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="28056" max-vertical-offset="33318">
+          <caret line="1075" column="16" selection-start-line="1065" selection-start-column="0" selection-end-line="1096" selection-end-column="1" />
+          <folding>
+            <element signature="e#9919#10109#0" expanded="false" />
+            <element signature="e#10134#10297#0" expanded="false" />
+            <element signature="e#10318#10385#0" expanded="false" />
+            <element signature="e#10406#10450#0" expanded="false" />
+            <element signature="e#10516#10544#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/m/css2/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="24155" max-vertical-offset="31536">
+          <caret line="948" column="1" selection-start-line="948" selection-start-column="1" selection-end-line="948" selection-end-column="1" />
+          <folding>
+            <element signature="e#7318#7484#0" expanded="false" />
+            <element signature="e#7509#7647#0" expanded="false" />
+            <element signature="e#7668#7735#0" expanded="false" />
+            <element signature="e#7756#7800#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/template/m/content_ghy.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state vertical-scroll-proportion="-5.6666665" vertical-offset="13080" max-vertical-offset="15066">
           <caret line="492" column="28" selection-start-line="492" selection-start-column="28" selection-end-line="492" selection-end-column="28" />
           <folding />
@@ -721,6 +792,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.56956524" vertical-offset="11298" max-vertical-offset="13284">
           <caret line="433" column="33" selection-start-line="433" selection-start-column="33" selection-end-line="433" selection-end-column="33" />
+=======
+        <state vertical-scroll-proportion="0.2347826" vertical-offset="0" max-vertical-offset="14013">
+          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>

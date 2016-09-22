@@ -318,46 +318,6 @@ function loadBannerImg(){
     banner2Img.attr('src','/template/default/img/banner2.jpg');
     banner3Img.attr('src','/template/default/img/banner3-2.gif');
 }
-//function activeHover(){
-//    var activeItem = $("#activeList").find(".activeItem");
-//    activeItem.hover(function(){
-//        var link = $(this).find("a");
-//        var text = $("<div class='text'></div>")
-//                    .css({
-//                        "position":"absolute",
-//                        "top":"0",
-//                        "left":"0",
-//                        "right":"0",
-//                        "bottom":"0",
-//                        "text-align":"center",
-//                        "height":"50%",
-//                        "margin-top":"auto",
-//                        "margin-bottom":"auto"
-//                    });
-//        var h1 = $("<p class='h1'></p>")
-//                    .text(link.attr('data-h1'))
-//                    .css({
-//                        "font-size":"16px",
-//                        "color":"#ffffff",
-//                        "font-weight":"blod"
-//                });
-//        var h2 = $("<p class='h2'></p>")
-//                    .text(link.attr('data-h2'))
-//                    .css({
-//                            "color":"#ffffff",
-//                            "font-size":"14px"
-//                    });
-//        text.append(h1).append(h2);
-//        link.append($("<div class='mask' style='position: absolute ; left: 0;" +
-//            " top:0;width: 100%;height: 100%;background-color:rgba(0,0,0,0.5) ;'></div>"))
-//            .append(text);
-//
-//    },function(){
-//        var link = $(this).find("a");
-//        link.find(".mask").remove();
-//        link.find(".text").remove();
-//    });
-//}
 untilEvent.addEvent(window,'load',loadBannerImg);
 untilEvent.addEvent(window,'load',scrollEvent);
 untilEvent.addEvent(window,'load',setLiIndex);
@@ -366,4 +326,3 @@ untilEvent.addEvent(window,'load',addMask);
 untilEvent.addEvent(window,'load',collapse);
 untilEvent.addEvent(window,'load',smallScreenList);
 untilEvent.addEvent(window,'load',liClick);
-//untilEvent.addEvent(window,'load',activeHover);
