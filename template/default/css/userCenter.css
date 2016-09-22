@@ -744,6 +744,7 @@ a:focus{
     display: inline-block;
     height: 10px;
     width: 13px;
+    cursor: pointer;
     background:url(./../img/orderoff.jpg) no-repeat 0 0 ;
 }
 .orderList .item .itemBody .itemGoodsList li+li:before{
