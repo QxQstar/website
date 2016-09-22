@@ -196,58 +196,58 @@ function addMask(){
 function addClass(){
     var activeList = $("#activeBar").find(".list li");
     var moreList = $("<li class='activeItem moreActiveItem'><a href='http://www.xiaoyu4.com/single.aspx?m=moreActiveList'><img src='/template/default/img/3213.jpg'></a></li>");
-    var moreActiveLink = moreList.find('a');
-    addText(moreActiveLink[0]);
+//    var moreActiveLink = moreList.find('a');
+//    addText(moreActiveLink[0]);
     activeList.eq(3).before(moreList);
     activeList.eq(3).addClass("otherActive").nextAll("li").addClass("otherActive");
     //给活动添加介绍文字
-    var link = activeList.find('a');
-    link.each(function(index,ele) {
-        addText(ele);
-    });
+//    var link = activeList.find('a');
+//    link.each(function(index,ele) {
+//        addText(ele);
+//    });
     $('#customer').find('li').last().addClass("lastItem");
 }
-function addText(ele){
-    var text = $("<div class='text'></div>")
-        .css({
-            "position":"absolute",
-            "top":"0",
-            "left":"0",
-            "right":"0",
-            "bottom":"0",
-            "text-align":"center",
-            "height":"50%",
-            "margin-top":"auto",
-            "margin-bottom":"auto"
-        });
-    var h1 = $("<p class='h1'></p>")
-        .css({
-            "font-size":"14px",
-            "color":"#ffffff",
-            "font-weight":"blod"
-        });
-    var dataH1 = $(ele).attr('data-h1');
-    var dataH2 = $(ele).attr('data-h2');
-    if(dataH1){
-        h1.text($(ele).attr('data-h1'))
-            .css({
-                "font-size":"16px"
-            });
-    }
-    var h2 = $("<p class='h2'></p>")
-        .text($(ele).attr('data-h2'))
-        .css({
-            "color":"#ffffff",
-            "font-size":"12px"
-        });
-    if(dataH2){
-        h2.text($(ele).attr('data-h2'));
-    }
-    text.append(h1).append(h2);
-    $(ele).append($("<div class='mask' style='position: absolute ; left: 0;" +
-        " top:0;width: 100%;height: 100%;background-color:rgba(0,0,0,0.5) ;'></div>"))
-        .append(text);
-}
+//function addText(ele){
+//    var text = $("<div class='text'></div>")
+//        .css({
+//            "position":"absolute",
+//            "top":"0",
+//            "left":"0",
+//            "right":"0",
+//            "bottom":"0",
+//            "text-align":"center",
+//            "height":"50%",
+//            "margin-top":"auto",
+//            "margin-bottom":"auto"
+//        });
+//    var h1 = $("<p class='h1'></p>")
+//        .css({
+//            "font-size":"14px",
+//            "color":"#ffffff",
+//            "font-weight":"blod"
+//        });
+//    var dataH1 = $(ele).attr('data-h1');
+//    var dataH2 = $(ele).attr('data-h2');
+//    if(dataH1){
+//        h1.text($(ele).attr('data-h1'))
+//            .css({
+//                "font-size":"16px"
+//            });
+//    }
+//    var h2 = $("<p class='h2'></p>")
+//        .text($(ele).attr('data-h2'))
+//        .css({
+//            "color":"#ffffff",
+//            "font-size":"12px"
+//        });
+//    if(dataH2){
+//        h2.text($(ele).attr('data-h2'));
+//    }
+//    text.append(h1).append(h2);
+//    $(ele).append($("<div class='mask' style='position: absolute ; left: 0;" +
+//        " top:0;width: 100%;height: 100%;background-color:rgba(0,0,0,0.5) ;'></div>"))
+//        .append(text);
+//}
 function collapse(){
 	var p = $(".customer .word #p");
 	var offsetWidth = p.width();
@@ -313,8 +313,8 @@ function loadBannerImg() {
         play();
         btnClick();
     });
-    banner2Img.attr('src', '/template/default/img/banner2.jpg');
-    banner3Img.attr('src', '/template/default/img/banner3-2.gif');
+    banner2Img.attr('src', '/template/m/img/banner2.jpg');
+    banner3Img.attr('src', '/template/m/img/banner3-2.gif');
 }
 untilEvent.addEvent(window,'load',loadBannerImg);
 untilEvent.addEvent(window,'load',scrollEvent);

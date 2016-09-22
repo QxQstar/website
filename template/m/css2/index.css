@@ -410,6 +410,35 @@ div.next{
 .activeBar .activeItem img{
 	max-width: 100%;
 }
+.active .activeBar .mask{
+    position: absolute ;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0.5;
+    filter:alpha(opacity=50);
+}
+.active .activeBar .text{
+    position:absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50%;
+    text-align: center;
+    margin: auto;
+}
+.activeBar .text .h1{
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+}
+.activeBar .text .h2{
+    font-size: 12px;
+    color: #ffffff;
+}
 @media all and (min-width: 768px){
 	.activeBar .activeItem{
 		padding: 0 10px;
