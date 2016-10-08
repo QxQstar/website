@@ -1,0 +1,127 @@
+ul{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color: #333333;
+    outline: none;
+}
+a:focus{
+    outline: none;
+}
+.clearFix:after{
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+.isDelete{
+    display: inline-block;
+    width: 19px;
+    height: 20px;
+    background: url(../img/delete.png) 0 0 no-repeat;
+}
+.isDelete:hover{
+    background: url(../img/delete.png) -19px 0 no-repeat;
+}
+.isEdit{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../img/edit&look.png) 0 0 no-repeat;
+}
+.isEdit:hover{
+    background: url(../img/edit&look.png) -20px 0 no-repeat;
+}
+.isLook{
+    display: inline-block;
+    width: 29px;
+    height: 20px;
+    background: url(../img/edit&look.png) -40px 0 no-repeat;
+}
+.isLook:hover{
+    background: url(../img/edit&look.png) -69px 0 no-repeat;
+}
+.indexLink{
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+}
+.indexLink:hover{
+    text-decoration: underline;
+}
+.container{
+    width: 1050px;
+    padding: 40px 0;
+    margin: 0 auto;
+}
+.container .contentBox{
+    width: 830px;
+    float: right;
+    font-family: arial, helvetica, sans-serif;
+}
+.contentBox .h1{
+    font-size: 18px;
+    color: #333333;
+    font-weight: normal;
+    height: 48px;
+    line-height: 48px;
+    border-bottom: 1px solid #cccccc;
+}
+.contentBox .optionList{
+    margin-top: 10px;
+    height: 40px;
+    line-height: 40px;
+}
+.contentBox .optionList li{
+    position: relative;
+    width: 100px;
+    float: left;
+    border-bottom: 2px solid #ffffff;
+    text-align: center;
+}
+.contentBox .optionList li.active{
+    border-bottom: 2px solid #000000;
+}
+.contentBox .optionList li a{
+    font-size: 14px;
+}
+.contentBox .form{
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333333;
+}
+.contentBox .form div{
+    height: 35px;
+    line-height: 35px;
+}
+.contentBox .form div .info{
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+.contentBox .form label input{
+    height:27px;
+    width: 200px;
+    padding-left: 10px;
+    border: 1px #999 solid;
+}
+.contentBox .form label input:focus{
+    box-shadow: 0 0 3px #888;
+}
+.contentBox .form .btn button{
+    width: 80px;
+    height: 30px;
+    border: none;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #333333;
+}
+.contentBox .form .btn button:hover{
+    background-color: #ff6666;
+}
+.contentBox .form .f ,.contentBox .form .m ,.contentBox .form .secret{
+    margin: 0 5px;
+}

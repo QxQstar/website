@@ -1,0 +1,38 @@
+.container .contentBox .billList{
+    margin: 20px 0;
+    color: #333333;
+    font-size: 13px;
+}
+.container .contentBox .billList .item{
+    border: 1px solid #ebebeb;
+}
+.container .contentBox .billList .item+.item{
+    margin-top: 10px;
+}
+.contentBox .billList .item .itemHead{
+    height: 40px;
+    line-height: 40px;
+    background-color: #f2f2f2;
+    padding-left: 20px;
+}
+.contentBox .billList .item .itemHead .time{
+    padding-left: 20px;
+}
+.contentBox .billList .item .itemBody{
+    padding-left: 20px;
+    height: 60px;
+    line-height: 60px;
+}
+.contentBox .billList .item .itemBody .left{
+    float: left;
+    width: 620px;
+    border-right: 1px solid #ebebeb;
+}
+.contentBox .billList .item .itemBody .left .money{
+    margin-left: 100px;
+}
+.contentBox .billList .item .itemBody .right{
+    float: left;
+    width: 150px;
+    text-align: center;
+}

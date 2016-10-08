@@ -1,0 +1,59 @@
+*{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+.userSlide{
+    width: 200px;
+    height: 600px;
+    padding-top: 15px;
+    background-color: #ebebeb;
+    float: left;
+}
+.userSlide .userPic{
+    width: 126px;
+    height: 126px;
+    margin: 0 auto 15px;
+    cursor: pointer;
+}
+.userSlide .option{
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    list-style: none;
+}
+.userSlide .option li{
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+.userSlide .option .cur{
+    background: url(../img/cur.png) no-repeat 20% center;
+}
+.userSlide .option li a{
+    display: block;
+    height: 100%;
+    height: 40px;
+    font-size: 14px;
+    color: #333333;
+    font-family: arial, helvetica, sans-serif;
+}
+.userSlide .option li a:hover{
+    font-size: 15px;
+}
+.userSlide .option .cur a:hover{
+    font-size: 14px;
+}
+.userSlide .option li+li:before{
+    content: "";
+    top:0;
+    left: 10px;
+    position: absolute;
+    height: 1px;
+    width: 180px;
+    margin: 0 auto;
+    background-color: #eeeeee;
+}

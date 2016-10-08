@@ -37,7 +37,10 @@
 		       	</tr>
              {fzw:search table="sl_zuopin" sqlvalue="yonghuming='{fzw:cookie name="user_name"/}'" number="15" order="dtime" orderby="desc" id="p1"}
 		       	<tr>
-		       		<td style="text-align: left;"><a href="/Single.aspx?m=index-1&laiyuanbianhao={fzw:p1:laiyuanbianhao/}&id={fzw:p1:id/}" class="ft_b">{fzw:p1:biaoti/}</a>{if value1="{fzw:p1:shenhe/}" value2="待审核" bi="=="}&nbsp;&nbsp;[{fzw:p1:shenhe/}]{else}{/if}{if value1="{fzw:p1:shenhe/}" value2="未通过" bi="=="}&nbsp;&nbsp;[未通过，查看原因]{else}{/if}
+		       		<td style="text-align: left;">
+                        <a href="/Single.aspx?m=index-1&laiyuanbianhao={fzw:p1:laiyuanbianhao/}&id={fzw:p1:id/}" class="ft_b">{fzw:p1:biaoti/}</a>
+                        {if value1="{fzw:p1:shenhe/}" value2="待审核" bi="=="}&nbsp;&nbsp;[{fzw:p1:shenhe/}]{else}{/if}
+                        {if value1="{fzw:p1:shenhe/}" value2="未通过" bi="=="}&nbsp;&nbsp;[未通过，查看原因]{else}{/if}
                       
                      </td>
 		       		<td>
