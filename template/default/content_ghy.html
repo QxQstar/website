@@ -3,7 +3,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 	<title>{fzw:key:sitename/}</title>
-    <script type="text/javascript" src="/template/default/js2/jquery.js"></script>
+    <script type="text/javascript" src="./js2/jquery.js"></script>
 	<link rel="stylesheet" type="text/css" href="/template/default/css2/index.css">
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <meta name="keywords" content="{fzw:key:sitekey/}">
@@ -420,11 +420,7 @@
 		<div class='goods'>
             <h2 class='info'>HIMETAL联合设计师产品</h2>
             <p class="english">PRODUCTS PRODUCED BY CO DESIGNERS OF THE HI,METAL</p>
-			<div class='more clearfix'>
-				<a href='#'>
-					<img src='/template/default/img/more.png'>
-				</a>
-			</div>
+            <!--饰品列表-->
 			<ul class='plateList clearfix'>
 				<!--绑定数据开始-->
                  <!-- {fzw:sql="select top 3 shejishi,lianjie,biaoti,jiage,shichangjia,suoluetu from sl_xiangguanchanpin,sl_product  where chanpinfenlei='饰品' and sl_product.id in (cast(substring(sl_xiangguanchanpin.chanpinbianhao,3,len(sl_xiangguanchanpin.chanpinbianhao)-4)  as   int)) order by sl_xiangguanchanpin.paixu asc,sl_xiangguanchanpin.id desc
@@ -445,10 +441,36 @@
                 {/fzw:sql}-->
 
                 <!--绑定数据结束-->
-            <img class="plateImg" src="/template/default/img/plateList.png">
+                <!--饰品项目-->
 
+                <li class="plateItem">
+                    <a href="#">
+                        <img src="./img/heben.png" class="plateImg">
+                        <div class="mask"></div>
+                        <p class="desc">
+                            QxQstar全部作品
+                        </p>
+                    </a>
+                </li>
+                <li class="plateItem">
+                    <a href="#">
+                        <img src="./img/heben.png" class="plateImg">
+                        <div class="mask"></div>
+                        <p class="desc">
+                            QxQstar全部作品
+                        </p>
+                    </a>
+                </li>
+                <li class="plateItem">
+                    <a href="#">
+                        <img src="./img/lu.png" class="plateImg">
+                        <div class="mask"></div>
+                        <p class="desc">
+                            QxQstar全部作品
+                        </p>
+                    </a>
+                </li>
 			</ul>
-			<a href='#' class='moreList'>加载更多饰品</a>
 		</div>
 	</div>
 	<div class='customer' id='customer'>
