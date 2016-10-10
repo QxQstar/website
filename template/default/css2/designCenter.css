@@ -25,11 +25,21 @@ a:hover{
     overflow: hidden;
     height: 0;
 }
+body{
+    background-color: #ffffff;
+}
+@media all and (min-width: 768px) {
+    body{
+        background-color: #dcdcdc;
+    }
+}
 .designerTitle img{
     width: 100%;
     margin-top: -1px;
 }
 .designerDesc{
+    position: absolute;
+    visibility: hidden;
     width: 90%;
     margin: 0 auto 20px;
     padding-top: 20px;
@@ -72,60 +82,96 @@ a:hover{
     margin-top: 5%;
 }
 .article .list .item{
-    width: 90%;
-    margin: 2% auto;
+    width: 95%;
+    margin: 0  auto 20px;
     text-align: center;
+    background-color: #ffffff;
 }
-.list .item h3{
+.list h3{
+    width: 95%;
+    margin: 0 auto 10px;
+    text-align: left;
     font-size: 16px;
-    margin-bottom: 5%;
+    font-weight: bold;
 }
 .item .productList .productItem{
     margin:10px;
 }
+.article .list .item img{
+    max-width: 100%;
+}
 @media all and (min-width: 768px) {
-    .list .item h3{
-        font-size: 18px;
-        margin-bottom: 5%;
+    .list  h3{
+        width: 85%;
     }
     .article .list .item{
         width: 85%;
+        padding: 20px 0;
+        -moz-box-shadow: 0 0 3px #999;
+        box-shadow: 0 0 3px #999;
     }
     .item .productList{
-        max-width: 900px;
+        max-width: 1000px;
         margin: 0 auto;
     }
     .item .productList .productItem{
          width: 31%;
          float: left;
-        /*padding: 10px;*/
-        /*-webkit-box-shadow: 0 0 3px #999999;*/
-        /*-moz-box-shadow:  0 3px #999999;*/
-        /*box-shadow: 0 0 3px #999999 ;*/
         margin: 2% ;
      }
 }
+
 @media all and (min-width: 992px){
     .article .list .item{
         width: 80%;
         max-width: 1200px;
     }
-}
-    .item  .productItem .name{
-        margin-top: 10px;
+    .list  h3{
+        width: 80%;
+        max-width: 1200px;
     }
-    .item  .productItem .name,.item  .productItem .price{
+    .item .productList .productItem{
+        width: 24%;
+        margin: 0.5% ;
+        padding: 1%;
+    }
+    .item .productList .productItem:hover{
+        -moz-box-shadow: 0 0 2px #dcdcdc inset;
+        box-shadow: 0 0 2px #dcdcdc inset;
+    }
+}
+
+    .item  .productItem .name, #kucun{
         font-size: 14px;
         color: #444444;
         line-height: 1.75;
     }
+    #kucun{
+        font-size: 12px;
+    }
+    .item  .productItem .name{
+         margin-top: 10px;
+         color: #000000;
+     }
     @media all and ( min-width:768px) {
-        .item  .productItem .name,.item  .productItem .price{
+        .item  .productItem .name{
             font-size: 16px;
         }
     }
-    .item  .productItem .sale{
+    .item .opera{
+        text-align: center;
+    }
+    .item .opera .price{
         display: inline-block;
+        *display: inline;
+        zoom: 1;
+        margin-right: 2%;
+        color: #ff4400;
+    }
+    .item  .opera .sale{
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
         background-color: #ff4400;
         height: 25px;
         line-height: 25px;
@@ -140,7 +186,51 @@ a:hover{
 }
 @media all and (min-width: 768px) {
     .article .list .item .detail{
+        margin:  0 20px;
+    }
+}
+.article .detail img{
+    max-width: 100%;
+}
+@media all and (min-width: 768px) {
+    .article .list .item .detail{
         font-size: 16px;
+    }
+}
+/*产品参数*/
+.parameter{
+    background-color: #dcdcdc;
+    padding: 5px;
+    font-size: 14px;
+    margin: 20px 0;
+}
+.parameter .paratitle{
+    max-width: 1000px;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+    text-align: left;
+}
+.parameter .fangshi,.parameter .shuju{
+    text-align: center;
+}
+.parameter .paraList{
+    text-align: left;
+}
+.paraList .paraItem{
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    margin: 0 0.5%;
+    width: 48%;
+}
+@media all and (min-width: 768px) {
+    .parameter .paraList{
+        text-align: center;
+    }
+    .paraList .paraItem{
+        width: auto;
     }
 }
 /*页脚*/

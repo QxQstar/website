@@ -297,8 +297,8 @@ header nav .myNav{
 }
 @media all and (min-width: 992px){
     .prodDesi,.picDesi{
-        width: 80%;
-        max-width: 1000px;
+        width: 70%;
+        max-width: 1200px;
     }
     .prodDesi .item a img,.picDesi .item a img{
         width: 100%;
@@ -403,4 +403,7 @@ header nav .myNav{
 }
 .footer p span{
     vertical-align: 3px;font-weight: bold;
+}
+.DesiTitle img{
+    width: 100%;
 }

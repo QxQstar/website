@@ -8,135 +8,45 @@
     <title>设计师列表</title>
 </head>
 <body>
-    <!--头部-->
-    {fzw:inside src="头部.html"/}
+{fzw:inside src="头部.html"/}
     <!--头部结束-->
     <!--头图-->
     <div class="titlePic">
-        <img src="/template/default/img/banner1.jpg">
+        <img src="/template/default/img/degnListH.gif">
     </div>
     <!--产品设计师-->
     <div class="prodDesi" id="prodDesi">
+        <div class="DesiTitle">
+            <img src="/template/default/img/prodDesiTitle.gif">
+        </div>
+
         <ul class="proDesList clearfix" id="proDesList">
-            <li class="item" data-index="1">
-                <a href="#">
-                    <img src="/template/default/img/prodDesc1_1.jpg">
+            {fzw:sql="select * from sl_user where yonghujibie = '设计会员' and shejileibie='产品' and jihuo='是'" id="p1"}
+            <li class="item">
+                <a href="/single.aspx?m=designCenter&id={fzw:p1:id/}&username={fzw:p1:yonghuming/}">
+                    <img src="{fzw:p1:fengmiantu/}">
                 </a>
             </li>
-            <li class="item" data-index="2">
-                <a href="#">
-                    <img src="/template/default/img/prodDesc2_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="3">
-                <a href="#">
-                    <img src="/template/default/img/prodDesc3_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="4">
-                <a href="#">
-                    <img src="/template/default/img/prodDesc4_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="5">
-                <a href="#">
-                    <img src="/template/default/img/prodDesc5_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="6">
-                <a href="#">
-                    <img src="/template/default/img/prodDesc6_1.jpg">
-                </a>
-            </li>
+            {/fzw:sql}
         </ul>
     </div>
     <!--印图设计师-->
     <div class="picDesi" id="picDesi">
+        <div class="DesiTitle">
+            <img src="/template/default/img/picDesTitle.gif">
+        </div>
         <ul class="picDesList clearfix" id = "picDesList">
-            <li class="item" data-index="1">
-                <a href="#">
-                    <img src="/template/default/img/picDesc1_1.jpg">
+            {fzw:sql="select * from sl_user where yonghujibie = '设计会员' and shejileibie='设计' and jihuo='是' order by dtime desc" id="p2"}
+            <li class="item">
+                <a href="/user/{fzw:p2:yonghuming sql="sl_userdomain|where&nbsp;yonghuming='&dangqian'|yuming"/}.aspx">
+                    <img src="{fzw:p2:fengmiantu/}">
                 </a>
             </li>
-            <li class="item" data-index="2">
-                <a href="#">
-                    <img src="/template/default/img/picDesc2_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="3">
-                <a href="#">
-                    <img src="/template/default/img/picDesc3_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="4">
-                <a href="#">
-                    <img src="/template/default/img/picDesc4_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="5">
-                <a href="#">
-                    <img src="/template/default/img/picDesc5_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="6">
-                <a href="#">
-                    <img src="/template/default/img/picDesc6_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="7">
-                <a href="#">
-                    <img src="/template/default/img/picDesc7_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="8">
-                <a href="#">
-                    <img src="/template/default/img/picDesc8_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="9">
-                <a href="#">
-                    <img src="/template/default/img/picDesc9_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="10">
-                <a href="#">
-                    <img src="/template/default/img/picDesc10_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="11">
-                <a href="#">
-                    <img src="/template/default/img/picDesc11_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="12">
-                <a href="#">
-                    <img src="/template/default/img/picDesc12_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="13">
-                <a href="#">
-                    <img src="/template/default/img/picDesc13_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="14">
-                <a href="#">
-                    <img src="/template/default/img/picDesc14_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="15">
-                <a href="#">
-                    <img src="/template/default/img/picDesc15_1.jpg">
-                </a>
-            </li>
-            <li class="item" data-index="16">
-                <a href="#">
-                    <img src="/template/default/img/picDesc16_1.jpg">
-                </a>
-            </li>
+            {/fzw:sql}
         </ul>
     </div>
     <!--页脚-->
-    {fzw:inside src="底部.html"/}
-    <script type="text/javascript" src='/template/default/js2/designerList.js'></script>
+{fzw:inside src="底部.html"/}
+    <script type="text/javascript" src='/template/default/js/designerList.js'></script>
 </body>
 </html>
