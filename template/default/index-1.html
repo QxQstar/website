@@ -394,7 +394,7 @@
                     jiazai1("/single.aspx?m=index-1-3&suijishu="+Math.random()+""); {/fzw:sql}
                         {fzw:for:sql="select top 1 gouwuchehao from sl_cart where gouwuchehao='{fzw:url:gouwuchehao/}' and leixing='作品'" id="p1"}
                         {fzw:for:sql="select * from sl_history where dingdanhao='{fzw:p1:gouwuchehao/}' and leixing='临时作品'" id="p2"}
-                    zuopin_load("{fzw:p2:laiyuanbianhao/}","{fzw:p2:laiyuanbianhao sql="sl_zuopin|where&nbsp;id=&dangqian|yuantu" string="zutu"/}","{fzw:p2:zuobiao/}");
+                    zuopin_load("{fzw:p2:suijishu/}","{fzw:p2:laiyuanbianhao sql="sl_zuopin|where&nbsp;id=&dangqian|yuantu" string="zutu"/}","{fzw:p2:zuobiao/}");
                     {/fzw:for:sql}
 
                     }
