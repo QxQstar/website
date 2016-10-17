@@ -5,8 +5,6 @@ $('#add_address').click(function () {
         url: "/single.aspx?m=add_address",
         success: function (data) {
             $('#news_add').html(data);
-
-
         }
     });
 });
@@ -21,7 +19,6 @@ $('.outline').click(function () {
         type: "GET",
         url: "/single.aspx?m=add_address&id=" + $(this).data('id') + "",
         success: function (data) {
-	
             $('#news_add').html(data);
             yunfei();
         }
@@ -106,4 +103,4 @@ $('.txt_blue').click(function () {
 $('.ADD_ul li').click(function () {
     $(this).find('.gou').show();
     $(this).siblings().find('.gou').hide();
-});
+});

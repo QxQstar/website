@@ -32,13 +32,13 @@
 
                 <ul class="productList clearfix">
                     {fzw:for:sql="select * from sl_xiangguanchanpin where xilie = '{fzw:p2:xilie/}'" id="p3"}
-                    <li class="productItem">
+                    <li class="productItem clearfix">
                          <img src="{fzw:p3:guanliantu/}">
                          <p class="name">{fzw:p3:chapinbh sql="sl_product|where&nbsp;id='&dangqian'|biaoti"/}</p>
                         <p id="kucun">¿â´æ£º{fzw:p3:chapinbh sql="sl_product|where&nbsp;id='&dangqian'|kucun"/}</p>
-                        <div class="opera">
-                            <p class="price">£¤{fzw:p3:chapinbh sql="sl_product|where&nbsp;id='&dangqian'|jiage"/}</p>
+                        <div class="opera clearfix">
                             <a href="javascript:void(0)" onclick="set_cart({fzw:p3:chapinbh/},1,'²úÆ·')" class="sale">¹ºÂò</a>
+                            <p class="price">£¤{fzw:p3:chapinbh sql="sl_product|where&nbsp;id='&dangqian'|jiage"/}</p>
                         </div>
                         <input style="display: none;" id="shuliang" value="1">
                         <input style="display: none;" id="yonghujibie" value="{fzw:cookie:name='yonghujibie'/}">

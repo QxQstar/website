@@ -95,10 +95,22 @@ body{
     font-weight: bold;
 }
 .item .productList .productItem{
+    position: relative;
     margin:10px;
+    border-bottom: 1px solid #ebebeb;
+    padding: 5px;
+}
+.productList .productItem .opera{
+    position: absolute;
+    bottom: 10px;
+    right: 0;
 }
 .article .list .item img{
     max-width: 100%;
+}
+.item .productList img{
+    float: left;
+    width: 60%;
 }
 @media all and (min-width: 768px) {
     .list  h3{
@@ -118,7 +130,14 @@ body{
          width: 31%;
          float: left;
         margin: 2% ;
+        border-bottom: none;
+        padding: 0;
      }
+    .item .productList img{
+        float: none;
+        width: auto;
+        max-width: 100%;
+    }
 }
 
 @media all and (min-width: 992px){
@@ -153,31 +172,52 @@ body{
          margin-top: 10px;
          color: #000000;
      }
+.item .opera .price{
+    float: right;
+    color: #ff4400;
+    margin-right:10px ;
+}
+.item .opera .sale{
+    float: right;
+    background-color: #ff4400;
+    height: 25px;
+    width: 80px;
+    text-align: center;
+    line-height: 25px;
+    color: #ffffff;
+}
     @media all and ( min-width:768px) {
         .item  .productItem .name{
             font-size: 16px;
         }
+        .item .productItem .opera{
+            position: static;
+
+              text-align: center;
+          }
+        .item .opera .price{
+             display: inline-block;
+             *display: inline;
+             zoom: 1;
+             margin-right: 2%;
+             color: #ff4400;
+            float: none;
+             }
+        .item  .opera .sale{
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            background-color: #ff4400;
+            height: 25px;
+            line-height: 25px;
+            padding: 0 20px;
+            color: #ffffff;
+            float: none;
+            width: auto;
+        }
     }
-    .item .opera{
-        text-align: center;
-    }
-    .item .opera .price{
-        display: inline-block;
-        *display: inline;
-        zoom: 1;
-        margin-right: 2%;
-        color: #ff4400;
-    }
-    .item  .opera .sale{
-        display: inline-block;
-        *display: inline;
-        zoom: 1;
-        background-color: #ff4400;
-        height: 25px;
-        line-height: 25px;
-        padding: 0 20px;
-        color: #ffffff;
-    }
+
+
 .article .list .item .detail{
     text-align: left;
     line-height: 1.75;
@@ -212,25 +252,34 @@ body{
     color: #000000;
     text-align: left;
 }
-.parameter .fangshi,.parameter .shuju{
-    text-align: center;
+.parameter .fangshi{
+    text-align: left;
+    font-size: 12px;
 }
-.parameter .paraList{
+.parameter .paraList,.parameter .shuju{
     text-align: left;
 }
 .paraList .paraItem{
-    display: inline-block;
-    *display: inline;
-    zoom: 1;
-    margin: 0 0.5%;
-    width: 48%;
+    display: block;
 }
 @media all and (min-width: 768px) {
-    .parameter .paraList{
+    .parameter .fangshi{
+        text-align: center;
+    }
+    .parameter .paraList,.parameter .shuju{
         text-align: center;
     }
     .paraList .paraItem{
         width: auto;
+    }
+    .paraList .paraItem{
+         display: inline-block;
+         *display: inline;
+         zoom: 1;
+         margin: 0 0.5%;
+     }
+    .parameter .fangshi{
+       font-size: 14px;
     }
 }
 /*Ò³½Å*/

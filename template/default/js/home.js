@@ -1,6 +1,18 @@
 var record = {
     num: ""
-}
+};
+//order页面验证新地址手机号码
+//var tel = document.getElementsByClassName('shoujihaoma')[0];
+var tel = $('.shoujihaoma');
+tel.keyup(function(event){
+    var target = event.target;
+    var value = target.value;
+    if(/(?:^1[3,8]\d{9}$)|(?:^15[^4]\d{8}$)|(?:^14[7,5,9]\d{8}$)|(?:^17[3,6,7,8]\d{8}$)/.test(value)){
+        target.style.color = "#000";
+    }else{
+        target.style.color = "red";
+    }
+});
 var checkDecimal = function (n) {
     var decimalReg = /^\d{0,8}\.{0,1}(\d{1,2})?$/;//var decimalReg=/^[-\+]?\d{0,8}\.{0,1}(\d{1,2})?$/;
     if (n.value != "" && decimalReg.test(n.value)) {
@@ -456,8 +468,8 @@ function order() {
     }
 
 
-    if (document.getElementById("shoujihaoma").value == "") {
-        layer.alert("手机号码不可以为空");
+    if (!/(?:^1[3,8]\d{9}$)|(?:^15[^4]\d{8}$)|(?:^14[7,5,9]\d{8}$)|(?:^17[3,6,7,8]\d{8}$)/.test(document.getElementById("shoujihaoma").value)) {
+        layer.alert('输入有效的手机号码');
         document.getElementById("shoujihaoma").focus();
         return false;
     }
@@ -652,7 +664,7 @@ function yungongchang() {
         return false;
     }
     else {
-        var myreg = /^1+\d{10}$/;
+        var myreg = /(?:^1[3,8]\d{9}$)|(?:^15[^4]\d{8}$)|(?:^14[7,5,9]\d{8}$)|(?:^17[3,6,7,8]\d{8}$)/;
         if (!myreg.test(document.getElementById("shouji").value)) {
             layer.alert("请输入有效的手机号");
             document.getElementById("shouji").focus();
@@ -702,7 +714,7 @@ function reg() {
         return false;
     }
     else {
-        var myreg = /^1+\d{10}$/;
+        var myreg = /(?:^1[3,8]\d{9}$)|(?:^15[^4]\d{8}$)|(?:^14[7,5,9]\d{8}$)|(?:^17[3,6,7,8]\d{8}$)/;
         if (!myreg.test(document.getElementById("shouji").value)) {
             layer.alert("请输入有效的手机号");
             document.getElementById("shouji").focus();
@@ -760,7 +772,7 @@ function password() {
         return false;
     }
     else {
-        var myreg = /^1+\d{10}$/;
+        var myreg = /(?:^1[3,8]\d{9}$)|(?:^15[^4]\d{8}$)|(?:^14[7,5,9]\d{8}$)|(?:^17[3,6,7,8]\d{8}$)/;
         if (!myreg.test(document.getElementById("shouji").value)) {
             layer.alert("请输入有效的手机号");
             document.getElementById("shouji").focus();
@@ -889,7 +901,7 @@ function user_user() {
         return false;
     }
     else {
-        var myreg = /^1+\d{10}$/;
+        var myreg = /(?:^1[3,8]\d{9}$)|(?:^15[^4]\d{8}$)|(?:^14[7,5,9]\d{8}$)|(?:^17[3,6,7,8]\d{8}$)/;
         if (!myreg.test(document.getElementById("shouji").value)) {
             layer.alert("请输入有效的手机号");
             document.getElementById("shouji").focus();
