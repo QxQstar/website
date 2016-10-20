@@ -318,6 +318,32 @@ function loadBannerImg(){
     banner2Img.attr('src','/template/default/img/banner2.jpg');
     banner3Img.attr('src','/template/default/img/banner3-2.gif');
 }
+//饰品鼠标hover事件
+function plateHover(){
+    var plateList = $('#plateList');
+    var publicPath = '/template/default/img/';
+    plateList.find('.plateItem').each(function(){
+        var curEle = $(this);
+        curEle.hover(function(){
+            var target = $(this);
+            var dataP = target.attr('data-P');
+            var plateImg = target.find('.plateImg');
+////            var plateImgP = target.find('.plateImgP');
+//            plateImg.stop(true,false).fadeIn(400);
+//            plateImgP.stop(true,false).fadeOut(400);
+                plateImg.attr('src',publicPath+dataP + '.jpg');
+
+        },function(){
+            var target = $(this);
+            var dataP = target.attr('data-P');
+            var plateImg = target.find('.plateImg');
+            plateImg.attr('src',publicPath+dataP + 'P.jpg');
+////            var plateImgP = target.find('.plateImgP');
+//            plateImg.stop(true,false).fadeOut(400);
+//            plateImgP.stop(true,false).fadeIn(400);
+        });
+    });
+}
 untilEvent.addEvent(window,'load',loadBannerImg);
 untilEvent.addEvent(window,'load',scrollEvent);
 untilEvent.addEvent(window,'load',setLiIndex);
@@ -326,3 +352,4 @@ untilEvent.addEvent(window,'load',addMask);
 untilEvent.addEvent(window,'load',collapse);
 untilEvent.addEvent(window,'load',smallScreenList);
 untilEvent.addEvent(window,'load',liClick);
+untilEvent.addEvent(window,'load',plateHover);

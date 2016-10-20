@@ -587,6 +587,8 @@ div.next{
 .cup .showPic .descTitle,
 .cup .showPic .descList{
     position: absolute;
+    visibility: hidden;
+    color: #ffffff;
     top:0;
     left: -40000px;
 }
@@ -904,6 +906,8 @@ div.next{
 .plate .showPic .descTitle,
 .plate .showPic .descList{
     position: absolute;
+    color: #ffffff;
+    visibility: hidden;
     top: 0;
     left: -4000px;
 }

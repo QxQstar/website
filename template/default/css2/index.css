@@ -1070,30 +1070,9 @@ div.next p,div.pre p{
     color: #ffffff;
     font-weight: bold;
     font-size: 16px;
-    padding: 10px;
-    -webkit-box-shadow: 0 0 3px #999999;
-    -moz-box-shadow: 0 0 3px #999999;
-    box-shadow: 0 0 3px #999999;
-}
-.plate .goods .plateItem .desc{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    line-height: 40px;
-    visibility: visible;
-}
-
-.plate .goods .plateItem .mask{
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: #ff4400;
-    height: 40px;
-    opacity: 0.5;
-    visibility: visible;
+    -webkit-box-shadow: 0 0 3px #444;
+    -moz-box-shadow: 0 0 3px #444;
+    box-shadow: 0 0 3px #444;
 }
 @media all and (min-width: 768px){
 	.plate .goods{
@@ -1110,28 +1089,6 @@ div.next p,div.pre p{
         margin-top: 40px;
         padding: 20px 0 0;
     }
-    .plate .goods .plateItem .desc{
-        -webkit-transition: all 1s;
-        -moz-transition: all 1s;
-        -ms-transition: all 1s;
-        -o-transition: all 1s;
-        transition: all 1s;
-        height: 0;
-    }
-    .plate .goods .plateItem .mask{
-        filter:alpha(opacity=50);
-        -webkit-transition: all 1s;
-        -moz-transition: all 1s;
-        -ms-transition: all 1s;
-        -o-transition: all 1s;
-        transition: all 1s;
-        height: 0px;
-    }
-    .plate .goods .plateItem:hover .mask,.plate .goods .plateItem:hover .desc{
-        visibility: visible;
-        height: 60px;
-        line-height: 60px;
-    }
 }
 .plate .goods .plateList{
 	margin: 20px 0;
@@ -1139,12 +1096,43 @@ div.next p,div.pre p{
 .plate .plateList .plateItem{
       float: left;
       margin:10px 1%;
-
   }
-.plate .goods .plateList .plateImg{
-      max-width: 100%;
+.plateList .plateLink{
+    position: relative;
+}
+.plate .goods .plateList .plateImg,.plateList .plateImgP{
+    max-width: 100%;
   }
+.plateList .platePara{
+    visibility: hidden;
+    text-align: center;
+    font-size: 14px;
+    line-height: 2.0;
+}
+.plateList .plateItem:hover .platePara{
+    visibility: visible;
+}
+.platePara .XLName{
+    position: relative;
+    color: #666666;
+    margin-top: 10px;
 
+}
+.platePara .XLName:before{
+    content: " ";
+    position: absolute;
+    width: 70%;
+    height: 1px;
+    background-color: #555;
+    top: 0;
+    left: 15%;
+}
+.platePara .priNum{
+    color: #666666;
+}
+.platePara .priNum span{
+    padding: 3px;
+}
 @media all and (min-width: 768px){
 	.plate .goods .plateList{
 	margin: 20px 0 40px;

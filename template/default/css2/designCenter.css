@@ -282,6 +282,20 @@ body{
        font-size: 14px;
     }
 }
+.phone{
+    display: inline;
+}
+.PC{
+    display: none;
+}
+@media all and (min-width: 768px) {
+    .phone{
+        display: none;
+    }
+    .PC{
+        display: inline;
+    }
+}
 /*Ò³½Å*/
 .footer{
     height: 390px;
