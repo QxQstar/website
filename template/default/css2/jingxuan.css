@@ -41,6 +41,9 @@ a:hover{
 	background-color: #906B6B;
 	padding: 1.5% 0;
 }
+.activeDesc img{
+    max-width: 100%;
+}
 .activeDesc h1{
 	text-align: center;
 	font-size: 16px;
@@ -48,7 +51,7 @@ a:hover{
 	line-height: 2.0;
 }
 .activeDesc p{
-	text-indent: 2em;
+	/*text-indent: 2em;*/
 	width: 90%;
 	margin: 0 auto;
 	font-size: 14px;
@@ -91,7 +94,19 @@ a:hover{
 .change .warp .goTokankan{
     display: none;
 }
+.thumbnail{
+    display: none;
+}
 @media screen and (min-width: 768px){
+    .thumbnail{
+        display: block;
+    }
+    .change .warp .list .item .thumbnail img{
+        bottom: 50px;
+        top:auto;
+        left: auto;
+        right: 50px;
+    }
 	.change{
 		width: 90%;
 		height: 480px;

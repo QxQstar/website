@@ -86,18 +86,4 @@ function callBackOver(event){
         $(inter2).animate({height:totalHeight + 'px'},300);
     }
 }
-function future(){
-    var info = $("<div>¼´½«ÉÏÊÐ</div>");
-    info.css({"position":"absolute","display":"none","z-index":"80","color":"#ff4400","font-size":"12px"});
-    $('body').append(info);
-    $("#future").hover(function(){
-        $(this).mousemove(function(event){
-            info.css({"display":"block","top":event.clientY+10+"px","left":event.clientX+20+"px"});
-        });
-
-    },function(event){
-        info.css({"display":"none"}).unbind("mousemove");
-    });
-}
-untilEvent.addEvent(window,'load',future);
 untilEvent.addEvent(window,'load',getOuter);

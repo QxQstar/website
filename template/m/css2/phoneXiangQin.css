@@ -23,6 +23,7 @@ a:focus{
 }
 .body_bg .w_1300 img{
     width: 100%;
+    vertical-align: bottom;
 }
 .w_1300 .cp_content{
     width: 100%;

@@ -262,6 +262,9 @@ header nav .myNav{
 	background-color: #906B6B;
 	padding: 1.5% 0;
 }
+.activeDesc img{
+    max-width: 100%;
+}
 .activeDesc h1{
 	text-align: center;
 	font-size: 16px;
@@ -269,9 +272,9 @@ header nav .myNav{
 	line-height: 2.0;
 }
 .activeDesc p{
-	text-indent: 2em;
-	width: 90%;
-	margin: 0 auto;
+	/*text-indent: 2em;*/
+	/*width: 90%;*/
+	/*margin: 0 auto;*/
 	font-size: 14px;
 	color: #EBE8E8;
 	line-height: 1.7;
