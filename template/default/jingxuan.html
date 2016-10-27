@@ -39,7 +39,7 @@
 
             <!--¼ÓÔØ²úÆ·Í¼Æ¬-->
             {fzw:for:sql="select chanpintupian,sl_product.id as product_id,sl_product.biaoti  from sl_huodongjingxuan,sl_product where sl_huodongjingxuan.id={fzw:url:huodong_id} and  sl_product.biaoti=sl_huodongjingxuan.chanpinming" id="p2"}
-	    	<div class="swiper-container" style="background: #fff url({fzw:p2:chanpintupian/}) no-repeat center center;">
+	    	<div class="swiper-container" id="swiper-container" style="background: #fff url({fzw:p2:chanpintupian/}) no-repeat center center;">
            
 
 		      	<ul class='list swiper-wrapper' id='list'>

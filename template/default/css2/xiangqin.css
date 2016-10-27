@@ -36,7 +36,9 @@
 }
 .w_1300 .leftConn img{
     max-width: 100%;
-    vertical-align : bottom
+    vertical-align : bottom;
+    display: block;
+    margin: 0 auto;
 }
 .w_1300 .leftConn .ceping_list p{
     text-indent: 2em;

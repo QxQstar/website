@@ -55,14 +55,18 @@ function checkScroll(){
   function changeImgSize(){
       var img = $("#list").find("img");
       var width,height;
+      // 比例
+      var num = parseFloat($('#swiper-container').attr('producttype'));
       img.each(function(index,elem){
         width = $(elem).width();
         height = $(elem).height();
-        $(elem).width(width/3).height(height/3).css({
+        $(elem).width(width/3/num).height(height/3/num).css({
           "marginTop": -($(elem).height()/2) +"px",
           "marginLeft": -($(elem).width()/2) + "px"
         });
       });
+
+
     }
 //提示当前位于第几张图片
 function setPage(mySwiper){
