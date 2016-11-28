@@ -166,10 +166,10 @@
 			<div class="w_280 fr" id="w_280">
 				<div class="white_bg pad_10">
 				    <table class="table_list">
-				    	<tr>
-				    		<th width="55">市场价：</th>
-				    		<td><span class="old_price">￥{fzw:database:shichangjia string="￥"/}</span></td>
-				    	</tr>
+				    	<!--<tr>-->
+				    		<!--<th width="55">市场价：</th>-->
+				    		<!--<td><span class="old_price">￥{fzw:database:shichangjia string="￥"/}</span></td>-->
+				    	<!--</tr>-->
 				    	<tr>
 				    		<th>价格：</th>
 				    		<td><span class="orange ft_24">￥{fzw:database:jiage string="￥"/}</span></td>
@@ -186,11 +186,16 @@
                                                 <span class="add"></span>
                                             </div>
                                         </td>
-                                        <td id="kucun">库存：{fzw:database:kucun/}</td>
+
                                     </tr>
+
                                 </table>
 				    		</td>
 				    	</tr>
+                        <tr>
+                         <th>库存：</th>
+                        <td id="kucun">{fzw:database:kucun/}</td>
+                         </tr>
 				    </table>
 				</div>
                 <p class="white_bg center lh_30 pad_10 ft_14 yintu">
@@ -228,7 +233,7 @@
 				    </div>
                     {/fzw:sql}
 				</div>
-			</div id=slide>
+			</div>
 			<p class="clear"></p>
 		</div>
         <div class="blk" style="position: fixed;left: 0px;top: 0px;width: 100%; height: 100%; background: rgba(0,0,0,0.5); display:none" id="tip">

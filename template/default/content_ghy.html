@@ -97,10 +97,8 @@
 <!--头部结束-->
 <div class='warp' id='warp'>
     <ul class='list' id='list'>
-        <li class="one" id="one">
-           <a href="http://www.xiaoyu4.com/page.aspx?id=27&classid=1">
-               <img src='/template/default/img/banner1.jpg' >
-           </a>
+        <li class="one" >
+               <img id="one" src='/template/default/img/banner1.jpg' >
         </li>
         <li>
             <img id="two" src="#">
@@ -260,8 +258,8 @@
                     <img src='/template/default/img/cup1.jpg'>
                     <h3 class='goodsName'>纳斯缓温杯光择</h3>
 						<span class='price'>
-							￥64.90
-							<span class='oldPrice'>￥84.90</span>
+							￥84.90
+							<!--<span class='oldPrice'>￥84.90</span>-->
 						</span>
 						<span class='sale'>
 							立即购买
@@ -273,8 +271,8 @@
                     <img src='/template/default/img/cup2.jpg'>
                     <h3 class='goodsName'>纳斯缓温杯原版</h3>
 						<span class='price'>
-							￥59.90
-							<span class='oldPrice'>￥79.90</span>
+							￥79.00
+							<!--<span class='oldPrice'>￥79.00</span>-->
 						</span>
 						<span class='sale'>
 							立即购买
@@ -286,8 +284,8 @@
                     <img src='/template/default/img/cup3.jpg'>
                     <h3 class='goodsName'>纯色保温杯光择</h3>
 						<span class='price'>
-							￥109.00
-							<span class='oldPrice'>￥159.00</span>
+							￥159.00
+							<!--<span class='oldPrice'>￥159.00</span>-->
 						</span>
 						<span class='sale'>
 							立即购买
@@ -305,7 +303,7 @@
                             极致保冷，手工镜面，双层真空
                         </div>
                         <div class='price'>
-                            ￥64.90
+                            ￥84.90
                         </div>
                     </div>
                 </a>
@@ -319,7 +317,7 @@
                             极致保冷，拉丝工艺，双层真空
                         </div>
                         <div class='price'>
-                            ￥59.90
+                            ￥79.00
                         </div>
                     </div>
                 </a>
@@ -333,7 +331,7 @@
                             手工镜面，便于携带，高效保温
                         </div>
                         <div class='price'>
-                            ￥109.00
+                            ￥159.00
                         </div>
                     </div>
                 </a>
@@ -374,7 +372,7 @@
                 </a>
             </li>
             <li class='tecnItem'>
-                <a target="_blank" href='http://www.xiaoyu4.com/single.aspx?m=article#content6'>
+                <a target="_blank" href='http://www.xiaoyu4.com/single.aspx?m=special&id=2'>
                     <span class='img img5'></span>
                     <span class="title">多维定制</span>
                 </a>
@@ -533,7 +531,18 @@
                 </a>
         </li>
         {/fzw:sql}
-
+        <!--{fzw:sql="select Top 4 * from sl_article where classid = 15 order by renqi desc " id="p1"}-->
+        <!--<li class='Item'>-->
+            <!--<a target="_blank" href='http://www.xiaoyu4.com/page.aspx?id={fzw:p1:id/}&classid=15'>-->
+                <!--<img src='{fzw:p1:suoluetu/}'>-->
+                <!--<div class='word'>-->
+                    <!--<div class='name'>{fzw:p1:yonghuming  string="shouji"/}</div>-->
+                    <!--<p id='p'>{fzw:p1:neirong/}</p>-->
+                    <!--<div class='time'>{fzw:p1:dtime/}</div>-->
+                <!--</div>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--{/fzw:sql}-->
 
     </ul>
     <a target="_blank" href='http://www.xiaoyu4.com/list.aspx?id=15&Model_id=54' class='moreList'>查看更多晒单</a>

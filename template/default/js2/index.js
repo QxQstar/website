@@ -12,11 +12,23 @@ function setListHeight(){
 	list.style.height = height + 'px';
 }
 function liClick(){
-    var warpOne = document.getElementById('one');
-    $(warpOne).on('click',function(){
-        if($(this).find('img').css('opacity') === '1') {
+    var warpOne = $('#list');
+    var imgOne = warpOne.find('#one'),
+        imgTwo = warpOne.find('#two'),
+        imgThree = warpOne.find('#three');
+    $(warpOne).on('click',function(event){
+        //阻止冒泡
+        event.stopPropagation();
+
+        if(imgOne.css('opacity') === '1') {
             window.location.href = "http://www.xiaoyu4.com/page.aspx?id=27&classid=1";
+        }else if(imgTwo.css('opacity') === '1'){
+            window.location.href = 'http://www.xiaoyu4.com/single.aspx?m=special&id=2';
+        }else{
+            //第三张图片还没有链接
         }
+
+
     });
 }
 function setLiIndex(){
@@ -316,7 +328,7 @@ function loadBannerImg(){
         btnClick();
     });
     banner2Img.attr('src','/template/default/img/banner2.jpg');
-    banner3Img.attr('src','/template/default/img/banner3-2.gif');
+    banner3Img.attr('src','/template/default/img/banner3.jpg');
 }
 //饰品鼠标hover事件
 function plateHover(){

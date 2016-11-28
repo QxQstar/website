@@ -55,7 +55,6 @@
 .w_1300 .w_280 .yintu{
     margin-top: 15px;
     line-height: 40px;
-    height: 40px;
     background-color: #ff3a41;
     font-size: 18px;
     letter-spacing: 2px;
@@ -101,5 +100,8 @@
 }
 .w_280 .XG .item{
     padding: 10px 0 0;
+}
+#kucun{
+    font-size: 16px;
 }
 

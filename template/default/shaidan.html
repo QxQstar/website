@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{fzw:key:sitename/}_用户晒单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <script type="text/javascript" src="/template/default/js2/jquery.js"></script>
+    <link type="text/css" rel="stylesheet" href="/template/default/css2/shandan.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <meta name="keywords" content="{fzw:key:sitekey/}">
+    <meta name="description" content="{fzw:key:sitedesc/}">
+</head>
+<body>
+<div class="container">
+    {fzw:inside src="头部.html"/}
+    <div class="content clearfix">
+        <div class="leftFrom">
+            <form method="post" action="/Execution.aspx?type=add&t=article&tipurl=/&tip_string=发布晒单成功！" class="main">
+                <p class="cp_pc_h">晒物</p>
+                <input class="input" id="biaoti" name="biaoti" placeholder="晒单标题！"/>
+                <textarea class="pc_textarea"  name="neirong" id="neirong" style="width: 100%;height: 300px;"></textarea>
+                {fzw:server type="Editor" id="neirong" user="{fzw:cookie name="user_name" /}" width="100%" height="40px" /}
+                <p class="right pad_20_0">
+                    <input name="yonghuming" type="hidden" id="yonghuming" value="{fzw:cookie name=" user_name" /}" />
+                    <input name="shenhe" type="hidden" id="shenhe" value="待审核" />
+                    <input name="chanpinbianhao" type="hidden" id="chanpinbianhao" value="{fzw:url:id/}" />
+
+                    <input name="classid" type="hidden" id="classid" value="15" />
+                    <input type="submit" value="晒物" class="btn btn_black myBtn"  onclick="return user_article()" />
+                </p>
+            </form>
+        </div>
+        <div class="rightDesc">
+
+        </div>
+</div>
+</div>
+{fzw:inside src="底部.html"/}
+</body>
+</html>
