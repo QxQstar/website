@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gb2312">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link type="text/css" rel="stylesheet" href="/template/m/css/redEnvelope.css">
+    <script type="text/javascript" src="/template/m/js/jquery.min-3.1.1.js"></script>
+    <title>领红包</title>
+</head>
+<body>
+
+<div class="g-contain f-black f-fullPage" id="contain">
+
+    <div class="m-dialogue f-center" id="dialogue">
+        <p class="word" id="word"></p>
+    </div>
+    <div class="g-main f-fullPage" id="main">
+        <div class="m-body">
+            <!--相框集-->
+            <div class="m-content" id="frame">
+                <ul class="pics f-clearfix" id="pics">
+                    <li class="pic f-float-l">
+                        <img src="/template/m/img/10cun1.png">
+                    </li>
+                    <li class="pic f-float-l">
+                        <img src="/template/m/img/10cun2.png">
+                    </li>
+                    <li class="pic f-float-l">
+                        <img src="/template/m/img/10cun3.png">
+                    </li>
+                </ul>
+            </div>
+            <img src="#" class="detailShow" id="detailShow">
+            <button type="button" class="back f-float-r" id="back">back</button>
+        </div>
+        <div class="m-handle">
+            <a  class="btn f-float-l f-center" id="link">去官网</a>
+            <ul class="tools f-float-r" id="tools">
+                <li class="tool tool1 f-float-r">
+                    <button id="tool1"></button>
+                </li>
+                <li class="tool tool2 f-float-r">
+                    <button id="tool2"></button>
+                </li>
+                <li class="tool tool3 f-float-r">
+                    <button id="tool3"></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="m-couponWarp f-fullPage">
+        <div class="m-coupons" id="coupons">
+            <div class="c-item on" data-code="#">
+                <div class="couponBox f-clearfix">
+                    <div class="status f-float-l f-center">
+                        <span>未领取</span>
+                    </div>
+                    <div class="m-body f-float-l">
+                        <div class="title">
+                            <span class="money">￥10</span>
+                            <span>优惠券</span>
+                        </div>
+                        <div class="notice f-text-r">
+                            <div class="condition" data-id="">实付满158元可用</div>
+                            <div class="time">截止时间:2017-2-11</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="handle f-center">
+                    <button type="button" class="btn" id="getCou">领取</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="g-layer" id="layer">
+    <div class="m-contentBox" id="contentBox">
+        <h1 class="title">
+            消息
+        </h1>
+        <p class="body"></p>
+        <button type="button" class="cancel"> X </button>
+        <p class="footer f-text-r">
+            <button type="button" class="sure">确定</button>
+        </p>
+    </div>
+</div>
+<script type="text/javascript" src="/template/m/js/lucky-card.min.js"></script>
+<script type="text/javascript" src="/template/m/js/redEnvelope.js"></script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body,html{
+    height: 100%;
+    width: 100%;
+}
+img{
+    vertical-align: middle;
+}
+li,ul{
+    list-style: none;
+}
+button{
+    border: none;
+    background-color: transparent;
+}
+button:focus{
+    outline: none;
+}
+button:active{
+    outline: none;
+}
+.f-center{
+    text-align: center;
+}
+.f-black{
+    background-color: #000000;
+}
+.f-fullPage{
+    width: 100%;
+    height: 100%;
+}
+.f-float-l{
+    float: left;
+}
+.f-float-r{
+    float: right;
+}
+.f-text-r{
+    text-align: right;
+}
+.f-clearfix:after{
+    display: block;
+    content: ".";
+    height: 0;
+    overflow: hidden;
+    clear: both;
+}
+.g-contain{
+    position: relative;
+}
+.m-dialogue{
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+
+}
+.m-dialogue .word{
+    font-size: 20px;
+    color: #ffffff;
+    text-shadow: 0 0 10px #999;
+}
+.g-main{
+    position: relative;
+    display: none;
+}
+.g-main .m-body{
+    position: relative;
+    margin: auto;
+    top:30px
+}
+.g-main .m-body canvas{
+    position: absolute;
+}
+.g-main .m-body .back{
+    display: none;
+    margin-top: 20px;
+    margin-right: 5%;
+}
+.g-main .m-body .detailShow{
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+.g-main .m-body .tombola{
+    position: absolute;
+    width: 50%;
+    height: 100px;
+    top:10%;
+    left: 10%;
+}
+.g-main .m-body .card{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+
+}
+.g-main .m-content{
+    background: url("/template/m/img/10cun.png") no-repeat center;
+    background-size: auto 100%;
+    overflow: hidden;
+}
+.g-main .m-content .pics{
+   margin-left: 0;
+    height: 100%;
+}
+.g-main .pics img {
+    height: 100%;
+    width: 100%;
+}
+.g-main .m-handle{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    height: 40px;
+    font-size: 0;
+}
+.g-main .m-handle .btn{
+    height: 40px;
+    line-height: 40px;
+    width: 100px;
+    color: #ffffff;
+    font-size: 16px;
+    background-color: #999999;
+    margin-left: 10px;
+}
+.g-main .m-handle .btn.on{
+    background-color: #ff4400;
+}
+.g-main .tool button{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top:-200px;
+    display: none;
+    background: url(/template/m/img/tool.png) no-repeat center;
+}
+.g-main .tool1 button{
+    background-position: 0  0;
+}
+.g-main .tool2 button{
+    background-position: -42px 0;
+}
+.g-main .tool3 button{
+    background-position: -83px 0;
+}
+.g-main .tool1.on button{
+    background-position: -126px  0;
+}
+.g-main .tool2.on button{
+    background-position: -168px  0;
+}
+.g-main .tool3.on button{
+    background-position: -208px  0;
+}
+.m-couponWarp{
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 100;
+    display: none;
+    background-color: rgba(0,0,0,0.8);
+}
+.m-coupons{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:30px;
+    width: 297px;
+    margin: auto;
+}
+.m-coupons .couponBox{
+    width: 297px;
+    height: 106px;
+    background: url(/template/m/img/yhj1.png) no-repeat;
+}
+.m-coupons .on .couponBox{
+    background-color: #ff4144;
+}
+.m-coupons .couponBox .status{
+    width: 75px;
+}
+.m-coupons .couponBox .status span{
+    display: inline-block;
+    width: 25px;
+    height: 90px;
+    margin-top: 10px;
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: bold;
+}
+.m-coupons .handle{
+    margin-top: 10px;
+}
+.m-coupons .btn{
+    color: #ffffff;
+    font-size: 18px;
+    padding: 0 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 2px #ebebeb;
+    cursor: pointer;
+}
+.m-coupons .on .btn{
+    background-color: #ff4144;
+}
+.m-coupons .couponBox .m-body{
+    position: relative;
+    width: 222px;
+    height: 100%;
+    padding: 20px 55px 0 15px;
+}
+.m-coupons .couponBox .title{
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+.m-coupons .couponBox .title .money{
+    font-size: 22px;
+    vertical-align: 0;
+}
+.m-coupons .on .title{
+    color: #ff4144;
+    border-bottom: 1px solid #ff4144;
+}
+.m-coupons .on .notice{
+    color: #ff4144;
+}
+.g-layer{
+    position: fixed;
+    z-index: 200;
+    background-color: rgba(0,0,0,0.3);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: none;
+}
+.g-layer .m-contentBox{
+    position: fixed;
+    top:100px;
+    width: 260px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 50px rgba(0,0,0,0.3);
+    border-radius: 2px;
+}
+.g-layer .m-contentBox .title{
+    padding: 0 80px 0 20px;
+    height: 42px;
+    line-height: 42px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: #F8F8F8;
+}
+.g-layer .m-contentBox .body{
+    position: relative;
+    padding: 20px;
+    line-height: 24px;
+    word-break: break-all;
+    font-size: 14px;
+    overflow: auto;
+    color: #333333;
+}
+.g-layer .m-contentBox .footer{
+    padding: 0 10px 12px;
+}
+.g-layer .m-contentBox .sure{
+    height: 28px;
+    line-height: 28px;
+    margin: 0 6px;
+    padding: 0 15px;
+    border-radius: 2px;
+    font-weight: 400;
+    border-color: #4898d5;
+    background-color: #2e8ded;
+    color: #fff;
+}
+.g-layer .m-contentBox .cancel{
+    position: absolute;
+    right: 15px;
+    top:10px;
+    color: #333333;
+    font-size: 18px;
+    font-weight: bold;
+}
