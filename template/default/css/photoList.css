@@ -1,0 +1,112 @@
+
+/* ******
+   ***初始化****
+   *****
+*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: arial,'Hiragino Sans GB','\5FAE\8F6F\96C5\9ED1',sans-serif;
+}
+ul ,li{
+    list-style: none;
+}
+/* ******
+   ***功能****
+   *****
+ */
+.f-float-l{
+    float: left;
+}
+.f-float-r{
+    float: right;
+}
+.f-cleanfix:after{
+    content: " ";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+.f-text-r{
+    text-align: right;
+}
+/* ******
+   ***布局****
+   *****
+ */
+
+header{
+    height: 60px;
+    width: 100%;
+    background-color: #000000;
+}
+body{
+    width: 100%;
+    min-width: 1200px;
+    background-color: #ededef;
+}
+.g-main{
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.g-main .m-list{
+    padding: 30px 0 30px 30px;
+}
+.m-list .c-item{
+    margin-right: 30px;
+    width: 262px;
+}
+.m-list .c-item .img{
+    position: relative;
+    height: 262px;
+}
+.m-list .c-item a{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 262px;
+    height: 262px;
+    overflow: hidden;
+}
+.m-list .c-item img{
+    position: absolute;
+    top:0;
+    left: 0;
+    -webkit-transition: all 0.5s cubic-bezier(.22,.07,0,1.02);
+    -moz-transition: all 0.5s cubic-bezier(.22,.07,0,1.02);
+    -o-transition: all 0.5s cubic-bezier(.22,.07,0,1.02);
+    -ms-transition: all 0.5s cubic-bezier(.22,.07,0,1.02);
+    transition: all 0.5s cubic-bezier(.22,.07,0,1.02);
+}
+.m-list .c-item .frame{
+    position: absolute;
+    opacity: 0;
+    border: 10px solid #000000;
+    -webkit-transition: all 0.5s cubic-bezier(.22,.07,0,1.02);
+    -moz-transition: all 0.5s cubic-bezier(.22,.07,0,1.02);
+    -o-transition: all 0.5s cubic-bezier(.22,.07,0,1.02);
+    -ms-transition: all 0.5s cubic-bezier(.22,.07,0,1.02);
+    transition: all 0.5s cubic-bezier(.22,.07,0,1.02);
+}
+.m-list .c-item .txt{
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    color: #333333;
+}
+.m-list .c-item .pName{
+    width: 50%;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.m-list .c-item .pAuthor{
+    width: 45%;
+}
+

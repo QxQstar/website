@@ -1,0 +1,164 @@
+/* ******
+   ***初始化****
+   *****
+*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: arial,'Hiragino Sans GB','\5FAE\8F6F\96C5\9ED1',sans-serif;
+}
+ul ,li{
+    list-style: none;
+}
+button{
+    border: none;
+}
+/* ******
+   ***功能****
+   *****
+ */
+.f-float-l{
+    float: left;
+}
+.f-float-r{
+    float: right;
+}
+.f-cleanfix:after{
+    content: " ";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+.f-text-r{
+    text-align: right;
+}
+/* ******
+   ***布局****
+   *****
+ */
+
+header{
+    height: 60px;
+    width: 100%;
+    background-color: #000000;
+}
+body{
+    width: 100%;
+    min-width: 1200px;
+    background-color: #ededef;
+}
+.g-main{
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    margin-top: 30px;
+    padding-top: 30px;
+}
+.g-main .m-handle .img{
+    position: relative;
+    margin: 0 50px 0 150px;
+    width: 600px;
+    height: 600px;
+}
+.g-main .m-handle img{
+    position: absolute;
+}
+.g-main .m-handle .frame{
+    position: absolute;
+    border: 10px solid #000000;
+}
+.g-main .m-handle .config{
+    width: 350px;
+}
+.m-handle .config .pName{
+    font-size: 24px;
+    color: #000;
+    line-height: 1.75;
+}
+.m-handle .config .pAuthor{
+    color: #333333;
+    font-size: 16px;
+    margin: 10px 0 15px 0;
+}
+.m-handle .config .price{
+    color: #333333;
+    font-size: 18px;
+    margin: 20px 0 ;
+}
+.m-handle .config .buy{
+    width: 150px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #ff3a41;
+    font-size: 16px;
+    border-radius: 3px;
+}
+.m-handle .size{
+    font-size: 14px;
+    color: #555;
+}
+.m-handle .size .item{
+    text-indent: 5px;
+    font-size: 16px;
+}
+/*选择画框*/
+.m-handle .choice{
+    margin: 10px 0 20px;
+    cursor: pointer;
+}
+.m-handle .choice .list{
+    margin-top: 5px;
+}
+.m-handle .choice .info{
+    font-size: 14px;
+    color: #555;
+}
+.m-handle .choice .item{
+    position: relative;
+    width: 100px;
+    height: 40px;
+    margin: 0 5px;
+}
+.m-handle .choice .bg{
+    width: 100%;
+    height: 100%;
+}
+.m-handle .choice  .item span{
+   position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+
+}
+.m-handle .choice .cur{
+    background-color: #ff4400;
+}
+
+
+/*介绍*/
+.m-desc{
+    padding: 0 150px;
+}
+.m-desc img{
+    max-width: 100%;
+    vertical-align: middle;
+}
+.m-desc .picDesc{
+    border-top: 1px solid #cecece;
+    margin-top: 30px;
+    padding-top: 30px;
+}
+.m-desc .picDesc .name{
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+
+}
+
+

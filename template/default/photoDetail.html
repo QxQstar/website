@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gb2312">
+    <title>相框详情页</title>
+    <link type="text/css" rel="stylesheet" href="./css/photoDetail.css">
+    <script type="text/javascript" src="./js/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+    <header></header>
+    <div class="g-main">
+        <div class="m-handle" id="handle">
+            <div class="img f-float-l f-text-r">
+                <span class="frame"></span>
+                <img src="./img/3.jpg" data-fill="no">
+            </div>
+            <div class="f-float-l config">
+                <p class="pName">《肯定积分抵扣》</p>
+                <p class="pAuthor">作者：qxqstar</p>
+                <div class="choice" id="choice">
+                    <span class="info">请选择画框</span>
+                    <ul class="f-cleanfix list">
+                        <li class="item f-float-l">
+                            <div class="bg" data-bg="#000" style="background: #000000;"></div>
+                            <span ></span>
+                        </li>
+                        <li class="item f-float-l">
+                            <div class="bg" data-bg="#344" style="background: #344;"></div>
+                            <span ></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="size">尺寸
+                    <p class="item">外框：40*30cm</p>
+                    <p class="item">图片：40*30cm</p>
+                </div>
+                <p class="price">价格：134元</p>
+
+                <button type="button" id="buy" class="buy">购买</button>
+            </div>
+        </div>
+        <div class="m-desc">
+            <!--相框介绍-->
+            <ul class="frameDesc">
+                <li>
+                    <img src="./img/12.jpg">
+                </li>
+                <li>
+                    <img src="./img/13.jpg">
+                </li>
+            </ul>
+            <!--画心介绍-->
+            <div class="picDesc">
+                <p class="name ">《的开房间打开》</p>
+                <img src="./img/3.jpg">
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="./js/photoDetail.js"></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+/* ******
+   ***初始化****
+   *****
+*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: arial,'Hiragino Sans GB','\5FAE\8F6F\96C5\9ED1',sans-serif;
+}
+ul ,li{
+    list-style: none;
+}
+button{
+    border: none;
+}
+/* ******
+   ***功能****
+   *****
+ */
+.f-float-l{
+    float: left;
+}
+.f-float-r{
+    float: right;
+}
+.f-cleanfix:after{
+    content: " ";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+.f-text-c{
+    text-align: center;
+}
+.f-text-r{
+    text-align: right;
+}
+/* ******
+   ***布局****
+   *****
+ */
+
+header{
+    height: 60px;
+    width: 100%;
+    background-color: #000000;
+}
+body{
+    width: 100%;
+    background-color: #ededef;
+}
+.g-main{
+    width: 100%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    margin-top: 15px;
+    padding: 15px 0 70px ;
+}
+.g-main .m-handle{
+    width: 100%;
+}
+.g-main .m-handle .img{
+    position: relative;
+    margin: auto;
+    width: 250px;
+    height: 250px;
+}
+.g-main .m-handle img{
+    position: absolute;
+}
+.g-main .m-handle .frame{
+    position: absolute;
+    border: 10px solid #000000;
+}
+.g-main .m-handle .config{
+    width: 300px;
+    margin: 0 auto;
+}
+.m-handle .config .name{
+    font-size: 14px;
+    color: #333;
+    line-height: 1.75;
+    margin: 10px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px #bebebe solid;
+}
+.m-handle .config .price{
+    color: #333333;
+    font-size: 14px;
+    margin: 10px 0 ;
+}
+.m-handle .config .fixed{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    height: 50px;
+}
+.m-handle .config .buy,
+.m-handle .config .cart{
+    width: 100px;
+    height: 40px;
+    color: #ffffff;
+    font-size: 15px;
+    margin:  5px;
+    border-radius: 3px;
+}
+.m-handle .config .buy{
+    background-color: #ff3a41;
+}
+.m-handle .config .cart{
+    background-color: #ff4400;
+}
+.m-handle .size{
+    font-size: 12px;
+    color: #555;
+}
+.m-handle .size .item{
+    text-indent: 5px;
+    font-size: 14px;
+}
+.m-handle .num{
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555555;
+
+}
+.m-handle .num input{
+    width: 40px;
+    height: 30px;
+    font-size: 14px;
+    border: 1px solid #555;
+}
+.m-handle .num .add ,
+.m-handle .num .sub{
+    display: inline-block;
+    color: #555;
+    font-size: 16px;
+    font-weight: bold;
+    width: 40px;
+    height: 30px;
+    border: 1px solid #555;
+    line-height: 30px;
+}
+.m-handle .num .add{
+    border-left: none;
+}
+.m-handle .num .sub{
+    border-right: none;
+}
+/*选择画框*/
+.m-handle .choice{
+    margin: 10px 0;
+    cursor: pointer;
+}
+.m-handle .choice .list{
+    margin-top: 5px;
+}
+.m-handle .choice .info{
+    font-size: 14px;
+    color: #555;
+}
+.m-handle .choice .item{
+    position: relative;
+    width: 75px;
+    height: 35px;
+    margin: 0 5px;
+}
+.m-handle .choice .bg{
+    width: 100%;
+    height: 100%;
+}
+.m-handle .choice  .item span{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+
+}
+.m-handle .choice .cur{
+    background-color: #ff4400;
+}
+
+
+/*介绍*/
+.m-desc{
+    margin-top: 20px;
+    padding:  20px 20px 0;
+    border-top: 1px solid #bebebe;
+}
+.m-desc img{
+    max-width: 100%;
+    vertical-align: middle;
+}
+.m-desc .picDesc{
+    border-top: 1px solid #cecece;
+    margin-top: 30px;
+    padding-top: 30px;
+}
+.m-desc .picDesc .name{
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+
+}
+
+

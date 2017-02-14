@@ -1,0 +1,91 @@
+/* ******
+   ***初始化****
+   *****
+*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: arial,'Hiragino Sans GB','\5FAE\8F6F\96C5\9ED1',sans-serif;
+}
+ul ,li{
+    list-style: none;
+}
+/* ******
+   ***功能****
+   *****
+ */
+.f-float-l{
+    float: left;
+}
+.f-float-r{
+    float: right;
+}
+.f-cleanfix:after{
+    content: " ";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+.f-text-r{
+    text-align: right;
+}
+/* ******
+   ***布局****
+   *****
+ */
+header{
+    height: 50px;
+    background-color: #000000;
+}
+body{
+    width: 100%;
+    background-color: #F3F3F3;;;
+}
+.g-main{
+    width: 320px;
+    margin: auto;
+}
+.m-list{
+    padding: 20px 0 20px 10px;
+}
+.m-list .c-item{
+    width: 140px;
+    margin: 0 10px 0 0 ;
+}
+.m-list .c-item a{
+    position: relative;
+    display: block;
+    width: 140px;
+    height: 150px;
+    overflow: hidden;
+}
+.m-list .c-item img{
+    position: absolute;
+
+}
+.m-list .c-item .txt{
+    height: 30px;
+    line-height: 30px;
+    font-size: 11px;
+    color: #333333;
+}
+.m-list .c-item .pName{
+    width: 50%;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.m-list .c-item .pAuthor{
+    width: 45%;
+}
+.m-list .c-item .frame{
+    position: absolute;
+    border: 5px solid #000000;
+
+}
+
